@@ -1,0 +1,17 @@
+rootProject.name = "lostcity"
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        flatDir {
+            dirs 'lib'
+        }
+    }
+}
+
+include(
+    "runetek3",
+    "client",
+    "jlhttp",
+    "server"
+)
