@@ -810,7 +810,7 @@ public class client extends GameShell {
                 return true;
             }
             if (anInt811 == 168) {
-                method37(15093, inBuffer, packetLength);
+                updatePlayers(15093, inBuffer, packetLength);
                 if (anInt969 == 1) {
                     anInt969 = 2;
                     Scene.anInt48 = anInt722;
@@ -1831,7 +1831,7 @@ public class client extends GameShell {
         aBoolean726 = false;
     }
 
-    public void method29(Buffer class35_sub2_sub3, int i, int j) {
+    public void updateNewPlayers(Buffer class35_sub2_sub3, int i, int j) {
         while (class35_sub2_sub3.bitOffset + 10 < i * 8) {
             int k = class35_sub2_sub3.gBit(11);
             if (k == 2047)
@@ -2389,15 +2389,15 @@ public class client extends GameShell {
         if (!flag) ;
     }
 
-    public void method37(int i, Buffer class35_sub2_sub3, int j) {
+    public void updatePlayers(int i, Buffer class35_sub2_sub3, int j) {
         anInt833 = 0;
         if (i != 15093)
             anInt771 = isaac.nextInt();
         anInt754 = 0;
-        method119(j, class35_sub2_sub3, -721);
-        method51(class35_sub2_sub3, j, true);
-        method29(class35_sub2_sub3, j, -292);
-        method66(class35_sub2_sub3, 7, j);
+        updateLocalPlayer(j, class35_sub2_sub3, -721);
+        updateOtherPlayers(class35_sub2_sub3, j, true);
+        updateNewPlayers(class35_sub2_sub3, j, -292);
+        updatePlayerMasks(class35_sub2_sub3, 7, j);
         for (int k = 0; k < anInt833; k++) {
             int l = anIntArray834[k];
             if (aPlayerEntityArray751[l].anInt1252 != anInt759)
@@ -2860,7 +2860,7 @@ public class client extends GameShell {
         aBoolean681 = true;
     }
 
-    public void method51(Buffer class35_sub2_sub3, int i, boolean flag) {
+    public void updateOtherPlayers(Buffer class35_sub2_sub3, int i, boolean flag) {
         aBoolean734 &= flag;
         int j = class35_sub2_sub3.gBit(8);
         if (j < anInt752) {
@@ -3221,7 +3221,7 @@ public class client extends GameShell {
         anInt766 = 0;
     }
 
-    public void method54(PlayerEntity class35_sub7_sub3_sub2, byte byte0, int i, Buffer class35_sub2_sub3, int j) {
+    public void updatePlayerMask(PlayerEntity class35_sub7_sub3_sub2, byte byte0, int i, Buffer class35_sub2_sub3, int j) {
         if (byte0 == 2)
             byte0 = 0;
         else
@@ -4465,14 +4465,14 @@ public class client extends GameShell {
         }
     }
 
-    public void method66(Buffer class35_sub2_sub3, int i, int j) {
+    public void updatePlayerMasks(Buffer b, int i, int j) {
         for (int k = 0; k < anInt754; k++) {
             int l = anIntArray755[k];
-            PlayerEntity class35_sub7_sub3_sub2 = aPlayerEntityArray751[l];
-            int i1 = class35_sub2_sub3.g1();
-            if ((i1 & 0x80) == 128)
-                i1 += class35_sub2_sub3.g1() << 8;
-            method54(class35_sub7_sub3_sub2, (byte) 2, l, class35_sub2_sub3, i1);
+            PlayerEntity p = aPlayerEntityArray751[l];
+            int mask = b.g1();
+            if ((mask & 0x80) == 128)
+                mask += b.g1() << 8;
+            updatePlayerMask(p, (byte) 2, l, b, mask);
         }
 
         if (i < 7 || i > 7)
@@ -7335,7 +7335,7 @@ public class client extends GameShell {
         aSprite_688 = null;
     }
 
-    public void method119(int i, Buffer class35_sub2_sub3, int j) {
+    public void updateLocalPlayer(int i, Buffer class35_sub2_sub3, int j) {
         class35_sub2_sub3.accessBits();
         while (j >= 0)
             anInt845 = 143;

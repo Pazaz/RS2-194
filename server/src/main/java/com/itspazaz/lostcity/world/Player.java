@@ -22,6 +22,7 @@ public class Player {
 
     public boolean placement = true;
     public boolean appearanceUpdated = true;
+    public boolean animUpdated = false;
     public boolean loading = true;
     public boolean loaded = true;
 
@@ -31,6 +32,7 @@ public class Player {
     public int runDir = -1;
     public int lastLoadedX = 0;
     public int lastLoadedZ = 0;
+    public int anim = 0;
 
     public Player(Connection con) {
         this.con = con;
@@ -164,6 +166,9 @@ public class Player {
             if (entity.plane > 0) {
                 teleport(entity.x, entity.z, entity.plane - 1);
             }
+        } else if (cmd.equalsIgnoreCase("a")) {
+            anim = Integer.parseInt(args[1]);
+            animUpdated = true;
         }
     }
 
@@ -368,6 +373,9 @@ public class Player {
         if (appearanceUpdated) {
             mask |= 0x1;
         }
+        if (animUpdated) {
+            mask |= 0x2;
+        }
 
         if (!placement && step != -1 && step < steps.length) {
             walkDir = updateMovement();
@@ -416,6 +424,11 @@ public class Player {
             con.out.pdata(appearance.sliceBytes(0, appearance.pos), 0, appearance.pos);
             appearanceUpdated = false;
         }
+        if ((mask & 0x2) == 2) {
+            con.out.p2(anim);
+            con.out.p1(0); // delay
+            animUpdated = false;
+        }
         con.out.psize2(con.out.pos - updateStart);
 
         try {
@@ -446,13 +459,13 @@ public class Player {
             appearance.p1(entity.colors[i]);
         }
 
-        appearance.p2(2); // stand
+        appearance.p2(2); // stand (correct?)
         appearance.p2(2); // stand turn
-        appearance.p2(0); // walk
-        appearance.p2(2); // turn 180
-        appearance.p2(2); // turn 90 cw
-        appearance.p2(2); // turn 90 ccw
-        appearance.p2(0); // run
+        appearance.p2(0); // walk (correct?)
+        appearance.p2(463); // turn 180 (todo)
+        appearance.p2(464); // turn 90 cw (todo)
+        appearance.p2(465); // turn 90 ccw (todo)
+        appearance.p2(468); // run (correct)
 
         appearance.p8(name37);
         appearance.p1(entity.combatLevel);
