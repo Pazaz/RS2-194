@@ -201,7 +201,7 @@ public class Model extends CacheableNode {
         else
             anInt1066 = -class20.anInt301 - 1;
         if (class20.anInt302 >= 0)
-            anIntArray1064 = new int[anInt1055];
+            triangleAlpha = new int[anInt1055];
         if (class20.anInt303 >= 0)
             anIntArray1082 = new int[anInt1055];
         anIntArray1065 = new int[anInt1055];
@@ -247,8 +247,8 @@ public class Model extends CacheableNode {
                 anIntArray1062[l1] = aClass35_Sub2_Sub3_1091.g1();
             if (anIntArray1063 != null)
                 anIntArray1063[l1] = aClass35_Sub2_Sub3_1092.g1();
-            if (anIntArray1064 != null)
-                anIntArray1064[l1] = aClass35_Sub2_Sub3_1093.g1();
+            if (triangleAlpha != null)
+                triangleAlpha[l1] = aClass35_Sub2_Sub3_1093.g1();
             if (anIntArray1082 != null)
                 anIntArray1082[l1] = aClass35_Sub2_Sub3_1094.g1();
         }
@@ -339,7 +339,7 @@ public class Model extends CacheableNode {
                     if (anInt1066 != class35_sub2_sub1.anInt1066)
                         flag2 = true;
                 }
-                flag3 |= class35_sub2_sub1.anIntArray1064 != null;
+                flag3 |= class35_sub2_sub1.triangleAlpha != null;
                 flag4 |= class35_sub2_sub1.anIntArray1082 != null;
             }
         }
@@ -361,7 +361,7 @@ public class Model extends CacheableNode {
         if (flag2)
             anIntArray1063 = new int[anInt1055];
         if (flag3)
-            anIntArray1064 = new int[anInt1055];
+            triangleAlpha = new int[anInt1055];
         if (flag4)
             anIntArray1082 = new int[anInt1055];
         anIntArray1065 = new int[anInt1055];
@@ -383,10 +383,10 @@ public class Model extends CacheableNode {
                         else
                             anIntArray1063[anInt1055] = class35_sub2_sub1_1.anIntArray1063[l];
                     if (flag3)
-                        if (class35_sub2_sub1_1.anIntArray1064 == null)
-                            anIntArray1064[anInt1055] = 0;
+                        if (class35_sub2_sub1_1.triangleAlpha == null)
+                            triangleAlpha[anInt1055] = 0;
                         else
-                            anIntArray1064[anInt1055] = class35_sub2_sub1_1.anIntArray1064[l];
+                            triangleAlpha[anInt1055] = class35_sub2_sub1_1.triangleAlpha[l];
                     if (flag4 && class35_sub2_sub1_1.anIntArray1082 != null)
                         anIntArray1082[anInt1055] = class35_sub2_sub1_1.anIntArray1082[l];
                     anIntArray1065[anInt1055] = class35_sub2_sub1_1.anIntArray1065[l];
@@ -438,7 +438,7 @@ public class Model extends CacheableNode {
                     if (anInt1066 != class35_sub2_sub1.anInt1066)
                         flag3 = true;
                 }
-                flag4 |= class35_sub2_sub1.anIntArray1064 != null;
+                flag4 |= class35_sub2_sub1.triangleAlpha != null;
                 flag5 |= class35_sub2_sub1.anIntArray1065 != null;
             }
         }
@@ -460,7 +460,7 @@ public class Model extends CacheableNode {
         if (flag3)
             anIntArray1063 = new int[anInt1055];
         if (flag4)
-            anIntArray1064 = new int[anInt1055];
+            triangleAlpha = new int[anInt1055];
         if (flag5)
             anIntArray1065 = new int[anInt1055];
         anInt1051 = 0;
@@ -495,10 +495,10 @@ public class Model extends CacheableNode {
                         else
                             anIntArray1063[anInt1055] = class35_sub2_sub1_1.anIntArray1063[j1];
                     if (flag4)
-                        if (class35_sub2_sub1_1.anIntArray1064 == null)
-                            anIntArray1064[anInt1055] = 0;
+                        if (class35_sub2_sub1_1.triangleAlpha == null)
+                            triangleAlpha[anInt1055] = 0;
                         else
-                            anIntArray1064[anInt1055] = class35_sub2_sub1_1.anIntArray1064[j1];
+                            triangleAlpha[anInt1055] = class35_sub2_sub1_1.triangleAlpha[j1];
                     if (flag5 && class35_sub2_sub1_1.anIntArray1065 != null)
                         anIntArray1065[anInt1055] = class35_sub2_sub1_1.anIntArray1065[j1];
                     anInt1055++;
@@ -551,16 +551,16 @@ public class Model extends CacheableNode {
 
         }
         if (flag3) {
-            anIntArray1064 = class35_sub2_sub1.anIntArray1064;
+            triangleAlpha = class35_sub2_sub1.triangleAlpha;
         } else {
-            anIntArray1064 = new int[anInt1055];
-            if (class35_sub2_sub1.anIntArray1064 == null) {
+            triangleAlpha = new int[anInt1055];
+            if (class35_sub2_sub1.triangleAlpha == null) {
                 for (int l = 0; l < anInt1055; l++)
-                    anIntArray1064[l] = 0;
+                    triangleAlpha[l] = 0;
 
             } else {
                 for (int i1 = 0; i1 < anInt1055; i1++)
-                    anIntArray1064[i1] = class35_sub2_sub1.anIntArray1064[i1];
+                    triangleAlpha[i1] = class35_sub2_sub1.triangleAlpha[i1];
 
             }
         }
@@ -608,16 +608,16 @@ public class Model extends CacheableNode {
         }
 
         if (flag1) {
-            anIntArray1064 = class35_sub2_sub1.anIntArray1064;
+            triangleAlpha = class35_sub2_sub1.triangleAlpha;
         } else {
-            anIntArray1064 = new int[anInt1055];
-            if (class35_sub2_sub1.anIntArray1064 == null) {
+            triangleAlpha = new int[anInt1055];
+            if (class35_sub2_sub1.triangleAlpha == null) {
                 for (int j = 0; j < anInt1055; j++)
-                    anIntArray1064[j] = 0;
+                    triangleAlpha[j] = 0;
 
             } else {
                 for (int k = 0; k < anInt1055; k++)
-                    anIntArray1064[k] = class35_sub2_sub1.anIntArray1064[k];
+                    triangleAlpha[k] = class35_sub2_sub1.triangleAlpha[k];
 
             }
         }
@@ -625,7 +625,7 @@ public class Model extends CacheableNode {
         anIntArray1065 = class35_sub2_sub1.anIntArray1065;
         anIntArray1063 = class35_sub2_sub1.anIntArray1063;
         anInt1066 = class35_sub2_sub1.anInt1066;
-        anIntArrayArray1084 = class35_sub2_sub1.anIntArrayArray1084;
+        skinTriangle = class35_sub2_sub1.skinTriangle;
         anIntArrayArray1083 = class35_sub2_sub1.anIntArrayArray1083;
         anIntArray1056 = class35_sub2_sub1.anIntArray1056;
         anIntArray1057 = class35_sub2_sub1.anIntArray1057;
@@ -764,15 +764,15 @@ public class Model extends CacheableNode {
                     k = l1;
             }
 
-            anIntArrayArray1084 = new int[k + 1][];
+            skinTriangle = new int[k + 1][];
             for (int i2 = 0; i2 <= k; i2++) {
-                anIntArrayArray1084[i2] = new int[ai1[i2]];
+                skinTriangle[i2] = new int[ai1[i2]];
                 ai1[i2] = 0;
             }
 
             for (int k2 = 0; k2 < anInt1055; k2++) {
                 int i3 = anIntArray1082[k2];
-                anIntArrayArray1084[i3][ai1[i3]++] = k2;
+                skinTriangle[i3][ai1[i3]++] = k2;
             }
 
             anIntArray1082 = null;
@@ -955,18 +955,18 @@ public class Model extends CacheableNode {
 
             return;
         }
-        if (i == 5 && anIntArrayArray1084 != null) {
+        if (i == 5 && skinTriangle != null && this.triangleAlpha != null) {
             for (int j2 = 0; j2 < i1; j2++) {
                 int k3 = ai[j2];
-                if (k3 < anIntArrayArray1084.length) {
-                    int[] ai4 = anIntArrayArray1084[k3];
+                if (k3 < skinTriangle.length) {
+                    int[] ai4 = skinTriangle[k3];
                     for (int l4 = 0; l4 < ai4.length; l4++) {
                         int i6 = ai4[l4];
-                        anIntArray1064[i6] += j * 8;
-                        if (anIntArray1064[i6] < 0)
-                            anIntArray1064[i6] = 0;
-                        if (anIntArray1064[i6] > 255)
-                            anIntArray1064[i6] = 255;
+                        triangleAlpha[i6] += j * 8;
+                        if (triangleAlpha[i6] < 0)
+                            triangleAlpha[i6] = 0;
+                        if (triangleAlpha[i6] > 255)
+                            triangleAlpha[i6] = 255;
                     }
 
                 }
@@ -1504,10 +1504,10 @@ public class Model extends CacheableNode {
         int k = anIntArray1057[i];
         int l = anIntArray1058[i];
         Draw3D.aBoolean1263 = aBooleanArray1103[i];
-        if (anIntArray1064 == null)
+        if (triangleAlpha == null)
             Draw3D.anInt1266 = 0;
         else
-            Draw3D.anInt1266 = anIntArray1064[i];
+            Draw3D.anInt1266 = triangleAlpha[i];
         int i1;
         if (anIntArray1062 == null)
             i1 = 0;
@@ -1712,7 +1712,7 @@ public class Model extends CacheableNode {
     public int[] anIntArray1061;
     public int[] anIntArray1062;
     public int[] anIntArray1063;
-    public int[] anIntArray1064;
+    public int[] triangleAlpha;
     public int[] anIntArray1065;
     public int anInt1066;
     public int anInt1067;
@@ -1732,7 +1732,7 @@ public class Model extends CacheableNode {
     public int[] anIntArray1081;
     public int[] anIntArray1082;
     public int[][] anIntArrayArray1083;
-    public int[][] anIntArrayArray1084;
+    public int[][] skinTriangle;
     public boolean aBoolean1085;
     public VertexNormal[] aVertexNormalArray1086;
     public VertexNormal[] aVertexNormalArray1087;

@@ -227,7 +227,7 @@ public class LocType {
         if (k1 != -1) {
             class35_sub2_sub1_2.method310((byte) 3);
             class35_sub2_sub1_2.applyFrame(7, k1);
-            class35_sub2_sub1_2.anIntArrayArray1084 = null;
+            class35_sub2_sub1_2.skinTriangle = null;
             class35_sub2_sub1_2.anIntArrayArray1083 = null;
         }
         while (j-- > 0)

@@ -24,7 +24,7 @@ public class NpcEntity extends PathingEntity {
         class35_sub2_sub1_1.applyFrame(7, class14.aSeqType_215.anIntArray192[super.anInt1241]);
         if (i != 0)
             anInt1323 = -466;
-        class35_sub2_sub1_1.anIntArrayArray1084 = null;
+        class35_sub2_sub1_1.skinTriangle = null;
         class35_sub2_sub1_1.anIntArrayArray1083 = null;
         class35_sub2_sub1_1.method320(64, 850, -30, -50, -30, true);
         Model[] aclass35_sub2_sub1 = {

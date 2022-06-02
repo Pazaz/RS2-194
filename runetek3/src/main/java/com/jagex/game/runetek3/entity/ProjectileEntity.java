@@ -82,7 +82,7 @@ public class ProjectileEntity extends Entity {
         if (aSpotAnimType_1173.aSeqType_215 != null) {
             class35_sub2_sub1_1.method310((byte) 3);
             class35_sub2_sub1_1.applyFrame(7, aSpotAnimType_1173.aSeqType_215.anIntArray192[anInt1195]);
-            class35_sub2_sub1_1.anIntArrayArray1084 = null;
+            class35_sub2_sub1_1.skinTriangle = null;
             class35_sub2_sub1_1.anIntArrayArray1083 = null;
         }
         class35_sub2_sub1_1.method315(anInt1194, (byte) -42);

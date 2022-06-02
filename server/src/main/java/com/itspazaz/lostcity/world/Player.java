@@ -32,28 +32,18 @@ public class Player {
     public int lastLoadedX = 0;
     public int lastLoadedZ = 0;
 
-    public int lastSongX = 0;
-    public int lastSongZ = 0;
-
     public Player(Connection con) {
         this.con = con;
 
         entity.x = 3222;
         entity.z = 3222;
 
-        entity.body[0] = IdkType.findPart(0, 0);
-        entity.body[1] = IdkType.findPart(1, 0);
-        entity.body[2] = IdkType.findPart(2, 0);
-        entity.body[3] = IdkType.findPart(3, 0);
-        entity.body[4] = IdkType.findPart(4, 0);
-        entity.body[5] = IdkType.findPart(5, 0);
-        entity.body[6] = IdkType.findPart(6, 0);
-        entity.body[7] = IdkType.findPart(7, 0);
-        entity.body[8] = IdkType.findPart(9, 0);
-        entity.body[9] = IdkType.findPart(10, 0);
-        entity.body[10] = IdkType.findPart(11, 0);
-        entity.body[11] = IdkType.findPart(12, 0);
-        entity.body[12] = IdkType.findPart(13, 0);
+        entity.body[4] = IdkType.findPart(2, 0);
+        entity.body[6] = IdkType.findPart(3, 0);
+        entity.body[7] = IdkType.findPart(5, 0);
+        entity.body[8] = IdkType.findPart(4, 0);
+        entity.body[9] = IdkType.findPart(6, 0);
+        entity.body[10] = IdkType.findPart(1, 0);
     }
 
     public void load() {
@@ -91,8 +81,8 @@ public class Player {
 //        setSidebar(11, 904);
 //        setSidebar(12, 147);
 //        setSidebar(13, 962);
-//
-//        sendGameMessage("Welcome to RuneScape.");
+
+        sendGameMessage("Welcome to RuneScape.");
     }
 
     public void logout() {
@@ -164,15 +154,6 @@ public class Player {
             if (entity.z < 6400) {
                 teleport(entity.x, entity.z + 6400);
             }
-        } else if (cmd.equalsIgnoreCase("song")) {
-            if (args.length < 2) {
-                return;
-            } else if (args.length > 2) {
-                sendGameMessage("Multiple spaces detected: please use underscores");
-            }
-
-            playMidi(args[1]);
-            sendGameMessage("Requesting to play song " + args[1]);
         } else if (cmd.equalsIgnoreCase("home")) {
             teleport(3222, 3222, 0);
         } else if (cmd.equalsIgnoreCase("up")) {
@@ -201,38 +182,19 @@ public class Player {
     }
 
     public void sendGameMessage(String msg) {
-//        con.out.pos = 0;
-//
-//        con.out.p1isaac(ServerProt.MESSAGE_GAME);
-//        con.out.p1(0);
-//        int start = con.out.pos;
-//        con.out.pjstr(msg);
-//        con.out.psize1(con.out.pos - start);
-//
-//        try {
-//            NioServer.write(con.key, con.out);
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-    }
+        con.out.pos = 0;
 
-    public void playMidi(String name) {
-//        try {
-//            name = name.replaceAll(" ", "_");
-//            byte[] file = Files.readAllBytes(Paths.get(Server.songDir.toString(), name + ".mid"));
-//
-//            con.out.pos = 0;
-//            con.out.p1isaac(ServerProt.MIDI_SONG);
-//            con.out.p1(0);
-//            int start = con.out.pos;
-//            con.out.pjstr(name);
-//            con.out.p4(Buffer.crc32(file));
-//            con.out.p4(file.length);
-//            con.out.psize1(con.out.pos - start);
-//            NioServer.write(con.key, con.out);
-//        } catch (Exception ignored) {
-//            ignored.printStackTrace();
-//        }
+        con.out.p1isaac(ServerProt.MESSAGE_GAME);
+        con.out.p1(0);
+        int start = con.out.pos;
+        con.out.pjstr(msg);
+        con.out.psize1(con.out.pos - start);
+
+        try {
+            NioServer.write(con.key, con.out);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void setSidebar(int tab, int id) {
@@ -403,9 +365,9 @@ public class Player {
         }
 
         int mask = 0;
-//        if (appearanceUpdated) {
-//            mask |= 0x1;
-//        }
+        if (appearanceUpdated) {
+            mask |= 0x1;
+        }
 
         if (!placement && step != -1 && step < steps.length) {
             walkDir = updateMovement();
@@ -429,7 +391,6 @@ public class Player {
             con.out.pBit(2, entity.plane);
             con.out.pBit(7, Position.local(entity.x));
             con.out.pBit(7, Position.local(entity.z));
-//            con.out.pBit(1, 1); // warp
             con.out.pBit(1, mask > 0 ? 1 : 0);
             placement = false;
         } else if (runDir != -1) {
@@ -485,13 +446,13 @@ public class Player {
             appearance.p1(entity.colors[i]);
         }
 
-        appearance.p2(0);
-        appearance.p2(0);
-        appearance.p2(0);
-        appearance.p2(0);
-        appearance.p2(0);
-        appearance.p2(0);
-        appearance.p2(0);
+        appearance.p2(2); // stand
+        appearance.p2(2); // stand turn
+        appearance.p2(0); // walk
+        appearance.p2(2); // turn 180
+        appearance.p2(2); // turn 90 cw
+        appearance.p2(2); // turn 90 ccw
+        appearance.p2(0); // run
 
         appearance.p8(name37);
         appearance.p1(entity.combatLevel);

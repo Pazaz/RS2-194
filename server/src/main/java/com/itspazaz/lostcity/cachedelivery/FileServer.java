@@ -79,17 +79,6 @@ public class FileServer {
             }
         });
 
-        host.addContext("/sounds${crc}", new ContextHandler() {
-            public int serve(Request req, Response res) throws IOException {
-                req.setPath("/sounds");
-                res.getHeaders().add("Content-Type", "application/octet-stream");
-                return HTTPServer.serveFile(Server.cacheDir.toFile(), "/", req, res);
-            }
-        });
-
-        // Songs (midis)
-        host.addContext("/songs", new FileContextHandler(Server.songDir.toFile()));
-
         host.setAllowGeneratedIndex(true);
         http.start();
         System.out.println("FileServer: Listening on 0.0.0.0:" + Server.httpPort);

@@ -20,7 +20,6 @@ import java.nio.file.Paths;
 public class Server implements Runnable {
     public static Path dataDir = Paths.get(System.getProperty("user.dir") + "/data");
     public static Path cacheDir = Paths.get(System.getProperty("user.dir") + "/data/cache");
-    public static Path songDir = Paths.get(System.getProperty("user.dir") + "/data/songs");
 
     private static final FileServer fileServer = new FileServer();
 

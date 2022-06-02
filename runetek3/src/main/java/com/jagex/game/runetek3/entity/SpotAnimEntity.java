@@ -47,7 +47,7 @@ public class SpotAnimEntity extends Entity {
         if (!aBoolean1206) {
             class35_sub2_sub1_1.method310((byte) 3);
             class35_sub2_sub1_1.applyFrame(7, aSpotAnimType_1198.aSeqType_215.anIntArray192[anInt1204]);
-            class35_sub2_sub1_1.anIntArrayArray1084 = null;
+            class35_sub2_sub1_1.skinTriangle = null;
             class35_sub2_sub1_1.anIntArrayArray1083 = null;
         }
         class35_sub2_sub1_1.method320(64, 850, -30, -50, -30, true);

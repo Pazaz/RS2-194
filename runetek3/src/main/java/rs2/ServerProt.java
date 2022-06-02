@@ -7,7 +7,7 @@ public class ServerProt {
     public static final int NPC_INFO = 1; // presumed NXT naming
     public static final int IF_SETCOLOUR = 2; // NXT naming
     public static final int CAM_FORCEANGLE = 3; // NXT naming
-    public static final int MESSAGE_GAME = 4; // NXT naming
+    public static final int MESSAGE_GAME = 164; // NXT naming
     public static final int PLAYER_POSITION = 7;
     public static final int SYNTH_SOUND = 12; // NXT naming
     public static final int CAM_SHAKE = 13; // NXT naming

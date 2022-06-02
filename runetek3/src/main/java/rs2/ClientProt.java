@@ -116,7 +116,7 @@ public class ClientProt {
     public static final int MOVE_OPCLICK = 93; // todo: sent when an OP is selected >1 tile away, what's the real name?
 
     public static final int EVENT_CAMERA_POSITION = 189;
-    public static final int CLIENT_CHEAT = 4;
+    public static final int CLIENT_CHEAT = 237;
     public static final int NO_TIMEOUT = 87;
     public static final int IDLE_TIMER = 126; // todo name: no input, notify the server to log out
     public static final int MAP_REQUEST_AREAS = 188; // todo name: request missing map files

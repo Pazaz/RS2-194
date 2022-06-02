@@ -147,7 +147,7 @@ public class NpcType {
         if (anInt595 != 128 || anInt596 != 128)
             class35_sub2_sub1.method319(728, anInt595, anInt596, anInt595);
         class35_sub2_sub1.method308(569);
-        class35_sub2_sub1.anIntArrayArray1084 = null;
+        class35_sub2_sub1.skinTriangle = null;
         class35_sub2_sub1.anIntArrayArray1083 = null;
         if (aByte578 == 1)
             class35_sub2_sub1.aBoolean1085 = true;
