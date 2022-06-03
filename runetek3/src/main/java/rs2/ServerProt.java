@@ -44,14 +44,14 @@ public class ServerProt {
     public static final int RESET_ANIMS = 136; // NXT naming
     public static final int UPDATE_UID192 = 139; // presumed NXT naming
     public static final int LAST_LOGIN_INFO = 140; // NXT naming
-    public static final int LOGOUT = 142; // NXT naming
+    public static final int LOGOUT = 192; // NXT naming
     public static final int IF_SETANIM = 146; // NXT naming
     public static final int VARP_SMALL = 150; // presumed NXT naming
     public static final int UPDATE_FRIENDLIST = 152; // NXT naming
     public static final int BATCH_PACKETS = 162;
 
     // Open an interface in the sidebar area
-    public static final int IF_OPENSIDE = 167; // not NXT naming
+    public static final int IF_OPENSIDE = 210; // not NXT naming
 
     // Open an interface in the viewport area
     public static final int IF_OPENTOP = 168; // presumed NXT naming

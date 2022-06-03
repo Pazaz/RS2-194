@@ -10,7 +10,7 @@ public class InterfaceButtonDecoder extends Decoder {
     public void execute(Connection con, Buffer data) {
         int id = data.g2();
 
-        if (id == 2458) {
+        if (id == 2065) {
             con.player.logout();
         } else {
             con.player.sendGameMessage("if_button[id=" + id + "]");

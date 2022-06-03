@@ -70,19 +70,18 @@ public class Player {
     }
 
     public void login() {
-//        setSidebar(0, 5855);
-//        setSidebar(1, 3917);
-//        setSidebar(2, 638);
-//        setSidebar(3, 3213);
-//        setSidebar(4, 1644);
-//        setSidebar(5, 5608);
-//        setSidebar(6, 1151);
-//        setSidebar(8, 5065);
-//        setSidebar(9, 5715);
-//        setSidebar(10, 2449);
-//        setSidebar(11, 904);
-//        setSidebar(12, 147);
-//        setSidebar(13, 962);
+        setSidebar(0, 4413); // unarmed
+        setSidebar(1, 3131);
+        setSidebar(2, 804);
+        setSidebar(3, 2250); // or 2254
+        setSidebar(4, 1696);
+        setSidebar(5, 4166);
+        setSidebar(6, 1249);
+        setSidebar(8, 3838);
+        setSidebar(9, 4273);
+        setSidebar(10, 2056);
+        setSidebar(11, 1035);
+        setSidebar(12, 419);
 
         sendGameMessage("Welcome to RuneScape.");
     }

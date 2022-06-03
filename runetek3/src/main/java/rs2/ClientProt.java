@@ -41,7 +41,7 @@ public class ClientProt {
     public static final int ANTICHEAT_UPDATE_PLAYERS = 219;
     public static final int ANTICHEAT_SIDEBAR_INPUT = 233;
 
-    public static final int IF_BUTTON = 155; // clicking an interface button
+    public static final int IF_BUTTON = 167; // clicking an interface button
     public static final int IF_BUTTON1 = 31; // interface options 1-5 on an obj
     public static final int IF_BUTTON2 = 59;
     public static final int IF_BUTTON3 = 212;

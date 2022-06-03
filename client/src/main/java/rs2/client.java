@@ -685,12 +685,12 @@ public class client extends GameShell {
             int j = stream.method152();
             if (j == 0)
                 return false;
-            if (anInt811 == -1) {
+            if (packetOpcode == -1) {
                 stream.method153(inBuffer.data, 0, 1);
-                anInt811 = inBuffer.data[0] & 0xff;
+                packetOpcode = inBuffer.data[0] & 0xff;
                 if (isaac != null)
-                    anInt811 = anInt811 - isaac.nextInt() & 0xff;
-                packetLength = ServerProt.anIntArray33[anInt811];
+                    packetOpcode = packetOpcode - isaac.nextInt() & 0xff;
+                packetLength = ServerProt.anIntArray33[packetOpcode];
                 j--;
             }
             if (packetLength == -1)
@@ -717,8 +717,8 @@ public class client extends GameShell {
             anInt812 = 0;
             anInt905 = anInt904;
             anInt904 = anInt903;
-            anInt903 = anInt811;
-            if (anInt811 == 55) {
+            anInt903 = packetOpcode;
+            if (packetOpcode == 55) {
                 int k = inBuffer.g1();
                 int j9 = inBuffer.g1();
                 int k14 = inBuffer.g2();
@@ -733,18 +733,18 @@ public class client extends GameShell {
                         aByteArrayArray963[l21] = new byte[i19];
                     inBuffer.gdata(aByteArrayArray963[l21], k14, packetLength - 6);
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 74) {
+            if (packetOpcode == 74) {
                 aBoolean739 = false;
                 aBoolean763 = true;
                 aString947 = "";
                 aBoolean653 = true;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 1) {
+            if (packetOpcode == 1) {
                 int l = inBuffer.g1();
                 int k9 = inBuffer.g1();
                 int l14 = inBuffer.g1();
@@ -754,25 +754,25 @@ public class client extends GameShell {
                 anIntArray829[l] = l14;
                 anIntArray949[l] = j19;
                 anIntArray967[l] = 0;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 86) {
+            if (packetOpcode == 86) {
                 if (anInt907 == 12)
-                    aBoolean747 = true;
+                    sidebarRedraw = true;
                 anInt909 = inBuffer.g2();
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 199) {
+            if (packetOpcode == 199) {
                 int i1 = inBuffer.g2();
                 int l9 = inBuffer.g2();
                 NpcType class40 = NpcType.method434(l9);
                 Component.aComponentArray110[i1].aModel_156 = class40.method437(0);
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 78) {
+            if (packetOpcode == 78) {
                 int j1 = inBuffer.g1();
                 int i10 = inBuffer.g1();
                 int i15 = -1;
@@ -784,32 +784,32 @@ public class client extends GameShell {
                     signlink.cachesave("l" + j1 + "_" + i10, aByteArrayArray880[i15]);
                     anInt969 = 1;
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 44 || anInt811 == 19 || anInt811 == 114 || anInt811 == 17 || anInt811 == 144 || anInt811 == 96 || anInt811 == 217 || anInt811 == 171 || anInt811 == 140) {
-                method28(inBuffer, false, anInt811);
-                anInt811 = -1;
+            if (packetOpcode == 44 || packetOpcode == 19 || packetOpcode == 114 || packetOpcode == 17 || packetOpcode == 144 || packetOpcode == 96 || packetOpcode == 217 || packetOpcode == 171 || packetOpcode == 140) {
+                method28(inBuffer, false, packetOpcode);
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 136) {
+            if (packetOpcode == 136) {
                 int k1 = inBuffer.g2();
                 int j10 = inBuffer.g2();
                 int j15 = j10 >> 10 & 0x1f;
                 int l19 = j10 >> 5 & 0x1f;
                 int i22 = j10 & 0x1f;
                 Component.aComponentArray110[k1].anInt151 = (j15 << 19) + (l19 << 11) + (i22 << 3);
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 187) {
+            if (packetOpcode == 187) {
                 int l1 = inBuffer.g2();
                 int k10 = inBuffer.g2();
                 Component.aComponentArray110[l1].aModel_156 = new Model(k10, 298);
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 168) {
+            if (packetOpcode == 168) {
                 updatePlayers(15093, inBuffer, packetLength);
                 if (anInt969 == 1) {
                     anInt969 = 2;
@@ -828,25 +828,25 @@ public class client extends GameShell {
                     anInt878 = anInt722;
                     method108(false, anInt722);
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 76) {
+            if (packetOpcode == 76) {
                 aBoolean682 = false;
                 for (int i2 = 0; i2 < 5; i2++)
                     aBooleanArray765[i2] = false;
 
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 200) {
+            if (packetOpcode == 200) {
                 anInt907 = inBuffer.g1();
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 aBoolean992 = true;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 34) {
+            if (packetOpcode == 34) {
                 aBoolean682 = true;
                 anInt864 = inBuffer.g1();
                 anInt865 = inBuffer.g1();
@@ -858,14 +858,14 @@ public class client extends GameShell {
                     anInt920 = anInt865 * 128 + 64;
                     anInt919 = method15(anInt864, anInt865, anInt722, (byte) 9) - anInt866;
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 227) {
+            if (packetOpcode == 227) {
                 int j2 = inBuffer.g2();
                 int l10 = inBuffer.g2();
                 if (anInt699 == j2 && anInt700 == l10 && anInt969 != 0) {
-                    anInt811 = -1;
+                    packetOpcode = -1;
                     return true;
                 }
                 anInt699 = j2;
@@ -999,21 +999,21 @@ public class client extends GameShell {
                 }
 
                 aBoolean682 = false;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 197) {
-                aBoolean747 = true;
+            if (packetOpcode == 197) {
+                sidebarRedraw = true;
                 int k2 = inBuffer.g2();
                 byte byte0 = inBuffer.g1b();
                 if (anIntArray822[k2] != byte0) {
                     anIntArray822[k2] = byte0;
                     method38(k2, (byte) 7);
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 141) {
+            if (packetOpcode == 141) {
                 for (int l2 = 0; l2 < aPlayerEntityArray751.length; l2++)
                     if (aPlayerEntityArray751[l2] != null)
                         aPlayerEntityArray751[l2].anInt1235 = -1;
@@ -1022,27 +1022,27 @@ public class client extends GameShell {
                     if (aClass35_Sub7_Sub3_Sub1Array964[i11] != null)
                         aClass35_Sub7_Sub3_Sub1Array964[i11].anInt1235 = -1;
 
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 38) {
+            if (packetOpcode == 38) {
                 int i3 = inBuffer.g2();
                 int j11 = inBuffer.g2();
                 Component.aComponentArray110[i3].anInt158 = j11;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 134) {
+            if (packetOpcode == 134) {
                 anInt851 = inBuffer.g1();
                 anInt852 = inBuffer.g1();
                 while (inBuffer.pos < packetLength) {
                     int j3 = inBuffer.g1();
                     method28(inBuffer, false, j3);
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 204) {
+            if (packetOpcode == 204) {
                 anInt851 = inBuffer.g1();
                 anInt852 = inBuffer.g1();
                 for (int k3 = anInt851; k3 < anInt851 + 8; k3++) {
@@ -1060,16 +1060,16 @@ public class client extends GameShell {
                         class35_sub3.method303();
                     }
 
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 163) {
+            if (packetOpcode == 163) {
                 anInt851 = inBuffer.g1();
                 anInt852 = inBuffer.g1();
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 157) {
+            if (packetOpcode == 157) {
                 int l3 = inBuffer.g1();
                 int l11 = inBuffer.g1();
                 int l15 = inBuffer.g2();
@@ -1084,15 +1084,15 @@ public class client extends GameShell {
                         aByteArrayArray880[k22] = new byte[j20];
                     inBuffer.gdata(aByteArrayArray880[k22], l15, packetLength - 6);
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 24) {
+            if (packetOpcode == 24) {
                 anInt738 = inBuffer.g2() * 30;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 131) {
+            if (packetOpcode == 131) {
                 int i4 = inBuffer.g2();
                 int i12 = inBuffer.g2();
                 int i16 = inBuffer.g2();
@@ -1100,10 +1100,10 @@ public class client extends GameShell {
                 Model class35_sub2_sub1 = class8_3.aModel_156;
                 if (class35_sub2_sub1 != null)
                     class35_sub2_sub1.method317(i12, i16);
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 20) {
+            if (packetOpcode == 20) {
                 long l4 = inBuffer.g8();
                 int j16 = inBuffer.g4();
                 boolean flag1 = false;
@@ -1128,11 +1128,11 @@ public class client extends GameShell {
                     s6 = WordPack.method196((byte) -82, s6);
                     method75(s6, 3, anInt853, StringUtils.method421(-580, StringUtils.fromBase37(true, l4)));
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 85) {
-                aBoolean747 = true;
+            if (packetOpcode == 85) {
+                sidebarRedraw = true;
                 int j4 = inBuffer.g1();
                 int j12 = inBuffer.g4();
                 int k16 = inBuffer.g1();
@@ -1143,23 +1143,23 @@ public class client extends GameShell {
                     if (j12 >= anIntArray678[k20])
                         anIntArray840[j4] = k20 + 2;
 
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 95) {
+            if (packetOpcode == 95) {
                 anInt703 = inBuffer.g1();
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 248) {
+            if (packetOpcode == 248) {
                 int k4 = inBuffer.g2();
                 boolean flag = inBuffer.g1() == 1;
                 Component.aComponentArray110[k4].aBoolean130 = flag;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 253) {
-                aBoolean747 = true;
+            if (packetOpcode == 253) {
+                sidebarRedraw = true;
                 int i5 = inBuffer.g2();
                 Component class8 = Component.aComponentArray110[i5];
                 int l16 = inBuffer.g1();
@@ -1176,31 +1176,31 @@ public class client extends GameShell {
                     class8.anIntArray112[j23] = 0;
                 }
 
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 210) {
-                int j5 = inBuffer.g2();
-                int k12 = inBuffer.g1();
-                anIntArray697[k12] = j5;
-                aBoolean747 = true;
-                anInt811 = -1;
+            if (packetOpcode == 210) {
+                int component = inBuffer.g2();
+                int sidebar = inBuffer.g1();
+                tabComponentId[sidebar] = component;
+                sidebarRedraw = true;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 192) {
-                method27(anInt839);
-                anInt811 = -1;
+            if (packetOpcode == 192) {
+                logout(anInt839);
+                packetOpcode = -1;
                 return false;
             }
-            if (anInt811 == 21) {
+            if (packetOpcode == 21) {
                 if (aBoolean661) {
                     signlink.jingle = inBuffer.gstr();
                     signlink.jinglelen = inBuffer.g2();
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 243) {
+            if (packetOpcode == 243) {
                 int k5 = inBuffer.g2();
                 Component class8_1 = Component.aComponentArray110[k5];
                 for (int i17 = 0; i17 < class8_1.anIntArray111.length; i17++) {
@@ -1208,10 +1208,10 @@ public class client extends GameShell {
                     class8_1.anIntArray111[i17] = 0;
                 }
 
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 115) {
+            if (packetOpcode == 115) {
                 int l5 = inBuffer.g2();
                 method46(-553, l5);
                 if (anInt702 != -1) {
@@ -1223,30 +1223,30 @@ public class client extends GameShell {
                     aBoolean653 = true;
                 }
                 anInt981 = l5;
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 aBoolean992 = true;
                 anInt962 = -1;
                 aBoolean888 = false;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 183) {
+            if (packetOpcode == 183) {
                 method39(inBuffer, packetLength, 0);
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 87) {
+            if (packetOpcode == 87) {
                 int i6 = inBuffer.g2();
                 Component.aComponentArray110[i6].aModel_156 = self.method415(true);
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 137) {
+            if (packetOpcode == 137) {
                 int j6 = inBuffer.g2();
                 method46(-553, j6);
                 if (anInt981 != -1) {
                     anInt981 = -1;
-                    aBoolean747 = true;
+                    sidebarRedraw = true;
                     aBoolean992 = true;
                 }
                 if (anInt702 != -1) {
@@ -1259,10 +1259,10 @@ public class client extends GameShell {
                 }
                 anInt962 = j6;
                 aBoolean888 = false;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 50) {
+            if (packetOpcode == 50) {
                 int k6 = inBuffer.g1();
                 int l12 = inBuffer.g1();
                 int j17 = -1;
@@ -1274,10 +1274,10 @@ public class client extends GameShell {
                     signlink.cachesave("m" + k6 + "_" + l12, aByteArrayArray963[j17]);
                     anInt969 = 1;
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 213) {
+            if (packetOpcode == 213) {
                 long l6 = inBuffer.g8();
                 int k17 = inBuffer.g1();
                 String s5 = StringUtils.method421(-580, StringUtils.fromBase37(true, l6));
@@ -1286,7 +1286,7 @@ public class client extends GameShell {
                         continue;
                     if (anIntArray783[k23] != k17) {
                         anIntArray783[k23] = k17;
-                        aBoolean747 = true;
+                        sidebarRedraw = true;
                         if (k17 > 0)
                             method75(s5 + " has logged in.", 5, anInt853, "");
                         if (k17 == 0)
@@ -1301,7 +1301,7 @@ public class client extends GameShell {
                     aStringArray701[anInt638] = s5;
                     anIntArray783[anInt638] = k17;
                     anInt638++;
-                    aBoolean747 = true;
+                    sidebarRedraw = true;
                 }
                 for (boolean flag3 = false; !flag3; ) {
                     flag3 = true;
@@ -1316,48 +1316,48 @@ public class client extends GameShell {
                             long l28 = aLongArray971[k26];
                             aLongArray971[k26] = aLongArray971[k26 + 1];
                             aLongArray971[k26 + 1] = l28;
-                            aBoolean747 = true;
+                            sidebarRedraw = true;
                             flag3 = false;
                         }
 
                 }
 
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 212) {
+            if (packetOpcode == 212) {
                 if (anInt907 == 12)
-                    aBoolean747 = true;
+                    sidebarRedraw = true;
                 anInt955 = inBuffer.g1();
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 54) {
+            if (packetOpcode == 54) {
                 int i7 = inBuffer.g2();
                 method46(-553, i7);
                 if (anInt981 != -1) {
                     anInt981 = -1;
-                    aBoolean747 = true;
+                    sidebarRedraw = true;
                     aBoolean992 = true;
                 }
                 anInt702 = i7;
                 aBoolean653 = true;
                 anInt962 = -1;
                 aBoolean888 = false;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 98) {
+            if (packetOpcode == 98) {
                 anInt976 = inBuffer.g1();
                 anInt762 = inBuffer.g1();
                 anInt821 = inBuffer.g1();
                 aBoolean655 = true;
                 aBoolean653 = true;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 16) {
-                aBoolean747 = true;
+            if (packetOpcode == 16) {
+                sidebarRedraw = true;
                 int j7 = inBuffer.g2();
                 Component class8_2 = Component.aComponentArray110[j7];
                 while (inBuffer.pos < packetLength) {
@@ -1371,10 +1371,10 @@ public class client extends GameShell {
                         class8_2.anIntArray112[l17] = l23;
                     }
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 128) {
+            if (packetOpcode == 128) {
                 int k7 = inBuffer.g2();
                 int i13 = inBuffer.g2();
                 if (anInt702 != -1) {
@@ -1387,31 +1387,31 @@ public class client extends GameShell {
                 }
                 anInt962 = k7;
                 anInt981 = i13;
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 aBoolean992 = true;
                 aBoolean888 = false;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 206) {
+            if (packetOpcode == 206) {
                 String s = inBuffer.gstr();
                 if (!s.equals(aString666)) {
                     aString666 = s;
                     if (aBoolean661)
                         signlink.midi = s;
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 108) {
+            if (packetOpcode == 108) {
                 anInt686 = inBuffer.g2();
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 240) {
+            if (packetOpcode == 240) {
                 if (anInt981 != -1) {
                     anInt981 = -1;
-                    aBoolean747 = true;
+                    sidebarRedraw = true;
                     aBoolean992 = true;
                 }
                 if (anInt702 != -1) {
@@ -1424,21 +1424,21 @@ public class client extends GameShell {
                 }
                 anInt962 = -1;
                 aBoolean888 = false;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 30) {
-                aBoolean747 = true;
+            if (packetOpcode == 30) {
+                sidebarRedraw = true;
                 int l7 = inBuffer.g2();
                 int j13 = inBuffer.g4();
                 if (anIntArray822[l7] != j13) {
                     anIntArray822[l7] = j13;
                     method38(l7, (byte) 7);
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 93) {
+            if (packetOpcode == 93) {
                 aBoolean682 = true;
                 anInt790 = inBuffer.g1();
                 anInt791 = inBuffer.g1();
@@ -1460,17 +1460,17 @@ public class client extends GameShell {
                     if (anInt921 > 383)
                         anInt921 = 383;
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 138) {
+            if (packetOpcode == 138) {
                 int j8 = inBuffer.g2();
                 String s3 = inBuffer.gstr();
                 Component.aComponentArray110[j8].aString149 = s3;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 10) {
+            if (packetOpcode == 10) {
                 int k8 = inBuffer.g2();
                 int l13 = inBuffer.g2();
                 int j18 = inBuffer.g2();
@@ -1479,10 +1479,10 @@ public class client extends GameShell {
                 Component.aComponentArray110[k8].anInt161 = class41.anInt611;
                 Component.aComponentArray110[k8].anInt162 = class41.anInt612;
                 Component.aComponentArray110[k8].anInt160 = (class41.anInt610 * 100) / j18;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 164) {
+            if (packetOpcode == 164) {
                 String s1 = inBuffer.gstr();
                 if (s1.endsWith(":tradereq:")) {
                     String s4 = s1.substring(0, s1.indexOf(":"));
@@ -1500,43 +1500,43 @@ public class client extends GameShell {
                 } else {
                     method75(s1, 0, anInt853, "");
                 }
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 175) {
+            if (packetOpcode == 175) {
                 anInt910 = packetLength / 8;
                 for (int l8 = 0; l8 < anInt910; l8++)
                     aLongArray685[l8] = inBuffer.g8();
 
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            if (anInt811 == 101) {
+            if (packetOpcode == 101) {
                 int i9 = inBuffer.g2();
                 int i14 = inBuffer.g2b();
                 int k18 = inBuffer.g2b();
                 Component class8_4 = Component.aComponentArray110[i9];
                 class8_4.anInt122 = i14;
                 class8_4.anInt123 = k18;
-                anInt811 = -1;
+                packetOpcode = -1;
                 return true;
             }
-            signlink.reporterror("T1 - " + anInt811 + "," + packetLength + " - " + anInt904 + "," + anInt905);
-            method27(anInt839);
+            signlink.reporterror("T1 - " + packetOpcode + "," + packetLength + " - " + anInt904 + "," + anInt905);
+            logout(anInt839);
         } catch (IOException _ex) {
             method34(0);
         } catch (Exception exception) {
-            String s2 = "T2 - " + anInt811 + "," + anInt904 + "," + anInt905 + " - " + packetLength + "," + (anInt855 + self.pathTileX[0]) + "," + (anInt856 + self.pathTileZ[0]) + " - ";
+            String s2 = "T2 - " + packetOpcode + "," + anInt904 + "," + anInt905 + " - " + packetLength + "," + (anInt855 + self.pathTileX[0]) + "," + (anInt856 + self.pathTileZ[0]) + " - ";
             for (int j14 = 0; j14 < packetLength && j14 < 50; j14++)
                 s2 = s2 + inBuffer.data[j14] + ",";
 
             signlink.reporterror(s2);
-            method27(anInt839);
+            logout(anInt839);
         }
         return true;
     }
 
-    public void method27(int i) {
+    public void logout(int i) {
         try {
             if (stream != null)
                 stream.method150();
@@ -1868,7 +1868,7 @@ public class client extends GameShell {
         }
 
         if (i != anInt781)
-            anInt811 = inBuffer.g1();
+            packetOpcode = inBuffer.g1();
         j += 8;
         int i1 = 15 * anInt710 + 21;
         if (super.anInt23 > 8 && super.anInt24 > 11 && super.anInt23 < 520 && super.anInt24 < 345) {
@@ -1968,7 +1968,7 @@ public class client extends GameShell {
                                 aLongArray971[anInt638] = l;
                                 anIntArray783[anInt638] = 0;
                                 anInt638++;
-                                aBoolean747 = true;
+                                sidebarRedraw = true;
                                 outBuffer.p1isaac(28);
                                 outBuffer.p8(l);
                             }
@@ -1982,7 +1982,7 @@ public class client extends GameShell {
                                 if (aLongArray971[i2] != l1)
                                     continue;
                                 anInt638--;
-                                aBoolean747 = true;
+                                sidebarRedraw = true;
                                 for (int j3 = i2; j3 < anInt638; j3++) {
                                     aStringArray701[j3] = aStringArray701[j3 + 1];
                                     anIntArray783[j3] = anIntArray783[j3 + 1];
@@ -2036,7 +2036,7 @@ public class client extends GameShell {
 
                         if (!flag1) {
                             aLongArray685[anInt910++] = l2;
-                            aBoolean747 = true;
+                            sidebarRedraw = true;
                             outBuffer.p1isaac(170);
                             outBuffer.p8(l2);
                         }
@@ -2047,7 +2047,7 @@ public class client extends GameShell {
                             if (aLongArray685[j2] != l3)
                                 continue;
                             anInt910--;
-                            aBoolean747 = true;
+                            sidebarRedraw = true;
                             for (int i4 = j2; i4 < anInt910; i4++)
                                 aLongArray685[i4] = aLongArray685[i4 + 1];
 
@@ -2217,7 +2217,7 @@ public class client extends GameShell {
         }
         login(aString743, aString744, method71(-31414), true);
         if (!aBoolean734)
-            method27(anInt839);
+            logout(anInt839);
         try {
             class5.method150();
             return;
@@ -2541,7 +2541,7 @@ public class client extends GameShell {
 
     public void method42(int i) {
         if (i != 1)
-            anInt811 = inBuffer.g1();
+            packetOpcode = inBuffer.g1();
         aBoolean660 = true;
         for (int j = 0; j < 7; j++) {
             anIntArray883[j] = -1;
@@ -2659,7 +2659,7 @@ public class client extends GameShell {
         method36(false);
         method33((byte) 6, k2);
         if (byte0 != -95)
-            anInt811 = -1;
+            packetOpcode = -1;
         method20(8);
         aFrameBuffer_644.method235(8, super.aGraphics13, 11, aByte930);
         anInt918 = l;
@@ -2788,7 +2788,7 @@ public class client extends GameShell {
         }
 
         if (byte0 != aByte679)
-            anInt811 = -1;
+            packetOpcode = -1;
         anInt968 += 128;
         if (anInt968 > anIntArray956.length) {
             anInt968 -= anIntArray956.length;
@@ -2945,7 +2945,7 @@ public class client extends GameShell {
         int i1 = method15(anInt927, anInt928, anInt722, (byte) 9);
         int j1 = 0;
         if (byte0 != 2)
-            anInt811 = -1;
+            packetOpcode = -1;
         if (k > 3 && l > 3 && k < 100 && l < 100) {
             for (int k1 = k - 4; k1 <= k + 4; k1++) {
                 for (int i2 = l - 4; i2 <= l + 4; i2++) {
@@ -3406,7 +3406,7 @@ public class client extends GameShell {
 
     public void method56(int i) {
         if (i != 0)
-            anInt811 = -1;
+            packetOpcode = -1;
         aClass35_Sub2_Sub2_Sub3_960 = new IndexedSprite(title, "titlebox", 0);
         aClass35_Sub2_Sub2_Sub3_961 = new IndexedSprite(title, "titlebutton", 0);
         aClass35_Sub2_Sub2_Sub3Array914 = new IndexedSprite[12];
@@ -3689,7 +3689,7 @@ public class client extends GameShell {
                 int l1 = class8.anIntArrayArray124[0][1];
                 anIntArray822[l1] = 1 - anIntArray822[l1];
                 method38(l1, (byte) 7);
-                aBoolean747 = true;
+                sidebarRedraw = true;
             }
         }
         if (i1 == 647)
@@ -3860,7 +3860,7 @@ public class client extends GameShell {
             outBuffer.p1isaac(122);
             if (anInt981 != -1) {
                 anInt981 = -1;
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 aBoolean888 = false;
                 aBoolean992 = true;
             }
@@ -3963,7 +3963,7 @@ public class client extends GameShell {
                 if (anIntArray822[i2] != class8_1.anIntArray126[0]) {
                     anIntArray822[i2] = class8_1.anIntArray126[0];
                     method38(i2, (byte) 7);
-                    aBoolean747 = true;
+                    sidebarRedraw = true;
                 }
             }
         }
@@ -3983,7 +3983,7 @@ public class client extends GameShell {
                 s4 = s4.substring(s4.indexOf(" ") + 1);
             aString709 = s2 + " " + class8_2.aString164 + " " + s4;
             if (anInt708 == 16) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 3;
                 aBoolean992 = true;
             }
@@ -4045,7 +4045,7 @@ public class client extends GameShell {
         anInt712 = 0;
         anInt706 = 0;
         if (i != anInt711)
-            anInt811 = inBuffer.g1();
+            packetOpcode = inBuffer.g1();
     }
 
     public void method60(int i) {
@@ -4085,7 +4085,7 @@ public class client extends GameShell {
             anInt802++;
             if (anInt802 >= 15) {
                 if (anInt805 == 2)
-                    aBoolean747 = true;
+                    sidebarRedraw = true;
                 if (anInt805 == 3)
                     aBoolean653 = true;
                 anInt805 = 0;
@@ -4096,7 +4096,7 @@ public class client extends GameShell {
                 aBoolean704 = true;
             if (super.anInt19 == 0) {
                 if (anInt774 == 2)
-                    aBoolean747 = true;
+                    sidebarRedraw = true;
                 if (anInt774 == 3)
                     aBoolean653 = true;
                 anInt774 = 0;
@@ -4192,13 +4192,13 @@ public class client extends GameShell {
             method34(0);
             return;
         } catch (Exception exception) {
-            method27(anInt839);
+            logout(anInt839);
         }
     }
 
     public void method61(int i) {
         if (i != 7)
-            anInt811 = -1;
+            packetOpcode = -1;
         for (LocEntity class35_sub5 = (LocEntity) aLinkedList_943.method227(); class35_sub5 != null; class35_sub5 = (LocEntity) aLinkedList_943.method229(35239)) {
             boolean flag = false;
             class35_sub5.anInt1046 += anInt742;
@@ -4289,7 +4289,7 @@ public class client extends GameShell {
 
     public void method63(int i) {
         if (i != 1)
-            anInt811 = -1;
+            packetOpcode = -1;
         int j = anInt864 * 128 + 64;
         int k = anInt865 * 128 + 64;
         int l = method15(anInt864, anInt865, anInt722, (byte) 9) - anInt866;
@@ -4400,65 +4400,65 @@ public class client extends GameShell {
 
     public void method65(int i) {
         if (i != 7)
-            anInt811 = -1;
+            packetOpcode = -1;
         if (super.anInt22 == 1) {
             if (super.anInt23 >= 549 && super.anInt23 <= 583 && super.anInt24 >= 195 && super.anInt24 < 231) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 0;
                 aBoolean992 = true;
             }
             if (super.anInt23 >= 579 && super.anInt23 <= 609 && super.anInt24 >= 194 && super.anInt24 < 231) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 1;
                 aBoolean992 = true;
             }
             if (super.anInt23 >= 607 && super.anInt23 <= 637 && super.anInt24 >= 194 && super.anInt24 < 231) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 2;
                 aBoolean992 = true;
             }
             if (super.anInt23 >= 635 && super.anInt23 <= 679 && super.anInt24 >= 194 && super.anInt24 < 229) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 3;
                 aBoolean992 = true;
             }
             if (super.anInt23 >= 676 && super.anInt23 <= 706 && super.anInt24 >= 194 && super.anInt24 < 231) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 4;
                 aBoolean992 = true;
             }
             if (super.anInt23 >= 704 && super.anInt23 <= 734 && super.anInt24 >= 194 && super.anInt24 < 231) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 5;
                 aBoolean992 = true;
             }
             if (super.anInt23 >= 732 && super.anInt23 <= 766 && super.anInt24 >= 195 && super.anInt24 < 231) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 6;
                 aBoolean992 = true;
             }
             if (super.anInt23 >= 582 && super.anInt23 <= 612 && super.anInt24 >= 492 && super.anInt24 < 529) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 8;
                 aBoolean992 = true;
             }
             if (super.anInt23 >= 609 && super.anInt23 <= 639 && super.anInt24 >= 492 && super.anInt24 < 529) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 9;
                 aBoolean992 = true;
             }
             if (super.anInt23 >= 637 && super.anInt23 <= 681 && super.anInt24 >= 493 && super.anInt24 < 528) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 10;
                 aBoolean992 = true;
             }
             if (super.anInt23 >= 679 && super.anInt23 <= 709 && super.anInt24 >= 492 && super.anInt24 < 529) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 11;
                 aBoolean992 = true;
             }
             if (super.anInt23 >= 706 && super.anInt23 <= 736 && super.anInt24 >= 492 && super.anInt24 < 529) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 anInt907 = 12;
                 aBoolean992 = true;
             }
@@ -5187,7 +5187,7 @@ public class client extends GameShell {
         }
 
         if (!flag)
-            anInt811 = -1;
+            packetOpcode = -1;
     }
 
     public void method79(int i, int j, int k, byte byte0, int l, int i1, int j1) {
@@ -5236,10 +5236,10 @@ public class client extends GameShell {
         if (super.anInt20 > 562 && super.anInt21 > 231 && super.anInt20 < 752 && super.anInt21 < 492)
             if (anInt981 != -1)
                 method58(4, 0, 562, super.anInt20, Component.aComponentArray110[anInt981], super.anInt21, 231);
-            else if (anIntArray697[anInt907] != -1)
-                method58(4, 0, 562, super.anInt20, Component.aComponentArray110[anIntArray697[anInt907]], super.anInt21, 231);
+            else if (tabComponentId[anInt907] != -1)
+                method58(4, 0, 562, super.anInt20, Component.aComponentArray110[tabComponentId[anInt907]], super.anInt21, 231);
         if (anInt823 != anInt931) {
-            aBoolean747 = true;
+            sidebarRedraw = true;
             anInt931 = anInt823;
         }
         anInt823 = 0;
@@ -5251,7 +5251,7 @@ public class client extends GameShell {
         }
         boolean flag = false;
         if (i != 0)
-            anInt811 = inBuffer.g1();
+            packetOpcode = inBuffer.g1();
         while (!flag) {
             flag = true;
             for (int j = 0; j < anInt710 - 1; j++)
@@ -5564,7 +5564,7 @@ public class client extends GameShell {
             aFrameBuffer_989.method235(520, super.aGraphics13, 231, aByte930);
             aFrameBuffer_990.method235(501, super.aGraphics13, 375, aByte930);
             aFrameBuffer_991.method235(0, super.aGraphics13, 345, aByte930);
-            aBoolean747 = true;
+            sidebarRedraw = true;
             aBoolean653 = true;
             aBoolean992 = true;
             aBoolean655 = true;
@@ -5576,19 +5576,19 @@ public class client extends GameShell {
         if (anInt969 == 2)
             method45((byte) -95);
         if (aBoolean838 && anInt667 == 1)
-            aBoolean747 = true;
+            sidebarRedraw = true;
         if (anInt981 != -1) {
             boolean flag = method47(anInt981, true, anInt742);
             if (flag)
-                aBoolean747 = true;
+                sidebarRedraw = true;
         }
         if (anInt805 == 2)
-            aBoolean747 = true;
+            sidebarRedraw = true;
         if (anInt774 == 2)
-            aBoolean747 = true;
-        if (aBoolean747) {
+            sidebarRedraw = true;
+        if (sidebarRedraw) {
             method105((byte) 7);
-            aBoolean747 = false;
+            sidebarRedraw = false;
         }
         if (anInt702 == -1) {
             aComponent_885.anInt129 = anInt677 - anInt736 - 77;
@@ -5721,7 +5721,7 @@ public class client extends GameShell {
 
     public void method90(int i, Buffer class35_sub2_sub3, int j) {
         if (i < 2 || i > 2)
-            anInt811 = -1;
+            packetOpcode = -1;
         do {
             if (class35_sub2_sub3.bitOffset + 21 >= j * 8)
                 break;
@@ -6460,13 +6460,13 @@ public class client extends GameShell {
         if (j >= k && j < k + 16 && i1 >= j1 && i1 < j1 + 16) {
             class8.anInt129 -= anInt766 * 4;
             if (flag) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 return;
             }
         } else if (j >= k && j < k + 16 && i1 >= (j1 + l) - 16 && i1 < j1 + l) {
             class8.anInt129 += anInt766 * 4;
             if (flag) {
-                aBoolean747 = true;
+                sidebarRedraw = true;
                 return;
             }
         } else if (j >= k - anInt899 && j < k + 16 + anInt899 && i1 >= j1 + 16 && i1 < (j1 + l) - 16 && anInt766 > 0) {
@@ -6477,7 +6477,7 @@ public class client extends GameShell {
             int i2 = l - 32 - k1;
             class8.anInt129 = ((i - l) * l1) / i2;
             if (flag)
-                aBoolean747 = true;
+                sidebarRedraw = true;
             aBoolean761 = true;
         }
     }
@@ -6504,7 +6504,7 @@ public class client extends GameShell {
                 if (k < anInt668 - 10 || k > anInt668 + anInt670 + 10 || j1 < anInt669 - 10 || j1 > anInt669 + anInt671 + 10) {
                     aBoolean838 = false;
                     if (anInt667 == 1)
-                        aBoolean747 = true;
+                        sidebarRedraw = true;
                 }
             }
             if (j == 1) {
@@ -6532,7 +6532,7 @@ public class client extends GameShell {
                     method59(anInt711, i3);
                 aBoolean838 = false;
                 if (anInt667 == 1) {
-                    aBoolean747 = true;
+                    sidebarRedraw = true;
                     return;
                 }
             }
@@ -6682,7 +6682,7 @@ public class client extends GameShell {
                 aBoolean734 = true;
                 outBuffer.pos = 0;
                 inBuffer.pos = 0;
-                anInt811 = -1;
+                packetOpcode = -1;
                 anInt903 = -1;
                 anInt904 = -1;
                 anInt905 = -1;
@@ -6807,7 +6807,7 @@ public class client extends GameShell {
                 aBoolean734 = true;
                 outBuffer.pos = 0;
                 inBuffer.pos = 0;
-                anInt811 = -1;
+                packetOpcode = -1;
                 anInt903 = -1;
                 anInt904 = -1;
                 anInt905 = -1;
@@ -6859,8 +6859,8 @@ public class client extends GameShell {
             anInt807 = isaac.nextInt();
         if (anInt981 != -1)
             method53(aBoolean770, Component.aComponentArray110[anInt981], 0, 0, 0);
-        else if (anIntArray697[anInt907] != -1)
-            method53(aBoolean770, Component.aComponentArray110[anIntArray697[anInt907]], 0, 0, 0);
+        else if (tabComponentId[anInt907] != -1)
+            method53(aBoolean770, Component.aComponentArray110[tabComponentId[anInt907]], 0, 0, 0);
         if (aBoolean838 && anInt667 == 1)
             method76(9);
         aFrameBuffer_642.method235(562, super.aGraphics13, 231, aByte930);
@@ -7511,7 +7511,7 @@ public class client extends GameShell {
         aString744 = "";
         aString745 = "";
         aLinkedList_746 = new LinkedList(5);
-        aBoolean747 = false;
+        sidebarRedraw = false;
         anInt749 = 2048;
         anInt750 = 2047;
         aPlayerEntityArray751 = new PlayerEntity[anInt749];
@@ -7674,7 +7674,7 @@ public class client extends GameShell {
     public static BigInteger RSA_MODULUS = new BigInteger("7162900525229798032761816791230527296329313291232324290237849263501208207972894053929065636522363163621000728841182238772712427862772219676577293600221789");
     public String aString695;
     public byte aByte696;
-    public int[] anIntArray697 = {
+    public int[] tabComponentId = {
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1, -1, -1
     };
@@ -7727,7 +7727,7 @@ public class client extends GameShell {
     public String aString744;
     public String aString745;
     public LinkedList aLinkedList_746;
-    public boolean aBoolean747;
+    public boolean sidebarRedraw;
     public int anInt748;
     public int anInt749;
     public int anInt750;
@@ -7791,7 +7791,7 @@ public class client extends GameShell {
     public static int anInt808;
     public int anInt809;
     public int packetLength;
-    public int anInt811;
+    public int packetOpcode;
     public int anInt812;
     public int anInt813;
     public String[] aStringArray814;
