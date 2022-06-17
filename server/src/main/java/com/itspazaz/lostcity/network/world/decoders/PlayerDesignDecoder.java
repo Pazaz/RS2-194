@@ -13,8 +13,7 @@ public class PlayerDesignDecoder extends Decoder {
 
         int[] style = new int[7];
         for (int i = 0; i < style.length; i++) {
-            style[i] = data.g1();
-            System.out.println(IdkType.instances[style[i]].type);
+            style[i] = data.g1b();
         }
         con.player.entity.body[5] = style[0];
         con.player.entity.body[10] = style[1];

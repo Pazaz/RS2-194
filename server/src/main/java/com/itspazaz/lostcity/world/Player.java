@@ -9,7 +9,7 @@ import com.jagex.game.runetek3.entity.PlayerEntity;
 import rs2.ServerProt;
 import com.jagex.core.io.Buffer;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -43,6 +43,7 @@ public class Player {
 
         Arrays.fill(entity.body, -1);
         entity.body[4] = IdkType.findPart(2, 0);
+        entity.body[5] = 0;
         entity.body[6] = IdkType.findPart(3, 0);
         entity.body[7] = IdkType.findPart(5, 0);
         entity.body[8] = IdkType.findPart(4, 0);
@@ -52,10 +53,22 @@ public class Player {
 
     public void load() {
         try {
-            Buffer file = new Buffer();
+            Buffer file = new Buffer(Files.readAllBytes(Paths.get(Server.dataDir.toString(), "players", con.username)));
             entity.x = file.g2();
             entity.z = file.g2();
             entity.plane = file.g1();
+
+            // data after first release
+            if (file.available() > 0) {
+                // appearance data available
+                entity.gender = file.g1();
+                for (int i = 0; i < entity.body.length; ++i) {
+                    entity.body[i] = file.g1b();
+                }
+                for (int i = 0; i < entity.colors.length; ++i) {
+                    entity.colors[i] = file.g1();
+                }
+            }
         } catch (Exception ignored) {
         }
     }
@@ -66,6 +79,17 @@ public class Player {
             buffer.p2(entity.x);
             buffer.p2(entity.z);
             buffer.p1(entity.plane);
+
+            buffer.p1(entity.gender);
+            for (int i = 0; i < entity.body.length; ++i) {
+                buffer.p1(entity.body[i]);
+            }
+            for (int i = 0; i < entity.colors.length; ++i) {
+                buffer.p1(entity.colors[i]);
+            }
+            try {
+                Paths.get(Server.dataDir.toString(), "players").toFile().mkdir();
+            } catch (Exception ex) {}
             Files.write(Paths.get(Server.dataDir.toString(), "players", con.username), buffer.take());
         } catch (Exception ignored) {
         }
@@ -482,7 +506,7 @@ public class Player {
             }
             if (part > 255) {
                 appearance.p2(part);
-            } else if (part > 0) {
+            } else if (part >= 0) {
                 appearance.p1(part);
             } else {
                 appearance.p1(0);
