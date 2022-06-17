@@ -343,9 +343,9 @@ public class Buffer extends CacheableNode {
     public static int queueMinCount;
     public static int queueMidCount;
     public static int queueMaxCount;
-    public static LinkedList queueMin = new LinkedList(5);
-    public static LinkedList queueMid = new LinkedList(5);
-    public static LinkedList queueMax = new LinkedList(5);
+    public static LinkedList queueMin = new LinkedList();
+    public static LinkedList queueMid = new LinkedList();
+    public static LinkedList queueMax = new LinkedList();
     public static boolean aBoolean1169;
 
     static {

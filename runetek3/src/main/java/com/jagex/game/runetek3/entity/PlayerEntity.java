@@ -205,7 +205,7 @@ public class PlayerEntity extends PathingEntity {
                     aclass35_sub2_sub1[k1++] = IdkType.instances[i2 - 256].method157();
                 if (i2 >= 512) {
                     ObjType class41 = ObjType.get(i2 - 512);
-                    Model class35_sub2_sub1_2 = class41.method445(92, gender);
+                    Model class35_sub2_sub1_2 = class41.method445(gender);
                     if (class35_sub2_sub1_2 != null)
                         aclass35_sub2_sub1[k1++] = class35_sub2_sub1_2;
                 }

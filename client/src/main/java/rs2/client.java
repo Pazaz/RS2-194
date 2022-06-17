@@ -67,7 +67,7 @@ public class client extends GameShell {
 
         }
         for (int l = 0; l < 33920; l++)
-            aFrameBuffer_892.anIntArray368[l] = aSprite_687.anIntArray1292[l];
+            aFrameBuffer_892.anIntArray368[l] = aSprite_687.pixels[l];
 
         int i1 = 0;
         int j1 = 1152;
@@ -95,7 +95,7 @@ public class client extends GameShell {
 
         aFrameBuffer_892.method235(0, super.aGraphics13, 0, aByte930);
         for (int i2 = 0; i2 < 33920; i2++)
-            aFrameBuffer_893.anIntArray368[i2] = aSprite_688.anIntArray1292[i2];
+            aFrameBuffer_893.anIntArray368[i2] = aSprite_688.pixels[i2];
 
         i1 = 0;
         j1 = 1176;
@@ -149,7 +149,7 @@ public class client extends GameShell {
         }
         int k = 0xfa0a1f01;
         Object obj = null;
-        for (ObjStackEntity class35_sub6 = (ObjStackEntity) class24.method227(); class35_sub6 != null; class35_sub6 = (ObjStackEntity) class24.method229(35239)) {
+        for (ObjStackEntity class35_sub6 = (ObjStackEntity) class24.method227(); class35_sub6 != null; class35_sub6 = (ObjStackEntity) class24.method229()) {
             ObjType class41 = ObjType.get(class35_sub6.anInt1047);
             int i1 = class41.cost;
             if (class41.stackable)
@@ -160,10 +160,10 @@ public class client extends GameShell {
             }
         }
 
-        class24.method225(((Node) (obj)), 0);
+        class24.method225(((Node) (obj)));
         int l = -1;
         int j1 = -1;
-        for (ObjStackEntity class35_sub6_1 = (ObjStackEntity) class24.method227(); class35_sub6_1 != null; class35_sub6_1 = (ObjStackEntity) class24.method229(35239)) {
+        for (ObjStackEntity class35_sub6_1 = (ObjStackEntity) class24.method227(); class35_sub6_1 != null; class35_sub6_1 = (ObjStackEntity) class24.method229()) {
             if (class35_sub6_1.anInt1047 != ((ObjStackEntity) (obj)).anInt1047 && l == -1)
                 l = class35_sub6_1.anInt1047;
             if (class35_sub6_1.anInt1047 != ((ObjStackEntity) (obj)).anInt1047 && class35_sub6_1.anInt1047 != l && j1 == -1)
@@ -361,7 +361,7 @@ public class client extends GameShell {
                 if (k1 == 3) {
                     LinkedList class24 = aLinkedListArrayArrayArray665[anInt722][i1][j1];
                     if (class24 != null) {
-                        for (ObjStackEntity class35_sub6 = (ObjStackEntity) class24.method228(8); class35_sub6 != null; class35_sub6 = (ObjStackEntity) class24.method230(true)) {
+                        for (ObjStackEntity class35_sub6 = (ObjStackEntity) class24.method228(); class35_sub6 != null; class35_sub6 = (ObjStackEntity) class24.method230()) {
                             ObjType class41 = ObjType.get(class35_sub6.anInt1047);
                             if (anInt712 == 1) {
                                 aStringArray720[anInt710] = "Use " + aString716 + " with @lre@" + class41.name;
@@ -424,9 +424,9 @@ public class client extends GameShell {
 
     public void method20(int i) {
         if (anInt819 == 1)
-            aSpriteArray958[anInt818 / 100].method357(anInt817 - 8 - 11, anInt861, anInt816 - 8 - 8);
+            aSpriteArray958[anInt818 / 100].method357(anInt817 - 8 - 11, anInt816 - 8 - 8);
         if (anInt819 == 2)
-            aSpriteArray958[4 + anInt818 / 100].method357(anInt817 - 8 - 11, anInt861, anInt816 - 8 - 8);
+            aSpriteArray958[4 + anInt818 / 100].method357(anInt817 - 8 - 11, anInt816 - 8 - 8);
         if (anInt962 != -1)
             method53(aBoolean770, Component.aComponentArray110[anInt962], 0, 0, 0);
         int j = (self.x >> 7) + anInt855;
@@ -443,9 +443,9 @@ public class client extends GameShell {
         } else if (anInt667 == 0)
             method76(9);
         if (anInt703 == 1)
-            aSpriteArray843[1].method357(296, anInt861, 5);
+            aSpriteArray843[1].method357(296, 5);
         if (anInt735 > 0) {
-            aSpriteArray843[0].method357(296, anInt861, 472);
+            aSpriteArray843[0].method357(296, 472);
             p12.method370(true, 329, 0xffff00, 484, "Level: " + anInt735);
         } else if (aBoolean663) {
             int l = 0xffff00;
@@ -475,7 +475,7 @@ public class client extends GameShell {
         SpotAnimEntity class35_sub7_sub2 = (SpotAnimEntity) aLinkedList_657.method227();
         if (i < 9 || i > 9)
             aBoolean828 = !aBoolean828;
-        for (; class35_sub7_sub2 != null; class35_sub7_sub2 = (SpotAnimEntity) aLinkedList_657.method229(35239))
+        for (; class35_sub7_sub2 != null; class35_sub7_sub2 = (SpotAnimEntity) aLinkedList_657.method229())
             if (class35_sub7_sub2.anInt1200 != anInt722 || class35_sub7_sub2.finished)
                 class35_sub7_sub2.unlink();
             else if (anInt759 >= class35_sub7_sub2.anInt1199) {
@@ -991,7 +991,7 @@ public class client extends GameShell {
 
                 }
 
-                for (SpawnedLoc class35_sub3_1 = (SpawnedLoc) aLinkedList_746.method227(); class35_sub3_1 != null; class35_sub3_1 = (SpawnedLoc) aLinkedList_746.method229(35239)) {
+                for (SpawnedLoc class35_sub3_1 = (SpawnedLoc) aLinkedList_746.method227(); class35_sub3_1 != null; class35_sub3_1 = (SpawnedLoc) aLinkedList_746.method229()) {
                     class35_sub3_1.anInt1022 -= l24;
                     class35_sub3_1.anInt1023 -= j26;
                     if (class35_sub3_1.anInt1022 < 0 || class35_sub3_1.anInt1023 < 0 || class35_sub3_1.anInt1022 >= 104 || class35_sub3_1.anInt1023 >= 104)
@@ -1054,7 +1054,7 @@ public class client extends GameShell {
 
                 }
 
-                for (SpawnedLoc class35_sub3 = (SpawnedLoc) aLinkedList_746.method227(); class35_sub3 != null; class35_sub3 = (SpawnedLoc) aLinkedList_746.method229(35239))
+                for (SpawnedLoc class35_sub3 = (SpawnedLoc) aLinkedList_746.method227(); class35_sub3 != null; class35_sub3 = (SpawnedLoc) aLinkedList_746.method229())
                     if (class35_sub3.anInt1022 >= anInt851 && class35_sub3.anInt1022 < anInt851 + 8 && class35_sub3.anInt1023 >= anInt852 && class35_sub3.anInt1023 < anInt852 + 8 && class35_sub3.anInt1020 == anInt722) {
                         method112(true, class35_sub3.anInt1020, class35_sub3.anInt1029, class35_sub3.anInt1023, class35_sub3.anInt1022, class35_sub3.anInt1021, class35_sub3.anInt1027, class35_sub3.anInt1028);
                         class35_sub3.unlink();
@@ -1554,7 +1554,7 @@ public class client extends GameShell {
         method57(anInt952);
         aMapSquare_741.method238(true);
         for (int j = 0; j < 4; j++)
-            aCollisionMapArray737[j].method121((byte) 5);
+            aCollisionMapArray737[j].reset();
 
         System.gc();
         if (aBoolean661)
@@ -1580,7 +1580,7 @@ public class client extends GameShell {
                 i12 = class35_sub2_sub3.g2();
             if (j2 >= 0 && j4 >= 0 && j2 < 104 && j4 < 104) {
                 SpawnedLoc class35_sub3 = null;
-                for (SpawnedLoc class35_sub3_1 = (SpawnedLoc) aLinkedList_746.method227(); class35_sub3_1 != null; class35_sub3_1 = (SpawnedLoc) aLinkedList_746.method229(35239)) {
+                for (SpawnedLoc class35_sub3_1 = (SpawnedLoc) aLinkedList_746.method227(); class35_sub3_1 != null; class35_sub3_1 = (SpawnedLoc) aLinkedList_746.method229()) {
                     if (class35_sub3_1.anInt1020 != anInt722 || class35_sub3_1.anInt1022 != j2 || class35_sub3_1.anInt1023 != j4 || class35_sub3_1.anInt1021 != i11)
                         continue;
                     class35_sub3 = class35_sub3_1;
@@ -1653,7 +1653,7 @@ public class client extends GameShell {
                 ObjStackEntity class35_sub6 = new ObjStackEntity();
                 class35_sub6.anInt1047 = l6;
                 if (aLinkedListArrayArrayArray665[anInt722][l2][l4] == null)
-                    aLinkedListArrayArrayArray665[anInt722][l2][l4] = new LinkedList(5);
+                    aLinkedListArrayArrayArray665[anInt722][l2][l4] = new LinkedList();
                 aLinkedListArrayArrayArray665[anInt722][l2][l4].pushNext(class35_sub6);
                 method16(l2, l4);
             }
@@ -1667,7 +1667,7 @@ public class client extends GameShell {
             if (i3 >= 0 && i5 >= 0 && i3 < 104 && i5 < 104) {
                 LinkedList class24 = aLinkedListArrayArrayArray665[anInt722][i3][i5];
                 if (class24 != null) {
-                    for (ObjStackEntity class35_sub6_1 = (ObjStackEntity) class24.method227(); class35_sub6_1 != null; class35_sub6_1 = (ObjStackEntity) class24.method229(35239)) {
+                    for (ObjStackEntity class35_sub6_1 = (ObjStackEntity) class24.method227(); class35_sub6_1 != null; class35_sub6_1 = (ObjStackEntity) class24.method229()) {
                         if (class35_sub6_1.anInt1047 != (i7 & 0x7fff))
                             continue;
                         class35_sub6_1.unlink();
@@ -1731,7 +1731,7 @@ public class client extends GameShell {
                 ObjStackEntity class35_sub6_2 = new ObjStackEntity();
                 class35_sub6_2.anInt1047 = l7;
                 if (aLinkedListArrayArrayArray665[anInt722][l3][l5] == null)
-                    aLinkedListArrayArrayArray665[anInt722][l3][l5] = new LinkedList(5);
+                    aLinkedListArrayArrayArray665[anInt722][l3][l5] = new LinkedList();
                 aLinkedListArrayArrayArray665[anInt722][l3][l5].pushNext(class35_sub6_2);
                 method16(l3, l5);
             }
@@ -1913,7 +1913,7 @@ public class client extends GameShell {
         if (flag)
             anInt711 = isaac.nextInt();
         if (anInt969 == 2) {
-            for (TemporaryLoc class35_sub4 = (TemporaryLoc) aLinkedList_652.method227(); class35_sub4 != null; class35_sub4 = (TemporaryLoc) aLinkedList_652.method229(35239))
+            for (TemporaryLoc class35_sub4 = (TemporaryLoc) aLinkedList_652.method227(); class35_sub4 != null; class35_sub4 = (TemporaryLoc) aLinkedList_652.method229())
                 if (anInt759 >= class35_sub4.anInt1037) {
                     method112(true, class35_sub4.anInt1030, class35_sub4.anInt1036, class35_sub4.anInt1033, class35_sub4.anInt1032, class35_sub4.anInt1031, class35_sub4.anInt1034, class35_sub4.anInt1035);
                     class35_sub4.unlink();
@@ -2190,14 +2190,14 @@ public class client extends GameShell {
             anInt882 = 80;
         if (!aBoolean663 && Draw3D.anIntArray1281[17] >= i) {
             IndexedSprite class35_sub2_sub2_sub3 = Draw3D.aClass35_Sub2_Sub2_Sub3Array1275[17];
-            int j = class35_sub2_sub2_sub3.anInt1306 * class35_sub2_sub2_sub3.anInt1307 - 1;
-            int k = class35_sub2_sub2_sub3.anInt1306 * anInt742 * 2;
-            byte[] abyte0 = class35_sub2_sub2_sub3.aByteArray1304;
+            int j = class35_sub2_sub2_sub3.spriteWidth * class35_sub2_sub2_sub3.spriteHeight - 1;
+            int k = class35_sub2_sub2_sub3.spriteWidth * anInt742 * 2;
+            byte[] abyte0 = class35_sub2_sub2_sub3.pixels;
             byte[] abyte1 = aByteArray850;
             for (int l = 0; l <= j; l++)
                 abyte1[l] = abyte0[l - k & j];
 
-            class35_sub2_sub2_sub3.aByteArray1304 = abyte1;
+            class35_sub2_sub2_sub3.pixels = abyte1;
             aByteArray850 = abyte0;
             Draw3D.method344(28230, 17);
         }
@@ -2297,7 +2297,7 @@ public class client extends GameShell {
                             int l = 28;
                             for (int i2 = 0; i2 < 8; i2++)
                                 if ((class35_sub7_sub3_sub2.headicons & 1 << i2) != 0) {
-                                    aSpriteArray843[i2].method357(anInt758 - l, anInt861, anInt757 - 12);
+                                    aSpriteArray843[i2].method357(anInt758 - l, anInt757 - 12);
                                     l -= 25;
                                 }
 
@@ -2355,10 +2355,10 @@ public class client extends GameShell {
                             if (((PathingEntity) (obj)).anInt1223 == 2) {
                                 int l1 = b12.method372(((PathingEntity) (obj)).aString1220, true);
                                 int j2 = ((150 - ((PathingEntity) (obj)).anInt1221) * (l1 + 100)) / 150;
-                                Draw2D.method331(334, anInt757 + 50, 0, anInt757 - 50, 17913);
+                                Draw2D.setBounds(334, anInt757 + 50, 0, anInt757 - 50);
                                 b12.method373(((PathingEntity) (obj)).aString1220, (anInt757 + 50) - j2, 0, true, anInt758 + 1);
                                 b12.method373(((PathingEntity) (obj)).aString1220, (anInt757 + 50) - j2, j, true, anInt758);
-                                Draw2D.method330(-971);
+                                Draw2D.resetBounds();
                             }
                         } else {
                             b12.method370(true, anInt758 + 1, 0, anInt757, ((PathingEntity) (obj)).aString1220);
@@ -2371,14 +2371,14 @@ public class client extends GameShell {
                         int k = (((PathingEntity) (obj)).anInt1227 * 30) / ((PathingEntity) (obj)).anInt1228;
                         if (k > 30)
                             k = 30;
-                        Draw2D.method333(65280, anInt807, 5, anInt758 - 3, k, anInt757 - 15);
-                        Draw2D.method333(0xff0000, anInt807, 5, anInt758 - 3, 30 - k, (anInt757 - 15) + k);
+                        Draw2D.fillRect(65280, 5, anInt758 - 3, k, anInt757 - 15);
+                        Draw2D.fillRect(0xff0000, 5, anInt758 - 3, 30 - k, (anInt757 - 15) + k);
                     }
                 }
                 if (((PathingEntity) (obj)).anInt1226 > anInt759 + 330) {
                     method43(((PathingEntity) (obj)).height / 2, aByte680, ((PathingEntity) (obj)));
                     if (anInt757 > -1) {
-                        aSpriteArray980[((PathingEntity) (obj)).anInt1225].method357(anInt758 - 12, anInt861, anInt757 - 12);
+                        aSpriteArray980[((PathingEntity) (obj)).anInt1225].method357(anInt758 - 12, anInt757 - 12);
                         p11.method370(true, anInt758 + 4, 0, anInt757, String.valueOf(((PathingEntity) (obj)).anInt1224));
                         p11.method370(true, anInt758 + 3, 0xffffff, anInt757 - 1, String.valueOf(((PathingEntity) (obj)).anInt1224));
                     }
@@ -2526,11 +2526,11 @@ public class client extends GameShell {
         if (i >= 0) {
             return;
         } else {
-            Draw2D.method332(2);
-            aClass35_Sub2_Sub2_Sub3_692.method368(0, anInt861, 0);
+            Draw2D.clear();
+            aClass35_Sub2_Sub2_Sub3_692.draw(0, 0);
             aFrameBuffer_642 = new FrameBuffer(261, (byte) -58, method11(-36374), 190);
             aFrameBuffer_644 = new FrameBuffer(334, (byte) -58, method11(-36374), 512);
-            Draw2D.method332(2);
+            Draw2D.clear();
             aFrameBuffer_939 = new FrameBuffer(61, (byte) -58, method11(-36374), 501);
             aFrameBuffer_940 = new FrameBuffer(40, (byte) -58, method11(-36374), 288);
             aFrameBuffer_941 = new FrameBuffer(66, (byte) -58, method11(-36374), 269);
@@ -2653,7 +2653,7 @@ public class client extends GameShell {
         Model.anInt1127 = 0;
         Model.anInt1125 = super.anInt20 - 8;
         Model.anInt1126 = super.anInt21 - 11;
-        Draw2D.method332(2);
+        Draw2D.clear();
         aMapSquare_741.method275(anInt918, j, 2, anInt919, anInt920, anInt921, anInt922, anInt759);
         aMapSquare_741.method252(7);
         method36(false);
@@ -2738,7 +2738,7 @@ public class client extends GameShell {
             loginBuffer.p1(17);
             loginBuffer.p1(outBuffer.pos);
             loginBuffer.pdata(outBuffer.data, 0, outBuffer.pos);
-            stream.write(loginBuffer.data, loginBuffer.pos, false, 0);
+            stream.write(loginBuffer.data, loginBuffer.pos);
             int j = stream.read();
             if (j == 1) {
                 try {
@@ -2835,24 +2835,24 @@ public class client extends GameShell {
         aFrameBuffer_940 = null;
         aFrameBuffer_941 = null;
         aFrameBuffer_892 = new FrameBuffer(265, (byte) -58, method11(-36374), 128);
-        Draw2D.method332(2);
+        Draw2D.clear();
         aFrameBuffer_893 = new FrameBuffer(265, (byte) -58, method11(-36374), 128);
-        Draw2D.method332(2);
+        Draw2D.clear();
         aFrameBuffer_889 = new FrameBuffer(186, (byte) -58, method11(-36374), 533);
-        Draw2D.method332(2);
+        Draw2D.clear();
         aFrameBuffer_890 = new FrameBuffer(146, (byte) -58, method11(-36374), 360);
-        Draw2D.method332(2);
+        Draw2D.clear();
         aFrameBuffer_891 = new FrameBuffer(200, (byte) -58, method11(-36374), 360);
-        Draw2D.method332(2);
+        Draw2D.clear();
         aFrameBuffer_894 = new FrameBuffer(267, (byte) -58, method11(-36374), 214);
-        Draw2D.method332(2);
+        Draw2D.clear();
         aFrameBuffer_895 = new FrameBuffer(267, (byte) -58, method11(-36374), 215);
-        Draw2D.method332(2);
+        Draw2D.clear();
         aFrameBuffer_896 = new FrameBuffer(79, (byte) -58, method11(-36374), 86);
         aBoolean734 &= flag;
-        Draw2D.method332(2);
+        Draw2D.clear();
         aFrameBuffer_897 = new FrameBuffer(79, (byte) -58, method11(-36374), 87);
-        Draw2D.method332(2);
+        Draw2D.clear();
         if (title != null) {
             method106(false);
             method56(0);
@@ -2978,11 +2978,11 @@ public class client extends GameShell {
             return;
         if (class8.aBoolean130 && anInt806 != class8.anInt115 && anInt931 != class8.anInt115 && anInt782 != class8.anInt115)
             return;
-        int l = Draw2D.anInt1142;
-        int i1 = Draw2D.anInt1140;
-        int j1 = Draw2D.anInt1143;
-        int k1 = Draw2D.anInt1141;
-        Draw2D.method331(i + class8.anInt121, k + class8.anInt120, i, k, 17913);
+        int l = Draw2D.left;
+        int i1 = Draw2D.top;
+        int j1 = Draw2D.right;
+        int k1 = Draw2D.bottom;
+        Draw2D.setBounds(i + class8.anInt121, k + class8.anInt120, i, k);
         int l1 = class8.anIntArray131.length;
         if (flag)
             anInt809 = 358;
@@ -3017,7 +3017,7 @@ public class client extends GameShell {
                                 int j6 = 0;
                                 int i8 = 0;
                                 int k8 = class8_1.anIntArray111[l2] - 1;
-                                Sprite class35_sub2_sub2_sub2_2 = ObjType.method444(k8, (byte) -11);
+                                Sprite class35_sub2_sub2_sub2_2 = ObjType.method444(k8);
                                 if (anInt774 != 0 && anInt773 == l2 && anInt772 == class8_1.anInt115) {
                                     j6 = super.anInt20 - anInt775;
                                     i8 = super.anInt21 - anInt776;
@@ -3025,12 +3025,12 @@ public class client extends GameShell {
                                         j6 = 0;
                                     if (i8 < 5 && i8 > -5)
                                         i8 = 0;
-                                    class35_sub2_sub2_sub2_2.method359(false, i5 + j6, 128, l5 + i8);
+                                    class35_sub2_sub2_sub2_2.method359(i5 + j6, 128, l5 + i8);
                                 } else if (anInt805 != 0 && anInt804 == l2 && anInt803 == class8_1.anInt115)
-                                    class35_sub2_sub2_sub2_2.method359(false, i5, 128, l5);
+                                    class35_sub2_sub2_sub2_2.method359(i5, 128, l5);
                                 else
-                                    class35_sub2_sub2_sub2_2.method357(l5, anInt861, i5);
-                                if (class35_sub2_sub2_sub2_2.anInt1297 == 33 || class8_1.anIntArray112[l2] != 1) {
+                                    class35_sub2_sub2_sub2_2.method357(l5, i5);
+                                if (class35_sub2_sub2_sub2_2.cropW == 33 || class8_1.anIntArray112[l2] != 1) {
                                     int i9 = class8_1.anIntArray112[l2];
                                     p11.method373(String.valueOf(i9), i5 + 1 + j6, 0, true, l5 + 10 + i8);
                                     p11.method373(String.valueOf(i9), i5 + j6, 0xffff00, true, l5 + 9 + i8);
@@ -3038,7 +3038,7 @@ public class client extends GameShell {
                             } else if (class8_1.aSpriteArray141 != null && l2 < 20) {
                                 Sprite class35_sub2_sub2_sub2_1 = class8_1.aSpriteArray141[l2];
                                 if (class35_sub2_sub2_sub2_1 != null)
-                                    class35_sub2_sub2_sub2_1.method357(l5, anInt861, i5);
+                                    class35_sub2_sub2_sub2_1.method357(l5, i5);
                             }
                             l2++;
                         }
@@ -3047,9 +3047,9 @@ public class client extends GameShell {
 
                 } else if (class8_1.anInt117 == 3) {
                     if (class8_1.aBoolean145)
-                        Draw2D.method333(class8_1.anInt151, anInt807, class8_1.anInt121, k2, class8_1.anInt120, j2);
+                        Draw2D.fillRect(class8_1.anInt151, class8_1.anInt121, k2, class8_1.anInt120, j2);
                     else
-                        Draw2D.method334(class8_1.anInt151, k2, 0, class8_1.anInt120, class8_1.anInt121, j2);
+                        Draw2D.method334(class8_1.anInt151, k2, class8_1.anInt120, class8_1.anInt121, j2);
                 } else if (class8_1.anInt117 == 4) {
                     Font class35_sub2_sub2_sub4 = class8_1.aClass35_Sub2_Sub2_Sub4_148;
                     int k3 = class8_1.anInt151;
@@ -3120,7 +3120,7 @@ public class client extends GameShell {
                     else
                         class35_sub2_sub2_sub2 = class8_1.aSprite_154;
                     if (class35_sub2_sub2_sub2 != null)
-                        class35_sub2_sub2_sub2.method357(k2, anInt861, j2);
+                        class35_sub2_sub2_sub2.method357(k2, j2);
                 } else if (class8_1.anInt117 == 6) {
                     int i3 = Draw3D.anInt1267;
                     int l3 = Draw3D.anInt1268;
@@ -3169,7 +3169,7 @@ public class client extends GameShell {
                 }
         }
 
-        Draw2D.method331(k1, j1, i1, l, 17913);
+        Draw2D.setBounds(k1, j1, i1, l);
     }
 
     public void showProgress(byte byte0, int i, String s) {
@@ -3186,10 +3186,10 @@ public class client extends GameShell {
         byte byte1 = 20;
         b12.method370(true, c1 / 2 - 26 - byte1, 0xffffff, c / 2, "RuneScape is loading - please wait...");
         int j = c1 / 2 - 18 - byte1;
-        Draw2D.method334(0x8c1111, j, 0, 304, 34, c / 2 - 152);
-        Draw2D.method334(0, j + 1, 0, 302, 32, c / 2 - 151);
-        Draw2D.method333(0x8c1111, anInt807, 30, j + 2, i * 3, c / 2 - 150);
-        Draw2D.method333(0, anInt807, 30, j + 2, 300 - i * 3, (c / 2 - 150) + i * 3);
+        Draw2D.method334(0x8c1111, j, 304, 34, c / 2 - 152);
+        Draw2D.method334(0, j + 1, 302, 32, c / 2 - 151);
+        Draw2D.fillRect(0x8c1111, 30, j + 2, i * 3, c / 2 - 150);
+        Draw2D.fillRect(0, 30, j + 2, 300 - i * 3, (c / 2 - 150) + i * 3);
         b12.method370(true, (c1 / 2 + 5) - byte1, 0xffffff, c / 2, s);
         aFrameBuffer_891.method235(214, super.aGraphics13, 186, aByte930);
         if (aBoolean681) {
@@ -3416,10 +3416,10 @@ public class client extends GameShell {
         aSprite_687 = new Sprite(128, 265);
         aSprite_688 = new Sprite(128, 265);
         for (int k = 0; k < 33920; k++)
-            aSprite_687.anIntArray1292[k] = aFrameBuffer_892.anIntArray368[k];
+            aSprite_687.pixels[k] = aFrameBuffer_892.anIntArray368[k];
 
         for (int l = 0; l < 33920; l++)
-            aSprite_688.anIntArray1292[l] = aFrameBuffer_893.anIntArray368[l];
+            aSprite_688.pixels[l] = aFrameBuffer_893.anIntArray368[l];
 
         anIntArray798 = new int[256];
         for (int i1 = 0; i1 < 64; i1++)
@@ -3470,7 +3470,7 @@ public class client extends GameShell {
         if (!aBoolean906) {
             aBoolean740 = true;
             aBoolean906 = true;
-            method12(this, 2);
+            startThread(this, 2);
         }
     }
 
@@ -4183,7 +4183,7 @@ public class client extends GameShell {
             outBuffer.p1isaac(87);
         try {
             if (stream != null && outBuffer.pos > 0) {
-                stream.write(outBuffer.data, outBuffer.pos, false, 0);
+                stream.write(outBuffer.data, outBuffer.pos);
                 outBuffer.pos = 0;
                 anInt813 = 0;
                 return;
@@ -4199,7 +4199,7 @@ public class client extends GameShell {
     public void method61(int i) {
         if (i != 7)
             packetOpcode = -1;
-        for (LocEntity class35_sub5 = (LocEntity) aLinkedList_943.method227(); class35_sub5 != null; class35_sub5 = (LocEntity) aLinkedList_943.method229(35239)) {
+        for (LocEntity class35_sub5 = (LocEntity) aLinkedList_943.method227(); class35_sub5 != null; class35_sub5 = (LocEntity) aLinkedList_943.method229()) {
             boolean flag = false;
             class35_sub5.seqCycle += anInt742;
             if (class35_sub5.seqFrame == -1) {
@@ -4821,7 +4821,7 @@ public class client extends GameShell {
         anIntArray724[j3++] = k1;
         boolean flag2 = false;
         int l3 = anIntArray723.length;
-        int[][] ai = aCollisionMapArray737[anInt722].anIntArrayArray43;
+        int[][] ai = aCollisionMapArray737[anInt722].flags;
         while (k3 != j3) {
             l2 = anIntArray723[k3];
             i3 = anIntArray724[k3];
@@ -4831,16 +4831,16 @@ public class client extends GameShell {
                 break;
             }
             if (j != 0) {
-                if ((j < 5 || j == 10) && aCollisionMapArray737[anInt722].method130(i3, j - 1, j1, i, i2, 7, l2)) {
+                if ((j < 5 || j == 10) && aCollisionMapArray737[anInt722].method130(i3, j - 1, j1, i, i2, l2)) {
                     flag2 = true;
                     break;
                 }
-                if (j < 10 && aCollisionMapArray737[anInt722].method131(i2, i3, (byte) -14, l2, j - 1, i, j1)) {
+                if (j < 10 && aCollisionMapArray737[anInt722].method131(i2, i3, l2, j - 1, i, j1)) {
                     flag2 = true;
                     break;
                 }
             }
-            if (l != 0 && k != 0 && aCollisionMapArray737[anInt722].method132(i1, anInt809, l, i, k, i2, l2, i3)) {
+            if (l != 0 && k != 0 && aCollisionMapArray737[anInt722].method132(i1, l, i, k, i2, l2, i3)) {
                 flag2 = true;
                 break;
             }
@@ -4972,7 +4972,7 @@ public class client extends GameShell {
     public void method74(boolean flag) {
         method50(true);
         aFrameBuffer_891.method234(-510);
-        aClass35_Sub2_Sub2_Sub3_960.method368(0, anInt861, 0);
+        aClass35_Sub2_Sub2_Sub3_960.draw(0, 0);
         char c = '\u0168';
         char c1 = '\310';
         if (anInt915 == 0) {
@@ -4995,7 +4995,7 @@ public class client extends GameShell {
             i += 15;
             int k = c / 2;
             int i1 = c1 / 2 + 65;
-            aClass35_Sub2_Sub2_Sub3_961.method368(i1 - 20, anInt861, k - 73);
+            aClass35_Sub2_Sub2_Sub3_961.draw(i1 - 20, k - 73);
             b12.method371(i1 + 5, c / 2, 0xffffff, "Click here to login.", 26631, true);
         }
         if (anInt915 == 1 || anInt915 == 2) {
@@ -5016,13 +5016,13 @@ public class client extends GameShell {
                 b12.method375(-886, true, c / 2 - 143, 0xffffff, j, "Confirm Password: " + StringUtils.method423((byte) 1, aString745) + ((anInt871 == 2) & (anInt759 % 40 < 20) ? "@yel@|" : ""));
             int l = c / 2 - 80;
             int j1 = c1 / 2 + 40;
-            aClass35_Sub2_Sub2_Sub3_961.method368(j1 - 20, anInt861, l - 73);
+            aClass35_Sub2_Sub2_Sub3_961.draw(j1 - 20, l - 73);
             if (anInt915 == 1)
                 b12.method371(j1 + 5, l, 0xffffff, "Create", 26631, true);
             else
                 b12.method371(j1 + 5, l, 0xffffff, "Login", 26631, true);
             l = c / 2 + 80;
-            aClass35_Sub2_Sub2_Sub3_961.method368(j1 - 20, anInt861, l - 73);
+            aClass35_Sub2_Sub2_Sub3_961.draw(j1 - 20, l - 73);
             b12.method371(j1 + 5, l, 0xffffff, "Cancel", 26631, true);
         }
         aFrameBuffer_891.method235(214, super.aGraphics13, 186, aByte930);
@@ -5061,9 +5061,9 @@ public class client extends GameShell {
         int l = anInt670;
         int i1 = anInt671;
         int j1 = 0x5d5447;
-        Draw2D.method333(j1, anInt807, i1, k, l, j);
-        Draw2D.method333(0, anInt807, 16, k + 1, l - 2, j + 1);
-        Draw2D.method334(0, k + 18, 0, l - 2, i1 - 19, j + 1);
+        Draw2D.fillRect(j1, i1, k, l, j);
+        Draw2D.fillRect(0, 16, k + 1, l - 2, j + 1);
+        Draw2D.method334(0, k + 18, l - 2, i1 - 19, j + 1);
         b12.method373("Choose Option", j + 3, j1, true, k + 14);
         int k1 = super.anInt20;
         int l1 = super.anInt21;
@@ -5097,7 +5097,7 @@ public class client extends GameShell {
             method57(anInt952);
             aMapSquare_741.method238(true);
             for (int j = 0; j < 4; j++)
-                aCollisionMapArray737[j].method121((byte) 5);
+                aCollisionMapArray737[j].reset();
 
             System.gc();
             Scene class3 = new Scene(levelRenderFlags, 104, 104, anIntArrayArrayArray725, 362);
@@ -5140,7 +5140,7 @@ public class client extends GameShell {
 
             class3.method137(aMapSquare_741, false, aCollisionMapArray737);
             aFrameBuffer_644.method234(-510);
-            for (LocEntity class35_sub5 = (LocEntity) aLinkedList_943.method227(); class35_sub5 != null; class35_sub5 = (LocEntity) aLinkedList_943.method229(35239))
+            for (LocEntity class35_sub5 = (LocEntity) aLinkedList_943.method227(); class35_sub5 != null; class35_sub5 = (LocEntity) aLinkedList_943.method229())
                 if ((levelRenderFlags[1][class35_sub5.anInt1041][class35_sub5.anInt1042] & 2) == 2) {
                     class35_sub5.anInt1039--;
                     if (class35_sub5.anInt1039 < 0)
@@ -5153,7 +5153,7 @@ public class client extends GameShell {
 
             }
 
-            for (SpawnedLoc class35_sub3 = (SpawnedLoc) aLinkedList_746.method227(); class35_sub3 != null; class35_sub3 = (SpawnedLoc) aLinkedList_746.method229(35239))
+            for (SpawnedLoc class35_sub3 = (SpawnedLoc) aLinkedList_746.method227(); class35_sub3 != null; class35_sub3 = (SpawnedLoc) aLinkedList_746.method229())
                 method112(true, class35_sub3.anInt1020, class35_sub3.anInt1026, class35_sub3.anInt1023, class35_sub3.anInt1022, class35_sub3.anInt1021, class35_sub3.anInt1024, class35_sub3.anInt1025);
 
         } catch (Exception exception) {
@@ -5634,43 +5634,43 @@ public class client extends GameShell {
         if (aBoolean992) {
             aBoolean992 = false;
             aFrameBuffer_941.method234(-510);
-            aClass35_Sub2_Sub2_Sub3_946.method368(0, anInt861, 0);
+            aClass35_Sub2_Sub2_Sub3_946.draw(0, 0);
             if (anInt981 == -1) {
                 if (anInt907 == 0)
-                    aClass35_Sub2_Sub2_Sub3_647.method368(30, anInt861, 29);
+                    aClass35_Sub2_Sub2_Sub3_647.draw(30, 29);
                 if (anInt907 == 1)
-                    aClass35_Sub2_Sub2_Sub3_648.method368(29, anInt861, 59);
+                    aClass35_Sub2_Sub2_Sub3_648.draw(29, 59);
                 if (anInt907 == 2)
-                    aClass35_Sub2_Sub2_Sub3_648.method368(29, anInt861, 87);
+                    aClass35_Sub2_Sub2_Sub3_648.draw(29, 87);
                 if (anInt907 == 3)
-                    aClass35_Sub2_Sub2_Sub3_649.method368(29, anInt861, 115);
+                    aClass35_Sub2_Sub2_Sub3_649.draw(29, 115);
                 if (anInt907 == 4)
-                    aClass35_Sub2_Sub2_Sub3_651.method368(29, anInt861, 156);
+                    aClass35_Sub2_Sub2_Sub3_651.draw(29, 156);
                 if (anInt907 == 5)
-                    aClass35_Sub2_Sub2_Sub3_651.method368(29, anInt861, 184);
+                    aClass35_Sub2_Sub2_Sub3_651.draw(29, 184);
                 if (anInt907 == 6)
-                    aClass35_Sub2_Sub2_Sub3_650.method368(30, anInt861, 212);
-                aClass35_Sub2_Sub2_Sub3_872.method368(33, anInt861, 39);
+                    aClass35_Sub2_Sub2_Sub3_650.draw(30, 212);
+                aClass35_Sub2_Sub2_Sub3_872.draw(33, 39);
             }
             aFrameBuffer_941.method235(520, super.aGraphics13, 165, aByte930);
             aFrameBuffer_940.method234(-510);
-            aClass35_Sub2_Sub2_Sub3_945.method368(0, anInt861, 0);
+            aClass35_Sub2_Sub2_Sub3_945.draw(0, 0);
             if (anInt981 == -1) {
                 if (anInt907 == 7)
-                    aClass35_Sub2_Sub2_Sub3_727.method368(0, anInt861, 49);
+                    aClass35_Sub2_Sub2_Sub3_727.draw(0, 49);
                 if (anInt907 == 8)
-                    aClass35_Sub2_Sub2_Sub3_728.method368(0, anInt861, 81);
+                    aClass35_Sub2_Sub2_Sub3_728.draw(0, 81);
                 if (anInt907 == 9)
-                    aClass35_Sub2_Sub2_Sub3_728.method368(0, anInt861, 108);
+                    aClass35_Sub2_Sub2_Sub3_728.draw(0, 108);
                 if (anInt907 == 10)
-                    aClass35_Sub2_Sub2_Sub3_729.method368(1, anInt861, 136);
+                    aClass35_Sub2_Sub2_Sub3_729.draw(1, 136);
                 if (anInt907 == 11)
-                    aClass35_Sub2_Sub2_Sub3_731.method368(0, anInt861, 178);
+                    aClass35_Sub2_Sub2_Sub3_731.draw(0, 178);
                 if (anInt907 == 12)
-                    aClass35_Sub2_Sub2_Sub3_731.method368(0, anInt861, 205);
+                    aClass35_Sub2_Sub2_Sub3_731.draw(0, 205);
                 if (anInt907 == 13)
-                    aClass35_Sub2_Sub2_Sub3_730.method368(0, anInt861, 233);
-                aClass35_Sub2_Sub2_Sub3_873.method368(4, anInt861, 83);
+                    aClass35_Sub2_Sub2_Sub3_730.draw(0, 233);
+                aClass35_Sub2_Sub2_Sub3_873.draw(4, 83);
             }
             aFrameBuffer_940.method235(501, super.aGraphics13, 492, aByte930);
             aFrameBuffer_644.method234(-510);
@@ -5678,7 +5678,7 @@ public class client extends GameShell {
         if (aBoolean655) {
             aBoolean655 = false;
             aFrameBuffer_939.method234(-510);
-            aClass35_Sub2_Sub2_Sub3_944.method368(0, anInt861, 0);
+            aClass35_Sub2_Sub2_Sub3_944.draw(0, 0);
             p12.method371(33, 57, 0xffffff, "Public chat", 26631, true);
             if (anInt976 == 0)
                 p12.method371(46, 57, 65280, "On", 26631, true);
@@ -5844,7 +5844,7 @@ public class client extends GameShell {
     public void method92(int i) {
         while (i >= 0)
             anInt839 = isaac.nextInt();
-        for (ProjectileEntity class35_sub7_sub1 = (ProjectileEntity) aLinkedList_863.method227(); class35_sub7_sub1 != null; class35_sub7_sub1 = (ProjectileEntity) aLinkedList_863.method229(35239))
+        for (ProjectileEntity class35_sub7_sub1 = (ProjectileEntity) aLinkedList_863.method227(); class35_sub7_sub1 != null; class35_sub7_sub1 = (ProjectileEntity) aLinkedList_863.method229())
             if (class35_sub7_sub1.anInt1174 != anInt722 || anInt759 > class35_sub7_sub1.anInt1180)
                 class35_sub7_sub1.unlink();
             else if (anInt759 >= class35_sub7_sub1.anInt1179) {
@@ -6114,24 +6114,24 @@ public class client extends GameShell {
     }
 
     public void method96(int i, boolean flag, int j, int k, int l, int i1) {
-        aClass35_Sub2_Sub2_Sub3_978.method368(i, anInt861, j);
-        aClass35_Sub2_Sub2_Sub3_979.method368((i + i1) - 16, anInt861, j);
-        Draw2D.method333(anInt881, anInt807, i1 - 32, i + 16, 16, j);
+        aClass35_Sub2_Sub2_Sub3_978.draw(i, j);
+        aClass35_Sub2_Sub2_Sub3_979.draw((i + i1) - 16, j);
+        Draw2D.fillRect(anInt881, i1 - 32, i + 16, 16, j);
         int j1 = ((i1 - 32) * i1) / k;
         if (j1 < 8)
             j1 = 8;
         int k1 = ((i1 - 32 - j1) * l) / (k - i1);
-        Draw2D.method333(anInt902, anInt807, j1, i + 16 + k1, 16, j);
-        Draw2D.method336(31405, anInt876, i + 16 + k1, j, j1);
-        Draw2D.method336(31405, anInt876, i + 16 + k1, j + 1, j1);
-        Draw2D.method335(16, false, j, i + 16 + k1, anInt876);
+        Draw2D.fillRect(anInt902, j1, i + 16 + k1, 16, j);
+        Draw2D.drawVerticalLine(j, i + 16 + k1, j1, anInt876);
+        Draw2D.drawVerticalLine(j + 1, i + 16 + k1, j1, anInt876);
+        Draw2D.drawHorizontalLine(j, i + 16 + k1, 16, anInt876);
         if (flag)
             method6();
-        Draw2D.method335(16, false, j, i + 17 + k1, anInt876);
-        Draw2D.method336(31405, anInt844, i + 16 + k1, j + 15, j1);
-        Draw2D.method336(31405, anInt844, i + 17 + k1, j + 14, j1 - 1);
-        Draw2D.method335(16, false, j, i + 15 + k1 + j1, anInt844);
-        Draw2D.method335(15, false, j + 1, i + 14 + k1 + j1, anInt844);
+        Draw2D.drawHorizontalLine(j, i + 17 + k1, 16, anInt876);
+        Draw2D.drawVerticalLine(j + 15, i + 16 + k1, j1, anInt844);
+        Draw2D.drawVerticalLine(j + 14, i + 17 + k1, j1 - 1, anInt844);
+        Draw2D.drawHorizontalLine(j, i + 15 + k1 + j1, 16, anInt844);
+        Draw2D.drawHorizontalLine(j + 1, i + 14 + k1 + j1, 15, anInt844);
     }
 
     public void method97(byte byte0, IndexedSprite class35_sub2_sub2_sub3) {
@@ -6163,11 +6163,11 @@ public class client extends GameShell {
 
         if (class35_sub2_sub2_sub3 != null) {
             int l1 = 0;
-            for (int j2 = 0; j2 < class35_sub2_sub2_sub3.anInt1307; j2++) {
-                for (int l2 = 0; l2 < class35_sub2_sub2_sub3.anInt1306; l2++)
-                    if (class35_sub2_sub2_sub3.aByteArray1304[l1++] != 0) {
-                        int i3 = l2 + 16 + class35_sub2_sub2_sub3.anInt1308;
-                        int j3 = j2 + 16 + class35_sub2_sub2_sub3.anInt1309;
+            for (int j2 = 0; j2 < class35_sub2_sub2_sub3.spriteHeight; j2++) {
+                for (int l2 = 0; l2 < class35_sub2_sub2_sub3.spriteWidth; l2++)
+                    if (class35_sub2_sub2_sub3.pixels[l1++] != 0) {
+                        int i3 = l2 + 16 + class35_sub2_sub2_sub3.clipX;
+                        int j3 = j2 + 16 + class35_sub2_sub2_sub3.clipY;
                         int k3 = i3 + (j3 << 7);
                         anIntArray956[k3] = 0;
                     }
@@ -6248,7 +6248,7 @@ public class client extends GameShell {
             anIntArrayArrayArray725 = new int[4][105][105];
             aMapSquare_741 = new MapSquare(anIntArrayArrayArray725, -4278, 4, 104, 104);
             for (int l = 0; l < 4; l++)
-                aCollisionMapArray737[l] = new CollisionMap(104, anInt676, 104);
+                aCollisionMapArray737[l] = new CollisionMap(104, 104);
 
             aSprite_954 = new Sprite(512, 512);
             showProgress((byte) -75, 80, "Unpacking media");
@@ -6298,50 +6298,50 @@ public class client extends GameShell {
             aClass35_Sub2_Sub2_Sub3_648 = new IndexedSprite(media, "redstone2", 0);
             aClass35_Sub2_Sub2_Sub3_649 = new IndexedSprite(media, "redstone3", 0);
             aClass35_Sub2_Sub2_Sub3_650 = new IndexedSprite(media, "redstone1", 0);
-            aClass35_Sub2_Sub2_Sub3_650.method366(-25737);
+            aClass35_Sub2_Sub2_Sub3_650.flipHorizontally();
             aClass35_Sub2_Sub2_Sub3_651 = new IndexedSprite(media, "redstone2", 0);
-            aClass35_Sub2_Sub2_Sub3_651.method366(-25737);
+            aClass35_Sub2_Sub2_Sub3_651.flipHorizontally();
             aClass35_Sub2_Sub2_Sub3_727 = new IndexedSprite(media, "redstone1", 0);
-            aClass35_Sub2_Sub2_Sub3_727.method367(false);
+            aClass35_Sub2_Sub2_Sub3_727.flipVertically();
             aClass35_Sub2_Sub2_Sub3_728 = new IndexedSprite(media, "redstone2", 0);
-            aClass35_Sub2_Sub2_Sub3_728.method367(false);
+            aClass35_Sub2_Sub2_Sub3_728.flipVertically();
             aClass35_Sub2_Sub2_Sub3_729 = new IndexedSprite(media, "redstone3", 0);
-            aClass35_Sub2_Sub2_Sub3_729.method367(false);
+            aClass35_Sub2_Sub2_Sub3_729.flipVertically();
             aClass35_Sub2_Sub2_Sub3_730 = new IndexedSprite(media, "redstone1", 0);
-            aClass35_Sub2_Sub2_Sub3_730.method366(-25737);
-            aClass35_Sub2_Sub2_Sub3_730.method367(false);
+            aClass35_Sub2_Sub2_Sub3_730.flipHorizontally();
+            aClass35_Sub2_Sub2_Sub3_730.flipVertically();
             aClass35_Sub2_Sub2_Sub3_731 = new IndexedSprite(media, "redstone2", 0);
-            aClass35_Sub2_Sub2_Sub3_731.method366(-25737);
-            aClass35_Sub2_Sub2_Sub3_731.method367(false);
+            aClass35_Sub2_Sub2_Sub3_731.flipHorizontally();
+            aClass35_Sub2_Sub2_Sub3_731.flipVertically();
             Sprite class35_sub2_sub2_sub2 = new Sprite(media, "backleft1", 0);
-            aFrameBuffer_982 = new FrameBuffer(class35_sub2_sub2_sub2.anInt1294, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.anInt1293);
+            aFrameBuffer_982 = new FrameBuffer(class35_sub2_sub2_sub2.spriteHeight, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.spriteWidth);
             class35_sub2_sub2_sub2.method355(0, anInt841, 0);
             class35_sub2_sub2_sub2 = new Sprite(media, "backleft2", 0);
-            aFrameBuffer_983 = new FrameBuffer(class35_sub2_sub2_sub2.anInt1294, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.anInt1293);
+            aFrameBuffer_983 = new FrameBuffer(class35_sub2_sub2_sub2.spriteHeight, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.spriteWidth);
             class35_sub2_sub2_sub2.method355(0, anInt841, 0);
             class35_sub2_sub2_sub2 = new Sprite(media, "backright1", 0);
-            aFrameBuffer_984 = new FrameBuffer(class35_sub2_sub2_sub2.anInt1294, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.anInt1293);
+            aFrameBuffer_984 = new FrameBuffer(class35_sub2_sub2_sub2.spriteHeight, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.spriteWidth);
             class35_sub2_sub2_sub2.method355(0, anInt841, 0);
             class35_sub2_sub2_sub2 = new Sprite(media, "backright2", 0);
-            aFrameBuffer_985 = new FrameBuffer(class35_sub2_sub2_sub2.anInt1294, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.anInt1293);
+            aFrameBuffer_985 = new FrameBuffer(class35_sub2_sub2_sub2.spriteHeight, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.spriteWidth);
             class35_sub2_sub2_sub2.method355(0, anInt841, 0);
             class35_sub2_sub2_sub2 = new Sprite(media, "backtop1", 0);
-            aFrameBuffer_986 = new FrameBuffer(class35_sub2_sub2_sub2.anInt1294, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.anInt1293);
+            aFrameBuffer_986 = new FrameBuffer(class35_sub2_sub2_sub2.spriteHeight, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.spriteWidth);
             class35_sub2_sub2_sub2.method355(0, anInt841, 0);
             class35_sub2_sub2_sub2 = new Sprite(media, "backtop2", 0);
-            aFrameBuffer_987 = new FrameBuffer(class35_sub2_sub2_sub2.anInt1294, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.anInt1293);
+            aFrameBuffer_987 = new FrameBuffer(class35_sub2_sub2_sub2.spriteHeight, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.spriteWidth);
             class35_sub2_sub2_sub2.method355(0, anInt841, 0);
             class35_sub2_sub2_sub2 = new Sprite(media, "backvmid1", 0);
-            aFrameBuffer_988 = new FrameBuffer(class35_sub2_sub2_sub2.anInt1294, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.anInt1293);
+            aFrameBuffer_988 = new FrameBuffer(class35_sub2_sub2_sub2.spriteHeight, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.spriteWidth);
             class35_sub2_sub2_sub2.method355(0, anInt841, 0);
             class35_sub2_sub2_sub2 = new Sprite(media, "backvmid2", 0);
-            aFrameBuffer_989 = new FrameBuffer(class35_sub2_sub2_sub2.anInt1294, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.anInt1293);
+            aFrameBuffer_989 = new FrameBuffer(class35_sub2_sub2_sub2.spriteHeight, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.spriteWidth);
             class35_sub2_sub2_sub2.method355(0, anInt841, 0);
             class35_sub2_sub2_sub2 = new Sprite(media, "backvmid3", 0);
-            aFrameBuffer_990 = new FrameBuffer(class35_sub2_sub2_sub2.anInt1294, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.anInt1293);
+            aFrameBuffer_990 = new FrameBuffer(class35_sub2_sub2_sub2.spriteHeight, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.spriteWidth);
             class35_sub2_sub2_sub2.method355(0, anInt841, 0);
             class35_sub2_sub2_sub2 = new Sprite(media, "backhmid2", 0);
-            aFrameBuffer_991 = new FrameBuffer(class35_sub2_sub2_sub2.anInt1294, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.anInt1293);
+            aFrameBuffer_991 = new FrameBuffer(class35_sub2_sub2_sub2.spriteHeight, (byte) -58, method11(-36374), class35_sub2_sub2_sub2.spriteWidth);
             class35_sub2_sub2_sub2.method355(0, anInt841, 0);
             showProgress((byte) -75, 85, "Unpacking textures");
             Draw3D.method342(aBoolean828, textures);
@@ -6370,7 +6370,7 @@ public class client extends GameShell {
                 int k2 = 999;
                 int i3 = 0;
                 for (int k3 = 0; k3 < 35; k3++) {
-                    if (aClass35_Sub2_Sub2_Sub3_692.aByteArray1304[k3 + j2 * aClass35_Sub2_Sub2_Sub3_692.anInt1306] == 0) {
+                    if (aClass35_Sub2_Sub2_Sub3_692.pixels[k3 + j2 * aClass35_Sub2_Sub2_Sub3_692.spriteWidth] == 0) {
                         if (k2 == 999)
                             k2 = k3;
                         continue;
@@ -6389,7 +6389,7 @@ public class client extends GameShell {
                 int j3 = 999;
                 int l3 = 0;
                 for (int j4 = 10; j4 < 168; j4++) {
-                    if (aClass35_Sub2_Sub2_Sub3_692.aByteArray1304[j4 + l2 * aClass35_Sub2_Sub2_Sub3_692.anInt1306] == 0 && (j4 > 34 || l2 > 34)) {
+                    if (aClass35_Sub2_Sub2_Sub3_692.pixels[j4 + l2 * aClass35_Sub2_Sub2_Sub3_692.spriteWidth] == 0 && (j4 > 34 || l2 > 34)) {
                         if (j3 == 999)
                             j3 = j4;
                         continue;
@@ -6621,7 +6621,7 @@ public class client extends GameShell {
             }
         }
 
-        Draw2D.method333(0xffffff, anInt807, 3, 82, 3, 93);
+        Draw2D.fillRect(0xffffff, 3, 82, 3, 93);
         aFrameBuffer_644.method234(-510);
         aBoolean734 &= flag;
     }
@@ -6673,7 +6673,7 @@ public class client extends GameShell {
                 seed[k] += 50;
 
             isaac = new IsaacRandom(seed);
-            stream.write(loginBuffer.data, loginBuffer.pos, false, 0);
+            stream.write(loginBuffer.data, loginBuffer.pos);
             int l = stream.read();
             if (l == 1) {
                 try {
@@ -6729,7 +6729,7 @@ public class client extends GameShell {
 
                 }
 
-                aLinkedList_746 = new LinkedList(5);
+                aLinkedList_746 = new LinkedList();
                 anInt638 = 0;
                 anInt702 = -1;
                 anInt962 = -1;
@@ -6838,12 +6838,12 @@ public class client extends GameShell {
         }
     }
 
-    public void method12(Runnable runnable, int i) {
+    public void startThread(Runnable runnable, int i) {
         if (signlink.mainapp != null) {
             signlink.startthread(runnable, i);
             return;
         } else {
-            super.method12(runnable, i);
+            super.startThread(runnable, i);
             return;
         }
     }
@@ -6859,7 +6859,7 @@ public class client extends GameShell {
     public void method105(byte byte0) {
         aFrameBuffer_642.method234(-510);
         Draw3D.anIntArray1273 = anIntArray935;
-        aClass35_Sub2_Sub2_Sub3_691.method368(0, anInt861, 0);
+        aClass35_Sub2_Sub2_Sub3_691.draw(0, 0);
         if (byte0 == 7)
             byte0 = 0;
         else
@@ -6898,13 +6898,13 @@ public class client extends GameShell {
         class35_sub2_sub2_sub2.method355(-186, anInt841, -128);
         aFrameBuffer_897.method234(-510);
         class35_sub2_sub2_sub2.method355(-186, anInt841, -574);
-        int[] ai = new int[class35_sub2_sub2_sub2.anInt1293];
-        for (int i = 0; i < class35_sub2_sub2_sub2.anInt1294; i++) {
-            for (int j = 0; j < class35_sub2_sub2_sub2.anInt1293; j++)
-                ai[j] = class35_sub2_sub2_sub2.anIntArray1292[(class35_sub2_sub2_sub2.anInt1293 - j - 1) + class35_sub2_sub2_sub2.anInt1293 * i];
+        int[] ai = new int[class35_sub2_sub2_sub2.spriteWidth];
+        for (int i = 0; i < class35_sub2_sub2_sub2.spriteHeight; i++) {
+            for (int j = 0; j < class35_sub2_sub2_sub2.spriteWidth; j++)
+                ai[j] = class35_sub2_sub2_sub2.pixels[(class35_sub2_sub2_sub2.spriteWidth - j - 1) + class35_sub2_sub2_sub2.spriteWidth * i];
 
-            for (int k = 0; k < class35_sub2_sub2_sub2.anInt1293; k++)
-                class35_sub2_sub2_sub2.anIntArray1292[k + class35_sub2_sub2_sub2.anInt1293 * i] = ai[k];
+            for (int k = 0; k < class35_sub2_sub2_sub2.spriteWidth; k++)
+                class35_sub2_sub2_sub2.pixels[k + class35_sub2_sub2_sub2.spriteWidth * i] = ai[k];
 
         }
 
@@ -6928,7 +6928,7 @@ public class client extends GameShell {
         class35_sub2_sub2_sub2.method355(-186, anInt841, -180);
         class35_sub2_sub2_sub2 = new Sprite(title, "logo", 0);
         aFrameBuffer_889.method234(-510);
-        class35_sub2_sub2_sub2.method357(18, anInt861, super.anInt11 / 2 - class35_sub2_sub2_sub2.anInt1293 / 2 - 128);
+        class35_sub2_sub2_sub2.method357(18, super.anInt11 / 2 - class35_sub2_sub2_sub2.spriteWidth / 2 - 128);
         class35_sub2_sub2_sub2 = null;
         abyte0 = null;
         ai = null;
@@ -6950,7 +6950,7 @@ public class client extends GameShell {
             int l2 = 0xeeeeee;
             if (i1 > 0)
                 l2 = 0xee0000;
-            int[] ai = aSprite_954.anIntArray1292;
+            int[] ai = aSprite_954.pixels;
             int k3 = 24624 + j * 4 + (103 - i) * 512 * 4;
             if (j2 == 0 || j2 == 2)
                 if (l1 == 0) {
@@ -7017,7 +7017,7 @@ public class client extends GameShell {
                 int i3 = 0xeeeeee;
                 if (i1 > 0)
                     i3 = 0xee0000;
-                int[] ai1 = aSprite_954.anIntArray1292;
+                int[] ai1 = aSprite_954.pixels;
                 int l3 = 24624 + j * 4 + (103 - i) * 512 * 4;
                 if (i2 == 0 || i2 == 2) {
                     ai1[l3 + 1536] = i3;
@@ -7036,16 +7036,16 @@ public class client extends GameShell {
                 LocType class39 = LocType.get(j3);
                 if (class39.mapscene != -1) {
                     IndexedSprite class35_sub2_sub2_sub3 = aClass35_Sub2_Sub2_Sub3Array718[class39.mapscene];
-                    int i4 = (class39.width * 4 - class35_sub2_sub2_sub3.anInt1306) / 2;
-                    int j4 = (class39.length * 4 - class35_sub2_sub2_sub3.anInt1307) / 2;
-                    class35_sub2_sub2_sub3.method368(48 + (104 - i - class39.length) * 4 + j4, anInt861, 48 + j * 4 + i4);
+                    int i4 = (class39.width * 4 - class35_sub2_sub2_sub3.spriteWidth) / 2;
+                    int j4 = (class39.length * 4 - class35_sub2_sub2_sub3.spriteHeight) / 2;
+                    class35_sub2_sub2_sub3.draw(48 + (104 - i - class39.length) * 4 + j4, 48 + j * 4 + i4);
                 }
             }
         }
     }
 
     public void method108(boolean flag, int i) {
-        int[] ai = aSprite_954.anIntArray1292;
+        int[] ai = aSprite_954.pixels;
         if (flag)
             outBuffer.p1(234);
         int j = ai.length;
@@ -7064,7 +7064,7 @@ public class client extends GameShell {
 
         }
 
-        aSprite_954.method354(-510);
+        aSprite_954.method354();
         for (int j1 = 1; j1 < 103; j1++) {
             for (int l1 = 1; l1 < 103; l1++) {
                 if ((levelRenderFlags[i][l1][j1] & 0x18) == 0)
@@ -7154,10 +7154,10 @@ public class client extends GameShell {
         int k1 = i * i1 + j * j1 >> 16;
         int l1 = i * j1 - j * i1 >> 16;
         if (k > 2500) {
-            class35_sub2_sub2_sub2.method362(0, (94 + k1) - class35_sub2_sub2_sub2.anInt1293 / 2, aClass35_Sub2_Sub2_Sub3_692, 83 - l1 - class35_sub2_sub2_sub2.anInt1294 / 2);
+            class35_sub2_sub2_sub2.method362(0, (94 + k1) - class35_sub2_sub2_sub2.spriteWidth / 2, aClass35_Sub2_Sub2_Sub3_692, 83 - l1 - class35_sub2_sub2_sub2.spriteHeight / 2);
             return;
         } else {
-            class35_sub2_sub2_sub2.method357(83 - l1 - class35_sub2_sub2_sub2.anInt1294 / 2, anInt861, (94 + k1) - class35_sub2_sub2_sub2.anInt1293 / 2);
+            class35_sub2_sub2_sub2.method357(83 - l1 - class35_sub2_sub2_sub2.spriteHeight / 2, (94 + k1) - class35_sub2_sub2_sub2.spriteWidth / 2);
             return;
         }
     }
@@ -7398,7 +7398,7 @@ public class client extends GameShell {
         else
             aLinkedListArrayArrayArray665 = null;
         Draw3D.anIntArray1273 = anIntArray934;
-        aClass35_Sub2_Sub2_Sub3_693.method368(0, anInt861, 0);
+        aClass35_Sub2_Sub2_Sub3_693.draw(0, 0);
         if (aBoolean739) {
             b12.method370(true, 40, 0, 239, aString695);
             b12.method370(true, 60, 128, 239, aString887 + "*");
@@ -7409,7 +7409,7 @@ public class client extends GameShell {
             method53(aBoolean770, Component.aComponentArray110[anInt702], 0, 0, 0);
         } else {
             int i = 0;
-            Draw2D.method331(77, 463, 0, 0, 17913);
+            Draw2D.setBounds(77, 463, 0, 0);
             for (int j = 0; j < 50; j++)
                 if (aStringArray814[j] != null) {
                     int k = anIntArray662[j];
@@ -7459,13 +7459,13 @@ public class client extends GameShell {
                     }
                 }
 
-            Draw2D.method330(-971);
+            Draw2D.resetBounds();
             anInt677 = i * 14 + 7;
             if (anInt677 < 78)
                 anInt677 = 78;
             method96(0, false, 463, anInt677, anInt677 - anInt736 - 77, 77);
             q8.method373(aString784 + "*", 3, 0, true, 90);
-            Draw2D.method335(479, false, 0, 77, 0);
+            Draw2D.drawHorizontalLine(0, 77, 479, 0);
         }
         aFrameBuffer_645.method235(22, super.aGraphics13, 375, aByte930);
         aFrameBuffer_644.method234(-510);
@@ -7476,11 +7476,11 @@ public class client extends GameShell {
         aBoolean635 = false;
         aCRC32_639 = new CRC32();
         aBoolean640 = false;
-        aLinkedList_652 = new LinkedList(5);
+        aLinkedList_652 = new LinkedList();
         aBoolean653 = false;
         aBoolean655 = false;
         aByte656 = 9;
-        aLinkedList_657 = new LinkedList(5);
+        aLinkedList_657 = new LinkedList();
         aBoolean660 = false;
         aBoolean661 = true;
         anIntArray662 = new int[100];
@@ -7517,7 +7517,7 @@ public class client extends GameShell {
         aString743 = "";
         aString744 = "";
         aString745 = "";
-        aLinkedList_746 = new LinkedList(5);
+        aLinkedList_746 = new LinkedList();
         sidebarRedraw = false;
         anInt749 = 2048;
         anInt750 = 2047;
@@ -7568,7 +7568,7 @@ public class client extends GameShell {
         anIntArrayArray859 = new int[104][104];
         anInt861 = 801;
         anIntArray862 = new int[151];
-        aLinkedList_863 = new LinkedList(5);
+        aLinkedList_863 = new LinkedList();
         anIntArray869 = new int[5];
         aStringArray870 = new String[100];
         anInt875 = 1;
@@ -7595,7 +7595,7 @@ public class client extends GameShell {
         anInt923 = 128;
         aByte930 = 7;
         loginBuffer = Buffer.reserve(1);
-        aLinkedList_943 = new LinkedList(5);
+        aLinkedList_943 = new LinkedList();
         aString947 = "";
         anIntArray948 = new int[50];
         anIntArray949 = new int[5];

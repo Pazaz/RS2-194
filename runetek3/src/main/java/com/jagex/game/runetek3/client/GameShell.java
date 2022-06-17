@@ -24,7 +24,7 @@ public class GameShell extends Applet
             return;
         } else {
             aFrameBuffer_14 = new FrameBuffer(anInt12, (byte) -58, method11(-36374), anInt11);
-            method12(this, 1);
+            startThread(this, 1);
             return;
         }
     }
@@ -37,7 +37,7 @@ public class GameShell extends Applet
             anInt12 = j;
             aGraphics13 = method11(-36374).getGraphics();
             aFrameBuffer_14 = new FrameBuffer(anInt12, (byte) -58, method11(-36374), anInt11);
-            method12(this, 1);
+            startThread(this, 1);
             return;
         }
     }
@@ -383,7 +383,7 @@ public class GameShell extends Applet
         return this;
     }
 
-    public void method12(Runnable runnable, int i) {
+    public void startThread(Runnable runnable, int i) {
         Thread thread = new Thread(runnable);
         thread.start();
         thread.setPriority(i);

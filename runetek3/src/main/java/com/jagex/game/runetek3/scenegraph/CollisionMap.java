@@ -1,42 +1,62 @@
 package com.jagex.game.runetek3.scenegraph;
 
-// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
 public class CollisionMap {
 
-    public CollisionMap(int i, int j, int k) {
-        anInt35 = -40161;
-        aBoolean36 = false;
-        aBoolean37 = true;
-        anInt38 = 647;
-        j = 97 / j;
-        anInt39 = 0;
-        anInt40 = 0;
-        anInt41 = i;
-        anInt42 = k;
-        anIntArrayArray43 = new int[anInt41][anInt42];
-        method121((byte) 5);
+    public static final int OPEN = 0x0;
+    public static final int CLOSED = 0xFFFFFF;
+
+    public static final int WALL_NORTHWEST = 0x1;
+    public static final int WALL_NORTH = 0x2;
+    public static final int WALL_NORTHEAST = 0x4;
+    public static final int WALL_EAST = 0x8;
+    public static final int WALL_SOUTHEAST = 0x10;
+    public static final int WALL_SOUTH = 0x20;
+    public static final int WALL_SOUTHWEST = 0x40;
+    public static final int WALL_WEST = 0x80;
+
+    public static final int OCCUPIED_TILE = 0x100;
+
+    public static final int BLOCKED_NORTHWEST = 0x200;
+    public static final int BLOCKED_NORTH = 0x400;
+    public static final int BLOCKED_NORTHEAST = 0x800;
+    public static final int BLOCKED_EAST = 0x1000;
+    public static final int BLOCKED_SOUTHEAST = 0x2000;
+    public static final int BLOCKED_SOUTH = 0x4000;
+    public static final int BLOCKED_SOUTHWEST = 0x8000;
+    public static final int BLOCKED_WEST = 0x10000;
+
+    public static final int SOLID = 0x20000;
+    public static final int FLAG_UNUSED1 = 0x80000;
+    public static final int BLOCKED_TILE = 0x200000;
+
+    public boolean aBoolean37;
+
+    public int anInt39;
+    public int anInt40;
+    public int x;
+    public int z;
+    public int[][] flags;
+
+    public CollisionMap(int x, int z) {
+        this.x = x;
+        this.z = z;
+        flags = new int[this.x][this.z];
+        reset();
     }
 
-    public void method121(byte byte0) {
-        for (int i = 0; i < anInt41; i++) {
-            for (int j = 0; j < anInt42; j++)
-                if (i == 0 || j == 0 || i == anInt41 - 1 || j == anInt42 - 1)
-                    anIntArrayArray43[i][j] = 0xffffff;
-                else
-                    anIntArrayArray43[i][j] = 0;
-
-        }
-
-        if (byte0 != 5) {
-            for (int k = 1; k > 0; k++) ;
+    public void reset() {
+        for (int x = 0; x < this.x; x++) {
+            for (int z = 0; z < this.z; z++) {
+                if (x == 0 || z == 0 || x == this.x - 1 || z == this.z - 1) {
+                    flags[x][z] = CLOSED;
+                } else {
+                    flags[x][z] = OPEN;
+                }
+            }
         }
     }
 
-    public void method122(int i, int j, int k, int l, int i1, boolean flag) {
-        i1 = 51 / i1;
+    public void method122(int i, int j, int k, int l, boolean flag) {
         l -= anInt39;
         j -= anInt40;
         if (i == 0) {
@@ -159,10 +179,11 @@ public class CollisionMap {
         }
     }
 
-    public void method123(int i, int j, boolean flag, int k, int l, int i1, int j1) {
-        int k1 = 256;
-        if (flag)
-            k1 += 0x20000;
+    public void setLoc(int i, int j, boolean solid, int k, int i1, int j1) {
+        int flag = OCCUPIED_TILE;
+        if (solid) {
+            flag += 0x20000;
+        }
         i -= anInt39;
         i1 -= anInt40;
         if (j1 == 1 || j1 == 3) {
@@ -171,27 +192,22 @@ public class CollisionMap {
             j = l1;
         }
         for (int i2 = i; i2 < i + k; i2++)
-            if (i2 >= 0 && i2 < anInt41) {
+            if (i2 >= 0 && i2 < x) {
                 for (int j2 = i1; j2 < i1 + j; j2++)
-                    if (j2 >= 0 && j2 < anInt42)
-                        method125(i2, j2, k1);
-
+                    if (j2 >= 0 && j2 < z) {
+                        method125(i2, j2, flag);
+                    }
             }
-
-        while (l >= 0)
-            anInt35 = 118;
     }
 
-    public void method124(int i, int j, int k) {
+    public void method124(int j, int k) {
         k -= anInt39;
         j -= anInt40;
-        anIntArrayArray43[k][j] |= 0x200000;
-        if (i >= 2)
-            if (i <= 2) ;
+        flags[k][j] |= 0x200000;
     }
 
     public void method125(int i, int j, int k) {
-        anIntArrayArray43[i][j] |= k;
+        flags[i][j] |= k;
     }
 
     public void method126(int i, int j, int k, boolean flag, int l, int i1) {
@@ -333,9 +349,9 @@ public class CollisionMap {
             j = k1;
         }
         for (int l1 = i1; l1 < i1 + k; l1++)
-            if (l1 >= 0 && l1 < anInt41) {
+            if (l1 >= 0 && l1 < x) {
                 for (int i2 = i; i2 < i + j; i2++)
-                    if (i2 >= 0 && i2 < anInt42)
+                    if (i2 >= 0 && i2 < z)
                         method128(l1, (byte) 3, i2, j1);
 
             }
@@ -343,7 +359,7 @@ public class CollisionMap {
     }
 
     public void method128(int i, byte byte0, int j, int k) {
-        anIntArrayArray43[i][j] &= 0xffffff - k;
+        flags[i][j] &= 0xffffff - k;
         if (byte0 != 3) {
             for (int l = 1; l > 0; l++) ;
         }
@@ -351,111 +367,140 @@ public class CollisionMap {
 
     public void method129(int i, int j, int k) {
         j -= anInt39;
-        if (i <= 0) {
-            return;
-        } else {
+        if (i > 0) {
             k -= anInt40;
-            anIntArrayArray43[j][k] &= 0xdfffff;
-            return;
+            flags[j][k] &= 0xdfffff;
         }
     }
 
-    public boolean method130(int i, int j, int k, int l, int i1, int j1, int k1) {
-        if (k1 == i1 && i == l)
+    public boolean method130(int i, int j, int k, int l, int i1, int k1) {
+        if (k1 == i1 && i == l) {
             return true;
-        k1 -= anInt39;
-        if (j1 != 7) {
-            for (int l1 = 1; l1 > 0; l1++) ;
         }
+        k1 -= anInt39;
+
         i -= anInt40;
         i1 -= anInt39;
         l -= anInt40;
-        if (j == 0)
+        if (j == 0) {
             if (k == 0) {
-                if (k1 == i1 - 1 && i == l)
+                if (k1 == i1 - 1 && i == l) {
                     return true;
-                if (k1 == i1 && i == l + 1 && (anIntArrayArray43[k1][i] & 0x280120) == 0)
+                }
+                if (k1 == i1 && i == l + 1 && (flags[k1][i] & 0x280120) == 0) {
                     return true;
-                if (k1 == i1 && i == l - 1 && (anIntArrayArray43[k1][i] & 0x280102) == 0)
+                }
+                if (k1 == i1 && i == l - 1 && (flags[k1][i] & 0x280102) == 0) {
                     return true;
+                }
             } else if (k == 1) {
-                if (k1 == i1 && i == l + 1)
+                if (k1 == i1 && i == l + 1) {
                     return true;
-                if (k1 == i1 - 1 && i == l && (anIntArrayArray43[k1][i] & 0x280108) == 0)
+                }
+                if (k1 == i1 - 1 && i == l && (flags[k1][i] & 0x280108) == 0) {
                     return true;
-                if (k1 == i1 + 1 && i == l && (anIntArrayArray43[k1][i] & 0x280180) == 0)
+                }
+                if (k1 == i1 + 1 && i == l && (flags[k1][i] & 0x280180) == 0) {
                     return true;
+                }
             } else if (k == 2) {
-                if (k1 == i1 + 1 && i == l)
+                if (k1 == i1 + 1 && i == l) {
                     return true;
-                if (k1 == i1 && i == l + 1 && (anIntArrayArray43[k1][i] & 0x280120) == 0)
+                }
+                if (k1 == i1 && i == l + 1 && (flags[k1][i] & 0x280120) == 0) {
                     return true;
-                if (k1 == i1 && i == l - 1 && (anIntArrayArray43[k1][i] & 0x280102) == 0)
+                }
+                if (k1 == i1 && i == l - 1 && (flags[k1][i] & 0x280102) == 0) {
                     return true;
+                }
             } else if (k == 3) {
-                if (k1 == i1 && i == l - 1)
+                if (k1 == i1 && i == l - 1) {
                     return true;
-                if (k1 == i1 - 1 && i == l && (anIntArrayArray43[k1][i] & 0x280108) == 0)
+                }
+                if (k1 == i1 - 1 && i == l && (flags[k1][i] & 0x280108) == 0) {
                     return true;
-                if (k1 == i1 + 1 && i == l && (anIntArrayArray43[k1][i] & 0x280180) == 0)
+                }
+                if (k1 == i1 + 1 && i == l && (flags[k1][i] & 0x280180) == 0) {
                     return true;
+                }
             }
-        if (j == 2)
+        }
+        if (j == 2) {
             if (k == 0) {
-                if (k1 == i1 - 1 && i == l)
+                if (k1 == i1 - 1 && i == l) {
                     return true;
-                if (k1 == i1 && i == l + 1)
+                }
+                if (k1 == i1 && i == l + 1) {
                     return true;
-                if (k1 == i1 + 1 && i == l && (anIntArrayArray43[k1][i] & 0x280180) == 0)
+                }
+                if (k1 == i1 + 1 && i == l && (flags[k1][i] & 0x280180) == 0) {
                     return true;
-                if (k1 == i1 && i == l - 1 && (anIntArrayArray43[k1][i] & 0x280102) == 0)
+                }
+                if (k1 == i1 && i == l - 1 && (flags[k1][i] & 0x280102) == 0) {
                     return true;
+                }
             } else if (k == 1) {
-                if (k1 == i1 - 1 && i == l && (anIntArrayArray43[k1][i] & 0x280108) == 0)
+                if (k1 == i1 - 1 && i == l && (flags[k1][i] & 0x280108) == 0) {
                     return true;
-                if (k1 == i1 && i == l + 1)
+                }
+                if (k1 == i1 && i == l + 1) {
                     return true;
-                if (k1 == i1 + 1 && i == l)
+                }
+                if (k1 == i1 + 1 && i == l) {
                     return true;
-                if (k1 == i1 && i == l - 1 && (anIntArrayArray43[k1][i] & 0x280102) == 0)
+                }
+                if (k1 == i1 && i == l - 1 && (flags[k1][i] & 0x280102) == 0) {
                     return true;
+                }
             } else if (k == 2) {
-                if (k1 == i1 - 1 && i == l && (anIntArrayArray43[k1][i] & 0x280108) == 0)
+                if (k1 == i1 - 1 && i == l && (flags[k1][i] & 0x280108) == 0) {
                     return true;
-                if (k1 == i1 && i == l + 1 && (anIntArrayArray43[k1][i] & 0x280120) == 0)
+                }
+                if (k1 == i1 && i == l + 1 && (flags[k1][i] & 0x280120) == 0) {
                     return true;
-                if (k1 == i1 + 1 && i == l)
+                }
+                if (k1 == i1 + 1 && i == l) {
                     return true;
-                if (k1 == i1 && i == l - 1)
+                }
+                if (k1 == i1 && i == l - 1) {
                     return true;
+                }
             } else if (k == 3) {
-                if (k1 == i1 - 1 && i == l)
+                if (k1 == i1 - 1 && i == l) {
                     return true;
-                if (k1 == i1 && i == l + 1 && (anIntArrayArray43[k1][i] & 0x280120) == 0)
+                }
+                if (k1 == i1 && i == l + 1 && (flags[k1][i] & 0x280120) == 0) {
                     return true;
-                if (k1 == i1 + 1 && i == l && (anIntArrayArray43[k1][i] & 0x280180) == 0)
+                }
+                if (k1 == i1 + 1 && i == l && (flags[k1][i] & 0x280180) == 0) {
                     return true;
-                if (k1 == i1 && i == l - 1)
+                }
+                if (k1 == i1 && i == l - 1) {
                     return true;
+                }
             }
+        }
         if (j == 9) {
-            if (k1 == i1 && i == l + 1 && (anIntArrayArray43[k1][i] & 0x20) == 0)
+            if (k1 == i1 && i == l + 1 && (flags[k1][i] & 0x20) == 0) {
                 return true;
-            if (k1 == i1 && i == l - 1 && (anIntArrayArray43[k1][i] & 2) == 0)
+            }
+            if (k1 == i1 && i == l - 1 && (flags[k1][i] & 2) == 0) {
                 return true;
-            if (k1 == i1 - 1 && i == l && (anIntArrayArray43[k1][i] & 8) == 0)
+            }
+            if (k1 == i1 - 1 && i == l && (flags[k1][i] & 8) == 0) {
                 return true;
-            return k1 == i1 + 1 && i == l && (anIntArrayArray43[k1][i] & 0x80) == 0;
+            }
+            return k1 == i1 + 1 && i == l && (flags[k1][i] & 0x80) == 0;
         }
         return false;
     }
 
-    public boolean method131(int i, int j, byte byte0, int k, int l, int i1, int j1) {
-        if (k == i && j == i1)
+    public boolean method131(int i, int j, int k, int l, int i1, int j1) {
+        if (k == i && j == i1) {
             return true;
+        }
         k -= anInt39;
-        if (byte0 != -14)
-            throw new NullPointerException();
+
         j -= anInt40;
         i -= anInt39;
         i1 -= anInt40;
@@ -463,62 +508,50 @@ public class CollisionMap {
             if (l == 7)
                 j1 = j1 + 2 & 3;
             if (j1 == 0) {
-                if (k == i + 1 && j == i1 && (anIntArrayArray43[k][j] & 0x80) == 0)
+                if (k == i + 1 && j == i1 && (flags[k][j] & 0x80) == 0)
                     return true;
-                if (k == i && j == i1 - 1 && (anIntArrayArray43[k][j] & 2) == 0)
+                if (k == i && j == i1 - 1 && (flags[k][j] & 2) == 0)
                     return true;
             } else if (j1 == 1) {
-                if (k == i - 1 && j == i1 && (anIntArrayArray43[k][j] & 8) == 0)
+                if (k == i - 1 && j == i1 && (flags[k][j] & 8) == 0)
                     return true;
-                if (k == i && j == i1 - 1 && (anIntArrayArray43[k][j] & 2) == 0)
+                if (k == i && j == i1 - 1 && (flags[k][j] & 2) == 0)
                     return true;
             } else if (j1 == 2) {
-                if (k == i - 1 && j == i1 && (anIntArrayArray43[k][j] & 8) == 0)
+                if (k == i - 1 && j == i1 && (flags[k][j] & 8) == 0)
                     return true;
-                if (k == i && j == i1 + 1 && (anIntArrayArray43[k][j] & 0x20) == 0)
+                if (k == i && j == i1 + 1 && (flags[k][j] & 0x20) == 0)
                     return true;
             } else if (j1 == 3) {
-                if (k == i + 1 && j == i1 && (anIntArrayArray43[k][j] & 0x80) == 0)
+                if (k == i + 1 && j == i1 && (flags[k][j] & 0x80) == 0)
                     return true;
-                if (k == i && j == i1 + 1 && (anIntArrayArray43[k][j] & 0x20) == 0)
+                if (k == i && j == i1 + 1 && (flags[k][j] & 0x20) == 0)
                     return true;
             }
         }
         if (l == 8) {
-            if (k == i && j == i1 + 1 && (anIntArrayArray43[k][j] & 0x20) == 0)
+            if (k == i && j == i1 + 1 && (flags[k][j] & 0x20) == 0)
                 return true;
-            if (k == i && j == i1 - 1 && (anIntArrayArray43[k][j] & 2) == 0)
+            if (k == i && j == i1 - 1 && (flags[k][j] & 2) == 0)
                 return true;
-            if (k == i - 1 && j == i1 && (anIntArrayArray43[k][j] & 8) == 0)
+            if (k == i - 1 && j == i1 && (flags[k][j] & 8) == 0)
                 return true;
-            return k == i + 1 && j == i1 && (anIntArrayArray43[k][j] & 0x80) == 0;
+            return k == i + 1 && j == i1 && (flags[k][j] & 0x80) == 0;
         }
         return false;
     }
 
-    public boolean method132(int i, int j, int k, int l, int i1, int j1, int k1,
-                             int l1) {
+    public boolean method132(int i, int k, int l, int i1, int j1, int k1, int l1) {
         int i2 = (j1 + k) - 1;
         int j2 = (l + i1) - 1;
-        j = 43 / j;
         if (k1 >= j1 && k1 <= i2 && l1 >= l && l1 <= j2)
             return true;
-        if (k1 == j1 - 1 && l1 >= l && l1 <= j2 && (anIntArrayArray43[k1 - anInt39][l1 - anInt40] & 8) == 0 && (i & 8) == 0)
+        if (k1 == j1 - 1 && l1 >= l && l1 <= j2 && (flags[k1 - anInt39][l1 - anInt40] & 8) == 0 && (i & 8) == 0)
             return true;
-        if (k1 == i2 + 1 && l1 >= l && l1 <= j2 && (anIntArrayArray43[k1 - anInt39][l1 - anInt40] & 0x80) == 0 && (i & 2) == 0)
+        if (k1 == i2 + 1 && l1 >= l && l1 <= j2 && (flags[k1 - anInt39][l1 - anInt40] & 0x80) == 0 && (i & 2) == 0)
             return true;
-        if (l1 == l - 1 && k1 >= j1 && k1 <= i2 && (anIntArrayArray43[k1 - anInt39][l1 - anInt40] & 2) == 0 && (i & 4) == 0)
+        if (l1 == l - 1 && k1 >= j1 && k1 <= i2 && (flags[k1 - anInt39][l1 - anInt40] & 2) == 0 && (i & 4) == 0)
             return true;
-        return l1 == j2 + 1 && k1 >= j1 && k1 <= i2 && (anIntArrayArray43[k1 - anInt39][l1 - anInt40] & 0x20) == 0 && (i & 1) == 0;
+        return l1 == j2 + 1 && k1 >= j1 && k1 <= i2 && (flags[k1 - anInt39][l1 - anInt40] & 0x20) == 0 && (i & 1) == 0;
     }
-
-    public int anInt35;
-    public boolean aBoolean36;
-    public boolean aBoolean37;
-    public int anInt38;
-    public int anInt39;
-    public int anInt40;
-    public int anInt41;
-    public int anInt42;
-    public int[][] anIntArrayArray43;
 }

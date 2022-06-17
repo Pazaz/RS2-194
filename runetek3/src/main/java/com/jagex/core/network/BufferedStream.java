@@ -1,9 +1,5 @@
 package com.jagex.core.network;
 
-// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
 import com.jagex.game.runetek3.client.GameShell;
 
 import java.io.IOException;
@@ -11,15 +7,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-public class BufferedStream
-        implements Runnable {
+public class BufferedStream implements Runnable {
 
-    public BufferedStream(GameShell gameShell, int i, Socket socket)
-            throws IOException {
-        aBoolean86 = false;
-        aBoolean91 = false;
-        aBoolean92 = false;
-        anGameShell_87 = gameShell;
+    public BufferedStream(GameShell gameShell, int i, Socket socket) throws IOException {
+        closed = false;
+        writing = false;
+        exception = false;
+        shell = gameShell;
         aSocket85 = socket;
         aSocket85.setSoTimeout(30000);
         aSocket85.setTcpNoDelay(true);
@@ -33,7 +27,7 @@ public class BufferedStream
     }
 
     public void method150() {
-        aBoolean86 = true;
+        closed = true;
         try {
             if (anInputStream83 != null)
                 anInputStream83.close();
@@ -44,117 +38,120 @@ public class BufferedStream
         } catch (IOException _ex) {
             System.out.println("Error closing stream");
         }
-        aBoolean91 = false;
+        writing = false;
         synchronized (this) {
             notify();
         }
-        aByteArray88 = null;
+        buffer = null;
     }
 
-    public int read()
-            throws IOException {
-        if (aBoolean86)
+    public int read() throws IOException {
+        if (closed) {
             return 0;
-        else
+        } else {
             return anInputStream83.read();
+        }
     }
 
-    public int method152()
-            throws IOException {
-        if (aBoolean86)
+    public int method152() throws IOException {
+        if (closed) {
             return 0;
-        else
+        } else {
             return anInputStream83.available();
+        }
     }
 
-    public void method153(byte[] abyte0, int i, int j)
-            throws IOException {
-        if (aBoolean86)
+    public void method153(byte[] abyte0, int i, int j) throws IOException {
+        if (closed) {
             return;
+        }
         int k;
         for (; j > 0; j -= k) {
             k = anInputStream83.read(abyte0, i, j);
-            if (k <= 0)
+            if (k <= 0) {
                 throw new IOException("EOF");
+            }
             i += k;
         }
-
     }
 
-    public void write(byte[] abyte0, int i, boolean flag, int j)
-            throws IOException {
-        if (aBoolean86)
+    public void write(byte[] src, int len) throws IOException {
+        if (closed) {
             return;
-        if (aBoolean92) {
-            aBoolean92 = false;
+        }
+        if (exception) {
+            exception = false;
             throw new IOException("Error in writer thread");
         }
-        if (aByteArray88 == null)
-            aByteArray88 = new byte[5000];
+        if (buffer == null) {
+            buffer = new byte[5000];
+        }
         synchronized (this) {
-            for (int k = 0; k < i; k++) {
-                aByteArray88[anInt90] = abyte0[k + j];
-                anInt90 = (anInt90 + 1) % 5000;
-                if (anInt90 == (anInt89 + 4900) % 5000)
+            for (int i = 0; i < len; i++) {
+                buffer[offset] = src[i];
+                offset = (offset + 1) % 5000;
+                if (offset == (length + 4900) % 5000) {
                     throw new IOException("buffer overflow");
+                }
             }
 
-            if (!aBoolean91) {
-                aBoolean91 = true;
-                anGameShell_87.method12(this, 2);
+            if (!writing) {
+                writing = true;
+                shell.startThread(this, 2);
             }
             notify();
         }
-        if (flag)
-            anInt82 = 114;
     }
 
     public void run() {
         System.out.println("clientstream writer starting");
-        while (aBoolean91) {
+        while (writing) {
             int i;
             int j;
             synchronized (this) {
-                if (anInt90 == anInt89)
+                if (offset == length) {
                     try {
                         wait();
                     } catch (InterruptedException _ex) {
                     }
-                if (!aBoolean91)
+                }
+                if (!writing) {
                     break;
-                j = anInt89;
-                if (anInt90 >= anInt89)
-                    i = anInt90 - anInt89;
-                else
-                    i = 5000 - anInt89;
+                }
+                j = length;
+                if (offset >= length) {
+                    i = offset - length;
+                } else {
+                    i = 5000 - length;
+                }
             }
             if (i > 0) {
                 try {
-                    anOutputStream84.write(aByteArray88, j, i);
+                    anOutputStream84.write(buffer, j, i);
                 } catch (IOException _ex) {
-                    aBoolean92 = true;
+                    exception = true;
                 }
-                anInt89 = (anInt89 + i) % 5000;
+                length = (length + i) % 5000;
                 try {
-                    if (anInt90 == anInt89)
+                    if (offset == length) {
                         anOutputStream84.flush();
+                    }
                 } catch (IOException _ex) {
-                    aBoolean92 = true;
+                    exception = true;
                 }
             }
         }
         System.out.println("clientstream writer stopping");
     }
 
-    public int anInt82;
     public InputStream anInputStream83;
     public OutputStream anOutputStream84;
     public Socket aSocket85;
-    public boolean aBoolean86;
-    public GameShell anGameShell_87;
-    public byte[] aByteArray88;
-    public int anInt89;
-    public int anInt90;
-    public boolean aBoolean91;
-    public boolean aBoolean92;
+    public boolean closed;
+    public GameShell shell;
+    public byte[] buffer;
+    public int length;
+    public int offset;
+    public boolean writing;
+    public boolean exception;
 }

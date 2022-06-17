@@ -1,9 +1,5 @@
 package com.jagex.game.runetek3.config;
 
-// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
 import com.jagex.core.io.Buffer;
 import com.jagex.core.io.FileArchive;
 import com.jagex.core.utils.Cache;
@@ -185,87 +181,91 @@ public class ObjType {
         return class35_sub2_sub1;
     }
 
-    public static Sprite method444(int i, byte byte0) {
+    public static Sprite method444(int i) {
         Sprite class35_sub2_sub2_sub2 = (Sprite) icons.get(i);
-        if (class35_sub2_sub2_sub2 != null)
+        if (class35_sub2_sub2_sub2 != null) {
             return class35_sub2_sub2_sub2;
+        }
         ObjType class41 = get(i);
         class35_sub2_sub2_sub2 = new Sprite(32, 32);
         int j = Draw3D.anInt1267;
         int k = Draw3D.anInt1268;
         int[] ai = Draw3D.anIntArray1273;
-        int[] ai1 = Draw2D.anIntArray1137;
-        int l = Draw2D.anInt1138;
-        int i1 = Draw2D.anInt1139;
+        int[] ai1 = Draw2D.data;
+        int l = Draw2D.width;
+        int i1 = Draw2D.height;
         Draw3D.aBoolean1265 = false;
-        Draw2D.method329(32, class35_sub2_sub2_sub2.anIntArray1292, 32, -810);
-        Draw2D.method333(0, anInt598, 32, 0, 32, 0);
+        Draw2D.prepare(32, class35_sub2_sub2_sub2.pixels, 32);
+        Draw2D.fillRect(0, 32, 0, 32, 0);
         Draw3D.method338((byte) 16);
         Model class35_sub2_sub1 = class41.method443();
         int j1 = Draw3D.anIntArray1271[class41.xand2] * class41.zoom2d >> 16;
         int k1 = Draw3D.anIntArray1272[class41.xand2] * class41.zoom2d >> 16;
         class35_sub2_sub1.method323(0, class41.yand2d, class41.zand2d, class41.xand2, class41.xof2d, j1 + class35_sub2_sub1.maxBoundY / 2 + class41.yof2d, k1 + class41.yof2d);
         for (int j2 = 31; j2 >= 0; j2--) {
-            for (int l1 = 31; l1 >= 0; l1--)
-                if (class35_sub2_sub2_sub2.anIntArray1292[j2 + l1 * 32] == 0)
-                    if (j2 > 0 && class35_sub2_sub2_sub2.anIntArray1292[(j2 - 1) + l1 * 32] > 1)
-                        class35_sub2_sub2_sub2.anIntArray1292[j2 + l1 * 32] = 1;
-                    else if (l1 > 0 && class35_sub2_sub2_sub2.anIntArray1292[j2 + (l1 - 1) * 32] > 1)
-                        class35_sub2_sub2_sub2.anIntArray1292[j2 + l1 * 32] = 1;
-                    else if (j2 < 31 && class35_sub2_sub2_sub2.anIntArray1292[j2 + 1 + l1 * 32] > 1)
-                        class35_sub2_sub2_sub2.anIntArray1292[j2 + l1 * 32] = 1;
-                    else if (l1 < 31 && class35_sub2_sub2_sub2.anIntArray1292[j2 + (l1 + 1) * 32] > 1)
-                        class35_sub2_sub2_sub2.anIntArray1292[j2 + l1 * 32] = 1;
-
+            for (int l1 = 31; l1 >= 0; l1--) {
+                if (class35_sub2_sub2_sub2.pixels[j2 + l1 * 32] == 0) {
+                    if (j2 > 0 && class35_sub2_sub2_sub2.pixels[(j2 - 1) + l1 * 32] > 1) {
+                        class35_sub2_sub2_sub2.pixels[j2 + l1 * 32] = 1;
+                    } else if (l1 > 0 && class35_sub2_sub2_sub2.pixels[j2 + (l1 - 1) * 32] > 1) {
+                        class35_sub2_sub2_sub2.pixels[j2 + l1 * 32] = 1;
+                    } else if (j2 < 31 && class35_sub2_sub2_sub2.pixels[j2 + 1 + l1 * 32] > 1) {
+                        class35_sub2_sub2_sub2.pixels[j2 + l1 * 32] = 1;
+                    } else if (l1 < 31 && class35_sub2_sub2_sub2.pixels[j2 + (l1 + 1) * 32] > 1) {
+                        class35_sub2_sub2_sub2.pixels[j2 + l1 * 32] = 1;
+                    }
+                }
+            }
         }
 
         for (int k2 = 31; k2 >= 0; k2--) {
-            for (int i2 = 31; i2 >= 0; i2--)
-                if (class35_sub2_sub2_sub2.anIntArray1292[k2 + i2 * 32] == 0 && k2 > 0 && i2 > 0 && class35_sub2_sub2_sub2.anIntArray1292[(k2 - 1) + (i2 - 1) * 32] > 0)
-                    class35_sub2_sub2_sub2.anIntArray1292[k2 + i2 * 32] = 0x302020;
-
+            for (int i2 = 31; i2 >= 0; i2--) {
+                if (class35_sub2_sub2_sub2.pixels[k2 + i2 * 32] == 0 && k2 > 0 && i2 > 0 && class35_sub2_sub2_sub2.pixels[(k2 - 1) + (i2 - 1) * 32] > 0) {
+                    class35_sub2_sub2_sub2.pixels[k2 + i2 * 32] = 0x302020;
+                }
+            }
         }
 
         icons.put(i, class35_sub2_sub2_sub2);
-        Draw2D.method329(l, ai1, i1, -810);
+        Draw2D.prepare(l, ai1, i1);
         Draw3D.anInt1267 = j;
         Draw3D.anInt1268 = k;
         Draw3D.anIntArray1273 = ai;
-        if (byte0 != -11)
-            throw new NullPointerException();
+
         Draw3D.aBoolean1265 = true;
-        if (class41.stackable)
-            class35_sub2_sub2_sub2.anInt1297 = 33;
-        else
-            class35_sub2_sub2_sub2.anInt1297 = 32;
+        if (class41.stackable) {
+            class35_sub2_sub2_sub2.cropW = 33;
+        } else {
+            class35_sub2_sub2_sub2.cropW = 32;
+        }
         return class35_sub2_sub2_sub2;
     }
 
-    public Model method445(int i, int j) {
+    public Model method445(int j) {
         int k = manwear;
         if (j == 1)
             k = womanwear;
         if (k == -1)
             return null;
         int l = manwear2;
-        i = 8 / i;
         if (j == 1)
             l = womanwear2;
         Model class35_sub2_sub1 = new Model(k);
         if (l != -1) {
             Model class35_sub2_sub1_1 = new Model(l);
-            Model[] aclass35_sub2_sub1 = {
-                    class35_sub2_sub1, class35_sub2_sub1_1
-            };
+            Model[] aclass35_sub2_sub1 = {class35_sub2_sub1, class35_sub2_sub1_1};
             class35_sub2_sub1 = new Model(false, 2, aclass35_sub2_sub1);
         }
-        if (j == 0 && manwearOffsetY != 0)
+        if (j == 0 && manwearOffsetY != 0) {
             class35_sub2_sub1.translate(0, 0, manwearOffsetY);
-        if (j == 1 && womanwearOffsetY != 0)
+        }
+        if (j == 1 && womanwearOffsetY != 0) {
             class35_sub2_sub1.translate(0, 0, womanwearOffsetY);
+        }
         if (recol_s != null) {
-            for (int i1 = 0; i1 < recol_s.length; i1++)
+            for (int i1 = 0; i1 < recol_s.length; i1++) {
                 class35_sub2_sub1.recolor(recol_s[i1], recol_d[i1]);
+            }
 
         }
         return class35_sub2_sub1;
@@ -276,25 +276,26 @@ public class ObjType {
             for (int j = 1; j > 0; j++) ;
         }
         int k = manhead;
-        if (i == 1)
+        if (i == 1) {
             k = womanhead;
-        if (k == -1)
+        }
+        if (k == -1) {
             return null;
+        }
         int l = manhead2;
-        if (i == 1)
+        if (i == 1) {
             l = womanhead2;
+        }
         Model class35_sub2_sub1 = new Model(k);
         if (l != -1) {
             Model class35_sub2_sub1_1 = new Model(l);
-            Model[] aclass35_sub2_sub1 = {
-                    class35_sub2_sub1, class35_sub2_sub1_1
-            };
+            Model[] aclass35_sub2_sub1 = {class35_sub2_sub1, class35_sub2_sub1_1};
             class35_sub2_sub1 = new Model(false, 2, aclass35_sub2_sub1);
         }
         if (recol_s != null) {
-            for (int i1 = 0; i1 < recol_s.length; i1++)
+            for (int i1 = 0; i1 < recol_s.length; i1++) {
                 class35_sub2_sub1.recolor(recol_s[i1], recol_d[i1]);
-
+            }
         }
         return class35_sub2_sub1;
     }

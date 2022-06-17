@@ -1,118 +1,103 @@
 package com.jagex.core.utils;
 
-// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
 public class LinkedList {
 
-    public LinkedList(int i) {
+    public LinkedList() {
         anInt334 = 962;
         aBoolean335 = true;
         anInt336 = 947;
-        aNode_337 = new Node();
-        aNode_337.aNode_509 = aNode_337;
-        aNode_337.aNode_510 = aNode_337;
-        if (i < 5 || i > 5)
-            throw new NullPointerException();
-        else
-            return;
+        head = new Node();
+        head.prev = head;
+        head.next = head;
     }
 
-    public void pushNext(Node class35) {
-        if (class35.aNode_510 != null)
-            class35.unlink();
-        class35.aNode_510 = aNode_337.aNode_510;
-        class35.aNode_509 = aNode_337;
-        class35.aNode_510.aNode_509 = class35;
-        class35.aNode_509.aNode_510 = class35;
-    }
-
-    public void method225(Node class35, int i) {
-        if (class35.aNode_510 != null)
-            class35.unlink();
-        class35.aNode_510 = aNode_337;
-        class35.aNode_509 = aNode_337.aNode_509;
-        if (i != 0) {
-            return;
-        } else {
-            class35.aNode_510.aNode_509 = class35;
-            class35.aNode_509.aNode_510 = class35;
-            return;
+    public void pushNext(Node node) {
+        if (node.next != null) {
+            node.unlink();
         }
+        node.next = head.next;
+        node.prev = head;
+        node.next.prev = node;
+        node.prev.next = node;
+    }
+
+    public void method225(Node node) {
+        if (node.next != null) {
+            node.unlink();
+        }
+        node.next = head;
+        node.prev = head.prev;
+        node.next.prev = node;
+        node.prev.next = node;
     }
 
     public Node poll() {
-        Node class35 = aNode_337.aNode_509;
-        if (class35 == aNode_337) {
+        Node node = head.prev;
+        if (node == head) {
             return null;
         } else {
-            class35.unlink();
-            return class35;
+            node.unlink();
+            return node;
         }
     }
 
     public Node method227() {
-        Node class35 = aNode_337.aNode_509;
-        if (class35 == aNode_337) {
+        Node node = head.prev;
+        if (node == head) {
             aNode_338 = null;
             return null;
         } else {
-            aNode_338 = class35.aNode_509;
-            return class35;
+            aNode_338 = node.prev;
+            return node;
         }
     }
 
-    public Node method228(int i) {
-        Node class35 = aNode_337.aNode_510;
-        if (class35 == aNode_337) {
+    public Node method228() {
+        Node class35 = head.next;
+        if (class35 == head) {
             aNode_338 = null;
             return null;
         }
-        aNode_338 = class35.aNode_510;
-        if (i < 8 || i > 8)
-            anInt336 = -94;
+        aNode_338 = class35.next;
         return class35;
     }
 
-    public Node method229(int i) {
-        Node class35 = aNode_338;
-        if (i != 35239)
-            anInt336 = -229;
-        if (class35 == aNode_337) {
+    public Node method229() {
+        Node node = aNode_338;
+
+        if (node == head) {
             aNode_338 = null;
             return null;
         } else {
-            aNode_338 = class35.aNode_509;
-            return class35;
+            aNode_338 = node.prev;
+            return node;
         }
     }
 
-    public Node method230(boolean flag) {
+    public Node method230() {
         Node class35 = aNode_338;
-        if (class35 == aNode_337) {
+        if (class35 == head) {
             aNode_338 = null;
             return null;
         }
-        aNode_338 = class35.aNode_510;
-        if (!flag) {
-            for (int i = 1; i > 0; i++) ;
-        }
+        aNode_338 = class35.next;
+
         return class35;
     }
 
     public void method231() {
-        do {
-            Node class35 = aNode_337.aNode_509;
-            if (class35 == aNode_337)
+        while (true) {
+            Node class35 = head.prev;
+            if (class35 == head) {
                 return;
+            }
             class35.unlink();
-        } while (true);
+        }
     }
 
     public int anInt334;
     public boolean aBoolean335;
     public int anInt336;
-    public Node aNode_337;
+    public Node head;
     public Node aNode_338;
 }
