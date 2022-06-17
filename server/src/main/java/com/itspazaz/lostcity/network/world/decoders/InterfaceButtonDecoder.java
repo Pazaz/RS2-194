@@ -12,6 +12,8 @@ public class InterfaceButtonDecoder extends Decoder {
 
         if (id == 2065) {
             con.player.logout();
+        } else if (id == 2582) { // design
+            con.player.closeInterface();
         } else {
             con.player.sendGameMessage("if_button[id=" + id + "]");
         }

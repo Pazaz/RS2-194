@@ -65,6 +65,8 @@ public class NioServer implements Runnable {
 
         decoders[ClientProt.CLIENT_CHEAT] = new CheatDecoder();
 
+        decoders[ClientProt.IF_DESIGN] = new PlayerDesignDecoder();
+
         // These packets intentionally ignored
         decoders[ClientProt.NO_TIMEOUT] = new NopDecoder();
         decoders[ClientProt.ANTICHEAT_OPPLAYER3] = new NopDecoder();
@@ -330,7 +332,7 @@ public class NioServer implements Runnable {
                 }
                 write(key, out);
 
-                con.player.login();
+                con.player.login(opcode == LoginProt.RECONNECTING);
             } else {
                 disconnect(key, channel);
             }

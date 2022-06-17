@@ -37,7 +37,7 @@ public class ServerProt {
     public static final int UPDATE_INV_PARTIAL = 98; // NXT naming
     public static final int INTERFACE_MODEL_RECOLOR = 103;
     public static final int INTERFACE_SIDEBAR_FLASH = 126;
-    public static final int IF_HIDE = 129; // presumed NXT naming
+    public static final int IF_HIDE = 240; // presumed NXT naming
     public static final int DATA_LAND = 55;
     public static final int FINISH_TRACKING = 133;
     public static final int GROUND_ITEM_REMOVE_ALL = 135;
@@ -54,7 +54,7 @@ public class ServerProt {
     public static final int IF_OPENSIDE = 210; // not NXT naming
 
     // Open an interface in the viewport area
-    public static final int IF_OPENTOP = 168; // presumed NXT naming
+    public static final int IF_OPENTOP = 137; // presumed NXT naming
 
     public static final int VARP_LARGE = 175; // presumed NXT naming
     public static final int PLAYER_INFO = 168; // presumed NXT naming

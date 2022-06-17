@@ -12,6 +12,7 @@ import com.jagex.core.io.Buffer;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class Player {
     Connection con;
@@ -40,6 +41,7 @@ public class Player {
         entity.x = 3222;
         entity.z = 3222;
 
+        Arrays.fill(entity.body, -1);
         entity.body[4] = IdkType.findPart(2, 0);
         entity.body[6] = IdkType.findPart(3, 0);
         entity.body[7] = IdkType.findPart(5, 0);
@@ -69,7 +71,11 @@ public class Player {
         }
     }
 
-    public void login() {
+    boolean reconnected = false;
+
+    public void login(boolean reconnect) {
+        this.reconnected = reconnect;
+
         setSidebar(0, 4413); // unarmed
         setSidebar(1, 3131);
         setSidebar(2, 804);
@@ -168,6 +174,8 @@ public class Player {
         } else if (cmd.equalsIgnoreCase("a")) {
             anim = Integer.parseInt(args[1]);
             animUpdated = true;
+        } else if (cmd.equalsIgnoreCase("inter")) {
+            openInterface(Integer.parseInt(args[1]));
         }
     }
 
@@ -193,6 +201,31 @@ public class Player {
         int start = con.out.pos;
         con.out.pjstr(msg);
         con.out.psize1(con.out.pos - start);
+
+        try {
+            NioServer.write(con.key, con.out);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void openInterface(int id) {
+        con.out.pos = 0;
+
+        con.out.p1isaac(ServerProt.IF_OPENTOP);
+        con.out.p2(id);
+
+        try {
+            NioServer.write(con.key, con.out);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void closeInterface() {
+        con.out.pos = 0;
+
+        con.out.p1isaac(ServerProt.IF_HIDE);
 
         try {
             NioServer.write(con.key, con.out);
@@ -449,8 +482,10 @@ public class Player {
             }
             if (part > 255) {
                 appearance.p2(part);
-            } else {
+            } else if (part > 0) {
                 appearance.p1(part);
+            } else {
+                appearance.p1(0);
             }
         }
 
