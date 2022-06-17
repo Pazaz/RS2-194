@@ -181,7 +181,7 @@ public class GameShell extends Applet
         anInt18 = 0;
         anInt23 = i;
         anInt24 = j;
-        if (mouseevent.isMetaDown()) {
+        if ((mouseevent.getModifiersEx() & MouseEvent.BUTTON3_DOWN_MASK) == MouseEvent.BUTTON3_DOWN_MASK) {
             anInt22 = 2;
             anInt19 = 2;
         } else {
