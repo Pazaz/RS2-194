@@ -15,8 +15,8 @@ import com.jagex.game.runetek3.graphics.model.Model;
 public class ObjType {
 
     public static void decode(FileArchive class36) {
-        aClass35_Sub2_Sub3_601 = new Buffer(class36.method417((byte) 6, null, "obj.dat"));
-        Buffer class35_sub2_sub3 = new Buffer(class36.method417((byte) 6, null, "obj.idx"));
+        aClass35_Sub2_Sub3_601 = new Buffer(class36.read(null, "obj.dat"));
+        Buffer class35_sub2_sub3 = new Buffer(class36.read(null, "obj.idx"));
         anInt599 = class35_sub2_sub3.g2();
         anIntArray600 = new int[anInt599];
         int i = 2;
@@ -170,11 +170,11 @@ public class ObjType {
         class35_sub2_sub1 = new Model(anInt605, 298);
         if (anIntArray608 != null) {
             for (int i = 0; i < anIntArray608.length; i++)
-                class35_sub2_sub1.method317(anIntArray608[i], anIntArray609[i]);
+                class35_sub2_sub1.recolor(anIntArray608[i], anIntArray609[i]);
 
         }
-        class35_sub2_sub1.method320(64, 768, -50, -10, -50, true);
-        class35_sub2_sub1.aBoolean1085 = true;
+        class35_sub2_sub1.applyLighting(64, 768, -50, -10, -50, true);
+        class35_sub2_sub1.pickable = true;
         aCache_633.method296(anInt604, 7, class35_sub2_sub1);
         return class35_sub2_sub1;
     }
@@ -198,7 +198,7 @@ public class ObjType {
         Model class35_sub2_sub1 = class41.method443();
         int j1 = Draw3D.anIntArray1271[class41.anInt611] * class41.anInt610 >> 16;
         int k1 = Draw3D.anIntArray1272[class41.anInt611] * class41.anInt610 >> 16;
-        class35_sub2_sub1.method323(0, class41.anInt612, class41.anInt613, class41.anInt611, class41.anInt614, j1 + class35_sub2_sub1.anInt1076 / 2 + class41.anInt615, k1 + class41.anInt615);
+        class35_sub2_sub1.method323(0, class41.anInt612, class41.anInt613, class41.anInt611, class41.anInt614, j1 + class35_sub2_sub1.maxBoundY / 2 + class41.anInt615, k1 + class41.anInt615);
         for (int j2 = 31; j2 >= 0; j2--) {
             for (int l1 = 31; l1 >= 0; l1--)
                 if (class35_sub2_sub2_sub2.anIntArray1292[j2 + l1 * 32] == 0)
@@ -254,12 +254,12 @@ public class ObjType {
             class35_sub2_sub1 = new Model(false, 2, aclass35_sub2_sub1);
         }
         if (j == 0 && aByte625 != 0)
-            class35_sub2_sub1.method316(0, 0, 0, aByte625);
+            class35_sub2_sub1.translate(0, 0, aByte625);
         if (j == 1 && aByte628 != 0)
-            class35_sub2_sub1.method316(0, 0, 0, aByte628);
+            class35_sub2_sub1.translate(0, 0, aByte628);
         if (anIntArray608 != null) {
             for (int i1 = 0; i1 < anIntArray608.length; i1++)
-                class35_sub2_sub1.method317(anIntArray608[i1], anIntArray609[i1]);
+                class35_sub2_sub1.recolor(anIntArray608[i1], anIntArray609[i1]);
 
         }
         return class35_sub2_sub1;
@@ -287,7 +287,7 @@ public class ObjType {
         }
         if (anIntArray608 != null) {
             for (int i1 = 0; i1 < anIntArray608.length; i1++)
-                class35_sub2_sub1.method317(anIntArray608[i1], anIntArray609[i1]);
+                class35_sub2_sub1.recolor(anIntArray608[i1], anIntArray609[i1]);
 
         }
         return class35_sub2_sub1;

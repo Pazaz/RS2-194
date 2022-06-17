@@ -21,7 +21,7 @@ import com.jagex.game.runetek3.config.*;
 import com.jagex.game.runetek3.entity.*;
 import com.jagex.game.runetek3.graphics.*;
 import com.jagex.game.runetek3.graphics.model.Model;
-import com.jagex.game.runetek3.graphics.seq.SeqBase;
+import com.jagex.game.runetek3.graphics.seq.SeqSkeleton;
 import com.jagex.game.runetek3.graphics.seq.SeqFrame;
 import com.jagex.game.runetek3.graphics.ui.Font;
 import com.jagex.game.runetek3.graphics.ui.Component;
@@ -281,9 +281,9 @@ public class client extends GameShell {
             if (l != j) {
                 j = l;
                 if (k1 == 2 && aMapSquare_741.method266(anInt722, i1, j1, l) >= 0) {
-                    LocType class39 = LocType.method428(l1);
+                    LocType class39 = LocType.get(l1);
                     if (anInt712 == 1) {
-                        aStringArray720[anInt710] = "Use " + aString716 + " with @cya@" + class39.aString538;
+                        aStringArray720[anInt710] = "Use " + aString716 + " with @cya@" + class39.name;
                         anIntArray848[anInt710] = 174;
                         anIntArray849[anInt710] = l;
                         anIntArray846[anInt710] = i1;
@@ -291,7 +291,7 @@ public class client extends GameShell {
                         anInt710++;
                     } else if (anInt706 == 1) {
                         if ((anInt708 & 4) == 4) {
-                            aStringArray720[anInt710] = aString709 + " @cya@" + class39.aString538;
+                            aStringArray720[anInt710] = aString709 + " @cya@" + class39.name;
                             anIntArray848[anInt710] = 792;
                             anIntArray849[anInt710] = l;
                             anIntArray846[anInt710] = i1;
@@ -299,10 +299,10 @@ public class client extends GameShell {
                             anInt710++;
                         }
                     } else {
-                        if (class39.aStringArray554 != null) {
+                        if (class39.ops != null) {
                             for (int i2 = 4; i2 >= 0; i2--)
-                                if (class39.aStringArray554[i2] != null) {
-                                    aStringArray720[anInt710] = class39.aStringArray554[i2] + " @cya@" + class39.aString538;
+                                if (class39.ops[i2] != null) {
+                                    aStringArray720[anInt710] = class39.ops[i2] + " @cya@" + class39.name;
                                     if (i2 == 0)
                                         anIntArray848[anInt710] = 447;
                                     if (i2 == 1)
@@ -320,7 +320,7 @@ public class client extends GameShell {
                                 }
 
                         }
-                        aStringArray720[anInt710] = "Examine @cya@" + class39.aString538;
+                        aStringArray720[anInt710] = "Examine @cya@" + class39.name;
                         anIntArray848[anInt710] = 1419;
                         anIntArray849[anInt710] = l;
                         anIntArray846[anInt710] = i1;
@@ -330,23 +330,23 @@ public class client extends GameShell {
                 }
                 if (k1 == 1) {
                     NpcEntity class35_sub7_sub3_sub1 = aClass35_Sub7_Sub3_Sub1Array964[l1];
-                    if (class35_sub7_sub3_sub1.aNpcType_1325.aByte578 == 1 && (class35_sub7_sub3_sub1.x & 0x7f) == 64 && (class35_sub7_sub3_sub1.z & 0x7f) == 64) {
+                    if (class35_sub7_sub3_sub1.info.size == 1 && (class35_sub7_sub3_sub1.x & 0x7f) == 64 && (class35_sub7_sub3_sub1.z & 0x7f) == 64) {
                         for (int j2 = 0; j2 < anInt965; j2++) {
                             NpcEntity class35_sub7_sub3_sub1_1 = aClass35_Sub7_Sub3_Sub1Array964[anIntArray966[j2]];
-                            if (class35_sub7_sub3_sub1_1 != null && class35_sub7_sub3_sub1_1 != class35_sub7_sub3_sub1 && class35_sub7_sub3_sub1_1.aNpcType_1325.aByte578 == 1 && class35_sub7_sub3_sub1_1.x == class35_sub7_sub3_sub1.x && class35_sub7_sub3_sub1_1.z == class35_sub7_sub3_sub1.z)
-                                method91(j1, anIntArray966[j2], i1, class35_sub7_sub3_sub1_1.aNpcType_1325, -687);
+                            if (class35_sub7_sub3_sub1_1 != null && class35_sub7_sub3_sub1_1 != class35_sub7_sub3_sub1 && class35_sub7_sub3_sub1_1.info.size == 1 && class35_sub7_sub3_sub1_1.x == class35_sub7_sub3_sub1.x && class35_sub7_sub3_sub1_1.z == class35_sub7_sub3_sub1.z)
+                                method91(j1, anIntArray966[j2], i1, class35_sub7_sub3_sub1_1.info, -687);
                         }
 
                     }
-                    method91(j1, l1, i1, class35_sub7_sub3_sub1.aNpcType_1325, -687);
+                    method91(j1, l1, i1, class35_sub7_sub3_sub1.info, -687);
                 }
                 if (k1 == 0) {
                     PlayerEntity class35_sub7_sub3_sub2 = aPlayerEntityArray751[l1];
                     if ((class35_sub7_sub3_sub2.x & 0x7f) == 64 && (class35_sub7_sub3_sub2.z & 0x7f) == 64) {
                         for (int k2 = 0; k2 < anInt965; k2++) {
                             NpcEntity class35_sub7_sub3_sub1_2 = aClass35_Sub7_Sub3_Sub1Array964[anIntArray966[k2]];
-                            if (class35_sub7_sub3_sub1_2 != null && class35_sub7_sub3_sub1_2.aNpcType_1325.aByte578 == 1 && class35_sub7_sub3_sub1_2.x == class35_sub7_sub3_sub2.x && class35_sub7_sub3_sub1_2.z == class35_sub7_sub3_sub2.z)
-                                method91(j1, anIntArray966[k2], i1, class35_sub7_sub3_sub1_2.aNpcType_1325, -687);
+                            if (class35_sub7_sub3_sub1_2 != null && class35_sub7_sub3_sub1_2.info.size == 1 && class35_sub7_sub3_sub1_2.x == class35_sub7_sub3_sub2.x && class35_sub7_sub3_sub1_2.z == class35_sub7_sub3_sub2.z)
+                                method91(j1, anIntArray966[k2], i1, class35_sub7_sub3_sub1_2.info, -687);
                         }
 
                         for (int l2 = 0; l2 < anInt752; l2++) {
@@ -476,11 +476,11 @@ public class client extends GameShell {
         if (i < 9 || i > 9)
             aBoolean828 = !aBoolean828;
         for (; class35_sub7_sub2 != null; class35_sub7_sub2 = (SpotAnimEntity) aLinkedList_657.method229(35239))
-            if (class35_sub7_sub2.anInt1200 != anInt722 || class35_sub7_sub2.aBoolean1206)
+            if (class35_sub7_sub2.anInt1200 != anInt722 || class35_sub7_sub2.finished)
                 class35_sub7_sub2.method303();
             else if (anInt759 >= class35_sub7_sub2.anInt1199) {
-                class35_sub7_sub2.method408(anInt742, false);
-                if (class35_sub7_sub2.aBoolean1206)
+                class35_sub7_sub2.method408(anInt742);
+                if (class35_sub7_sub2.finished)
                     class35_sub7_sub2.method303();
                 else
                     aMapSquare_741.method249(null, class35_sub7_sub2.anInt1203, 5, class35_sub7_sub2.anInt1202, 0, class35_sub7_sub2.anInt1201, class35_sub7_sub2.anInt1200, 0, class35_sub7_sub2, 60, -1);
@@ -1016,11 +1016,11 @@ public class client extends GameShell {
             if (packetOpcode == 141) {
                 for (int l2 = 0; l2 < aPlayerEntityArray751.length; l2++)
                     if (aPlayerEntityArray751[l2] != null)
-                        aPlayerEntityArray751[l2].anInt1235 = -1;
+                        aPlayerEntityArray751[l2].primarySeq = -1;
 
                 for (int i11 = 0; i11 < aClass35_Sub7_Sub3_Sub1Array964.length; i11++)
                     if (aClass35_Sub7_Sub3_Sub1Array964[i11] != null)
-                        aClass35_Sub7_Sub3_Sub1Array964[i11].anInt1235 = -1;
+                        aClass35_Sub7_Sub3_Sub1Array964[i11].primarySeq = -1;
 
                 packetOpcode = -1;
                 return true;
@@ -1099,7 +1099,7 @@ public class client extends GameShell {
                 Component class8_3 = Component.aComponentArray110[i4];
                 Model class35_sub2_sub1 = class8_3.aModel_156;
                 if (class35_sub2_sub1 != null)
-                    class35_sub2_sub1.method317(i12, i16);
+                    class35_sub2_sub1.recolor(i12, i16);
                 packetOpcode = -1;
                 return true;
             }
@@ -1638,7 +1638,7 @@ public class client extends GameShell {
                 if (i10 == 2)
                     j12 = aMapSquare_741.method264(anInt722, k2, k4);
                 if (j12 != 0) {
-                    LocEntity class35_sub5 = new LocEntity(i10, -69, anInt722, j12 >> 14 & 0x7fff, false, SeqType.aSeqTypeArray190[j11], k4, k2);
+                    LocEntity class35_sub5 = new LocEntity(i10, anInt722, j12 >> 14 & 0x7fff, false, SeqType.instances[j11], k4, k2);
                     aLinkedList_943.pushNext(class35_sub5);
                 }
             }
@@ -1716,7 +1716,7 @@ public class client extends GameShell {
             if (k3 >= 0 && k5 >= 0 && k3 < 104 && k5 < 104) {
                 k3 = k3 * 128 + 64;
                 k5 = k5 * 128 + 64;
-                SpotAnimEntity class35_sub7_sub2 = new SpotAnimEntity(k5, false, method15(k3, k5, anInt722, (byte) 9) - i9, k3, k10, k7, anInt759, anInt722);
+                SpotAnimEntity class35_sub7_sub2 = new SpotAnimEntity(k5, method15(k3, k5, anInt722, (byte) 9) - i9, k3, k10, k7, anInt759, anInt722);
                 aLinkedList_657.pushNext(class35_sub7_sub2);
             }
             return;
@@ -1767,15 +1767,15 @@ public class client extends GameShell {
                 int k16 = anIntArrayArrayArray725[anInt722][i4 + 1][i6];
                 int l16 = anIntArrayArrayArray725[anInt722][i4 + 1][i6 + 1];
                 int i17 = anIntArrayArrayArray725[anInt722][i4][i6 + 1];
-                LocType class39 = LocType.method428(l12);
+                LocType class39 = LocType.get(l12);
                 class35_sub7_sub3_sub2.anInt1337 = j13 + anInt759;
                 class35_sub7_sub3_sub2.anInt1338 = l13 + anInt759;
                 class35_sub7_sub3_sub2.aModel_1342 = class39.method431(k9, l10, j16, k16, l16, i17, -1);
-                int j17 = class39.anInt542;
-                int k17 = class39.anInt543;
+                int j17 = class39.width;
+                int k17 = class39.length;
                 if (l10 == 1 || l10 == 3) {
-                    j17 = class39.anInt543;
-                    k17 = class39.anInt542;
+                    j17 = class39.length;
+                    k17 = class39.width;
                 }
                 class35_sub7_sub3_sub2.anInt1339 = i4 * 128 + j17 * 64;
                 class35_sub7_sub3_sub2.anInt1341 = i6 * 128 + k17 * 64;
@@ -2292,7 +2292,7 @@ public class client extends GameShell {
                 if (i < anInt752) {
                     PlayerEntity class35_sub7_sub3_sub2 = (PlayerEntity) obj;
                     if (class35_sub7_sub3_sub2.headicons != 0) {
-                        method43(((PathingEntity) (obj)).anInt1253 + 15, aByte680, ((PathingEntity) (obj)));
+                        method43(((PathingEntity) (obj)).height + 15, aByte680, ((PathingEntity) (obj)));
                         if (anInt757 > -1) {
                             int l = 28;
                             for (int i2 = 0; i2 < 8; i2++)
@@ -2305,7 +2305,7 @@ public class client extends GameShell {
                     }
                 }
                 if (((PathingEntity) (obj)).aString1220 != null && (i >= anInt752 || anInt976 == 0 || anInt976 == 1 && method72(7, ((PlayerEntity) obj).name))) {
-                    method43(((PathingEntity) (obj)).anInt1253, aByte680, ((PathingEntity) (obj)));
+                    method43(((PathingEntity) (obj)).height, aByte680, ((PathingEntity) (obj)));
                     if (anInt757 > -1)
                         if (anInt942 == 0) {
                             int j = 0xffff00;
@@ -2366,7 +2366,7 @@ public class client extends GameShell {
                         }
                 }
                 if (((PathingEntity) (obj)).anInt1226 > anInt759 + 100) {
-                    method43(((PathingEntity) (obj)).anInt1253 + 15, aByte680, ((PathingEntity) (obj)));
+                    method43(((PathingEntity) (obj)).height + 15, aByte680, ((PathingEntity) (obj)));
                     if (anInt757 > -1) {
                         int k = (((PathingEntity) (obj)).anInt1227 * 30) / ((PathingEntity) (obj)).anInt1228;
                         if (k > 30)
@@ -2376,7 +2376,7 @@ public class client extends GameShell {
                     }
                 }
                 if (((PathingEntity) (obj)).anInt1226 > anInt759 + 330) {
-                    method43(((PathingEntity) (obj)).anInt1253 / 2, aByte680, ((PathingEntity) (obj)));
+                    method43(((PathingEntity) (obj)).height / 2, aByte680, ((PathingEntity) (obj)));
                     if (anInt757 > -1) {
                         aSpriteArray980[((PathingEntity) (obj)).anInt1225].method357(anInt758 - 12, anInt861, anInt757 - 12);
                         p11.method370(true, anInt758 + 4, 0, anInt757, String.valueOf(((PathingEntity) (obj)).anInt1224));
@@ -2461,7 +2461,7 @@ public class client extends GameShell {
         for (int k = 0; k < anInt833; k++) {
             int l = anIntArray834[k];
             if (aClass35_Sub7_Sub3_Sub1Array964[l].anInt1252 != anInt759) {
-                aClass35_Sub7_Sub3_Sub1Array964[l].aNpcType_1325 = null;
+                aClass35_Sub7_Sub3_Sub1Array964[l].info = null;
                 aClass35_Sub7_Sub3_Sub1Array964[l] = null;
             }
         }
@@ -2572,10 +2572,10 @@ public class client extends GameShell {
         else
             aLinkedListArrayArrayArray665 = null;
         k -= anInt920;
-        int i1 = Model.anIntArray1129[anInt921];
-        int j1 = Model.anIntArray1130[anInt921];
-        int k1 = Model.anIntArray1129[anInt922];
-        int l1 = Model.anIntArray1130[anInt922];
+        int i1 = Model.sin[anInt921];
+        int j1 = Model.cos[anInt921];
+        int k1 = Model.sin[anInt922];
+        int l1 = Model.cos[anInt922];
         int i2 = k * k1 + j * l1 >> 16;
         k = k * l1 - j * k1 >> 16;
         j = i2;
@@ -2695,13 +2695,13 @@ public class client extends GameShell {
             if (class8_1.anInt117 == 1)
                 flag1 |= method47(class8_1.anInt115, true, j);
             if (class8_1.anInt158 != -1) {
-                SeqType class12 = SeqType.aSeqTypeArray190[class8_1.anInt158];
-                for (class8_1.anInt114 += j; class8_1.anInt114 > class12.anIntArray194[class8_1.anInt113]; ) {
-                    class8_1.anInt114 -= class12.anIntArray194[class8_1.anInt113] + 1;
+                SeqType class12 = SeqType.instances[class8_1.anInt158];
+                for (class8_1.anInt114 += j; class8_1.anInt114 > class12.frameDelay[class8_1.anInt113]; ) {
+                    class8_1.anInt114 -= class12.frameDelay[class8_1.anInt113] + 1;
                     class8_1.anInt113++;
-                    if (class8_1.anInt113 >= class12.anInt191) {
+                    if (class8_1.anInt113 >= class12.frameCount) {
                         class8_1.anInt113 -= class12.anInt195;
-                        if (class8_1.anInt113 < 0 || class8_1.anInt113 >= class12.anInt191)
+                        if (class8_1.anInt113 < 0 || class8_1.anInt113 >= class12.frameCount)
                             class8_1.anInt113 = 0;
                     }
                     flag1 = true;
@@ -3132,8 +3132,8 @@ public class client extends GameShell {
                     if (class8_1.anInt158 == -1) {
                         class35_sub2_sub1 = class8_1.method174(-1, -1, method109((byte) 3, class8_1));
                     } else {
-                        SeqType class12 = SeqType.aSeqTypeArray190[class8_1.anInt158];
-                        class35_sub2_sub1 = class8_1.method174(class12.anIntArray192[class8_1.anInt113], class12.anIntArray193[class8_1.anInt113], method109((byte) 3, class8_1));
+                        SeqType class12 = SeqType.instances[class8_1.anInt158];
+                        class35_sub2_sub1 = class8_1.method174(class12.primaryFrames[class8_1.anInt113], class12.anIntArray193[class8_1.anInt113], method109((byte) 3, class8_1));
                     }
                     if (class35_sub2_sub1 != null)
                         class35_sub2_sub1.method323(0, class8_1.anInt162, 0, class8_1.anInt161, 0, k4, j5);
@@ -3238,14 +3238,14 @@ public class client extends GameShell {
             int l = class35_sub2_sub3.g2();
             if (l == 65535)
                 l = -1;
-            if (l == class35_sub7_sub3_sub2.anInt1235)
+            if (l == class35_sub7_sub3_sub2.primarySeq)
                 class35_sub7_sub3_sub2.anInt1239 = 0;
             int k1 = class35_sub2_sub3.g1();
-            if (l == -1 || class35_sub7_sub3_sub2.anInt1235 == -1 || SeqType.aSeqTypeArray190[l].anInt198 > SeqType.aSeqTypeArray190[class35_sub7_sub3_sub2.anInt1235].anInt198 || SeqType.aSeqTypeArray190[class35_sub7_sub3_sub2.anInt1235].anInt198 == 0) {
-                class35_sub7_sub3_sub2.anInt1235 = l;
-                class35_sub7_sub3_sub2.anInt1236 = 0;
+            if (l == -1 || class35_sub7_sub3_sub2.primarySeq == -1 || SeqType.instances[l].anInt198 > SeqType.instances[class35_sub7_sub3_sub2.primarySeq].anInt198 || SeqType.instances[class35_sub7_sub3_sub2.primarySeq].anInt198 == 0) {
+                class35_sub7_sub3_sub2.primarySeq = l;
+                class35_sub7_sub3_sub2.primarySeqFrame = 0;
                 class35_sub7_sub3_sub2.anInt1237 = 0;
-                class35_sub7_sub3_sub2.anInt1238 = k1;
+                class35_sub7_sub3_sub2.primarySeqDelay = k1;
                 class35_sub7_sub3_sub2.anInt1239 = 0;
             }
         }
@@ -3299,16 +3299,16 @@ public class client extends GameShell {
             class35_sub2_sub3.pos = i2 + l1;
         }
         if ((j & 0x100) == 256) {
-            class35_sub7_sub3_sub2.anInt1240 = class35_sub2_sub3.g2();
+            class35_sub7_sub3_sub2.spotAnimIndex = class35_sub2_sub3.g2();
             int j1 = class35_sub2_sub3.g4();
-            class35_sub7_sub3_sub2.anInt1244 = j1 >> 16;
+            class35_sub7_sub3_sub2.spotAnimOffsetY = j1 >> 16;
             class35_sub7_sub3_sub2.anInt1243 = anInt759 + (j1 & 0xffff);
-            class35_sub7_sub3_sub2.anInt1241 = 0;
+            class35_sub7_sub3_sub2.spotAnimFrame = 0;
             class35_sub7_sub3_sub2.anInt1242 = 0;
             if (class35_sub7_sub3_sub2.anInt1243 > anInt759)
-                class35_sub7_sub3_sub2.anInt1241 = -1;
-            if (class35_sub7_sub3_sub2.anInt1240 == 65535)
-                class35_sub7_sub3_sub2.anInt1240 = -1;
+                class35_sub7_sub3_sub2.spotAnimFrame = -1;
+            if (class35_sub7_sub3_sub2.spotAnimIndex == 65535)
+                class35_sub7_sub3_sub2.spotAnimIndex = -1;
         }
         if ((j & 0x200) == 512) {
             class35_sub7_sub3_sub2.anInt1245 = class35_sub2_sub3.g1();
@@ -3737,10 +3737,10 @@ public class client extends GameShell {
             NpcEntity class35_sub7_sub3_sub1_1 = aClass35_Sub7_Sub3_Sub1Array964[j1];
             if (class35_sub7_sub3_sub1_1 != null) {
                 String s;
-                if (class35_sub7_sub3_sub1_1.aNpcType_1325.aByteArray577 != null)
-                    s = new String(class35_sub7_sub3_sub1_1.aNpcType_1325.aByteArray577);
+                if (class35_sub7_sub3_sub1_1.info.aByteArray577 != null)
+                    s = new String(class35_sub7_sub3_sub1_1.info.aByteArray577);
                 else
-                    s = "It's a " + class35_sub7_sub3_sub1_1.aNpcType_1325.aString576 + ".";
+                    s = "It's a " + class35_sub7_sub3_sub1_1.info.aString576 + ".";
                 method75(s, 0, anInt853, "");
             }
         }
@@ -3803,12 +3803,12 @@ public class client extends GameShell {
         }
         if (i1 == 1419) {
             int k1 = j1 >> 14 & 0x7fff;
-            LocType class39 = LocType.method428(k1);
+            LocType class39 = LocType.get(k1);
             String s3;
-            if (class39.aByteArray539 != null)
-                s3 = new String(class39.aByteArray539);
+            if (class39.desc != null)
+                s3 = new String(class39.desc);
             else
-                s3 = "It's a " + class39.aString538 + ".";
+                s3 = "It's a " + class39.name + ".";
             method75(s3, 0, anInt853, "");
         }
         if (i1 == 34)
@@ -4201,19 +4201,19 @@ public class client extends GameShell {
             packetOpcode = -1;
         for (LocEntity class35_sub5 = (LocEntity) aLinkedList_943.method227(); class35_sub5 != null; class35_sub5 = (LocEntity) aLinkedList_943.method229(35239)) {
             boolean flag = false;
-            class35_sub5.anInt1046 += anInt742;
-            if (class35_sub5.anInt1045 == -1) {
-                class35_sub5.anInt1045 = 0;
+            class35_sub5.seqCycle += anInt742;
+            if (class35_sub5.seqFrame == -1) {
+                class35_sub5.seqFrame = 0;
                 flag = true;
             }
-            while (class35_sub5.anInt1046 > class35_sub5.aSeqType_1044.anIntArray194[class35_sub5.anInt1045]) {
-                class35_sub5.anInt1046 -= class35_sub5.aSeqType_1044.anIntArray194[class35_sub5.anInt1045] + 1;
-                class35_sub5.anInt1045++;
+            while (class35_sub5.seqCycle > class35_sub5.seq.frameDelay[class35_sub5.seqFrame]) {
+                class35_sub5.seqCycle -= class35_sub5.seq.frameDelay[class35_sub5.seqFrame] + 1;
+                class35_sub5.seqFrame++;
                 flag = true;
-                if (class35_sub5.anInt1045 < class35_sub5.aSeqType_1044.anInt191)
+                if (class35_sub5.seqFrame < class35_sub5.seq.frameCount)
                     continue;
-                class35_sub5.anInt1045 -= class35_sub5.aSeqType_1044.anInt195;
-                if (class35_sub5.anInt1045 >= 0 && class35_sub5.anInt1045 < class35_sub5.aSeqType_1044.anInt191)
+                class35_sub5.seqFrame -= class35_sub5.seq.anInt195;
+                if (class35_sub5.seqFrame >= 0 && class35_sub5.seqFrame < class35_sub5.seq.frameCount)
                     continue;
                 class35_sub5.method303();
                 flag = false;
@@ -4237,10 +4237,10 @@ public class client extends GameShell {
                     int k1 = anIntArrayArrayArray725[j][k + 1][l];
                     int l1 = anIntArrayArrayArray725[j][k + 1][l + 1];
                     int i2 = anIntArrayArrayArray725[j][k][l + 1];
-                    LocType class39 = LocType.method428(class35_sub5.anInt1043);
+                    LocType class39 = LocType.get(class35_sub5.anInt1043);
                     int j2 = -1;
-                    if (class35_sub5.anInt1045 != -1)
-                        j2 = class35_sub5.aSeqType_1044.anIntArray192[class35_sub5.anInt1045];
+                    if (class35_sub5.seqFrame != -1)
+                        j2 = class35_sub5.seq.primaryFrames[class35_sub5.seqFrame];
                     if (class35_sub5.anInt1040 == 2) {
                         int k2 = aMapSquare_741.method266(j, k, l, i1);
                         int i3 = k2 & 0x1f;
@@ -4549,14 +4549,14 @@ public class client extends GameShell {
                 Model class35_sub2_sub1 = new Model(false, j, aclass35_sub2_sub1);
                 for (int i1 = 0; i1 < 5; i1++)
                     if (anIntArray789[i1] != 0) {
-                        class35_sub2_sub1.method317(PlayerEntity.anIntArrayArray938[i1][0], PlayerEntity.anIntArrayArray938[i1][anIntArray789[i1]]);
+                        class35_sub2_sub1.recolor(PlayerEntity.anIntArrayArray938[i1][0], PlayerEntity.anIntArrayArray938[i1][anIntArray789[i1]]);
                         if (i1 == 1)
-                            class35_sub2_sub1.method317(PlayerEntity.anIntArray664[0], PlayerEntity.anIntArray664[anIntArray789[i1]]);
+                            class35_sub2_sub1.recolor(PlayerEntity.BEARD_COLORS[0], PlayerEntity.BEARD_COLORS[anIntArray789[i1]]);
                     }
 
-                class35_sub2_sub1.method310((byte) 3);
-                class35_sub2_sub1.applyFrame(7, SeqType.aSeqTypeArray190[self.anInt1213].anIntArray192[0]);
-                class35_sub2_sub1.method320(64, 850, -30, -50, -30, true);
+                class35_sub2_sub1.applyGroups();
+                class35_sub2_sub1.applyFrame(SeqType.instances[self.standSeq].primaryFrames[0]);
+                class35_sub2_sub1.applyLighting(64, 850, -30, -50, -30, true);
                 class8.aModel_156 = class35_sub2_sub1;
             }
             return;
@@ -4752,17 +4752,17 @@ public class client extends GameShell {
         int l1 = k1 & 0x1f;
         int i2 = k1 >> 6 & 3;
         if (l1 == 10 || l1 == 11 || l1 == 22) {
-            LocType class39 = LocType.method428(j1);
+            LocType class39 = LocType.get(j1);
             int j2;
             int k2;
             if (i2 == 0 || i2 == 2) {
-                j2 = class39.anInt542;
-                k2 = class39.anInt543;
+                j2 = class39.width;
+                k2 = class39.length;
             } else {
-                j2 = class39.anInt543;
-                k2 = class39.anInt542;
+                j2 = class39.length;
+                k2 = class39.width;
             }
-            int l2 = class39.anInt566;
+            int l2 = class39.blocksides;
             if (i2 != 0)
                 l2 = (l2 << i2 & 0xf) + (l2 >> 4 - i2);
             method73(i, true, 0, false, k2, j2, l2, 0, self.pathTileZ[0], self.pathTileX[0], j);
@@ -5199,15 +5199,15 @@ public class client extends GameShell {
         if (byte0 != 9)
             return;
         if (k1 != 0) {
-            int l2 = Model.anIntArray1129[k1];
-            int j3 = Model.anIntArray1130[k1];
+            int l2 = Model.sin[k1];
+            int j3 = Model.cos[k1];
             int l3 = j2 * j3 - k2 * l2 >> 16;
             k2 = j2 * l2 + k2 * j3 >> 16;
             j2 = l3;
         }
         if (l1 != 0) {
-            int i3 = Model.anIntArray1129[l1];
-            int k3 = Model.anIntArray1130[l1];
+            int i3 = Model.sin[l1];
+            int k3 = Model.cos[l1];
             int i4 = k2 * i3 + i2 * k3 >> 16;
             k2 = k2 * k3 - i2 * i3 >> 16;
             i2 = i4;
@@ -5284,15 +5284,15 @@ public class client extends GameShell {
             int j = anIntArray966[i];
             NpcEntity class35_sub7_sub3_sub1 = aClass35_Sub7_Sub3_Sub1Array964[j];
             if (class35_sub7_sub3_sub1 != null)
-                method82(true, class35_sub7_sub3_sub1.aNpcType_1325.aByte578, class35_sub7_sub3_sub1);
+                method82(true, class35_sub7_sub3_sub1.info.size, class35_sub7_sub3_sub1);
         }
 
     }
 
     public void method82(boolean flag, int i, PathingEntity class35_sub7_sub3) {
         if (class35_sub7_sub3.x < 128 || class35_sub7_sub3.z < 128 || class35_sub7_sub3.x >= 13184 || class35_sub7_sub3.z >= 13184) {
-            class35_sub7_sub3.anInt1235 = -1;
-            class35_sub7_sub3.anInt1240 = -1;
+            class35_sub7_sub3.primarySeq = -1;
+            class35_sub7_sub3.spotAnimIndex = -1;
             class35_sub7_sub3.anInt1249 = 0;
             class35_sub7_sub3.anInt1250 = 0;
             class35_sub7_sub3.x = class35_sub7_sub3.pathTileX[0] * 128 + class35_sub7_sub3.index * 64;
@@ -5300,8 +5300,8 @@ public class client extends GameShell {
             class35_sub7_sub3.pathRemaining = 0;
         }
         if (class35_sub7_sub3 == self && (class35_sub7_sub3.x < 1536 || class35_sub7_sub3.z < 1536 || class35_sub7_sub3.x >= 11776 || class35_sub7_sub3.z >= 11776)) {
-            class35_sub7_sub3.anInt1235 = -1;
-            class35_sub7_sub3.anInt1240 = -1;
+            class35_sub7_sub3.primarySeq = -1;
+            class35_sub7_sub3.spotAnimIndex = -1;
             class35_sub7_sub3.anInt1249 = 0;
             class35_sub7_sub3.anInt1250 = 0;
             class35_sub7_sub3.x = class35_sub7_sub3.pathTileX[0] * 128 + class35_sub7_sub3.index * 64;
@@ -5340,7 +5340,7 @@ public class client extends GameShell {
     }
 
     public void method84(PathingEntity class35_sub7_sub3, boolean flag) {
-        if (class35_sub7_sub3.anInt1250 == anInt759 || class35_sub7_sub3.anInt1235 == -1 || class35_sub7_sub3.anInt1238 != 0 || class35_sub7_sub3.anInt1237 + 1 > SeqType.aSeqTypeArray190[class35_sub7_sub3.anInt1235].anIntArray194[class35_sub7_sub3.anInt1236]) {
+        if (class35_sub7_sub3.anInt1250 == anInt759 || class35_sub7_sub3.primarySeq == -1 || class35_sub7_sub3.primarySeqDelay != 0 || class35_sub7_sub3.anInt1237 + 1 > SeqType.instances[class35_sub7_sub3.primarySeq].frameDelay[class35_sub7_sub3.primarySeqFrame]) {
             int i = class35_sub7_sub3.anInt1250 - class35_sub7_sub3.anInt1249;
             int j = anInt759 - class35_sub7_sub3.anInt1249;
             int k = class35_sub7_sub3.anInt1245 * 128 + class35_sub7_sub3.index * 64;
@@ -5364,14 +5364,14 @@ public class client extends GameShell {
     }
 
     public void method85(int i, PathingEntity class35_sub7_sub3) {
-        class35_sub7_sub3.anInt1232 = class35_sub7_sub3.anInt1213;
+        class35_sub7_sub3.secondarySeq = class35_sub7_sub3.standSeq;
         if (class35_sub7_sub3.pathRemaining == 0) {
             class35_sub7_sub3.anInt1259 = 0;
             return;
         }
-        if (class35_sub7_sub3.anInt1235 != -1 && class35_sub7_sub3.anInt1238 == 0) {
-            SeqType class12 = SeqType.aSeqTypeArray190[class35_sub7_sub3.anInt1235];
-            if (class12.anIntArray196 == null) {
+        if (class35_sub7_sub3.primarySeq != -1 && class35_sub7_sub3.primarySeqDelay == 0) {
+            SeqType class12 = SeqType.instances[class35_sub7_sub3.primarySeq];
+            if (class12.labelGroups == null) {
                 class35_sub7_sub3.anInt1259++;
                 return;
             }
@@ -5415,7 +5415,7 @@ public class client extends GameShell {
             k1 = class35_sub7_sub3.anInt1217;
         if (k1 == -1)
             k1 = class35_sub7_sub3.anInt1215;
-        class35_sub7_sub3.anInt1232 = k1;
+        class35_sub7_sub3.secondarySeq = k1;
         packetLength += i;
         int l1 = 4;
         if (class35_sub7_sub3.anInt1210 != class35_sub7_sub3.anInt1254 && class35_sub7_sub3.anInt1229 == -1)
@@ -5430,8 +5430,8 @@ public class client extends GameShell {
         }
         if (class35_sub7_sub3.aBooleanArray1258[class35_sub7_sub3.pathRemaining - 1])
             l1 <<= 1;
-        if (l1 >= 8 && class35_sub7_sub3.anInt1232 == class35_sub7_sub3.anInt1215 && class35_sub7_sub3.anInt1219 != -1)
-            class35_sub7_sub3.anInt1232 = class35_sub7_sub3.anInt1219;
+        if (l1 >= 8 && class35_sub7_sub3.secondarySeq == class35_sub7_sub3.anInt1215 && class35_sub7_sub3.anInt1219 != -1)
+            class35_sub7_sub3.secondarySeq = class35_sub7_sub3.anInt1219;
         if (j < l) {
             class35_sub7_sub3.x += l1;
             if (class35_sub7_sub3.x > l)
@@ -5495,12 +5495,12 @@ public class client extends GameShell {
             else
                 class35_sub7_sub3.anInt1210 += 32;
             class35_sub7_sub3.anInt1210 &= 0x7ff;
-            if (class35_sub7_sub3.anInt1232 == class35_sub7_sub3.anInt1213 && class35_sub7_sub3.anInt1210 != class35_sub7_sub3.anInt1254) {
+            if (class35_sub7_sub3.secondarySeq == class35_sub7_sub3.standSeq && class35_sub7_sub3.anInt1210 != class35_sub7_sub3.anInt1254) {
                 if (class35_sub7_sub3.anInt1214 != -1) {
-                    class35_sub7_sub3.anInt1232 = class35_sub7_sub3.anInt1214;
+                    class35_sub7_sub3.secondarySeq = class35_sub7_sub3.anInt1214;
                     return;
                 }
-                class35_sub7_sub3.anInt1232 = class35_sub7_sub3.anInt1215;
+                class35_sub7_sub3.secondarySeq = class35_sub7_sub3.anInt1215;
             }
         }
     }
@@ -5508,44 +5508,44 @@ public class client extends GameShell {
     public void method87(boolean flag, PathingEntity class35_sub7_sub3) {
         aBoolean734 &= flag;
         class35_sub7_sub3.anInt1211 = 0;
-        if (class35_sub7_sub3.anInt1232 != -1) {
-            SeqType class12 = SeqType.aSeqTypeArray190[class35_sub7_sub3.anInt1232];
+        if (class35_sub7_sub3.secondarySeq != -1) {
+            SeqType class12 = SeqType.instances[class35_sub7_sub3.secondarySeq];
             class35_sub7_sub3.anInt1234++;
-            if (class35_sub7_sub3.anInt1233 < class12.anInt191 && class35_sub7_sub3.anInt1234 > class12.anIntArray194[class35_sub7_sub3.anInt1233]) {
+            if (class35_sub7_sub3.secondarySeqFrame < class12.frameCount && class35_sub7_sub3.anInt1234 > class12.frameDelay[class35_sub7_sub3.secondarySeqFrame]) {
                 class35_sub7_sub3.anInt1234 = 0;
-                class35_sub7_sub3.anInt1233++;
+                class35_sub7_sub3.secondarySeqFrame++;
             }
-            if (class35_sub7_sub3.anInt1233 >= class12.anInt191) {
+            if (class35_sub7_sub3.secondarySeqFrame >= class12.frameCount) {
                 class35_sub7_sub3.anInt1234 = 0;
-                class35_sub7_sub3.anInt1233 = 0;
+                class35_sub7_sub3.secondarySeqFrame = 0;
             }
         }
-        if (class35_sub7_sub3.anInt1235 != -1 && class35_sub7_sub3.anInt1238 == 0) {
-            SeqType class12_1 = SeqType.aSeqTypeArray190[class35_sub7_sub3.anInt1235];
-            for (class35_sub7_sub3.anInt1237++; class35_sub7_sub3.anInt1236 < class12_1.anInt191 && class35_sub7_sub3.anInt1237 > class12_1.anIntArray194[class35_sub7_sub3.anInt1236]; class35_sub7_sub3.anInt1236++)
-                class35_sub7_sub3.anInt1237 -= class12_1.anIntArray194[class35_sub7_sub3.anInt1236];
+        if (class35_sub7_sub3.primarySeq != -1 && class35_sub7_sub3.primarySeqDelay == 0) {
+            SeqType class12_1 = SeqType.instances[class35_sub7_sub3.primarySeq];
+            for (class35_sub7_sub3.anInt1237++; class35_sub7_sub3.primarySeqFrame < class12_1.frameCount && class35_sub7_sub3.anInt1237 > class12_1.frameDelay[class35_sub7_sub3.primarySeqFrame]; class35_sub7_sub3.primarySeqFrame++)
+                class35_sub7_sub3.anInt1237 -= class12_1.frameDelay[class35_sub7_sub3.primarySeqFrame];
 
-            if (class35_sub7_sub3.anInt1236 >= class12_1.anInt191) {
-                class35_sub7_sub3.anInt1236 -= class12_1.anInt195;
+            if (class35_sub7_sub3.primarySeqFrame >= class12_1.frameCount) {
+                class35_sub7_sub3.primarySeqFrame -= class12_1.anInt195;
                 class35_sub7_sub3.anInt1239++;
                 if (class35_sub7_sub3.anInt1239 >= class12_1.anInt201)
-                    class35_sub7_sub3.anInt1235 = -1;
-                if (class35_sub7_sub3.anInt1236 < 0 || class35_sub7_sub3.anInt1236 >= class12_1.anInt191)
-                    class35_sub7_sub3.anInt1235 = -1;
+                    class35_sub7_sub3.primarySeq = -1;
+                if (class35_sub7_sub3.primarySeqFrame < 0 || class35_sub7_sub3.primarySeqFrame >= class12_1.frameCount)
+                    class35_sub7_sub3.primarySeq = -1;
             }
             class35_sub7_sub3.anInt1211 = class12_1.anInt197;
         }
-        if (class35_sub7_sub3.anInt1238 > 0)
-            class35_sub7_sub3.anInt1238--;
-        if (class35_sub7_sub3.anInt1240 != -1 && anInt759 >= class35_sub7_sub3.anInt1243) {
-            if (class35_sub7_sub3.anInt1241 < 0)
-                class35_sub7_sub3.anInt1241 = 0;
-            SeqType class12_2 = SpotAnimType.aSpotAnimTypeArray212[class35_sub7_sub3.anInt1240].aSeqType_215;
-            for (class35_sub7_sub3.anInt1242++; class35_sub7_sub3.anInt1241 < class12_2.anInt191 && class35_sub7_sub3.anInt1242 > class12_2.anIntArray194[class35_sub7_sub3.anInt1241]; class35_sub7_sub3.anInt1241++)
-                class35_sub7_sub3.anInt1242 -= class12_2.anIntArray194[class35_sub7_sub3.anInt1241];
+        if (class35_sub7_sub3.primarySeqDelay > 0)
+            class35_sub7_sub3.primarySeqDelay--;
+        if (class35_sub7_sub3.spotAnimIndex != -1 && anInt759 >= class35_sub7_sub3.anInt1243) {
+            if (class35_sub7_sub3.spotAnimFrame < 0)
+                class35_sub7_sub3.spotAnimFrame = 0;
+            SeqType class12_2 = SpotAnimType.instances[class35_sub7_sub3.spotAnimIndex].seq;
+            for (class35_sub7_sub3.anInt1242++; class35_sub7_sub3.spotAnimFrame < class12_2.frameCount && class35_sub7_sub3.anInt1242 > class12_2.frameDelay[class35_sub7_sub3.spotAnimFrame]; class35_sub7_sub3.spotAnimFrame++)
+                class35_sub7_sub3.anInt1242 -= class12_2.frameDelay[class35_sub7_sub3.spotAnimFrame];
 
-            if (class35_sub7_sub3.anInt1241 >= class12_2.anInt191)
-                class35_sub7_sub3.anInt1240 = -1;
+            if (class35_sub7_sub3.spotAnimFrame >= class12_2.frameCount)
+                class35_sub7_sub3.spotAnimIndex = -1;
         }
     }
 
@@ -5733,13 +5733,13 @@ public class client extends GameShell {
             NpcEntity class35_sub7_sub3_sub1 = aClass35_Sub7_Sub3_Sub1Array964[k];
             anIntArray966[anInt965++] = k;
             class35_sub7_sub3_sub1.anInt1252 = anInt759;
-            class35_sub7_sub3_sub1.aNpcType_1325 = NpcType.method434(class35_sub2_sub3.gBit(11));
-            class35_sub7_sub3_sub1.index = class35_sub7_sub3_sub1.aNpcType_1325.aByte578;
-            class35_sub7_sub3_sub1.anInt1215 = class35_sub7_sub3_sub1.aNpcType_1325.anInt582;
-            class35_sub7_sub3_sub1.anInt1216 = class35_sub7_sub3_sub1.aNpcType_1325.anInt583;
-            class35_sub7_sub3_sub1.anInt1217 = class35_sub7_sub3_sub1.aNpcType_1325.anInt584;
-            class35_sub7_sub3_sub1.anInt1218 = class35_sub7_sub3_sub1.aNpcType_1325.anInt585;
-            class35_sub7_sub3_sub1.anInt1213 = class35_sub7_sub3_sub1.aNpcType_1325.anInt581;
+            class35_sub7_sub3_sub1.info = NpcType.method434(class35_sub2_sub3.gBit(11));
+            class35_sub7_sub3_sub1.index = class35_sub7_sub3_sub1.info.size;
+            class35_sub7_sub3_sub1.anInt1215 = class35_sub7_sub3_sub1.info.anInt582;
+            class35_sub7_sub3_sub1.anInt1216 = class35_sub7_sub3_sub1.info.anInt583;
+            class35_sub7_sub3_sub1.anInt1217 = class35_sub7_sub3_sub1.info.anInt584;
+            class35_sub7_sub3_sub1.anInt1218 = class35_sub7_sub3_sub1.info.anInt585;
+            class35_sub7_sub3_sub1.standSeq = class35_sub7_sub3_sub1.info.anInt581;
             int l = class35_sub2_sub3.gBit(5);
             if (l > 15)
                 l -= 32;
@@ -5878,14 +5878,14 @@ public class client extends GameShell {
                 int j1 = class35_sub2_sub3.g2();
                 if (j1 == 65535)
                     j1 = -1;
-                if (j1 == class35_sub7_sub3_sub1.anInt1235)
+                if (j1 == class35_sub7_sub3_sub1.primarySeq)
                     class35_sub7_sub3_sub1.anInt1239 = 0;
                 int l1 = class35_sub2_sub3.g1();
-                if (j1 == -1 || class35_sub7_sub3_sub1.anInt1235 == -1 || SeqType.aSeqTypeArray190[j1].anInt198 > SeqType.aSeqTypeArray190[class35_sub7_sub3_sub1.anInt1235].anInt198 || SeqType.aSeqTypeArray190[class35_sub7_sub3_sub1.anInt1235].anInt198 == 0) {
-                    class35_sub7_sub3_sub1.anInt1235 = j1;
-                    class35_sub7_sub3_sub1.anInt1236 = 0;
+                if (j1 == -1 || class35_sub7_sub3_sub1.primarySeq == -1 || SeqType.instances[j1].anInt198 > SeqType.instances[class35_sub7_sub3_sub1.primarySeq].anInt198 || SeqType.instances[class35_sub7_sub3_sub1.primarySeq].anInt198 == 0) {
+                    class35_sub7_sub3_sub1.primarySeq = j1;
+                    class35_sub7_sub3_sub1.primarySeqFrame = 0;
                     class35_sub7_sub3_sub1.anInt1237 = 0;
-                    class35_sub7_sub3_sub1.anInt1238 = l1;
+                    class35_sub7_sub3_sub1.primarySeqDelay = l1;
                     class35_sub7_sub3_sub1.anInt1239 = 0;
                 }
             }
@@ -5906,24 +5906,24 @@ public class client extends GameShell {
                 class35_sub7_sub3_sub1.anInt1228 = class35_sub2_sub3.g1();
             }
             if ((i1 & 0x20) == 32) {
-                class35_sub7_sub3_sub1.aNpcType_1325 = NpcType.method434(class35_sub2_sub3.g2());
-                class35_sub7_sub3_sub1.anInt1215 = class35_sub7_sub3_sub1.aNpcType_1325.anInt582;
-                class35_sub7_sub3_sub1.anInt1216 = class35_sub7_sub3_sub1.aNpcType_1325.anInt583;
-                class35_sub7_sub3_sub1.anInt1217 = class35_sub7_sub3_sub1.aNpcType_1325.anInt584;
-                class35_sub7_sub3_sub1.anInt1218 = class35_sub7_sub3_sub1.aNpcType_1325.anInt585;
-                class35_sub7_sub3_sub1.anInt1213 = class35_sub7_sub3_sub1.aNpcType_1325.anInt581;
+                class35_sub7_sub3_sub1.info = NpcType.method434(class35_sub2_sub3.g2());
+                class35_sub7_sub3_sub1.anInt1215 = class35_sub7_sub3_sub1.info.anInt582;
+                class35_sub7_sub3_sub1.anInt1216 = class35_sub7_sub3_sub1.info.anInt583;
+                class35_sub7_sub3_sub1.anInt1217 = class35_sub7_sub3_sub1.info.anInt584;
+                class35_sub7_sub3_sub1.anInt1218 = class35_sub7_sub3_sub1.info.anInt585;
+                class35_sub7_sub3_sub1.standSeq = class35_sub7_sub3_sub1.info.anInt581;
             }
             if ((i1 & 0x40) == 64) {
-                class35_sub7_sub3_sub1.anInt1240 = class35_sub2_sub3.g2();
+                class35_sub7_sub3_sub1.spotAnimIndex = class35_sub2_sub3.g2();
                 int k1 = class35_sub2_sub3.g4();
-                class35_sub7_sub3_sub1.anInt1244 = k1 >> 16;
+                class35_sub7_sub3_sub1.spotAnimOffsetY = k1 >> 16;
                 class35_sub7_sub3_sub1.anInt1243 = anInt759 + (k1 & 0xffff);
-                class35_sub7_sub3_sub1.anInt1241 = 0;
+                class35_sub7_sub3_sub1.spotAnimFrame = 0;
                 class35_sub7_sub3_sub1.anInt1242 = 0;
                 if (class35_sub7_sub3_sub1.anInt1243 > anInt759)
-                    class35_sub7_sub3_sub1.anInt1241 = -1;
-                if (class35_sub7_sub3_sub1.anInt1240 == 65535)
-                    class35_sub7_sub3_sub1.anInt1240 = -1;
+                    class35_sub7_sub3_sub1.spotAnimFrame = -1;
+                if (class35_sub7_sub3_sub1.spotAnimIndex == 65535)
+                    class35_sub7_sub3_sub1.spotAnimIndex = -1;
             }
             if ((i1 & 0x80) == 128) {
                 class35_sub7_sub3_sub1.anInt1230 = class35_sub2_sub3.g2();
@@ -5960,7 +5960,7 @@ public class client extends GameShell {
             }
             if (class35_sub7_sub3_sub2 == null || !class35_sub7_sub3_sub2.method411(0))
                 continue;
-            class35_sub7_sub3_sub2.aBoolean1347 = (aBoolean663 && anInt752 > 50 || anInt752 > 200) && j != -1 && class35_sub7_sub3_sub2.anInt1232 == class35_sub7_sub3_sub2.anInt1213;
+            class35_sub7_sub3_sub2.aBoolean1347 = (aBoolean663 && anInt752 > 50 || anInt752 > 200) && j != -1 && class35_sub7_sub3_sub2.secondarySeq == class35_sub7_sub3_sub2.standSeq;
             int l = class35_sub7_sub3_sub2.x >> 7;
             int i1 = class35_sub7_sub3_sub2.z >> 7;
             if (l < 0 || l >= 104 || i1 < 0 || i1 >= 104)
@@ -6092,15 +6092,15 @@ public class client extends GameShell {
         aFrameBuffer_896 = null;
         aFrameBuffer_897 = null;
         method118(-43634);
-        LocType.method427(300);
+        LocType.unload();
         NpcType.method433(300);
         ObjType.method439(300);
-        FloType.aFloTypeArray71 = null;
+        FloType.instances = null;
         IdkType.instances = null;
         Component.aComponentArray110 = null;
         DeadClass.aDeadClassArray174 = null;
-        SeqType.aSeqTypeArray190 = null;
-        SpotAnimType.aSpotAnimTypeArray212 = null;
+        SeqType.instances = null;
+        SpotAnimType.instances = null;
         SpotAnimType.aCache_219 = null;
         VarpType.aVarpTypeArray247 = null;
         super.aFrameBuffer_14 = null;
@@ -6108,8 +6108,8 @@ public class client extends GameShell {
         Draw3D.method337(300);
         MapSquare.method237(300);
         Model.method305(300);
-        SeqBase.aSeqBaseArray169 = null;
-        SeqFrame.aSeqFrameArray180 = null;
+        SeqSkeleton.aSeqBaseArray169 = null;
+        SeqFrame.instances = null;
         System.gc();
     }
 
@@ -6349,7 +6349,7 @@ public class client extends GameShell {
             Draw3D.method341((byte) 3, 20);
             showProgress((byte) -75, 85, "Unpacking models");
             Model.decode(models);
-            SeqBase.decode(models);
+            SeqSkeleton.decode(models);
             SeqFrame.decode(models);
             showProgress((byte) -75, 85, "Unpacking config");
             SeqType.decode(config);
@@ -6593,7 +6593,7 @@ public class client extends GameShell {
 
         for (int j3 = 0; j3 < anInt965; j3++) {
             NpcEntity class35_sub7_sub3_sub1 = aClass35_Sub7_Sub3_Sub1Array964[anIntArray966[j3]];
-            if (class35_sub7_sub3_sub1 != null && class35_sub7_sub3_sub1.method411(0) && class35_sub7_sub3_sub1.aNpcType_1325.aBoolean593) {
+            if (class35_sub7_sub3_sub1 != null && class35_sub7_sub3_sub1.method411(0) && class35_sub7_sub3_sub1.info.aBoolean593) {
                 int l = class35_sub7_sub3_sub1.x / 32 - self.x / 32;
                 int i2 = class35_sub7_sub3_sub1.z / 32 - self.z / 32;
                 method111(aByte886, i2, aSprite_825, l);
@@ -6626,10 +6626,10 @@ public class client extends GameShell {
         aBoolean734 &= flag;
     }
 
-    public void login(String username, String password, int uid, boolean flag) {
+    public void login(String username, String password, int uid, boolean reconnect) {
         signlink.errorname = username;
         try {
-            if (!flag) {
+            if (!reconnect) {
                 aString973 = "";
                 aString974 = "Connecting to server...";
                 method74(false);
@@ -6654,14 +6654,19 @@ public class client extends GameShell {
             outBuffer.pjstr(password);
             outBuffer.rsaenc(RSA_MODULUS, RSA_EXPONENT);
             loginBuffer.pos = 0;
-            if (flag)
+
+            if (reconnect) {
                 loginBuffer.p1(18);
-            else
+            } else {
                 loginBuffer.p1(16);
+            }
             loginBuffer.p1(outBuffer.pos + 32 + 1);
             loginBuffer.p1(194);
-            for (int j = 0; j < 8; j++)
+
+            for (int j = 0; j < 8; j++) {
                 loginBuffer.p4(archiveChecksums[j]);
+            }
+
             loginBuffer.pdata(outBuffer.data, 0, outBuffer.pos);
             outBuffer.isaac = new IsaacRandom(seed);
             for (int k = 0; k < 4; k++)
@@ -6675,7 +6680,7 @@ public class client extends GameShell {
                     Thread.sleep(2000L);
                 } catch (Exception _ex) {
                 }
-                login(username, password, uid, flag);
+                login(username, password, uid, reconnect);
                 return;
             }
             if (l == 2) {
@@ -6692,8 +6697,9 @@ public class client extends GameShell {
                 anInt710 = 0;
                 aBoolean838 = false;
                 super.anInt18 = 0;
-                for (int i1 = 0; i1 < 100; i1++)
+                for (int i1 = 0; i1 < 100; i1++) {
                     aStringArray814[i1] = null;
+                }
 
                 anInt712 = 0;
                 anInt706 = 0;
@@ -6706,8 +6712,9 @@ public class client extends GameShell {
                     aClass35_Sub2_Sub3Array756[j1] = null;
                 }
 
-                for (int k1 = 0; k1 < 8192; k1++)
+                for (int k1 = 0; k1 < 8192; k1++) {
                     aClass35_Sub7_Sub3_Sub1Array964[k1] = null;
+                }
 
                 self = aPlayerEntityArray751[anInt750] = new PlayerEntity();
                 aLinkedList_863.method231();
@@ -6869,7 +6876,7 @@ public class client extends GameShell {
     }
 
     public void method106(boolean flag) {
-        byte[] abyte0 = title.method417((byte) 6, null, "title.dat");
+        byte[] abyte0 = title.read(null, "title.dat");
         Sprite class35_sub2_sub2_sub2 = new Sprite(abyte0, this);
         aFrameBuffer_892.method234(-510);
         class35_sub2_sub2_sub2.method355(0, anInt841, 0);
@@ -7026,12 +7033,12 @@ public class client extends GameShell {
             }
             if (k2 == 10 || k2 == 11) {
                 int j3 = i1 >> 14 & 0x7fff;
-                LocType class39 = LocType.method428(j3);
-                if (class39.anInt557 != -1) {
-                    IndexedSprite class35_sub2_sub2_sub3 = aClass35_Sub2_Sub2_Sub3Array718[class39.anInt557];
-                    int i4 = (class39.anInt542 * 4 - class35_sub2_sub2_sub3.anInt1306) / 2;
-                    int j4 = (class39.anInt543 * 4 - class35_sub2_sub2_sub3.anInt1307) / 2;
-                    class35_sub2_sub2_sub3.method368(48 + (104 - i - class39.anInt543) * 4 + j4, anInt861, 48 + j * 4 + i4);
+                LocType class39 = LocType.get(j3);
+                if (class39.mapscene != -1) {
+                    IndexedSprite class35_sub2_sub2_sub3 = aClass35_Sub2_Sub2_Sub3Array718[class39.mapscene];
+                    int i4 = (class39.width * 4 - class35_sub2_sub2_sub3.anInt1306) / 2;
+                    int j4 = (class39.length * 4 - class35_sub2_sub2_sub3.anInt1307) / 2;
+                    class35_sub2_sub2_sub3.method368(48 + (104 - i - class39.length) * 4 + j4, anInt861, 48 + j * 4 + i4);
                 }
             }
         }
@@ -7075,7 +7082,7 @@ public class client extends GameShell {
                 int k2 = aMapSquare_741.method265(anInt722, i2, j2);
                 if (k2 != 0) {
                     k2 = k2 >> 14 & 0x7fff;
-                    int l2 = LocType.method428(k2).anInt556;
+                    int l2 = LocType.get(k2).mapfunctions;
                     if (l2 >= 0) {
                         aSpriteArray877[anInt767] = aSpriteArray884[l2];
                         anIntArray768[anInt767] = i2;
@@ -7142,8 +7149,8 @@ public class client extends GameShell {
         }
         if (k > 6400)
             return;
-        int i1 = Model.anIntArray1129[anInt924];
-        int j1 = Model.anIntArray1130[anInt924];
+        int i1 = Model.sin[anInt924];
+        int j1 = Model.cos[anInt924];
         int k1 = i * i1 + j * j1 >> 16;
         int l1 = i * j1 - j * i1 >> 16;
         if (k > 2500) {
@@ -7180,24 +7187,24 @@ public class client extends GameShell {
                 int k2 = l2 >> 6;
                 if (i1 == 0) {
                     aMapSquare_741.method257(anInt771, i, l, k);
-                    LocType class39 = LocType.method428(i2);
-                    if (class39.aBoolean544)
-                        aCollisionMapArray737[i].method126(918, l, k2, class39.aBoolean545, k, j2);
+                    LocType class39 = LocType.get(i2);
+                    if (class39.blockwalk)
+                        aCollisionMapArray737[i].method126(918, l, k2, class39.blockrange, k, j2);
                 }
                 if (i1 == 1)
                     aMapSquare_741.method258(l, i, 0, k);
                 if (i1 == 2) {
                     aMapSquare_741.method259(533, k, i, l);
-                    LocType class39_1 = LocType.method428(i2);
-                    if (l + class39_1.anInt542 > 103 || k + class39_1.anInt542 > 103 || l + class39_1.anInt543 > 103 || k + class39_1.anInt543 > 103)
+                    LocType class39_1 = LocType.get(i2);
+                    if (l + class39_1.width > 103 || k + class39_1.width > 103 || l + class39_1.length > 103 || k + class39_1.length > 103)
                         return;
-                    if (class39_1.aBoolean544)
-                        aCollisionMapArray737[i].method127(k, class39_1.anInt543, class39_1.aBoolean545, class39_1.anInt542, k2, l, false);
+                    if (class39_1.blockwalk)
+                        aCollisionMapArray737[i].method127(k, class39_1.length, class39_1.blockrange, class39_1.width, k2, l, false);
                 }
                 if (i1 == 3) {
                     aMapSquare_741.method260((byte) 52, k, l, i);
-                    LocType class39_2 = LocType.method428(i2);
-                    if (class39_2.aBoolean544 && class39_2.aBoolean546)
+                    LocType class39_2 = LocType.get(i2);
+                    if (class39_2.blockwalk && class39_2.interactable)
                         aCollisionMapArray737[i].method129(99, l, k);
                 }
             }

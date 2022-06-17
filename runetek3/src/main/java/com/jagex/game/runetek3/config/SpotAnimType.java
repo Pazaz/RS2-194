@@ -12,15 +12,15 @@ import com.jagex.game.runetek3.graphics.model.Model;
 public class SpotAnimType {
 
     public static void decode(FileArchive class36) {
-        Buffer class35_sub2_sub3 = new Buffer(class36.method417((byte) 6, null, "spotanim.dat"));
+        Buffer class35_sub2_sub3 = new Buffer(class36.read(null, "spotanim.dat"));
         anInt211 = class35_sub2_sub3.g2();
-        if (aSpotAnimTypeArray212 == null)
-            aSpotAnimTypeArray212 = new SpotAnimType[anInt211];
+        if (instances == null)
+            instances = new SpotAnimType[anInt211];
         for (int i = 0; i < anInt211; i++) {
-            if (aSpotAnimTypeArray212[i] == null)
-                aSpotAnimTypeArray212[i] = new SpotAnimType();
-            aSpotAnimTypeArray212[i].anInt213 = i;
-            aSpotAnimTypeArray212[i].method182(213, class35_sub2_sub3);
+            if (instances[i] == null)
+                instances[i] = new SpotAnimType();
+            instances[i].anInt213 = i;
+            instances[i].method182(213, class35_sub2_sub3);
         }
     }
 
@@ -33,9 +33,9 @@ public class SpotAnimType {
             if (j == 1)
                 anInt214 = class35_sub2_sub3.g2();
             else if (j == 2)
-                aSeqType_215 = SeqType.aSeqTypeArray190[class35_sub2_sub3.g2()];
+                seq = SeqType.instances[class35_sub2_sub3.g2()];
             else if (j == 3)
-                aBoolean216 = true;
+                disposeAlpha = true;
             else if (j >= 40 && j < 50)
                 anIntArray217[j - 40] = class35_sub2_sub3.g2();
             else if (j >= 50 && j < 60)
@@ -45,31 +45,31 @@ public class SpotAnimType {
         } while (true);
     }
 
-    public Model method183() {
+    public Model getModel() {
         Model class35_sub2_sub1 = (Model) aCache_219.method295(anInt213);
         if (class35_sub2_sub1 != null)
             return class35_sub2_sub1;
         class35_sub2_sub1 = new Model(anInt214, 298);
         for (int i = 0; i < 6; i++)
             if (anIntArray217[0] != 0)
-                class35_sub2_sub1.method317(anIntArray217[i], anIntArray218[i]);
+                class35_sub2_sub1.recolor(anIntArray217[i], anIntArray218[i]);
 
         aCache_219.method296(anInt213, 7, class35_sub2_sub1);
         return class35_sub2_sub1;
     }
 
     public SpotAnimType() {
-        aBoolean216 = false;
+        disposeAlpha = false;
         anIntArray217 = new int[6];
         anIntArray218 = new int[6];
     }
 
     public static int anInt211;
-    public static SpotAnimType[] aSpotAnimTypeArray212;
+    public static SpotAnimType[] instances;
     public int anInt213;
     public int anInt214;
-    public SeqType aSeqType_215;
-    public boolean aBoolean216;
+    public SeqType seq;
+    public boolean disposeAlpha;
     public int[] anIntArray217;
     public int[] anIntArray218;
     public static Cache aCache_219 = new Cache(-24094, 30);

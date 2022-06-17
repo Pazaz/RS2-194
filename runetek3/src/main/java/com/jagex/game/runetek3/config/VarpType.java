@@ -10,7 +10,7 @@ import com.jagex.core.io.FileArchive;
 public class VarpType {
 
     public static void decode(FileArchive class36) {
-        Buffer class35_sub2_sub3 = new Buffer(class36.method417((byte) 6, null, "varp.dat"));
+        Buffer class35_sub2_sub3 = new Buffer(class36.read(null, "varp.dat"));
         anInt248 = 0;
         anInt246 = class35_sub2_sub3.g2();
         if (aVarpTypeArray247 == null)

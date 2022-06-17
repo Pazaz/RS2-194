@@ -9,11 +9,8 @@ import com.jagex.game.runetek3.graphics.model.Model;
 
 public class Entity extends Node {
 
-    public Model getDrawMethod(int i, int cycle) {
-        if (i != 0)
-            throw new NullPointerException();
-        else
-            return null;
+    public Model getDrawMethod() {
+        return null;
     }
 
     public Entity() {

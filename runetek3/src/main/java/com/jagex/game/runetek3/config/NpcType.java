@@ -12,8 +12,8 @@ import com.jagex.game.runetek3.graphics.model.Model;
 public class NpcType {
 
     public static void decode(FileArchive class36) {
-        aClass35_Sub2_Sub3_572 = new Buffer(class36.method417((byte) 6, null, "npc.dat"));
-        Buffer class35_sub2_sub3 = new Buffer(class36.method417((byte) 6, null, "npc.idx"));
+        aClass35_Sub2_Sub3_572 = new Buffer(class36.read(null, "npc.dat"));
+        Buffer class35_sub2_sub3 = new Buffer(class36.read(null, "npc.idx"));
         anInt570 = class35_sub2_sub3.g2();
         anIntArray571 = new int[anInt570];
         int i = 2;
@@ -70,7 +70,7 @@ public class NpcType {
             else if (k == 3)
                 aByteArray577 = class35_sub2_sub3.gstrbyte();
             else if (k == 12)
-                aByte578 = class35_sub2_sub3.g1b();
+                size = class35_sub2_sub3.g1b();
             else if (k == 13)
                 anInt581 = class35_sub2_sub3.g2();
             else if (k == 14)
@@ -118,7 +118,7 @@ public class NpcType {
         } while (true);
     }
 
-    public Model method436(int i, int j, int[] ai) {
+    public Model getModel(int primaryFrame, int secondaryFrame, int[] labelGroups) {
         Model class35_sub2_sub1 = null;
         Model class35_sub2_sub1_1 = (Model) aCache_597.method295(aLong575);
         if (class35_sub2_sub1_1 == null) {
@@ -132,25 +132,25 @@ public class NpcType {
                 class35_sub2_sub1_1 = new Model(false, aclass35_sub2_sub1.length, aclass35_sub2_sub1);
             if (anIntArray587 != null) {
                 for (int l = 0; l < anIntArray587.length; l++)
-                    class35_sub2_sub1_1.method317(anIntArray587[l], anIntArray588[l]);
+                    class35_sub2_sub1_1.recolor(anIntArray587[l], anIntArray588[l]);
 
             }
-            class35_sub2_sub1_1.method310((byte) 3);
-            class35_sub2_sub1_1.method320(64, 850, -30, -50, -30, true);
+            class35_sub2_sub1_1.applyGroups();
+            class35_sub2_sub1_1.applyLighting(64, 850, -30, -50, -30, true);
             aCache_597.method296(aLong575, 7, class35_sub2_sub1_1);
         }
         class35_sub2_sub1 = new Model(false, !aBoolean586, class35_sub2_sub1_1);
-        if (i != -1 && j != -1)
-            class35_sub2_sub1.method312(i, 2, ai, j);
-        else if (i != -1)
-            class35_sub2_sub1.applyFrame(7, i);
+        if (primaryFrame != -1 && secondaryFrame != -1)
+            class35_sub2_sub1.applyFrames(primaryFrame, secondaryFrame, labelGroups);
+        else if (primaryFrame != -1)
+            class35_sub2_sub1.applyFrame(primaryFrame);
         if (anInt595 != 128 || anInt596 != 128)
             class35_sub2_sub1.method319(728, anInt595, anInt596, anInt595);
         class35_sub2_sub1.method308(569);
         class35_sub2_sub1.skinTriangle = null;
-        class35_sub2_sub1.anIntArrayArray1083 = null;
-        if (aByte578 == 1)
-            class35_sub2_sub1.aBoolean1085 = true;
+        class35_sub2_sub1.labelVertices = null;
+        if (size == 1)
+            class35_sub2_sub1.pickable = true;
         return class35_sub2_sub1;
     }
 
@@ -170,7 +170,7 @@ public class NpcType {
             class35_sub2_sub1 = new Model(false, aclass35_sub2_sub1.length, aclass35_sub2_sub1);
         if (anIntArray587 != null) {
             for (int k = 0; k < anIntArray587.length; k++)
-                class35_sub2_sub1.method317(anIntArray587[k], anIntArray588[k]);
+                class35_sub2_sub1.recolor(anIntArray587[k], anIntArray588[k]);
 
         }
         return class35_sub2_sub1;
@@ -178,7 +178,7 @@ public class NpcType {
 
     public NpcType() {
         aLong575 = -1L;
-        aByte578 = 1;
+        size = 1;
         anInt581 = -1;
         anInt582 = -1;
         anInt583 = -1;
@@ -202,7 +202,7 @@ public class NpcType {
     public long aLong575;
     public String aString576;
     public byte[] aByteArray577;
-    public byte aByte578;
+    public byte size;
     public int[] anIntArray579;
     public int[] anIntArray580;
     public int anInt581;

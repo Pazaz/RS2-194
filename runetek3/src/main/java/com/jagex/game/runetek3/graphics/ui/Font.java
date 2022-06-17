@@ -20,8 +20,8 @@ public class Font extends Draw2D {
         anIntArray1318 = new int[94];
         anIntArray1319 = new int[95];
         anIntArray1320 = new int[256];
-        Buffer class35_sub2_sub3 = new Buffer(class36.method417((byte) 6, null, s + ".dat"));
-        Buffer class35_sub2_sub3_1 = new Buffer(class36.method417((byte) 6, null, "index.dat"));
+        Buffer class35_sub2_sub3 = new Buffer(class36.read(null, s + ".dat"));
+        Buffer class35_sub2_sub3_1 = new Buffer(class36.read(null, "index.dat"));
         class35_sub2_sub3_1.pos = class35_sub2_sub3.g2() + 4;
         int i = class35_sub2_sub3_1.g1();
         if (i > 0)

@@ -10,10 +10,10 @@ import com.jagex.core.io.FileArchive;
 public class WordPack {
 
     public static void decode(FileArchive class36) {
-        Buffer class35_sub2_sub3 = new Buffer(class36.method417((byte) 6, null, "fragmentsenc.txt"));
-        Buffer class35_sub2_sub3_1 = new Buffer(class36.method417((byte) 6, null, "badenc.txt"));
-        Buffer class35_sub2_sub3_2 = new Buffer(class36.method417((byte) 6, null, "domainenc.txt"));
-        Buffer class35_sub2_sub3_3 = new Buffer(class36.method417((byte) 6, null, "tldlist.txt"));
+        Buffer class35_sub2_sub3 = new Buffer(class36.read(null, "fragmentsenc.txt"));
+        Buffer class35_sub2_sub3_1 = new Buffer(class36.read(null, "badenc.txt"));
+        Buffer class35_sub2_sub3_2 = new Buffer(class36.read(null, "domainenc.txt"));
+        Buffer class35_sub2_sub3_3 = new Buffer(class36.read(null, "tldlist.txt"));
         method187(class35_sub2_sub3, class35_sub2_sub3_1, class35_sub2_sub3_2, class35_sub2_sub3_3);
     }
 

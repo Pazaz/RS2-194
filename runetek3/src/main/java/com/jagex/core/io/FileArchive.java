@@ -16,8 +16,8 @@ public class FileArchive {
     public void method416(byte[] abyte0, byte byte0) {
         Buffer class35_sub2_sub3 = new Buffer(abyte0);
         int i = class35_sub2_sub3.g3();
-        if (byte0 == 2)
-            byte0 = 0;
+        if (byte0 == 2) {
+        }
         else
             anInt513 = -215;
         int j = class35_sub2_sub3.g3();
@@ -29,15 +29,15 @@ public class FileArchive {
         } else {
             aByteArray514 = abyte0;
         }
-        anInt515 = class35_sub2_sub3.g2();
-        anIntArray516 = new int[anInt515];
-        anIntArray517 = new int[anInt515];
-        anIntArray518 = new int[anInt515];
-        anIntArray519 = new int[anInt515];
-        int k = class35_sub2_sub3.pos + anInt515 * 10;
-        for (int l = 0; l < anInt515; l++) {
-            anIntArray516[l] = class35_sub2_sub3.g4();
-            anIntArray517[l] = class35_sub2_sub3.g3();
+        fileCount = class35_sub2_sub3.g2();
+        fileHash = new int[fileCount];
+        fileUnpackedSize = new int[fileCount];
+        anIntArray518 = new int[fileCount];
+        anIntArray519 = new int[fileCount];
+        int k = class35_sub2_sub3.pos + fileCount * 10;
+        for (int l = 0; l < fileCount; l++) {
+            fileHash[l] = class35_sub2_sub3.g4();
+            fileUnpackedSize[l] = class35_sub2_sub3.g3();
             anIntArray518[l] = class35_sub2_sub3.g3();
             anIntArray519[l] = k;
             k += anIntArray518[l];
@@ -45,40 +45,38 @@ public class FileArchive {
 
     }
 
-    public byte[] method417(byte byte0, byte[] abyte0, String s) {
-        if (byte0 == 6) {
-            byte0 = 0;
-        } else {
-            for (int i = 1; i > 0; i++) ;
+    public byte[] read(byte[] dest, String name) {
+        int hash = 0;
+        String upperName = name.toUpperCase();
+        for (int i = 0; i < upperName.length(); i++) {
+            hash = (hash * 61 + upperName.charAt(i)) - 32;
         }
-        int j = 0;
-        s = s.toUpperCase();
-        for (int k = 0; k < s.length(); k++)
-            j = (j * 61 + s.charAt(k)) - 32;
 
-        for (int l = 0; l < anInt515; l++)
-            if (anIntArray516[l] == j) {
-                if (abyte0 == null)
-                    abyte0 = new byte[anIntArray517[l]];
-                if (anIntArray517[l] != anIntArray518[l]) {
-                    BZip2InputStream.method287(abyte0, anIntArray517[l], aByteArray514, anIntArray518[l], anIntArray519[l]);
+        for (int i = 0; i < fileCount; i++) {
+            if (fileHash[i] == hash) {
+                if (dest == null) {
+                    dest = new byte[fileUnpackedSize[i]];
+                }
+                if (fileUnpackedSize[i] != anIntArray518[i]) {
+                    BZip2InputStream.method287(dest, fileUnpackedSize[i], aByteArray514, anIntArray518[i], anIntArray519[i]);
                 } else {
-                    for (int i1 = 0; i1 < anIntArray517[l]; i1++)
-                        abyte0[i1] = aByteArray514[anIntArray519[l] + i1];
+                    for (int i1 = 0; i1 < fileUnpackedSize[i]; i1++) {
+                        dest[i1] = aByteArray514[anIntArray519[i] + i1];
+                    }
 
                 }
-                return abyte0;
+                return dest;
             }
-
+        }
         return null;
     }
 
     public boolean aBoolean512;
     public int anInt513;
     public byte[] aByteArray514;
-    public int anInt515;
-    public int[] anIntArray516;
-    public int[] anIntArray517;
+    public int fileCount;
+    public int[] fileHash;
+    public int[] fileUnpackedSize;
     public int[] anIntArray518;
     public int[] anIntArray519;
 }

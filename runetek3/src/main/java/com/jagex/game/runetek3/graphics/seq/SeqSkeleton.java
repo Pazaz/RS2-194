@@ -7,15 +7,15 @@ package com.jagex.game.runetek3.graphics.seq;
 import com.jagex.core.io.Buffer;
 import com.jagex.core.io.FileArchive;
 
-public class SeqBase {
+public class SeqSkeleton {
 
     public static void decode(FileArchive class36) {
-        Buffer class35_sub2_sub3 = new Buffer(class36.method417((byte) 6, null, "base_head.dat"));
-        Buffer class35_sub2_sub3_1 = new Buffer(class36.method417((byte) 6, null, "base_type.dat"));
-        Buffer class35_sub2_sub3_2 = new Buffer(class36.method417((byte) 6, null, "base_label.dat"));
+        Buffer class35_sub2_sub3 = new Buffer(class36.read(null, "base_head.dat"));
+        Buffer class35_sub2_sub3_1 = new Buffer(class36.read(null, "base_type.dat"));
+        Buffer class35_sub2_sub3_2 = new Buffer(class36.read(null, "base_label.dat"));
         int j = class35_sub2_sub3.g2();
         int k = class35_sub2_sub3.g2();
-        aSeqBaseArray169 = new SeqBase[k + 1];
+        aSeqBaseArray169 = new SeqSkeleton[k + 1];
         for (int l = 0; l < j; l++) {
             int i1 = class35_sub2_sub3.g2();
             int j1 = class35_sub2_sub3.g1();
@@ -30,19 +30,19 @@ public class SeqBase {
 
             }
 
-            aSeqBaseArray169[i1] = new SeqBase();
+            aSeqBaseArray169[i1] = new SeqSkeleton();
             aSeqBaseArray169[i1].anInt170 = j1;
-            aSeqBaseArray169[i1].anIntArray171 = ai;
-            aSeqBaseArray169[i1].anIntArrayArray172 = ai1;
+            aSeqBaseArray169[i1].transformTypes = ai;
+            aSeqBaseArray169[i1].groupLabels = ai1;
         }
 
     }
 
-    public SeqBase() {
+    public SeqSkeleton() {
     }
 
-    public static SeqBase[] aSeqBaseArray169;
+    public static SeqSkeleton[] aSeqBaseArray169;
     public int anInt170;
-    public int[] anIntArray171;
-    public int[][] anIntArrayArray172;
+    public int[] transformTypes;
+    public int[][] groupLabels;
 }

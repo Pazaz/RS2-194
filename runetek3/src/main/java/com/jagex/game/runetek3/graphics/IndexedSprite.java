@@ -15,8 +15,8 @@ public class IndexedSprite extends Draw2D {
         anInt1301 = 129;
         anInt1302 = -25737;
         aBoolean1303 = false;
-        Buffer class35_sub2_sub3 = new Buffer(class36.method417((byte) 6, null, s + ".dat"));
-        Buffer class35_sub2_sub3_1 = new Buffer(class36.method417((byte) 6, null, "index.dat"));
+        Buffer class35_sub2_sub3 = new Buffer(class36.read(null, s + ".dat"));
+        Buffer class35_sub2_sub3_1 = new Buffer(class36.read(null, "index.dat"));
         class35_sub2_sub3_1.pos = class35_sub2_sub3.g2();
         anInt1310 = class35_sub2_sub3_1.g2();
         anInt1311 = class35_sub2_sub3_1.g2();

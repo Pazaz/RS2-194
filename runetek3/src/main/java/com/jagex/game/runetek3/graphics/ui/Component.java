@@ -16,7 +16,7 @@ public class Component {
     public static void decode(FileArchive class36, FileArchive class36_1, Font[] aclass35_sub2_sub2_sub4) {
         aCache_167 = new Cache(-24094, 50000);
         aCache_168 = new Cache(-24094, 50000);
-        Buffer class35_sub2_sub3 = new Buffer(class36_1.method417((byte) 6, null, "data"));
+        Buffer class35_sub2_sub3 = new Buffer(class36_1.read(null, "data"));
         int j = -1;
         int k = class35_sub2_sub3.g2();
         aComponentArray110 = new Component[k];
@@ -212,16 +212,16 @@ public class Component {
             class35_sub2_sub1 = aModel_157;
         if (class35_sub2_sub1 == null)
             return null;
-        if (i == -1 && j == -1 && class35_sub2_sub1.anIntArray1065 == null)
+        if (i == -1 && j == -1 && class35_sub2_sub1.unmodifiedTriangleColor == null)
             return class35_sub2_sub1;
         Model class35_sub2_sub1_1 = new Model(-428, true, class35_sub2_sub1, true, false, true);
         if (i != -1 || j != -1)
-            class35_sub2_sub1_1.method310((byte) 3);
+            class35_sub2_sub1_1.applyGroups();
         if (i != -1)
-            class35_sub2_sub1_1.applyFrame(7, i);
+            class35_sub2_sub1_1.applyFrame(i);
         if (j != -1)
-            class35_sub2_sub1_1.applyFrame(7, j);
-        class35_sub2_sub1_1.method320(64, 768, -50, -10, -50, true);
+            class35_sub2_sub1_1.applyFrame(j);
+        class35_sub2_sub1_1.applyLighting(64, 768, -50, -10, -50, true);
         return class35_sub2_sub1_1;
     }
 
