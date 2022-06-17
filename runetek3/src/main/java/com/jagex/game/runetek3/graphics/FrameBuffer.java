@@ -32,7 +32,7 @@ public class FrameBuffer
     public void method234(int i) {
         while (i >= 0)
             return;
-        Draw2D.method329(anInt369, anIntArray368, anInt370, -810);
+        Draw2D.prepare(anInt369, anIntArray368, anInt370);
     }
 
     public void method235(int i, Graphics g, int j, byte byte0) {

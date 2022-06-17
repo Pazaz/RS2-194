@@ -5,8 +5,8 @@ public class Cache {
     public Cache(int j) {
         aBoolean445 = false;
         anInt446 = 930;
-        hastable = new Hashtable((byte) 1, 1024);
-        history = new Stack(0);
+        hastable = new Hashtable(1024);
+        history = new Stack();
         capacity = j;
         available = j;
     }
@@ -27,7 +27,7 @@ public class Cache {
         } else {
             available--;
         }
-        hastable.put(node, -99, key);
+        hastable.put(node, key);
         history.push(node);
     }
 

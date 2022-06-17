@@ -187,7 +187,7 @@ public class Scene {
             Model class35_sub2_sub1 = class39.method431(22, j, i2, j2, k2, l2, -1);
             class29.method244(j3, k, byte0, class35_sub2_sub1, j1, i3, true, k1);
             if (class39.blockwalk && class39.interactable)
-                class2.method124(2, k, j1);
+                class2.method124(k, j1);
             return;
         }
         if (l == 10 || l == 11) {
@@ -220,7 +220,7 @@ public class Scene {
                 }
             }
             if (class39.blockwalk)
-                class2.method123(j1, class39.length, class39.blockrange, class39.width, -532, k, j);
+                class2.setLoc(j1, class39.length, class39.blockrange, class39.width, k, j);
             if (class39.anim != -1)
                 class24.pushNext(new LocEntity(2, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
@@ -231,7 +231,7 @@ public class Scene {
             if (l >= 12 && l <= 17 && l != 13 && k1 > 0)
                 anIntArrayArrayArray65[k1][j1][k] |= 0x924;
             if (class39.blockwalk)
-                class2.method123(j1, class39.length, class39.blockrange, class39.width, -532, k, j);
+                class2.setLoc(j1, class39.length, class39.blockrange, class39.width, k, j);
             if (class39.anim != -1)
                 class24.pushNext(new LocEntity(2, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
@@ -269,7 +269,7 @@ public class Scene {
                     anIntArrayArrayArray65[k1][j1][k] |= 0x492;
             }
             if (class39.blockwalk)
-                class2.method122(l, k, j, j1, 757, class39.blockrange);
+                class2.method122(l, k, j, j1, class39.blockrange);
             if (class39.anim != -1)
                 class24.pushNext(new LocEntity(0, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
@@ -287,7 +287,7 @@ public class Scene {
                 else if (j == 3)
                     aByteArrayArrayArray58[k1][j1][k] = 50;
             if (class39.blockwalk)
-                class2.method122(l, k, j, j1, 757, class39.blockrange);
+                class2.method122(l, k, j, j1, class39.blockrange);
             if (class39.anim != -1)
                 class24.pushNext(new LocEntity(0, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
@@ -312,7 +312,7 @@ public class Scene {
                     anIntArrayArrayArray65[k1][j1][k] |= 0x249;
                 }
             if (class39.blockwalk)
-                class2.method122(l, k, j, j1, 757, class39.blockrange);
+                class2.method122(l, k, j, j1, class39.blockrange);
             return;
         }
         if (l == 3) {
@@ -328,7 +328,7 @@ public class Scene {
                 else if (j == 3)
                     aByteArrayArrayArray58[k1][j1][k] = 50;
             if (class39.blockwalk)
-                class2.method122(l, k, j, j1, 757, class39.blockrange);
+                class2.method122(l, k, j, j1, class39.blockrange);
             if (class39.anim != -1)
                 class24.pushNext(new LocEntity(0, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
@@ -337,7 +337,7 @@ public class Scene {
             Model class35_sub2_sub1_6 = class39.method431(l, j, i2, j2, k2, l2, -1);
             class29.method248(class35_sub2_sub1_6, byte0, null, i3, j1, 1, 1, k1, j3, k, 0, 0);
             if (class39.blockwalk)
-                class2.method123(j1, class39.length, class39.blockrange, class39.width, -532, k, j);
+                class2.setLoc(j1, class39.length, class39.blockrange, class39.width, k, j);
             if (class39.anim != -1)
                 class24.pushNext(new LocEntity(2, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
@@ -389,9 +389,9 @@ public class Scene {
             for (int k = 0; k < 104; k++) {
                 for (int i1 = 0; i1 < 104; i1++) {
                     if ((aByteArrayArrayArray53[i][k][i1] & 1) == 1)
-                        class2_1.method124(2, i1, k);
+                        class2_1.method124(i1, k);
                     if (i > 0 && (aByteArrayArrayArray53[1][k][i1] & 2) == 2)
-                        class2.anIntArrayArray43[k][i1] = class2_1.anIntArrayArray43[k][i1];
+                        class2.flags[k][i1] = class2_1.flags[k][i1];
                 }
 
             }
@@ -805,7 +805,7 @@ public class Scene {
             Model class35_sub2_sub1 = class39.method431(22, k, l1, i2, j2, k2, -1);
             class29.method244(i3, j1, byte1, class35_sub2_sub1, i1, l2, true, l);
             if (class39.blockwalk && class39.interactable)
-                class2.method124(2, j1, i1);
+                class2.method124(j1, i1);
             return;
         }
         if (j == 10 || j == 11) {
@@ -826,7 +826,7 @@ public class Scene {
                 class29.method248(class35_sub2_sub1_1, byte1, null, l2, i1, j4, l3, l, i3, j1, 0, k4);
             }
             if (class39.blockwalk)
-                class2.method123(i1, class39.length, class39.blockrange, class39.width, -532, j1, k);
+                class2.setLoc(i1, class39.length, class39.blockrange, class39.width, j1, k);
             if (class39.anim != -1)
                 class24.pushNext(new LocEntity(2, l, i, true, SeqType.instances[class39.anim], j1, i1));
             return;
@@ -835,7 +835,7 @@ public class Scene {
             Model class35_sub2_sub1_2 = class39.method431(j, k, l1, i2, j2, k2, -1);
             class29.method248(class35_sub2_sub1_2, byte1, null, l2, i1, 1, 1, l, i3, j1, 0, 0);
             if (class39.blockwalk)
-                class2.method123(i1, class39.length, class39.blockrange, class39.width, -532, j1, k);
+                class2.setLoc(i1, class39.length, class39.blockrange, class39.width, j1, k);
             if (class39.anim != -1)
                 class24.pushNext(new LocEntity(2, l, i, true, SeqType.instances[class39.anim], j1, i1));
             return;
@@ -844,14 +844,14 @@ public class Scene {
             Model class35_sub2_sub1_3 = class39.method431(0, k, l1, i2, j2, k2, -1);
             class29.method246(431, i3, 0, l2, class35_sub2_sub1_3, j1, i1, null, byte1, anIntArray66[k], l);
             if (class39.blockwalk)
-                class2.method122(j, j1, k, i1, 757, class39.blockrange);
+                class2.method122(j, j1, k, i1, class39.blockrange);
             return;
         }
         if (j == 1) {
             Model class35_sub2_sub1_4 = class39.method431(1, k, l1, i2, j2, k2, -1);
             class29.method246(431, i3, 0, l2, class35_sub2_sub1_4, j1, i1, null, byte1, anIntArray67[k], l);
             if (class39.blockwalk)
-                class2.method122(j, j1, k, i1, 757, class39.blockrange);
+                class2.method122(j, j1, k, i1, class39.blockrange);
             return;
         }
         if (j == 2) {
@@ -860,21 +860,21 @@ public class Scene {
             Model class35_sub2_sub1_12 = class39.method431(2, j3, l1, i2, j2, k2, -1);
             class29.method246(431, i3, anIntArray66[j3], l2, class35_sub2_sub1_11, j1, i1, class35_sub2_sub1_12, byte1, anIntArray66[k], l);
             if (class39.blockwalk)
-                class2.method122(j, j1, k, i1, 757, class39.blockrange);
+                class2.method122(j, j1, k, i1, class39.blockrange);
             return;
         }
         if (j == 3) {
             Model class35_sub2_sub1_5 = class39.method431(3, k, l1, i2, j2, k2, -1);
             class29.method246(431, i3, 0, l2, class35_sub2_sub1_5, j1, i1, null, byte1, anIntArray67[k], l);
             if (class39.blockwalk)
-                class2.method122(j, j1, k, i1, 757, class39.blockrange);
+                class2.method122(j, j1, k, i1, class39.blockrange);
             return;
         }
         if (j == 9) {
             Model class35_sub2_sub1_6 = class39.method431(j, k, l1, i2, j2, k2, -1);
             class29.method248(class35_sub2_sub1_6, byte1, null, l2, i1, 1, 1, l, i3, j1, 0, 0);
             if (class39.blockwalk)
-                class2.method123(i1, class39.length, class39.blockrange, class39.width, -532, j1, k);
+                class2.setLoc(i1, class39.length, class39.blockrange, class39.width, j1, k);
             return;
         }
         if (j == 4) {

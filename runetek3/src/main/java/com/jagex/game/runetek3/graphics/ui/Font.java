@@ -188,30 +188,30 @@ public class Font extends Draw2D {
     }
 
     public void method376(byte[] abyte0, int i, int j, int k, int l, int i1) {
-        int j1 = i + j * Draw2D.anInt1138;
-        int k1 = Draw2D.anInt1138 - k;
+        int j1 = i + j * Draw2D.width;
+        int k1 = Draw2D.width - k;
         int l1 = 0;
         int i2 = 0;
-        if (j < Draw2D.anInt1140) {
-            int j2 = Draw2D.anInt1140 - j;
+        if (j < Draw2D.top) {
+            int j2 = Draw2D.top - j;
             l -= j2;
-            j = Draw2D.anInt1140;
+            j = Draw2D.top;
             i2 += j2 * k;
-            j1 += j2 * Draw2D.anInt1138;
+            j1 += j2 * Draw2D.width;
         }
-        if (j + l >= Draw2D.anInt1141)
-            l -= ((j + l) - Draw2D.anInt1141) + 1;
-        if (i < Draw2D.anInt1142) {
-            int k2 = Draw2D.anInt1142 - i;
+        if (j + l >= Draw2D.bottom)
+            l -= ((j + l) - Draw2D.bottom) + 1;
+        if (i < Draw2D.left) {
+            int k2 = Draw2D.left - i;
             k -= k2;
-            i = Draw2D.anInt1142;
+            i = Draw2D.left;
             i2 += k2;
             j1 += k2;
             l1 += k2;
             k1 += k2;
         }
-        if (i + k >= Draw2D.anInt1143) {
-            int l2 = ((i + k) - Draw2D.anInt1143) + 1;
+        if (i + k >= Draw2D.right) {
+            int l2 = ((i + k) - Draw2D.right) + 1;
             k -= l2;
             l1 += l2;
             k1 += l2;
@@ -219,7 +219,7 @@ public class Font extends Draw2D {
         if (k <= 0 || l <= 0) {
             return;
         } else {
-            method377(Draw2D.anIntArray1137, abyte0, i1, i2, j1, k, l, k1, l1);
+            method377(Draw2D.data, abyte0, i1, i2, j1, k, l, k1, l1);
             return;
         }
     }

@@ -6,13 +6,14 @@ package com.jagex.core.isaac;
 
 public class IsaacRandom {
 
-    public IsaacRandom(int[] ai) {
-        anIntArray504 = new int[256];
-        anIntArray503 = new int[256];
-        for (int i = 0; i < ai.length; i++)
-            anIntArray503[i] = ai[i];
+    public IsaacRandom(int[] seed) {
+        mem = new int[256];
+        rsl = new int[256];
+        for (int i = 0; i < seed.length; i++) {
+            rsl[i] = seed[i];
+        }
 
-        method302();
+        init();
     }
 
     public int nextInt() {
@@ -25,38 +26,36 @@ public class IsaacRandom {
 //        return anIntArray503[anInt502];
     }
 
-    public void method301(int i) {
-        if (i != -23795)
-            return;
-        anInt506 += ++anInt507;
+    public void isaac() {
+        b += ++c;
         for (int j = 0; j < 256; j++) {
-            int k = anIntArray504[j];
+            int k = mem[j];
             switch (j & 3) {
                 case 0: // '\0'
-                    anInt505 ^= anInt505 << 13;
+                    a ^= a << 13;
                     break;
 
                 case 1: // '\001'
-                    anInt505 ^= anInt505 >>> 6;
+                    a ^= a >>> 6;
                     break;
 
                 case 2: // '\002'
-                    anInt505 ^= anInt505 << 2;
+                    a ^= a << 2;
                     break;
 
                 case 3: // '\003'
-                    anInt505 ^= anInt505 >>> 16;
+                    a ^= a >>> 16;
                     break;
             }
-            anInt505 += anIntArray504[j + 128 & 0xff];
+            a += mem[j + 128 & 0xFF];
             int l;
-            anIntArray504[j] = l = anIntArray504[(k & 0x3fc) >> 2] + anInt505 + anInt506;
-            anIntArray503[j] = anInt506 = anIntArray504[(l >> 8 & 0x3fc) >> 2] + k;
+            mem[j] = l = mem[(k & 0x3FC) >> 2] + a + b;
+            rsl[j] = b = mem[(l >> 8 & 0x3FC) >> 2] + k;
         }
 
     }
 
-    public void method302() {
+    public void init() {
         int i1;
         int j1;
         int k1;
@@ -93,14 +92,14 @@ public class IsaacRandom {
         }
 
         for (int j = 0; j < 256; j += 8) {
-            l += anIntArray503[j];
-            i1 += anIntArray503[j + 1];
-            j1 += anIntArray503[j + 2];
-            k1 += anIntArray503[j + 3];
-            l1 += anIntArray503[j + 4];
-            i2 += anIntArray503[j + 5];
-            j2 += anIntArray503[j + 6];
-            k2 += anIntArray503[j + 7];
+            l += rsl[j];
+            i1 += rsl[j + 1];
+            j1 += rsl[j + 2];
+            k1 += rsl[j + 3];
+            l1 += rsl[j + 4];
+            i2 += rsl[j + 5];
+            j2 += rsl[j + 6];
+            k2 += rsl[j + 7];
             l ^= i1 << 11;
             k1 += l;
             i1 += j1;
@@ -125,25 +124,25 @@ public class IsaacRandom {
             k2 ^= l >>> 9;
             j1 += k2;
             l += i1;
-            anIntArray504[j] = l;
-            anIntArray504[j + 1] = i1;
-            anIntArray504[j + 2] = j1;
-            anIntArray504[j + 3] = k1;
-            anIntArray504[j + 4] = l1;
-            anIntArray504[j + 5] = i2;
-            anIntArray504[j + 6] = j2;
-            anIntArray504[j + 7] = k2;
+            mem[j] = l;
+            mem[j + 1] = i1;
+            mem[j + 2] = j1;
+            mem[j + 3] = k1;
+            mem[j + 4] = l1;
+            mem[j + 5] = i2;
+            mem[j + 6] = j2;
+            mem[j + 7] = k2;
         }
 
         for (int k = 0; k < 256; k += 8) {
-            l += anIntArray504[k];
-            i1 += anIntArray504[k + 1];
-            j1 += anIntArray504[k + 2];
-            k1 += anIntArray504[k + 3];
-            l1 += anIntArray504[k + 4];
-            i2 += anIntArray504[k + 5];
-            j2 += anIntArray504[k + 6];
-            k2 += anIntArray504[k + 7];
+            l += mem[k];
+            i1 += mem[k + 1];
+            j1 += mem[k + 2];
+            k1 += mem[k + 3];
+            l1 += mem[k + 4];
+            i2 += mem[k + 5];
+            j2 += mem[k + 6];
+            k2 += mem[k + 7];
             l ^= i1 << 11;
             k1 += l;
             i1 += j1;
@@ -168,24 +167,24 @@ public class IsaacRandom {
             k2 ^= l >>> 9;
             j1 += k2;
             l += i1;
-            anIntArray504[k] = l;
-            anIntArray504[k + 1] = i1;
-            anIntArray504[k + 2] = j1;
-            anIntArray504[k + 3] = k1;
-            anIntArray504[k + 4] = l1;
-            anIntArray504[k + 5] = i2;
-            anIntArray504[k + 6] = j2;
-            anIntArray504[k + 7] = k2;
+            mem[k] = l;
+            mem[k + 1] = i1;
+            mem[k + 2] = j1;
+            mem[k + 3] = k1;
+            mem[k + 4] = l1;
+            mem[k + 5] = i2;
+            mem[k + 6] = j2;
+            mem[k + 7] = k2;
         }
 
-        method301(-23795);
+        isaac();
         anInt502 = 256;
     }
 
     public int anInt502;
-    public int[] anIntArray503;
-    public int[] anIntArray504;
-    public int anInt505;
-    public int anInt506;
-    public int anInt507;
+    public int[] rsl;
+    public int[] mem;
+    public int a;
+    public int b;
+    public int c;
 }

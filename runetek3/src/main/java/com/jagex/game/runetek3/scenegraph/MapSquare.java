@@ -1468,7 +1468,7 @@ public class MapSquare {
         int l6 = Draw3D.anInt1268 + (k4 << 9) / j3;
         Draw3D.anInt1266 = 0;
         if ((i6 - k6) * (l5 - l6) - (j6 - l6) * (k5 - k6) > 0) {
-            Draw3D.aBoolean1263 = i6 < 0 || k6 < 0 || k5 < 0 || i6 > Draw2D.anInt1144 || k6 > Draw2D.anInt1144 || k5 > Draw2D.anInt1144;
+            Draw3D.aBoolean1263 = i6 < 0 || k6 < 0 || k5 < 0 || i6 > Draw2D.safeX || k6 > Draw2D.safeX || k5 > Draw2D.safeX;
             if (aBoolean413 && method280(anInt414, anInt415, j6, l6, l5, i6, k6, k5)) {
                 anInt416 = j1;
                 anInt417 = k1;
@@ -1487,7 +1487,7 @@ public class MapSquare {
             }
         }
         if ((i5 - k5) * (l6 - l5) - (j5 - l5) * (k6 - k5) > 0) {
-            Draw3D.aBoolean1263 = i5 < 0 || k5 < 0 || k6 < 0 || i5 > Draw2D.anInt1144 || k5 > Draw2D.anInt1144 || k6 > Draw2D.anInt1144;
+            Draw3D.aBoolean1263 = i5 < 0 || k5 < 0 || k6 < 0 || i5 > Draw2D.safeX || k5 > Draw2D.safeX || k6 > Draw2D.safeX;
             if (aBoolean413 && method280(anInt414, anInt415, j5, l5, l6, i5, k5, k6)) {
                 anInt416 = j1;
                 anInt417 = k1;
@@ -1547,7 +1547,7 @@ public class MapSquare {
             int i5 = TileOverlay.anIntArray236[j3];
             int j5 = TileOverlay.anIntArray236[l3];
             if ((i4 - j4) * (j5 - i5) - (l4 - i5) * (k4 - j4) > 0) {
-                Draw3D.aBoolean1263 = i4 < 0 || j4 < 0 || k4 < 0 || i4 > Draw2D.anInt1144 || j4 > Draw2D.anInt1144 || k4 > Draw2D.anInt1144;
+                Draw3D.aBoolean1263 = i4 < 0 || j4 < 0 || k4 < 0 || i4 > Draw2D.safeX || j4 > Draw2D.safeX || k4 > Draw2D.safeX;
                 if (aBoolean413 && method280(anInt414, anInt415, l4, i5, j5, i4, j4, k4)) {
                     anInt416 = l;
                     anInt417 = i1;
@@ -1980,7 +1980,7 @@ public class MapSquare {
     public static Occluder[][] aOccluderArrayArray420;
     public static int anInt421;
     public static Occluder[] aOccluderArray422 = new Occluder[500];
-    public static LinkedList aLinkedList_423 = new LinkedList(5);
+    public static LinkedList aLinkedList_423 = new LinkedList();
     public static final int[] anIntArray424 = {
             19, 55, 38, 155, 255, 110, 137, 205, 76
     };
