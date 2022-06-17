@@ -56,8 +56,8 @@ public class Sprite extends Draw2D {
         aBoolean1288 = false;
         aByte1289 = 4;
         aBoolean1290 = true;
-        Buffer class35_sub2_sub3 = new Buffer(class36.method417((byte) 6, null, s + ".dat"));
-        Buffer class35_sub2_sub3_1 = new Buffer(class36.method417((byte) 6, null, "index.dat"));
+        Buffer class35_sub2_sub3 = new Buffer(class36.read(null, s + ".dat"));
+        Buffer class35_sub2_sub3_1 = new Buffer(class36.read(null, "index.dat"));
         class35_sub2_sub3_1.pos = class35_sub2_sub3.g2();
         anInt1297 = class35_sub2_sub3_1.g2();
         anInt1298 = class35_sub2_sub3_1.g2();
@@ -147,8 +147,7 @@ public class Sprite extends Draw2D {
         }
     }
 
-    public void method356(int i, int j, int k, int[] ai, int l, int[] ai1, int i1,
-                          int j1, int k1) {
+    public void method356(int i, int j, int k, int[] ai, int l, int[] ai1, int i1, int j1, int k1) {
         int l1 = -(i >> 2);
         i = -(i & 3);
         for (int i2 = -j; i2 < 0; i2++) {

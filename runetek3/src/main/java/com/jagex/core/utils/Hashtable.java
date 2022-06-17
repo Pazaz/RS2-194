@@ -24,7 +24,7 @@ public class Hashtable {
 
     }
 
-    public Node method298(long l) {
+    public Node get(long l) {
         Node class35 = aNodeArray501[(int) (l & (long) (anInt500 - 1))];
         for (Node class35_1 = class35.aNode_509; class35_1 != class35; class35_1 = class35_1.aNode_509)
             if (class35_1.aLong508 == l)
@@ -33,10 +33,10 @@ public class Hashtable {
         return null;
     }
 
-    public void method299(Node class35, int i, long l) {
+    public void put(Node class35, int i, long l) {
         try {
             if (class35.aNode_510 != null)
-                class35.method303();
+                class35.unlink();
             Node class35_1 = aNodeArray501[(int) (l & (long) (anInt500 - 1))];
             class35.aNode_510 = class35_1.aNode_510;
             class35.aNode_509 = class35_1;

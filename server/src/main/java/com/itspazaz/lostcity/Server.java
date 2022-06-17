@@ -7,7 +7,7 @@ import com.jagex.core.io.FileArchive;
 import com.jagex.core.stringutils.WordPack;
 import com.jagex.game.runetek3.config.*;
 import com.jagex.game.runetek3.graphics.model.Model;
-import com.jagex.game.runetek3.graphics.seq.SeqBase;
+import com.jagex.game.runetek3.graphics.seq.SeqSkeleton;
 import com.jagex.game.runetek3.graphics.seq.SeqFrame;
 import com.jagex.game.runetek3.graphics.ui.Component;
 import com.jagex.game.runetek3.graphics.ui.Font;
@@ -49,7 +49,7 @@ public class Server implements Runnable {
 
                 FileArchive models = new FileArchive(Files.readAllBytes(Paths.get(cacheDir.toString(), "models")));
                 Model.decode(models);
-                SeqBase.decode(models);
+                SeqSkeleton.decode(models);
                 SeqFrame.decode(models);
 
                 FileArchive config = new FileArchive(Files.readAllBytes(Paths.get(cacheDir.toString(), "config")));

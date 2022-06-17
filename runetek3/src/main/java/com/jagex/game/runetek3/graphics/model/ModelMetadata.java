@@ -9,20 +9,20 @@ public class ModelMetadata {
     public ModelMetadata() {
     }
 
-    public int anInt289;
-    public int anInt290;
-    public int anInt291;
-    public int anInt292;
-    public int anInt293;
-    public int anInt294;
-    public int anInt295;
-    public int anInt296;
-    public int anInt297;
-    public int anInt298;
-    public int anInt299;
-    public int anInt300;
-    public int anInt301;
-    public int anInt302;
-    public int anInt303;
-    public int anInt304;
+    public int vertexCount;
+    public int triangleCount;
+    public int texturedCount;
+    public int vertexFlagDataOffset;
+    public int vertexXDataOffset;
+    public int vertexYDataOffset;
+    public int vertexZDataOffset;
+    public int vertexLabelDataOffset;
+    public int vertexIndexDataOffset;
+    public int triangleTypeDataOffset;
+    public int triangleColorDataOffset;
+    public int triangleInfoDataOffset;
+    public int trianglePriorityDataOffset;
+    public int triangleAlphaDataOffset;
+    public int triangleSkinDataOffset;
+    public int triangleTextureDataOffset;
 }

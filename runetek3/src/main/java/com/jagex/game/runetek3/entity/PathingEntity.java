@@ -9,8 +9,9 @@ import com.jagex.game.runetek3.config.SeqType;
 public class PathingEntity extends Entity {
 
     public void method409(byte byte0, int i, int j) {
-        if (anInt1235 != -1 && SeqType.aSeqTypeArray190[anInt1235].anInt198 <= 1)
-            anInt1235 = -1;
+        if (primarySeq != -1 && SeqType.instances[primarySeq].priority <= 1) {
+            primarySeq = -1;
+        }
         int k = i - pathTileX[0];
         int l = j - pathTileZ[0];
         if (k >= -2 && k <= 2 && l >= -2 && l <= 2) {
@@ -32,12 +33,10 @@ public class PathingEntity extends Entity {
         pathTileX[0] = i;
         pathTileZ[0] = j;
         x = pathTileX[0] * 128 + index * 64;
-        if (byte0 != 28) {
-            return;
-        } else {
+        if (byte0 == 28) {
             z = pathTileZ[0] * 128 + index * 64;
-            return;
         }
+        return;
     }
 
     public void method410(boolean flag, int i, int j) {
@@ -67,8 +66,8 @@ public class PathingEntity extends Entity {
             k++;
             l--;
         }
-        if (anInt1235 != -1 && SeqType.aSeqTypeArray190[anInt1235].anInt198 <= 1)
-            anInt1235 = -1;
+        if (primarySeq != -1 && SeqType.instances[primarySeq].priority <= 1)
+            primarySeq = -1;
         if (pathRemaining < 9)
             pathRemaining++;
         for (int i1 = pathRemaining; i1 > 0; i1--) {
@@ -92,7 +91,7 @@ public class PathingEntity extends Entity {
     public PathingEntity() {
         anInt1207 = 49498;
         index = 1;
-        anInt1213 = -1;
+        standSeq = -1;
         anInt1214 = -1;
         anInt1215 = -1;
         anInt1216 = -1;
@@ -102,9 +101,9 @@ public class PathingEntity extends Entity {
         anInt1221 = 100;
         anInt1226 = -1000;
         anInt1229 = -1;
-        anInt1232 = -1;
-        anInt1235 = -1;
-        anInt1240 = -1;
+        secondarySeq = -1;
+        primarySeq = -1;
+        spotAnimIndex = -1;
         pathTileX = new int[10];
         pathTileZ = new int[10];
         aBooleanArray1258 = new boolean[10];
@@ -116,7 +115,7 @@ public class PathingEntity extends Entity {
     public int anInt1210;
     public int anInt1211;
     public int index;
-    public int anInt1213;
+    public int standSeq;
     public int anInt1214;
     public int anInt1215;
     public int anInt1216;
@@ -135,19 +134,19 @@ public class PathingEntity extends Entity {
     public int anInt1229;
     public int anInt1230;
     public int anInt1231;
-    public int anInt1232;
-    public int anInt1233;
+    public int secondarySeq;
+    public int secondarySeqFrame;
     public int anInt1234;
-    public int anInt1235;
-    public int anInt1236;
+    public int primarySeq;
+    public int primarySeqFrame;
     public int anInt1237;
-    public int anInt1238;
+    public int primarySeqDelay;
     public int anInt1239;
-    public int anInt1240;
-    public int anInt1241;
+    public int spotAnimIndex;
+    public int spotAnimFrame;
     public int anInt1242;
     public int anInt1243;
-    public int anInt1244;
+    public int spotAnimOffsetY;
     public int anInt1245;
     public int anInt1246;
     public int anInt1247;
@@ -156,7 +155,7 @@ public class PathingEntity extends Entity {
     public int anInt1250;
     public int anInt1251;
     public int anInt1252;
-    public int anInt1253;
+    public int height;
     public int anInt1254;
     public int pathRemaining;
     public int[] pathTileX;

@@ -19,22 +19,27 @@ public class PlayerEntity extends PathingEntity {
             {
                     6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433,
                     2983, 54193
-            }, {
+            },
+            {
             8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153,
             56621, 4783, 1341, 16578, 35003, 25239
-    }, {
+            },
+            {
             25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094,
             10153, 56621, 4783, 1341, 16578, 35003
-    }, {
+            },
+            {
             4626, 11146, 6439, 12, 4758, 10270
-    }, {
+            },
+            {
             4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574
-    }
-    };
-    public static final int[] anIntArray664 = {
+            }
+            };
+
+    public static final int[] BEARD_COLORS = {
             9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145,
             58654, 5027, 1457, 16565, 34991, 25486
-    };
+            };
 
     public void method413(Buffer class35_sub2_sub3, boolean flag) {
         class35_sub2_sub3.pos = 0;
@@ -57,9 +62,9 @@ public class PlayerEntity extends PathingEntity {
             colors[k] = i1;
         }
 
-        super.anInt1213 = class35_sub2_sub3.g2();
-        if (super.anInt1213 == 65535)
-            super.anInt1213 = -1;
+        super.standSeq = class35_sub2_sub3.g2();
+        if (super.standSeq == 65535)
+            super.standSeq = -1;
         super.anInt1214 = class35_sub2_sub3.g2();
         if (super.anInt1214 == 65535)
             super.anInt1214 = -1;
@@ -107,59 +112,59 @@ public class PlayerEntity extends PathingEntity {
         if (!aBoolean1329)
             return null;
         Model class35_sub2_sub1 = getModel(0);
-        super.anInt1253 = class35_sub2_sub1.anInt1076;
+        super.height = class35_sub2_sub1.maxBoundY;
         if (i != 0)
             aBoolean1327 = !aBoolean1327;
-        class35_sub2_sub1.aBoolean1085 = true;
+        class35_sub2_sub1.pickable = true;
         if (aBoolean1347)
             return class35_sub2_sub1;
-        if (super.anInt1240 != -1 && super.anInt1241 != -1) {
-            SpotAnimType class14 = SpotAnimType.aSpotAnimTypeArray212[super.anInt1240];
-            Model class35_sub2_sub1_2 = new Model(-428, true, class14.method183(), true, false, !class14.aBoolean216);
-            class35_sub2_sub1_2.method316(0, 0, 0, -super.anInt1244);
-            class35_sub2_sub1_2.method310((byte) 3);
-            class35_sub2_sub1_2.applyFrame(7, class14.aSeqType_215.anIntArray192[super.anInt1241]);
+        if (super.spotAnimIndex != -1 && super.spotAnimFrame != -1) {
+            SpotAnimType class14 = SpotAnimType.instances[super.spotAnimIndex];
+            Model class35_sub2_sub1_2 = new Model(-428, true, class14.getModel(), true, false, !class14.disposeAlpha);
+            class35_sub2_sub1_2.translate(0, 0, -super.spotAnimOffsetY);
+            class35_sub2_sub1_2.applyGroups();
+            class35_sub2_sub1_2.applyFrame(class14.anim.primaryFrames[super.spotAnimFrame]);
             class35_sub2_sub1_2.skinTriangle = null;
-            class35_sub2_sub1_2.anIntArrayArray1083 = null;
-            class35_sub2_sub1_2.method320(64, 850, -30, -50, -30, true);
+            class35_sub2_sub1_2.labelVertices = null;
+            class35_sub2_sub1_2.applyLighting(64, 850, -30, -50, -30, true);
             Model[] aclass35_sub2_sub1_1 = {
                     class35_sub2_sub1, class35_sub2_sub1_2
             };
-            class35_sub2_sub1 = new Model(true, true, aclass35_sub2_sub1_1, 2);
+            class35_sub2_sub1 = new Model(true, aclass35_sub2_sub1_1, 2);
         }
         if (aModel_1342 != null) {
             if (cycle >= anInt1338)
                 aModel_1342 = null;
             if (cycle >= anInt1337 && cycle < anInt1338) {
                 Model class35_sub2_sub1_1 = aModel_1342;
-                class35_sub2_sub1_1.method316(anInt1341 - super.z, 0, anInt1339 - super.x, anInt1340 - plane);
+                class35_sub2_sub1_1.translate(anInt1341 - super.z, anInt1339 - super.x, anInt1340 - plane);
                 if (super.anInt1254 == 512) {
-                    class35_sub2_sub1_1.method314((byte) 0);
-                    class35_sub2_sub1_1.method314((byte) 0);
-                    class35_sub2_sub1_1.method314((byte) 0);
+                    class35_sub2_sub1_1.rotateCounterClockwise();
+                    class35_sub2_sub1_1.rotateCounterClockwise();
+                    class35_sub2_sub1_1.rotateCounterClockwise();
                 } else if (super.anInt1254 == 1024) {
-                    class35_sub2_sub1_1.method314((byte) 0);
-                    class35_sub2_sub1_1.method314((byte) 0);
+                    class35_sub2_sub1_1.rotateCounterClockwise();
+                    class35_sub2_sub1_1.rotateCounterClockwise();
                 } else if (super.anInt1254 == 1536)
-                    class35_sub2_sub1_1.method314((byte) 0);
+                    class35_sub2_sub1_1.rotateCounterClockwise();
                 Model[] aclass35_sub2_sub1 = {
                         class35_sub2_sub1, class35_sub2_sub1_1
                 };
-                class35_sub2_sub1 = new Model(true, true, aclass35_sub2_sub1, 2);
+                class35_sub2_sub1 = new Model(true, aclass35_sub2_sub1, 2);
                 if (super.anInt1254 == 512)
-                    class35_sub2_sub1_1.method314((byte) 0);
+                    class35_sub2_sub1_1.rotateCounterClockwise();
                 else if (super.anInt1254 == 1024) {
-                    class35_sub2_sub1_1.method314((byte) 0);
-                    class35_sub2_sub1_1.method314((byte) 0);
+                    class35_sub2_sub1_1.rotateCounterClockwise();
+                    class35_sub2_sub1_1.rotateCounterClockwise();
                 } else if (super.anInt1254 == 1536) {
-                    class35_sub2_sub1_1.method314((byte) 0);
-                    class35_sub2_sub1_1.method314((byte) 0);
-                    class35_sub2_sub1_1.method314((byte) 0);
+                    class35_sub2_sub1_1.rotateCounterClockwise();
+                    class35_sub2_sub1_1.rotateCounterClockwise();
+                    class35_sub2_sub1_1.rotateCounterClockwise();
                 }
-                class35_sub2_sub1_1.method316(super.z - anInt1341, 0, super.x - anInt1339, plane - anInt1340);
+                class35_sub2_sub1_1.translate(super.z - anInt1341, super.x - anInt1339, plane - anInt1340);
             }
         }
-        class35_sub2_sub1.aBoolean1085 = true;
+        class35_sub2_sub1.pickable = true;
         return class35_sub2_sub1;
     }
 
@@ -171,22 +176,22 @@ public class PlayerEntity extends PathingEntity {
         int j1 = -1;
         if (i != 0)
             aBoolean1327 = !aBoolean1327;
-        if (super.anInt1235 >= 0 && super.anInt1238 == 0) {
-            SeqType class12 = SeqType.aSeqTypeArray190[super.anInt1235];
-            j = class12.anIntArray192[super.anInt1236];
-            if (super.anInt1232 >= 0 && super.anInt1232 != super.anInt1213)
-                k = SeqType.aSeqTypeArray190[super.anInt1232].anIntArray192[super.anInt1233];
-            if (class12.anInt199 >= 0) {
-                i1 = class12.anInt199;
+        if (super.primarySeq >= 0 && super.primarySeqDelay == 0) {
+            SeqType class12 = SeqType.instances[super.primarySeq];
+            j = class12.primaryFrames[super.primarySeqFrame];
+            if (super.secondarySeq >= 0 && super.secondarySeq != super.standSeq)
+                k = SeqType.instances[super.secondarySeq].primaryFrames[super.secondarySeqFrame];
+            if (class12.mainhand >= 0) {
+                i1 = class12.mainhand;
                 l += i1 - body[5] << 40;
             }
-            if (class12.anInt200 >= 0) {
-                j1 = class12.anInt200;
+            if (class12.offhand >= 0) {
+                j1 = class12.offhand;
                 l += j1 - body[3] << 48;
             }
-        } else if (super.anInt1232 >= 0)
-            j = SeqType.aSeqTypeArray190[super.anInt1232].anIntArray192[super.anInt1233];
-        Model class35_sub2_sub1 = (Model) aCache_1348.method295(l);
+        } else if (super.secondarySeq >= 0)
+            j = SeqType.instances[super.secondarySeq].primaryFrames[super.secondarySeqFrame];
+        Model class35_sub2_sub1 = (Model) aCache_1348.get(l);
         if (class35_sub2_sub1 == null) {
             Model[] aclass35_sub2_sub1 = new Model[13];
             int k1 = 0;
@@ -199,7 +204,7 @@ public class PlayerEntity extends PathingEntity {
                 if (i2 >= 256 && i2 < 512)
                     aclass35_sub2_sub1[k1++] = IdkType.instances[i2 - 256].method157();
                 if (i2 >= 512) {
-                    ObjType class41 = ObjType.method440(i2 - 512);
+                    ObjType class41 = ObjType.get(i2 - 512);
                     Model class35_sub2_sub1_2 = class41.method445(92, gender);
                     if (class35_sub2_sub1_2 != null)
                         aclass35_sub2_sub1[k1++] = class35_sub2_sub1_2;
@@ -209,25 +214,25 @@ public class PlayerEntity extends PathingEntity {
             class35_sub2_sub1 = new Model(false, k1, aclass35_sub2_sub1);
             for (int j2 = 0; j2 < 5; j2++)
                 if (colors[j2] != 0) {
-                    class35_sub2_sub1.method317(anIntArrayArray938[j2][0], anIntArrayArray938[j2][colors[j2]]);
+                    class35_sub2_sub1.recolor(anIntArrayArray938[j2][0], anIntArrayArray938[j2][colors[j2]]);
                     if (j2 == 1)
-                        class35_sub2_sub1.method317(anIntArray664[0], anIntArray664[colors[j2]]);
+                        class35_sub2_sub1.recolor(BEARD_COLORS[0], BEARD_COLORS[colors[j2]]);
                 }
 
-            class35_sub2_sub1.method310((byte) 3);
-            class35_sub2_sub1.method320(64, 850, -30, -50, -30, true);
-            aCache_1348.method296(l, 7, class35_sub2_sub1);
+            class35_sub2_sub1.applyGroups();
+            class35_sub2_sub1.applyLighting(64, 850, -30, -50, -30, true);
+            aCache_1348.put(l, class35_sub2_sub1);
         }
         if (aBoolean1347)
             return class35_sub2_sub1;
         Model class35_sub2_sub1_1 = new Model(false, true, class35_sub2_sub1);
         if (j != -1 && k != -1)
-            class35_sub2_sub1_1.method312(j, 2, SeqType.aSeqTypeArray190[super.anInt1235].anIntArray196, k);
+            class35_sub2_sub1_1.applyFrames(j, k, SeqType.instances[super.primarySeq].labelGroups);
         else if (j != -1)
-            class35_sub2_sub1_1.applyFrame(7, j);
-        class35_sub2_sub1_1.method308(569);
+            class35_sub2_sub1_1.applyFrame(j);
+        class35_sub2_sub1_1.calculateYBoundaries();
         class35_sub2_sub1_1.skinTriangle = null;
-        class35_sub2_sub1_1.anIntArrayArray1083 = null;
+        class35_sub2_sub1_1.labelVertices = null;
         return class35_sub2_sub1_1;
     }
 
@@ -243,7 +248,7 @@ public class PlayerEntity extends PathingEntity {
             if (k >= 256 && k < 512)
                 aclass35_sub2_sub1[i++] = IdkType.instances[k - 256].method158(0);
             if (k >= 512) {
-                Model class35_sub2_sub1_1 = ObjType.method440(k - 512).method446((byte) 107, gender);
+                Model class35_sub2_sub1_1 = ObjType.get(k - 512).method446((byte) 107, gender);
                 if (class35_sub2_sub1_1 != null)
                     aclass35_sub2_sub1[i++] = class35_sub2_sub1_1;
             }
@@ -252,9 +257,9 @@ public class PlayerEntity extends PathingEntity {
         Model class35_sub2_sub1 = new Model(false, i, aclass35_sub2_sub1);
         for (int l = 0; l < 5; l++)
             if (colors[l] != 0) {
-                class35_sub2_sub1.method317(anIntArrayArray938[l][0], anIntArrayArray938[l][colors[l]]);
+                class35_sub2_sub1.recolor(anIntArrayArray938[l][0], anIntArrayArray938[l][colors[l]]);
                 if (l == 1)
-                    class35_sub2_sub1.method317(anIntArray664[0], anIntArray664[colors[l]]);
+                    class35_sub2_sub1.recolor(BEARD_COLORS[0], BEARD_COLORS[colors[l]]);
             }
 
         return class35_sub2_sub1;
@@ -296,6 +301,6 @@ public class PlayerEntity extends PathingEntity {
     public int anInt1345;
     public int anInt1346;
     public boolean aBoolean1347;
-    public static Cache aCache_1348 = new Cache(-24094, 200);
+    public static Cache aCache_1348 = new Cache(200);
 
 }

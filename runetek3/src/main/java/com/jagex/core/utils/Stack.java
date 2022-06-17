@@ -17,21 +17,21 @@ public class Stack {
         aCacheableNode_356.aCacheableNode_1018 = aCacheableNode_356;
     }
 
-    public void method232(CacheableNode class35_sub2) {
+    public void push(CacheableNode class35_sub2) {
         if (class35_sub2.aCacheableNode_1018 != null)
-            class35_sub2.method304();
+            class35_sub2.uncache();
         class35_sub2.aCacheableNode_1018 = aCacheableNode_356.aCacheableNode_1018;
         class35_sub2.aCacheableNode_1017 = aCacheableNode_356;
         class35_sub2.aCacheableNode_1018.aCacheableNode_1017 = class35_sub2;
         class35_sub2.aCacheableNode_1017.aCacheableNode_1018 = class35_sub2;
     }
 
-    public CacheableNode method233() {
+    public CacheableNode pop() {
         CacheableNode class35_sub2 = aCacheableNode_356.aCacheableNode_1017;
         if (class35_sub2 == aCacheableNode_356) {
             return null;
         } else {
-            class35_sub2.method304();
+            class35_sub2.uncache();
             return class35_sub2;
         }
     }

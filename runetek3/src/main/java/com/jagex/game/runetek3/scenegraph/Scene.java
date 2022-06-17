@@ -39,8 +39,8 @@ public class Scene {
     public void method133(int i, int j, int k, int l, int i1) {
         i = 88 / i;
         byte byte0 = 0;
-        for (int j1 = 0; j1 < FloType.anInt70; j1++) {
-            if (!FloType.aFloTypeArray71[j1].aString76.equalsIgnoreCase("water"))
+        for (int j1 = 0; j1 < FloType.count; j1++) {
+            if (!FloType.instances[j1].name.equalsIgnoreCase("water"))
                 continue;
             byte0 = (byte) (j1 + 1);
             break;
@@ -176,17 +176,17 @@ public class Scene {
         if (i1 != 0)
             return;
         int i3 = i2 + j2 + k2 + l2 >> 2;
-        LocType class39 = LocType.method428(i);
+        LocType class39 = LocType.get(i);
         int j3 = j1 + (k << 7) + (i << 14) + 0x40000000;
-        if (!class39.aBoolean546)
+        if (!class39.interactable)
             j3 += 0x80000000;
         byte byte0 = (byte) ((j << 6) + l);
         if (l == 22) {
-            if (aBoolean47 && !class39.aBoolean546 && !class39.aBoolean567)
+            if (aBoolean47 && !class39.interactable && !class39.forcedecor)
                 return;
             Model class35_sub2_sub1 = class39.method431(22, j, i2, j2, k2, l2, -1);
             class29.method244(j3, k, byte0, class35_sub2_sub1, j1, i3, true, k1);
-            if (class39.aBoolean544 && class39.aBoolean546)
+            if (class39.blockwalk && class39.interactable)
                 class2.method124(2, k, j1);
             return;
         }
@@ -199,16 +199,16 @@ public class Scene {
                 int i4;
                 int k4;
                 if (j == 1 || j == 3) {
-                    i4 = class39.anInt543;
-                    k4 = class39.anInt542;
+                    i4 = class39.length;
+                    k4 = class39.width;
                 } else {
-                    i4 = class39.anInt542;
-                    k4 = class39.anInt543;
+                    i4 = class39.width;
+                    k4 = class39.length;
                 }
-                if (class29.method248(class35_sub2_sub1_1, byte0, null, i3, j1, k4, i4, k1, j3, k, 0, l4) && class39.aBoolean559) {
+                if (class29.method248(class35_sub2_sub1_1, byte0, null, i3, j1, k4, i4, k1, j3, k, 0, l4) && class39.active) {
                     for (int i5 = 0; i5 <= i4; i5++) {
                         for (int j5 = 0; j5 <= k4; j5++) {
-                            int k5 = class35_sub2_sub1_1.anInt1075 / 4;
+                            int k5 = class35_sub2_sub1_1.lengthXZ / 4;
                             if (k5 > 30)
                                 k5 = 30;
                             if (k5 > aByteArrayArrayArray58[k1][j1 + i5][k + j5])
@@ -219,10 +219,10 @@ public class Scene {
 
                 }
             }
-            if (class39.aBoolean544)
-                class2.method123(j1, class39.anInt543, class39.aBoolean545, class39.anInt542, -532, k, j);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(2, -69, k1, i, true, SeqType.aSeqTypeArray190[class39.anInt550], k, j1));
+            if (class39.blockwalk)
+                class2.method123(j1, class39.length, class39.blockrange, class39.width, -532, k, j);
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(2, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
         }
         if (l >= 12) {
@@ -230,54 +230,54 @@ public class Scene {
             class29.method248(class35_sub2_sub1_2, byte0, null, i3, j1, 1, 1, k1, j3, k, 0, 0);
             if (l >= 12 && l <= 17 && l != 13 && k1 > 0)
                 anIntArrayArrayArray65[k1][j1][k] |= 0x924;
-            if (class39.aBoolean544)
-                class2.method123(j1, class39.anInt543, class39.aBoolean545, class39.anInt542, -532, k, j);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(2, -69, k1, i, true, SeqType.aSeqTypeArray190[class39.anInt550], k, j1));
+            if (class39.blockwalk)
+                class2.method123(j1, class39.length, class39.blockrange, class39.width, -532, k, j);
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(2, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
         }
         if (l == 0) {
             Model class35_sub2_sub1_3 = class39.method431(0, j, i2, j2, k2, l2, -1);
             class29.method246(431, j3, 0, i3, class35_sub2_sub1_3, k, j1, null, byte0, anIntArray66[j], k1);
             if (j == 0) {
-                if (class39.aBoolean559) {
+                if (class39.active) {
                     aByteArrayArrayArray58[k1][j1][k] = 50;
                     aByteArrayArrayArray58[k1][j1][k + 1] = 50;
                 }
-                if (class39.aBoolean549)
+                if (class39.occlude)
                     anIntArrayArrayArray65[k1][j1][k] |= 0x249;
             } else if (j == 1) {
-                if (class39.aBoolean559) {
+                if (class39.active) {
                     aByteArrayArrayArray58[k1][j1][k + 1] = 50;
                     aByteArrayArrayArray58[k1][j1 + 1][k + 1] = 50;
                 }
-                if (class39.aBoolean549)
+                if (class39.occlude)
                     anIntArrayArrayArray65[k1][j1][k + 1] |= 0x492;
             } else if (j == 2) {
-                if (class39.aBoolean559) {
+                if (class39.active) {
                     aByteArrayArrayArray58[k1][j1 + 1][k] = 50;
                     aByteArrayArrayArray58[k1][j1 + 1][k + 1] = 50;
                 }
-                if (class39.aBoolean549)
+                if (class39.occlude)
                     anIntArrayArrayArray65[k1][j1 + 1][k] |= 0x249;
             } else if (j == 3) {
-                if (class39.aBoolean559) {
+                if (class39.active) {
                     aByteArrayArrayArray58[k1][j1][k] = 50;
                     aByteArrayArrayArray58[k1][j1 + 1][k] = 50;
                 }
-                if (class39.aBoolean549)
+                if (class39.occlude)
                     anIntArrayArrayArray65[k1][j1][k] |= 0x492;
             }
-            if (class39.aBoolean544)
-                class2.method122(l, k, j, j1, 757, class39.aBoolean545);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(0, -69, k1, i, true, SeqType.aSeqTypeArray190[class39.anInt550], k, j1));
+            if (class39.blockwalk)
+                class2.method122(l, k, j, j1, 757, class39.blockrange);
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(0, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
         }
         if (l == 1) {
             Model class35_sub2_sub1_4 = class39.method431(1, j, i2, j2, k2, l2, -1);
             class29.method246(431, j3, 0, i3, class35_sub2_sub1_4, k, j1, null, byte0, anIntArray67[j], k1);
-            if (class39.aBoolean559)
+            if (class39.active)
                 if (j == 0)
                     aByteArrayArrayArray58[k1][j1][k + 1] = 50;
                 else if (j == 1)
@@ -286,10 +286,10 @@ public class Scene {
                     aByteArrayArrayArray58[k1][j1 + 1][k] = 50;
                 else if (j == 3)
                     aByteArrayArrayArray58[k1][j1][k] = 50;
-            if (class39.aBoolean544)
-                class2.method122(l, k, j, j1, 757, class39.aBoolean545);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(0, -69, k1, i, true, SeqType.aSeqTypeArray190[class39.anInt550], k, j1));
+            if (class39.blockwalk)
+                class2.method122(l, k, j, j1, 757, class39.blockrange);
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(0, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
         }
         if (l == 2) {
@@ -297,7 +297,7 @@ public class Scene {
             Model class35_sub2_sub1_11 = class39.method431(2, 4 + j, i2, j2, k2, l2, -1);
             Model class35_sub2_sub1_12 = class39.method431(2, k3, i2, j2, k2, l2, -1);
             class29.method246(431, j3, anIntArray66[k3], i3, class35_sub2_sub1_11, k, j1, class35_sub2_sub1_12, byte0, anIntArray66[j], k1);
-            if (class39.aBoolean549)
+            if (class39.occlude)
                 if (j == 0) {
                     anIntArrayArrayArray65[k1][j1][k] |= 0x249;
                     anIntArrayArrayArray65[k1][j1][k + 1] |= 0x492;
@@ -311,14 +311,14 @@ public class Scene {
                     anIntArrayArrayArray65[k1][j1][k] |= 0x492;
                     anIntArrayArrayArray65[k1][j1][k] |= 0x249;
                 }
-            if (class39.aBoolean544)
-                class2.method122(l, k, j, j1, 757, class39.aBoolean545);
+            if (class39.blockwalk)
+                class2.method122(l, k, j, j1, 757, class39.blockrange);
             return;
         }
         if (l == 3) {
             Model class35_sub2_sub1_5 = class39.method431(3, j, i2, j2, k2, l2, -1);
             class29.method246(431, j3, 0, i3, class35_sub2_sub1_5, k, j1, null, byte0, anIntArray67[j], k1);
-            if (class39.aBoolean559)
+            if (class39.active)
                 if (j == 0)
                     aByteArrayArrayArray58[k1][j1][k + 1] = 50;
                 else if (j == 1)
@@ -327,58 +327,58 @@ public class Scene {
                     aByteArrayArrayArray58[k1][j1 + 1][k] = 50;
                 else if (j == 3)
                     aByteArrayArrayArray58[k1][j1][k] = 50;
-            if (class39.aBoolean544)
-                class2.method122(l, k, j, j1, 757, class39.aBoolean545);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(0, -69, k1, i, true, SeqType.aSeqTypeArray190[class39.anInt550], k, j1));
+            if (class39.blockwalk)
+                class2.method122(l, k, j, j1, 757, class39.blockrange);
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(0, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
         }
         if (l == 9) {
             Model class35_sub2_sub1_6 = class39.method431(l, j, i2, j2, k2, l2, -1);
             class29.method248(class35_sub2_sub1_6, byte0, null, i3, j1, 1, 1, k1, j3, k, 0, 0);
-            if (class39.aBoolean544)
-                class2.method123(j1, class39.anInt543, class39.aBoolean545, class39.anInt542, -532, k, j);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(2, -69, k1, i, true, SeqType.aSeqTypeArray190[class39.anInt550], k, j1));
+            if (class39.blockwalk)
+                class2.method123(j1, class39.length, class39.blockrange, class39.width, -532, k, j);
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(2, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
         }
         if (l == 4) {
             Model class35_sub2_sub1_7 = class39.method431(4, 0, i2, j2, k2, l2, -1);
             class29.method247(j1, byte0, i3, 0, j3, anIntArray66[j], 414, j * 512, 0, class35_sub2_sub1_7, k, k1);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(1, -69, k1, i, true, SeqType.aSeqTypeArray190[class39.anInt550], k, j1));
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(1, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
         }
         if (l == 5) {
             int l3 = 16;
             int j4 = class29.method262(k1, j1, k);
             if (j4 > 0)
-                l3 = LocType.method428(j4 >> 14 & 0x7fff).anInt551;
+                l3 = LocType.get(j4 >> 14 & 0x7fff).walloff;
             Model class35_sub2_sub1_13 = class39.method431(4, 0, i2, j2, k2, l2, -1);
             class29.method247(j1, byte0, i3, anIntArray69[j] * l3, j3, anIntArray66[j], 414, j * 512, anIntArray68[j] * l3, class35_sub2_sub1_13, k, k1);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(1, -69, k1, i, true, SeqType.aSeqTypeArray190[class39.anInt550], k, j1));
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(1, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
         }
         if (l == 6) {
             Model class35_sub2_sub1_8 = class39.method431(4, 0, i2, j2, k2, l2, -1);
             class29.method247(j1, byte0, i3, 0, j3, 256, 414, j, 0, class35_sub2_sub1_8, k, k1);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(1, -69, k1, i, true, SeqType.aSeqTypeArray190[class39.anInt550], k, j1));
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(1, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
         }
         if (l == 7) {
             Model class35_sub2_sub1_9 = class39.method431(4, 0, i2, j2, k2, l2, -1);
             class29.method247(j1, byte0, i3, 0, j3, 512, 414, j, 0, class35_sub2_sub1_9, k, k1);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(1, -69, k1, i, true, SeqType.aSeqTypeArray190[class39.anInt550], k, j1));
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(1, k1, i, true, SeqType.instances[class39.anim], k, j1));
             return;
         }
         if (l == 8) {
             Model class35_sub2_sub1_10 = class39.method431(4, 0, i2, j2, k2, l2, -1);
             class29.method247(j1, byte0, i3, 0, j3, 768, 414, j, 0, class35_sub2_sub1_10, k, k1);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(1, -69, k1, i, true, SeqType.aSeqTypeArray190[class39.anInt550], k, j1));
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(1, k1, i, true, SeqType.instances[class39.anim], k, j1));
         }
     }
 
@@ -437,11 +437,11 @@ public class Scene {
                     if (i9 >= 0 && i9 < anInt50) {
                         int j12 = aByteArrayArrayArray54[j][i9][k7] & 0xff;
                         if (j12 > 0) {
-                            FloType class4 = FloType.aFloTypeArray71[j12 - 1];
-                            anIntArray60[k7] += class4.anInt80;
+                            FloType class4 = FloType.instances[j12 - 1];
+                            anIntArray60[k7] += class4.blendHue;
                             anIntArray61[k7] += class4.anInt78;
                             anIntArray62[k7] += class4.anInt79;
-                            anIntArray63[k7] += class4.anInt81;
+                            anIntArray63[k7] += class4.hsl16;
                             anIntArray64[k7]++;
                         }
                     }
@@ -449,11 +449,11 @@ public class Scene {
                     if (k12 >= 0 && k12 < anInt50) {
                         int l13 = aByteArrayArrayArray54[j][k12][k7] & 0xff;
                         if (l13 > 0) {
-                            FloType class4_1 = FloType.aFloTypeArray71[l13 - 1];
-                            anIntArray60[k7] -= class4_1.anInt80;
+                            FloType class4_1 = FloType.instances[l13 - 1];
+                            anIntArray60[k7] -= class4_1.blendHue;
                             anIntArray61[k7] -= class4_1.anInt78;
                             anIntArray62[k7] -= class4_1.anInt79;
-                            anIntArray63[k7] -= class4_1.anInt81;
+                            anIntArray63[k7] -= class4_1.hsl16;
                             anIntArray64[k7]--;
                         }
                     }
@@ -509,7 +509,7 @@ public class Scene {
                                 j21 = method145((j9 * 256) / j15, l12 / j16, i14 / j16);
                             if (j > 0) {
                                 boolean flag1 = l18 != 0 || aByteArrayArrayArray56[j][j6][j17] == 0;
-                                if (i19 > 0 && !FloType.aFloTypeArray71[i19 - 1].aBoolean75)
+                                if (i19 > 0 && !FloType.instances[i19 - 1].occlude)
                                     flag1 = false;
                                 if (flag1 && j19 == k19 && j19 == l19 && j19 == i20)
                                     anIntArrayArrayArray65[j][j6][j17] |= 0x924;
@@ -522,14 +522,14 @@ public class Scene {
                             } else {
                                 int l21 = aByteArrayArrayArray56[j][j6][j17] + 1;
                                 byte byte4 = aByteArrayArrayArray57[j][j6][j17];
-                                FloType class4_2 = FloType.aFloTypeArray71[i19 - 1];
-                                int i22 = class4_2.anInt73;
+                                FloType class4_2 = FloType.instances[i19 - 1];
+                                int i22 = class4_2.texture;
                                 int j22;
                                 int k22;
                                 if (i22 >= 0) {
                                     k22 = Draw3D.method343((byte) -29, i22);
                                     j22 = -1;
-                                } else if (class4_2.anInt72 == 0xff00ff) {
+                                } else if (class4_2.rgb == 0xff00ff) {
                                     k22 = 0;
                                     j22 = -2;
                                     i22 = -1;
@@ -794,9 +794,9 @@ public class Scene {
         int j2 = ai[k1][i1 + 1][j1 + 1];
         int k2 = ai[k1][i1][j1 + 1];
         int l2 = l1 + i2 + j2 + k2 >> 2;
-        LocType class39 = LocType.method428(i);
+        LocType class39 = LocType.get(i);
         int i3 = i1 + (j1 << 7) + (i << 14) + 0x40000000;
-        if (!class39.aBoolean546)
+        if (!class39.interactable)
             i3 += 0x80000000;
         byte byte1 = (byte) ((k << 6) + j);
         if (byte0 != 1)
@@ -804,7 +804,7 @@ public class Scene {
         if (j == 22) {
             Model class35_sub2_sub1 = class39.method431(22, k, l1, i2, j2, k2, -1);
             class29.method244(i3, j1, byte1, class35_sub2_sub1, i1, l2, true, l);
-            if (class39.aBoolean544 && class39.aBoolean546)
+            if (class39.blockwalk && class39.interactable)
                 class2.method124(2, j1, i1);
             return;
         }
@@ -817,41 +817,41 @@ public class Scene {
                 int l3;
                 int j4;
                 if (k == 1 || k == 3) {
-                    l3 = class39.anInt543;
-                    j4 = class39.anInt542;
+                    l3 = class39.length;
+                    j4 = class39.width;
                 } else {
-                    l3 = class39.anInt542;
-                    j4 = class39.anInt543;
+                    l3 = class39.width;
+                    j4 = class39.length;
                 }
                 class29.method248(class35_sub2_sub1_1, byte1, null, l2, i1, j4, l3, l, i3, j1, 0, k4);
             }
-            if (class39.aBoolean544)
-                class2.method123(i1, class39.anInt543, class39.aBoolean545, class39.anInt542, -532, j1, k);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(2, -69, l, i, true, SeqType.aSeqTypeArray190[class39.anInt550], j1, i1));
+            if (class39.blockwalk)
+                class2.method123(i1, class39.length, class39.blockrange, class39.width, -532, j1, k);
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(2, l, i, true, SeqType.instances[class39.anim], j1, i1));
             return;
         }
         if (j >= 12) {
             Model class35_sub2_sub1_2 = class39.method431(j, k, l1, i2, j2, k2, -1);
             class29.method248(class35_sub2_sub1_2, byte1, null, l2, i1, 1, 1, l, i3, j1, 0, 0);
-            if (class39.aBoolean544)
-                class2.method123(i1, class39.anInt543, class39.aBoolean545, class39.anInt542, -532, j1, k);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(2, -69, l, i, true, SeqType.aSeqTypeArray190[class39.anInt550], j1, i1));
+            if (class39.blockwalk)
+                class2.method123(i1, class39.length, class39.blockrange, class39.width, -532, j1, k);
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(2, l, i, true, SeqType.instances[class39.anim], j1, i1));
             return;
         }
         if (j == 0) {
             Model class35_sub2_sub1_3 = class39.method431(0, k, l1, i2, j2, k2, -1);
             class29.method246(431, i3, 0, l2, class35_sub2_sub1_3, j1, i1, null, byte1, anIntArray66[k], l);
-            if (class39.aBoolean544)
-                class2.method122(j, j1, k, i1, 757, class39.aBoolean545);
+            if (class39.blockwalk)
+                class2.method122(j, j1, k, i1, 757, class39.blockrange);
             return;
         }
         if (j == 1) {
             Model class35_sub2_sub1_4 = class39.method431(1, k, l1, i2, j2, k2, -1);
             class29.method246(431, i3, 0, l2, class35_sub2_sub1_4, j1, i1, null, byte1, anIntArray67[k], l);
-            if (class39.aBoolean544)
-                class2.method122(j, j1, k, i1, 757, class39.aBoolean545);
+            if (class39.blockwalk)
+                class2.method122(j, j1, k, i1, 757, class39.blockrange);
             return;
         }
         if (j == 2) {
@@ -859,61 +859,61 @@ public class Scene {
             Model class35_sub2_sub1_11 = class39.method431(2, 4 + k, l1, i2, j2, k2, -1);
             Model class35_sub2_sub1_12 = class39.method431(2, j3, l1, i2, j2, k2, -1);
             class29.method246(431, i3, anIntArray66[j3], l2, class35_sub2_sub1_11, j1, i1, class35_sub2_sub1_12, byte1, anIntArray66[k], l);
-            if (class39.aBoolean544)
-                class2.method122(j, j1, k, i1, 757, class39.aBoolean545);
+            if (class39.blockwalk)
+                class2.method122(j, j1, k, i1, 757, class39.blockrange);
             return;
         }
         if (j == 3) {
             Model class35_sub2_sub1_5 = class39.method431(3, k, l1, i2, j2, k2, -1);
             class29.method246(431, i3, 0, l2, class35_sub2_sub1_5, j1, i1, null, byte1, anIntArray67[k], l);
-            if (class39.aBoolean544)
-                class2.method122(j, j1, k, i1, 757, class39.aBoolean545);
+            if (class39.blockwalk)
+                class2.method122(j, j1, k, i1, 757, class39.blockrange);
             return;
         }
         if (j == 9) {
             Model class35_sub2_sub1_6 = class39.method431(j, k, l1, i2, j2, k2, -1);
             class29.method248(class35_sub2_sub1_6, byte1, null, l2, i1, 1, 1, l, i3, j1, 0, 0);
-            if (class39.aBoolean544)
-                class2.method123(i1, class39.anInt543, class39.aBoolean545, class39.anInt542, -532, j1, k);
+            if (class39.blockwalk)
+                class2.method123(i1, class39.length, class39.blockrange, class39.width, -532, j1, k);
             return;
         }
         if (j == 4) {
             Model class35_sub2_sub1_7 = class39.method431(4, 0, l1, i2, j2, k2, -1);
             class29.method247(i1, byte1, l2, 0, i3, anIntArray66[k], 414, k * 512, 0, class35_sub2_sub1_7, j1, l);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(1, -69, l, i, true, SeqType.aSeqTypeArray190[class39.anInt550], j1, i1));
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(1, l, i, true, SeqType.instances[class39.anim], j1, i1));
             return;
         }
         if (j == 5) {
             int k3 = 16;
             int i4 = class29.method262(l, i1, j1);
             if (i4 > 0)
-                k3 = LocType.method428(i4 >> 14 & 0x7fff).anInt551;
+                k3 = LocType.get(i4 >> 14 & 0x7fff).walloff;
             Model class35_sub2_sub1_13 = class39.method431(4, 0, l1, i2, j2, k2, -1);
             class29.method247(i1, byte1, l2, anIntArray69[k] * k3, i3, anIntArray66[k], 414, k * 512, anIntArray68[k] * k3, class35_sub2_sub1_13, j1, l);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(1, -69, l, i, true, SeqType.aSeqTypeArray190[class39.anInt550], j1, i1));
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(1, l, i, true, SeqType.instances[class39.anim], j1, i1));
             return;
         }
         if (j == 6) {
             Model class35_sub2_sub1_8 = class39.method431(4, 0, l1, i2, j2, k2, -1);
             class29.method247(i1, byte1, l2, 0, i3, 256, 414, k, 0, class35_sub2_sub1_8, j1, l);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(1, -69, l, i, true, SeqType.aSeqTypeArray190[class39.anInt550], j1, i1));
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(1, l, i, true, SeqType.instances[class39.anim], j1, i1));
             return;
         }
         if (j == 7) {
             Model class35_sub2_sub1_9 = class39.method431(4, 0, l1, i2, j2, k2, -1);
             class29.method247(i1, byte1, l2, 0, i3, 512, 414, k, 0, class35_sub2_sub1_9, j1, l);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(1, -69, l, i, true, SeqType.aSeqTypeArray190[class39.anInt550], j1, i1));
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(1, l, i, true, SeqType.instances[class39.anim], j1, i1));
             return;
         }
         if (j == 8) {
             Model class35_sub2_sub1_10 = class39.method431(4, 0, l1, i2, j2, k2, -1);
             class29.method247(i1, byte1, l2, 0, i3, 768, 414, k, 0, class35_sub2_sub1_10, j1, l);
-            if (class39.anInt550 != -1)
-                class24.pushNext(new LocEntity(1, -69, l, i, true, SeqType.aSeqTypeArray190[class39.anInt550], j1, i1));
+            if (class39.anim != -1)
+                class24.pushNext(new LocEntity(1, l, i, true, SeqType.instances[class39.anim], j1, i1));
         }
     }
 

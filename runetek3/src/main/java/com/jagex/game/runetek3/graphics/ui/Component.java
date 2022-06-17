@@ -14,9 +14,9 @@ import com.jagex.game.runetek3.graphics.model.Model;
 public class Component {
 
     public static void decode(FileArchive class36, FileArchive class36_1, Font[] aclass35_sub2_sub2_sub4) {
-        aCache_167 = new Cache(-24094, 50000);
-        aCache_168 = new Cache(-24094, 50000);
-        Buffer class35_sub2_sub3 = new Buffer(class36_1.method417((byte) 6, null, "data"));
+        aCache_167 = new Cache(50000);
+        aCache_168 = new Cache(50000);
+        Buffer class35_sub2_sub3 = new Buffer(class36_1.read(null, "data"));
         int j = -1;
         int k = class35_sub2_sub3.g2();
         aComponentArray110 = new Component[k];
@@ -212,29 +212,29 @@ public class Component {
             class35_sub2_sub1 = aModel_157;
         if (class35_sub2_sub1 == null)
             return null;
-        if (i == -1 && j == -1 && class35_sub2_sub1.anIntArray1065 == null)
+        if (i == -1 && j == -1 && class35_sub2_sub1.unmodifiedTriangleColor == null)
             return class35_sub2_sub1;
         Model class35_sub2_sub1_1 = new Model(-428, true, class35_sub2_sub1, true, false, true);
         if (i != -1 || j != -1)
-            class35_sub2_sub1_1.method310((byte) 3);
+            class35_sub2_sub1_1.applyGroups();
         if (i != -1)
-            class35_sub2_sub1_1.applyFrame(7, i);
+            class35_sub2_sub1_1.applyFrame(i);
         if (j != -1)
-            class35_sub2_sub1_1.applyFrame(7, j);
-        class35_sub2_sub1_1.method320(64, 768, -50, -10, -50, true);
+            class35_sub2_sub1_1.applyFrame(j);
+        class35_sub2_sub1_1.applyLighting(64, 768, -50, -10, -50, true);
         return class35_sub2_sub1_1;
     }
 
     public static Sprite method175(int i, byte byte0, String s, FileArchive class36) {
         long l = (StringUtils.method420(s, (byte) 6) << 4) + (long) i;
-        Sprite class35_sub2_sub2_sub2 = (Sprite) aCache_167.method295(l);
+        Sprite class35_sub2_sub2_sub2 = (Sprite) aCache_167.get(l);
         if (byte0 != -128)
             throw new NullPointerException();
         if (class35_sub2_sub2_sub2 != null)
             return class35_sub2_sub2_sub2;
         try {
             class35_sub2_sub2_sub2 = new Sprite(class36, s, i);
-            aCache_167.method296(l, 7, class35_sub2_sub2_sub2);
+            aCache_167.put(l, class35_sub2_sub2_sub2);
         } catch (Exception _ex) {
             return null;
         }
@@ -242,14 +242,14 @@ public class Component {
     }
 
     public static Model method176(int i, byte byte0) {
-        Model class35_sub2_sub1 = (Model) aCache_168.method295(i);
+        Model class35_sub2_sub1 = (Model) aCache_168.get(i);
         if (byte0 != aByte109)
             throw new NullPointerException();
         if (class35_sub2_sub1 != null) {
             return class35_sub2_sub1;
         } else {
-            Model class35_sub2_sub1_1 = new Model(i, 298);
-            aCache_168.method296(i, 7, class35_sub2_sub1_1);
+            Model class35_sub2_sub1_1 = new Model(i);
+            aCache_168.put(i, class35_sub2_sub1_1);
             return class35_sub2_sub1_1;
         }
     }

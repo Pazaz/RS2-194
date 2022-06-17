@@ -15,7 +15,7 @@ public class ProjectileEntity extends Entity {
         aBoolean1171 = true;
         aBoolean1172 = false;
         aBoolean1184 = false;
-        aSpotAnimType_1173 = SpotAnimType.aSpotAnimTypeArray212[i1];
+        aSpotAnimType_1173 = SpotAnimType.instances[i1];
         anInt1174 = k1;
         if (j != -35843) {
             throw new NullPointerException();
@@ -64,11 +64,11 @@ public class ProjectileEntity extends Entity {
         if (i >= 0)
             anInt1170 = -428;
         anInt1194 = (int) (Math.atan2(aDouble1191, aDouble1190) * 325.94900000000001D) & 0x7ff;
-        if (aSpotAnimType_1173.aSeqType_215 != null)
-            for (anInt1196 += j; anInt1196 > aSpotAnimType_1173.aSeqType_215.anIntArray194[anInt1195]; ) {
-                anInt1196 -= aSpotAnimType_1173.aSeqType_215.anIntArray194[anInt1195] + 1;
+        if (aSpotAnimType_1173.anim != null)
+            for (anInt1196 += j; anInt1196 > aSpotAnimType_1173.anim.frameDelay[anInt1195]; ) {
+                anInt1196 -= aSpotAnimType_1173.anim.frameDelay[anInt1195] + 1;
                 anInt1195++;
-                if (anInt1195 >= aSpotAnimType_1173.aSeqType_215.anInt191)
+                if (anInt1195 >= aSpotAnimType_1173.anim.frameCount)
                     anInt1195 = 0;
             }
 
@@ -77,16 +77,16 @@ public class ProjectileEntity extends Entity {
     public Model getDrawMethod(int i, int cycle) {
         if (i != 0)
             aBoolean1171 = !aBoolean1171;
-        Model class35_sub2_sub1 = aSpotAnimType_1173.method183();
-        Model class35_sub2_sub1_1 = new Model(-428, true, class35_sub2_sub1, true, false, !aSpotAnimType_1173.aBoolean216);
-        if (aSpotAnimType_1173.aSeqType_215 != null) {
-            class35_sub2_sub1_1.method310((byte) 3);
-            class35_sub2_sub1_1.applyFrame(7, aSpotAnimType_1173.aSeqType_215.anIntArray192[anInt1195]);
+        Model class35_sub2_sub1 = aSpotAnimType_1173.getModel();
+        Model class35_sub2_sub1_1 = new Model(-428, true, class35_sub2_sub1, true, false, !aSpotAnimType_1173.disposeAlpha);
+        if (aSpotAnimType_1173.anim != null) {
+            class35_sub2_sub1_1.applyGroups();
+            class35_sub2_sub1_1.applyFrame(aSpotAnimType_1173.anim.primaryFrames[anInt1195]);
             class35_sub2_sub1_1.skinTriangle = null;
-            class35_sub2_sub1_1.anIntArrayArray1083 = null;
+            class35_sub2_sub1_1.labelVertices = null;
         }
-        class35_sub2_sub1_1.method315(anInt1194, (byte) -42);
-        class35_sub2_sub1_1.method320(64, 850, -30, -50, -30, true);
+        class35_sub2_sub1_1.rotatePitch(anInt1194);
+        class35_sub2_sub1_1.applyLighting(64, 850, -30, -50, -30, true);
         return class35_sub2_sub1_1;
     }
 

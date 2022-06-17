@@ -276,8 +276,7 @@ public class Draw3D extends Draw2D {
         return (j << 16) + (k << 8) + l;
     }
 
-    public static void method348(int i, int j, int k, int l, int i1, int j1, int k1, int l1,
-                                 int i2) {
+    public static void method348(int i, int j, int k, int l, int i1, int j1, int k1, int l1, int i2) {
         int j2 = 0;
         int k2 = 0;
         if (j != i) {

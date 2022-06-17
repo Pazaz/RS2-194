@@ -12,5 +12,5 @@ public class VertexNormal {
     public int anInt323;
     public int anInt324;
     public int anInt325;
-    public int anInt326;
+    public int magnitude;
 }
