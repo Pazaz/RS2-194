@@ -576,9 +576,9 @@ public class MapSquare {
                     Tile class35_sub1 = levelTiles[i2][j2][k2];
                     if (class35_sub1 != null) {
                         Wall class27 = class35_sub1.wall;
-                        if (class27 != null && class27.aModel_362 != null && class27.aModel_362.aVertexNormalArray1086 != null) {
+                        if (class27 != null && class27.aModel_362 != null && class27.aModel_362.vertexNormals != null) {
                             method269(class27.aModel_362, i2, j2, 1, 1, 543, k2);
-                            if (class27.aModel_363 != null && class27.aModel_363.aVertexNormalArray1086 != null) {
+                            if (class27.aModel_363 != null && class27.aModel_363.vertexNormals != null) {
                                 method269(class27.aModel_363, i2, j2, 1, 1, 543, k2);
                                 method270(class27.aModel_362, class27.aModel_363, 0, 0, 0, false);
                                 class27.aModel_363.method321(i, l1, l, k, i1);
@@ -587,14 +587,14 @@ public class MapSquare {
                         }
                         for (int l2 = 0; l2 < class35_sub1.anInt1004; l2++) {
                             Loc class25 = class35_sub1.aTile7Array1005[l2];
-                            if (class25 != null && class25.aModel_343 != null && class25.aModel_343.aVertexNormalArray1086 != null) {
+                            if (class25 != null && class25.aModel_343 != null && class25.aModel_343.vertexNormals != null) {
                                 method269(class25.aModel_343, i2, j2, (class25.anInt347 - class25.anInt346) + 1, (class25.anInt349 - class25.anInt348) + 1, 543, k2);
                                 class25.aModel_343.method321(i, l1, l, k, i1);
                             }
                         }
 
                         GroundDecoration class17 = class35_sub1.aTile5_1002;
-                        if (class17 != null && class17.aModel_259.aVertexNormalArray1086 != null) {
+                        if (class17 != null && class17.aModel_259.vertexNormals != null) {
                             method268(9, k2, i2, j2, class17.aModel_259);
                             class17.aModel_259.method321(i, l1, l, k, i1);
                         }
@@ -612,22 +612,22 @@ public class MapSquare {
             return;
         if (l < anInt384) {
             Tile class35_sub1 = levelTiles[k][l + 1][j];
-            if (class35_sub1 != null && class35_sub1.aTile5_1002 != null && class35_sub1.aTile5_1002.aModel_259.aVertexNormalArray1086 != null)
+            if (class35_sub1 != null && class35_sub1.aTile5_1002 != null && class35_sub1.aTile5_1002.aModel_259.vertexNormals != null)
                 method270(class35_sub2_sub1, class35_sub1.aTile5_1002.aModel_259, 128, 0, 0, true);
         }
         if (j < anInt384) {
             Tile class35_sub1_1 = levelTiles[k][l][j + 1];
-            if (class35_sub1_1 != null && class35_sub1_1.aTile5_1002 != null && class35_sub1_1.aTile5_1002.aModel_259.aVertexNormalArray1086 != null)
+            if (class35_sub1_1 != null && class35_sub1_1.aTile5_1002 != null && class35_sub1_1.aTile5_1002.aModel_259.vertexNormals != null)
                 method270(class35_sub2_sub1, class35_sub1_1.aTile5_1002.aModel_259, 0, 0, 128, true);
         }
         if (l < anInt384 && j < anInt385) {
             Tile class35_sub1_2 = levelTiles[k][l + 1][j + 1];
-            if (class35_sub1_2 != null && class35_sub1_2.aTile5_1002 != null && class35_sub1_2.aTile5_1002.aModel_259.aVertexNormalArray1086 != null)
+            if (class35_sub1_2 != null && class35_sub1_2.aTile5_1002 != null && class35_sub1_2.aTile5_1002.aModel_259.vertexNormals != null)
                 method270(class35_sub2_sub1, class35_sub1_2.aTile5_1002.aModel_259, 128, 0, 128, true);
         }
         if (l < anInt384 && j > 0) {
             Tile class35_sub1_3 = levelTiles[k][l + 1][j - 1];
-            if (class35_sub1_3 != null && class35_sub1_3.aTile5_1002 != null && class35_sub1_3.aTile5_1002.aModel_259.aVertexNormalArray1086 != null)
+            if (class35_sub1_3 != null && class35_sub1_3.aTile5_1002 != null && class35_sub1_3.aTile5_1002.aModel_259.vertexNormals != null)
                 method270(class35_sub2_sub1, class35_sub1_3.aTile5_1002.aModel_259, 128, 0, -128, true);
         }
     }
@@ -649,13 +649,13 @@ public class MapSquare {
                                 if (class35_sub1 != null) {
                                     int j3 = (anIntArrayArrayArray386[k2][l2][i3] + anIntArrayArrayArray386[k2][l2 + 1][i3] + anIntArrayArrayArray386[k2][l2][i3 + 1] + anIntArrayArrayArray386[k2][l2 + 1][i3 + 1]) / 4 - (anIntArrayArrayArray386[i][j][j1] + anIntArrayArrayArray386[i][j + 1][j1] + anIntArrayArrayArray386[i][j][j1 + 1] + anIntArrayArrayArray386[i][j + 1][j1 + 1]) / 4;
                                     Wall class27 = class35_sub1.wall;
-                                    if (class27 != null && class27.aModel_362 != null && class27.aModel_362.aVertexNormalArray1086 != null)
+                                    if (class27 != null && class27.aModel_362 != null && class27.aModel_362.vertexNormals != null)
                                         method270(class35_sub2_sub1, class27.aModel_362, (l2 - j) * 128 + (1 - k) * 64, j3, (i3 - j1) * 128 + (1 - l) * 64, flag);
-                                    if (class27 != null && class27.aModel_363 != null && class27.aModel_363.aVertexNormalArray1086 != null)
+                                    if (class27 != null && class27.aModel_363 != null && class27.aModel_363.vertexNormals != null)
                                         method270(class35_sub2_sub1, class27.aModel_363, (l2 - j) * 128 + (1 - k) * 64, j3, (i3 - j1) * 128 + (1 - l) * 64, flag);
                                     for (int k3 = 0; k3 < class35_sub1.anInt1004; k3++) {
                                         Loc class25 = class35_sub1.aTile7Array1005[k3];
-                                        if (class25 != null && class25.aModel_343 != null && class25.aModel_343.aVertexNormalArray1086 != null) {
+                                        if (class25 != null && class25.aModel_343 != null && class25.aModel_343.vertexNormals != null) {
                                             int l3 = (class25.anInt347 - class25.anInt346) + 1;
                                             int i4 = (class25.anInt349 - class25.anInt348) + 1;
                                             method270(class35_sub2_sub1, class25.aModel_343, (class25.anInt346 - j) * 128 + (l3 - k) * 64, j3, (class25.anInt348 - j1) * 128 + (i4 - l) * 64, flag);
@@ -679,27 +679,27 @@ public class MapSquare {
         int[] ai = class35_sub2_sub1_1.vertexX;
         int i1 = class35_sub2_sub1_1.vertexCount;
         for (int j1 = 0; j1 < class35_sub2_sub1.vertexCount; j1++) {
-            VertexNormal class22 = class35_sub2_sub1.aVertexNormalArray1086[j1];
-            VertexNormal class22_1 = class35_sub2_sub1.aVertexNormalArray1087[j1];
-            if (class22_1.anInt326 != 0) {
+            VertexNormal class22 = class35_sub2_sub1.vertexNormals[j1];
+            VertexNormal class22_1 = class35_sub2_sub1.vertexNormalOriginal[j1];
+            if (class22_1.magnitude != 0) {
                 int i2 = class35_sub2_sub1.vertexY[j1] - j;
-                if (i2 <= class35_sub2_sub1_1.anInt1077) {
+                if (i2 <= class35_sub2_sub1_1.minBoundY) {
                     int j2 = class35_sub2_sub1.vertexX[j1] - i;
-                    if (j2 >= class35_sub2_sub1_1.anInt1071 && j2 <= class35_sub2_sub1_1.anInt1072) {
+                    if (j2 >= class35_sub2_sub1_1.minBoundX && j2 <= class35_sub2_sub1_1.maxBoundX) {
                         int k2 = class35_sub2_sub1.vertexZ[j1] - k;
-                        if (k2 >= class35_sub2_sub1_1.anInt1074 && k2 <= class35_sub2_sub1_1.anInt1073) {
+                        if (k2 >= class35_sub2_sub1_1.minBoundZ && k2 <= class35_sub2_sub1_1.maxBoundZ) {
                             for (int l2 = 0; l2 < i1; l2++) {
-                                VertexNormal class22_2 = class35_sub2_sub1_1.aVertexNormalArray1086[l2];
-                                VertexNormal class22_3 = class35_sub2_sub1_1.aVertexNormalArray1087[l2];
-                                if (j2 == ai[l2] && k2 == class35_sub2_sub1_1.vertexZ[l2] && i2 == class35_sub2_sub1_1.vertexY[l2] && class22_3.anInt326 != 0) {
+                                VertexNormal class22_2 = class35_sub2_sub1_1.vertexNormals[l2];
+                                VertexNormal class22_3 = class35_sub2_sub1_1.vertexNormalOriginal[l2];
+                                if (j2 == ai[l2] && k2 == class35_sub2_sub1_1.vertexZ[l2] && i2 == class35_sub2_sub1_1.vertexY[l2] && class22_3.magnitude != 0) {
                                     class22.anInt323 += class22_3.anInt323;
                                     class22.anInt324 += class22_3.anInt324;
                                     class22.anInt325 += class22_3.anInt325;
-                                    class22.anInt326 += class22_3.anInt326;
+                                    class22.magnitude += class22_3.magnitude;
                                     class22_2.anInt323 += class22_1.anInt323;
                                     class22_2.anInt324 += class22_1.anInt324;
                                     class22_2.anInt325 += class22_1.anInt325;
-                                    class22_2.anInt326 += class22_1.anInt326;
+                                    class22_2.magnitude += class22_1.magnitude;
                                     l++;
                                     anIntArray432[j1] = anInt434;
                                     anIntArray433[l2] = anInt434;
@@ -715,12 +715,12 @@ public class MapSquare {
         if (l < 3 || !flag)
             return;
         for (int k1 = 0; k1 < class35_sub2_sub1.triangleCount; k1++)
-            if (anIntArray432[class35_sub2_sub1.triangleVertexA[k1]] == anInt434 && anIntArray432[class35_sub2_sub1.anIntArray1057[k1]] == anInt434 && anIntArray432[class35_sub2_sub1.triangleVertexC[k1]] == anInt434)
-                class35_sub2_sub1.anIntArray1062[k1] = -1;
+            if (anIntArray432[class35_sub2_sub1.triangleVertexA[k1]] == anInt434 && anIntArray432[class35_sub2_sub1.triangleVertexB[k1]] == anInt434 && anIntArray432[class35_sub2_sub1.triangleVertexC[k1]] == anInt434)
+                class35_sub2_sub1.triangleInfo[k1] = -1;
 
         for (int l1 = 0; l1 < class35_sub2_sub1_1.triangleCount; l1++)
-            if (anIntArray433[class35_sub2_sub1_1.triangleVertexA[l1]] == anInt434 && anIntArray433[class35_sub2_sub1_1.anIntArray1057[l1]] == anInt434 && anIntArray433[class35_sub2_sub1_1.triangleVertexC[l1]] == anInt434)
-                class35_sub2_sub1_1.anIntArray1062[l1] = -1;
+            if (anIntArray433[class35_sub2_sub1_1.triangleVertexA[l1]] == anInt434 && anIntArray433[class35_sub2_sub1_1.triangleVertexB[l1]] == anInt434 && anIntArray433[class35_sub2_sub1_1.triangleVertexC[l1]] == anInt434)
+                class35_sub2_sub1_1.triangleInfo[l1] = -1;
 
     }
 

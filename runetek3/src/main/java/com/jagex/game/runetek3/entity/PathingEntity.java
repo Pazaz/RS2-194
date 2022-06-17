@@ -9,7 +9,7 @@ import com.jagex.game.runetek3.config.SeqType;
 public class PathingEntity extends Entity {
 
     public void method409(byte byte0, int i, int j) {
-        if (primarySeq != -1 && SeqType.instances[primarySeq].anInt198 <= 1) {
+        if (primarySeq != -1 && SeqType.instances[primarySeq].priority <= 1) {
             primarySeq = -1;
         }
         int k = i - pathTileX[0];
@@ -66,7 +66,7 @@ public class PathingEntity extends Entity {
             k++;
             l--;
         }
-        if (primarySeq != -1 && SeqType.instances[primarySeq].anInt198 <= 1)
+        if (primarySeq != -1 && SeqType.instances[primarySeq].priority <= 1)
             primarySeq = -1;
         if (pathRemaining < 9)
             pathRemaining++;

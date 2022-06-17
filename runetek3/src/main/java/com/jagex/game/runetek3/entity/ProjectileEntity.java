@@ -64,11 +64,11 @@ public class ProjectileEntity extends Entity {
         if (i >= 0)
             anInt1170 = -428;
         anInt1194 = (int) (Math.atan2(aDouble1191, aDouble1190) * 325.94900000000001D) & 0x7ff;
-        if (aSpotAnimType_1173.seq != null)
-            for (anInt1196 += j; anInt1196 > aSpotAnimType_1173.seq.frameDelay[anInt1195]; ) {
-                anInt1196 -= aSpotAnimType_1173.seq.frameDelay[anInt1195] + 1;
+        if (aSpotAnimType_1173.anim != null)
+            for (anInt1196 += j; anInt1196 > aSpotAnimType_1173.anim.frameDelay[anInt1195]; ) {
+                anInt1196 -= aSpotAnimType_1173.anim.frameDelay[anInt1195] + 1;
                 anInt1195++;
-                if (anInt1195 >= aSpotAnimType_1173.seq.frameCount)
+                if (anInt1195 >= aSpotAnimType_1173.anim.frameCount)
                     anInt1195 = 0;
             }
 
@@ -79,9 +79,9 @@ public class ProjectileEntity extends Entity {
             aBoolean1171 = !aBoolean1171;
         Model class35_sub2_sub1 = aSpotAnimType_1173.getModel();
         Model class35_sub2_sub1_1 = new Model(-428, true, class35_sub2_sub1, true, false, !aSpotAnimType_1173.disposeAlpha);
-        if (aSpotAnimType_1173.seq != null) {
+        if (aSpotAnimType_1173.anim != null) {
             class35_sub2_sub1_1.applyGroups();
-            class35_sub2_sub1_1.applyFrame(aSpotAnimType_1173.seq.primaryFrames[anInt1195]);
+            class35_sub2_sub1_1.applyFrame(aSpotAnimType_1173.anim.primaryFrames[anInt1195]);
             class35_sub2_sub1_1.skinTriangle = null;
             class35_sub2_sub1_1.labelVertices = null;
         }

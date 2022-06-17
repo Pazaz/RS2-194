@@ -120,11 +120,11 @@ public class NpcType {
 
     public Model getModel(int primaryFrame, int secondaryFrame, int[] labelGroups) {
         Model class35_sub2_sub1 = null;
-        Model class35_sub2_sub1_1 = (Model) aCache_597.method295(aLong575);
+        Model class35_sub2_sub1_1 = (Model) aCache_597.get(aLong575);
         if (class35_sub2_sub1_1 == null) {
             Model[] aclass35_sub2_sub1 = new Model[anIntArray579.length];
             for (int k = 0; k < anIntArray579.length; k++)
-                aclass35_sub2_sub1[k] = new Model(anIntArray579[k], 298);
+                aclass35_sub2_sub1[k] = new Model(anIntArray579[k]);
 
             if (aclass35_sub2_sub1.length == 1)
                 class35_sub2_sub1_1 = aclass35_sub2_sub1[0];
@@ -137,7 +137,7 @@ public class NpcType {
             }
             class35_sub2_sub1_1.applyGroups();
             class35_sub2_sub1_1.applyLighting(64, 850, -30, -50, -30, true);
-            aCache_597.method296(aLong575, 7, class35_sub2_sub1_1);
+            aCache_597.put(aLong575, class35_sub2_sub1_1);
         }
         class35_sub2_sub1 = new Model(false, !aBoolean586, class35_sub2_sub1_1);
         if (primaryFrame != -1 && secondaryFrame != -1)
@@ -146,7 +146,7 @@ public class NpcType {
             class35_sub2_sub1.applyFrame(primaryFrame);
         if (anInt595 != 128 || anInt596 != 128)
             class35_sub2_sub1.method319(728, anInt595, anInt596, anInt595);
-        class35_sub2_sub1.method308(569);
+        class35_sub2_sub1.calculateYBoundaries();
         class35_sub2_sub1.skinTriangle = null;
         class35_sub2_sub1.labelVertices = null;
         if (size == 1)
@@ -161,7 +161,7 @@ public class NpcType {
         if (i != 0)
             throw new NullPointerException();
         for (int j = 0; j < anIntArray580.length; j++)
-            aclass35_sub2_sub1[j] = new Model(anIntArray580[j], 298);
+            aclass35_sub2_sub1[j] = new Model(anIntArray580[j]);
 
         Model class35_sub2_sub1;
         if (aclass35_sub2_sub1.length == 1)
@@ -221,6 +221,6 @@ public class NpcType {
     public int anInt594;
     public int anInt595;
     public int anInt596;
-    public static Cache aCache_597 = new Cache(-24094, 30);
+    public static Cache aCache_597 = new Cache(30);
 
 }

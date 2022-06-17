@@ -208,7 +208,7 @@ public class Scene {
                 if (class29.method248(class35_sub2_sub1_1, byte0, null, i3, j1, k4, i4, k1, j3, k, 0, l4) && class39.active) {
                     for (int i5 = 0; i5 <= i4; i5++) {
                         for (int j5 = 0; j5 <= k4; j5++) {
-                            int k5 = class35_sub2_sub1_1.anInt1075 / 4;
+                            int k5 = class35_sub2_sub1_1.lengthXZ / 4;
                             if (k5 > 30)
                                 k5 = 30;
                             if (k5 > aByteArrayArrayArray58[k1][j1 + i5][k + j5])

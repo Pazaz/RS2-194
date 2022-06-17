@@ -69,7 +69,7 @@ public class IdkType {
             return null;
         Model[] aclass35_sub2_sub1 = new Model[models.length];
         for (int i = 0; i < models.length; i++)
-            aclass35_sub2_sub1[i] = new Model(models[i], 298);
+            aclass35_sub2_sub1[i] = new Model(models[i]);
 
         Model class35_sub2_sub1;
         if (aclass35_sub2_sub1.length == 1)
@@ -92,7 +92,7 @@ public class IdkType {
         int j = 0;
         for (int k = 0; k < 5; k++)
             if (headModels[k] != -1)
-                aclass35_sub2_sub1[j++] = new Model(headModels[k], 298);
+                aclass35_sub2_sub1[j++] = new Model(headModels[k]);
 
         Model class35_sub2_sub1 = new Model(false, j, aclass35_sub2_sub1);
         for (int l = 0; l < 6; l++) {

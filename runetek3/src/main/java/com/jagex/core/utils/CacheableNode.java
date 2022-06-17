@@ -6,7 +6,7 @@ package com.jagex.core.utils;
 
 public class CacheableNode extends Node {
 
-    public void method304() {
+    public void uncache() {
         if (aCacheableNode_1018 == null) {
             return;
         } else {

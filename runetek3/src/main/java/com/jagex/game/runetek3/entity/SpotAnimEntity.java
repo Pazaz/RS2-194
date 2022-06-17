@@ -32,11 +32,11 @@ public class SpotAnimEntity extends Entity {
     }
 
     public void method408(int cycle) {
-        for (frameCycle += cycle; frameCycle > spotAnim.seq.frameDelay[seqFrame]; ) {
-            frameCycle -= spotAnim.seq.frameDelay[seqFrame] + 1;
+        for (frameCycle += cycle; frameCycle > spotAnim.anim.frameDelay[seqFrame]; ) {
+            frameCycle -= spotAnim.anim.frameDelay[seqFrame] + 1;
             seqFrame++;
 
-            if (seqFrame >= spotAnim.seq.frameCount) {
+            if (seqFrame >= spotAnim.anim.frameCount) {
                 seqFrame = 0;
                 finished = true;
             }
@@ -49,7 +49,7 @@ public class SpotAnimEntity extends Entity {
         Model model = new Model(-428, true, spotAnim.getModel(), true, false, !spotAnim.disposeAlpha);
         if (!finished) {
             model.applyGroups();
-            model.applyFrame(spotAnim.seq.primaryFrames[seqFrame]);
+            model.applyFrame(spotAnim.anim.primaryFrames[seqFrame]);
             model.skinTriangle = null;
             model.labelVertices = null;
         }

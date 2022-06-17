@@ -24,7 +24,7 @@ public class SeqFrame {
         for (int l = 0; l < j; l++) {
             int i1 = class35_sub2_sub3.g2();
             SeqFrame class11 = instances[i1] = new SeqFrame();
-            class11.anInt181 = class35_sub2_sub3_3.g1();
+            class11.delay = class35_sub2_sub3_3.g1();
             int j1 = class35_sub2_sub3.g2();
             SeqSkeleton class9 = SeqSkeleton.aSeqBaseArray169[j1];
             class11.transform = class9;
@@ -88,7 +88,7 @@ public class SeqFrame {
     }
 
     public static SeqFrame[] instances;
-    public int anInt181;
+    public int delay;
     public SeqSkeleton transform;
     public int groupCount;
     public int[] groups;

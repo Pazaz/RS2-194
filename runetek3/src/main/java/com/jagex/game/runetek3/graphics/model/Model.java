@@ -15,24 +15,24 @@ import com.jagex.game.runetek3.graphics.seq.SeqFrame;
 public class Model extends CacheableNode {
 
     public static void method305(int i) {
-        aModelMetadataArray1088 = null;
+        modelMetadata = null;
         aClass35_Sub2_Sub3_1089 = null;
-        aClass35_Sub2_Sub3_1090 = null;
-        aClass35_Sub2_Sub3_1091 = null;
+        face1 = null;
+        face2 = null;
         if (i <= 0) {
             return;
         } else {
-            aClass35_Sub2_Sub3_1092 = null;
-            aClass35_Sub2_Sub3_1093 = null;
-            aClass35_Sub2_Sub3_1094 = null;
-            aClass35_Sub2_Sub3_1095 = null;
-            aClass35_Sub2_Sub3_1096 = null;
-            aClass35_Sub2_Sub3_1097 = null;
-            aClass35_Sub2_Sub3_1098 = null;
-            aClass35_Sub2_Sub3_1099 = null;
-            aClass35_Sub2_Sub3_1100 = null;
-            aClass35_Sub2_Sub3_1101 = null;
-            aClass35_Sub2_Sub3_1102 = null;
+            face3 = null;
+            face4 = null;
+            face5 = null;
+            point1 = null;
+            point2 = null;
+            point3 = null;
+            point4 = null;
+            point5 = null;
+            vertex1 = null;
+            vertex2 = null;
+            axis = null;
             aBooleanArray1103 = null;
             aBooleanArray1104 = null;
             anIntArray1105 = null;
@@ -59,28 +59,28 @@ public class Model extends CacheableNode {
     public static void decode(FileArchive class36) {
         try {
             aClass35_Sub2_Sub3_1089 = new Buffer(class36.read(null, "ob_head.dat"));
-            aClass35_Sub2_Sub3_1090 = new Buffer(class36.read(null, "ob_face1.dat"));
-            aClass35_Sub2_Sub3_1091 = new Buffer(class36.read(null, "ob_face2.dat"));
-            aClass35_Sub2_Sub3_1092 = new Buffer(class36.read(null, "ob_face3.dat"));
-            aClass35_Sub2_Sub3_1093 = new Buffer(class36.read(null, "ob_face4.dat"));
-            aClass35_Sub2_Sub3_1094 = new Buffer(class36.read(null, "ob_face5.dat"));
-            aClass35_Sub2_Sub3_1095 = new Buffer(class36.read(null, "ob_point1.dat"));
-            aClass35_Sub2_Sub3_1096 = new Buffer(class36.read(null, "ob_point2.dat"));
-            aClass35_Sub2_Sub3_1097 = new Buffer(class36.read(null, "ob_point3.dat"));
-            aClass35_Sub2_Sub3_1098 = new Buffer(class36.read(null, "ob_point4.dat"));
-            aClass35_Sub2_Sub3_1099 = new Buffer(class36.read(null, "ob_point5.dat"));
-            aClass35_Sub2_Sub3_1100 = new Buffer(class36.read(null, "ob_vertex1.dat"));
-            aClass35_Sub2_Sub3_1101 = new Buffer(class36.read(null, "ob_vertex2.dat"));
-            aClass35_Sub2_Sub3_1102 = new Buffer(class36.read(null, "ob_axis.dat"));
+            face1 = new Buffer(class36.read(null, "ob_face1.dat"));
+            face2 = new Buffer(class36.read(null, "ob_face2.dat"));
+            face3 = new Buffer(class36.read(null, "ob_face3.dat"));
+            face4 = new Buffer(class36.read(null, "ob_face4.dat"));
+            face5 = new Buffer(class36.read(null, "ob_face5.dat"));
+            point1 = new Buffer(class36.read(null, "ob_point1.dat"));
+            point2 = new Buffer(class36.read(null, "ob_point2.dat"));
+            point3 = new Buffer(class36.read(null, "ob_point3.dat"));
+            point4 = new Buffer(class36.read(null, "ob_point4.dat"));
+            point5 = new Buffer(class36.read(null, "ob_point5.dat"));
+            vertex1 = new Buffer(class36.read(null, "ob_vertex1.dat"));
+            vertex2 = new Buffer(class36.read(null, "ob_vertex2.dat"));
+            axis = new Buffer(class36.read(null, "ob_axis.dat"));
             aClass35_Sub2_Sub3_1089.pos = 0;
-            aClass35_Sub2_Sub3_1095.pos = 0;
-            aClass35_Sub2_Sub3_1096.pos = 0;
-            aClass35_Sub2_Sub3_1097.pos = 0;
-            aClass35_Sub2_Sub3_1098.pos = 0;
-            aClass35_Sub2_Sub3_1100.pos = 0;
-            aClass35_Sub2_Sub3_1101.pos = 0;
+            point1.pos = 0;
+            point2.pos = 0;
+            point3.pos = 0;
+            point4.pos = 0;
+            vertex1.pos = 0;
+            vertex2.pos = 0;
             int i = aClass35_Sub2_Sub3_1089.g2();
-            aModelMetadataArray1088 = new ModelMetadata[i + 100];
+            modelMetadata = new ModelMetadata[i + 100];
             int j = 0;
             int k = 0;
             int l = 0;
@@ -90,74 +90,74 @@ public class Model extends CacheableNode {
             int l1 = 0;
             for (int i2 = 0; i2 < i; i2++) {
                 int j2 = aClass35_Sub2_Sub3_1089.g2();
-                ModelMetadata class20 = aModelMetadataArray1088[j2] = new ModelMetadata();
-                class20.anInt289 = aClass35_Sub2_Sub3_1089.g2();
-                class20.anInt290 = aClass35_Sub2_Sub3_1089.g2();
-                class20.anInt291 = aClass35_Sub2_Sub3_1089.g1();
-                class20.anInt292 = aClass35_Sub2_Sub3_1095.pos;
-                class20.anInt293 = aClass35_Sub2_Sub3_1096.pos;
-                class20.anInt294 = aClass35_Sub2_Sub3_1097.pos;
-                class20.anInt295 = aClass35_Sub2_Sub3_1098.pos;
-                class20.anInt297 = aClass35_Sub2_Sub3_1100.pos;
-                class20.anInt298 = aClass35_Sub2_Sub3_1101.pos;
+                ModelMetadata class20 = modelMetadata[j2] = new ModelMetadata();
+                class20.vertexCount = aClass35_Sub2_Sub3_1089.g2();
+                class20.triangleCount = aClass35_Sub2_Sub3_1089.g2();
+                class20.texturedCount = aClass35_Sub2_Sub3_1089.g1();
+                class20.vertexFlagDataOffset = point1.pos;
+                class20.vertexXDataOffset = point2.pos;
+                class20.vertexYDataOffset = point3.pos;
+                class20.vertexZDataOffset = point4.pos;
+                class20.vertexIndexDataOffset = vertex1.pos;
+                class20.triangleTypeDataOffset = vertex2.pos;
                 int k2 = aClass35_Sub2_Sub3_1089.g1();
                 int l2 = aClass35_Sub2_Sub3_1089.g1();
                 int i3 = aClass35_Sub2_Sub3_1089.g1();
                 int j3 = aClass35_Sub2_Sub3_1089.g1();
                 int k3 = aClass35_Sub2_Sub3_1089.g1();
-                for (int l3 = 0; l3 < class20.anInt289; l3++) {
-                    int i4 = aClass35_Sub2_Sub3_1095.g1();
+                for (int l3 = 0; l3 < class20.vertexCount; l3++) {
+                    int i4 = point1.g1();
                     if ((i4 & 1) != 0)
-                        aClass35_Sub2_Sub3_1096.gsmart();
+                        point2.gsmart();
                     if ((i4 & 2) != 0)
-                        aClass35_Sub2_Sub3_1097.gsmart();
+                        point3.gsmart();
                     if ((i4 & 4) != 0)
-                        aClass35_Sub2_Sub3_1098.gsmart();
+                        point4.gsmart();
                 }
 
-                for (int j4 = 0; j4 < class20.anInt290; j4++) {
-                    int k4 = aClass35_Sub2_Sub3_1101.g1();
+                for (int j4 = 0; j4 < class20.triangleCount; j4++) {
+                    int k4 = vertex2.g1();
                     if (k4 == 1) {
-                        aClass35_Sub2_Sub3_1100.gsmart();
-                        aClass35_Sub2_Sub3_1100.gsmart();
+                        vertex1.gsmart();
+                        vertex1.gsmart();
                     }
-                    aClass35_Sub2_Sub3_1100.gsmart();
+                    vertex1.gsmart();
                 }
 
-                class20.anInt299 = l;
-                l += class20.anInt290 * 2;
+                class20.triangleColorDataOffset = l;
+                l += class20.triangleCount * 2;
                 if (k2 == 1) {
-                    class20.anInt300 = i1;
-                    i1 += class20.anInt290;
+                    class20.triangleInfoDataOffset = i1;
+                    i1 += class20.triangleCount;
                 } else {
-                    class20.anInt300 = -1;
+                    class20.triangleInfoDataOffset = -1;
                 }
                 if (l2 == 255) {
-                    class20.anInt301 = j1;
-                    j1 += class20.anInt290;
+                    class20.trianglePriorityDataOffset = j1;
+                    j1 += class20.triangleCount;
                 } else {
-                    class20.anInt301 = -l2 - 1;
+                    class20.trianglePriorityDataOffset = -l2 - 1;
                 }
                 if (i3 == 1) {
-                    class20.anInt302 = k1;
-                    k1 += class20.anInt290;
+                    class20.triangleAlphaDataOffset = k1;
+                    k1 += class20.triangleCount;
                 } else {
-                    class20.anInt302 = -1;
+                    class20.triangleAlphaDataOffset = -1;
                 }
                 if (j3 == 1) {
-                    class20.anInt303 = l1;
-                    l1 += class20.anInt290;
+                    class20.triangleSkinDataOffset = l1;
+                    l1 += class20.triangleCount;
                 } else {
-                    class20.anInt303 = -1;
+                    class20.triangleSkinDataOffset = -1;
                 }
                 if (k3 == 1) {
-                    class20.anInt296 = k;
-                    k += class20.anInt289;
+                    class20.vertexLabelDataOffset = k;
+                    k += class20.vertexCount;
                 } else {
-                    class20.anInt296 = -1;
+                    class20.vertexLabelDataOffset = -1;
                 }
-                class20.anInt304 = j;
-                j += class20.anInt291;
+                class20.triangleTextureDataOffset = j;
+                j += class20.texturedCount;
             }
 
             return;
@@ -168,145 +168,163 @@ public class Model extends CacheableNode {
         }
     }
 
-    public Model(int i, int j) {
+    public Model(int id) {
         anInt1048 = -222;
         anInt1049 = -25737;
+
         aBoolean1050 = false;
         pickable = false;
-        if (aModelMetadataArray1088 == null)
-            return;
-        ModelMetadata class20 = aModelMetadataArray1088[i];
-        if (class20 == null) {
-            System.out.println("Error model:" + i + " not found!");
+
+        if (modelMetadata == null) {
             return;
         }
-        vertexCount = class20.anInt289;
-        triangleCount = class20.anInt290;
-        anInt1067 = class20.anInt291;
+
+        ModelMetadata metadata = modelMetadata[id];
+
+        if (metadata == null) {
+            System.out.println("Error model:" + id + " not found!");
+            return;
+        }
+
+        vertexCount = metadata.vertexCount;
+        triangleCount = metadata.triangleCount;
+        texturedCount = metadata.texturedCount;
         vertexX = new int[vertexCount];
         vertexY = new int[vertexCount];
         vertexZ = new int[vertexCount];
         triangleVertexA = new int[triangleCount];
-        anIntArray1057 = new int[triangleCount];
+        triangleVertexB = new int[triangleCount];
         triangleVertexC = new int[triangleCount];
-        anIntArray1068 = new int[anInt1067];
-        anIntArray1069 = new int[anInt1067];
-        anIntArray1070 = new int[anInt1067];
-        if (class20.anInt296 >= 0)
+        anIntArray1068 = new int[texturedCount];
+        anIntArray1069 = new int[texturedCount];
+        anIntArray1070 = new int[texturedCount];
+
+        if (metadata.vertexLabelDataOffset >= 0) {
             vertexLabel = new int[vertexCount];
-        if (class20.anInt300 >= 0)
-            anIntArray1062 = new int[triangleCount];
-        if (class20.anInt301 >= 0)
-            anIntArray1063 = new int[triangleCount];
-        else
-            anInt1066 = -class20.anInt301 - 1;
-        if (class20.anInt302 >= 0)
+        }
+        if (metadata.triangleInfoDataOffset >= 0) {
+            triangleInfo = new int[triangleCount];
+        }
+        if (metadata.trianglePriorityDataOffset >= 0) {
+            trianglePriorities = new int[triangleCount];
+        } else {
+            priority = -metadata.trianglePriorityDataOffset - 1;
+        }
+        if (metadata.triangleAlphaDataOffset >= 0) {
             triangleAlpha = new int[triangleCount];
-        if (class20.anInt303 >= 0)
+        }
+        if (metadata.triangleSkinDataOffset >= 0) {
             triangleSkin = new int[triangleCount];
+        }
         unmodifiedTriangleColor = new int[triangleCount];
-        aClass35_Sub2_Sub3_1095.pos = class20.anInt292;
-        aClass35_Sub2_Sub3_1096.pos = class20.anInt293;
-        aClass35_Sub2_Sub3_1097.pos = class20.anInt294;
-        aClass35_Sub2_Sub3_1098.pos = class20.anInt295;
-        aClass35_Sub2_Sub3_1099.pos = class20.anInt296;
+        point1.pos = metadata.vertexFlagDataOffset;
+        point2.pos = metadata.vertexXDataOffset;
+        point3.pos = metadata.vertexYDataOffset;
+        point4.pos = metadata.vertexZDataOffset;
+        point5.pos = metadata.vertexLabelDataOffset;
         int k = 0;
         int l = 0;
         int i1 = 0;
         for (int j1 = 0; j1 < vertexCount; j1++) {
-            int k1 = aClass35_Sub2_Sub3_1095.g1();
+            int k1 = point1.g1();
             int i2 = 0;
-            if ((k1 & 1) != 0)
-                i2 = aClass35_Sub2_Sub3_1096.gsmart();
+            if ((k1 & 1) != 0) {
+                i2 = point2.gsmart();
+            }
             int k2 = 0;
-            if ((k1 & 2) != 0)
-                k2 = aClass35_Sub2_Sub3_1097.gsmart();
+            if ((k1 & 2) != 0) {
+                k2 = point3.gsmart();
+            }
             int i3 = 0;
-            if ((k1 & 4) != 0)
-                i3 = aClass35_Sub2_Sub3_1098.gsmart();
+            if ((k1 & 4) != 0) {
+                i3 = point4.gsmart();
+            }
             vertexX[j1] = k + i2;
             vertexY[j1] = l + k2;
             vertexZ[j1] = i1 + i3;
             k = vertexX[j1];
             l = vertexY[j1];
             i1 = vertexZ[j1];
-            if (vertexLabel != null)
-                vertexLabel[j1] = aClass35_Sub2_Sub3_1099.g1();
+            if (vertexLabel != null) {
+                vertexLabel[j1] = point5.g1();
+            }
         }
 
-        aClass35_Sub2_Sub3_1090.pos = class20.anInt299;
-        if (j <= 0)
-            throw new NullPointerException();
-        aClass35_Sub2_Sub3_1091.pos = class20.anInt300;
-        aClass35_Sub2_Sub3_1092.pos = class20.anInt301;
-        aClass35_Sub2_Sub3_1093.pos = class20.anInt302;
-        aClass35_Sub2_Sub3_1094.pos = class20.anInt303;
+        face1.pos = metadata.triangleColorDataOffset;
+        face2.pos = metadata.triangleInfoDataOffset;
+        face3.pos = metadata.trianglePriorityDataOffset;
+        face4.pos = metadata.triangleAlphaDataOffset;
+        face5.pos = metadata.triangleSkinDataOffset;
         for (int l1 = 0; l1 < triangleCount; l1++) {
-            unmodifiedTriangleColor[l1] = aClass35_Sub2_Sub3_1090.g2();
-            if (anIntArray1062 != null)
-                anIntArray1062[l1] = aClass35_Sub2_Sub3_1091.g1();
-            if (anIntArray1063 != null)
-                anIntArray1063[l1] = aClass35_Sub2_Sub3_1092.g1();
-            if (triangleAlpha != null)
-                triangleAlpha[l1] = aClass35_Sub2_Sub3_1093.g1();
-            if (triangleSkin != null)
-                triangleSkin[l1] = aClass35_Sub2_Sub3_1094.g1();
+            unmodifiedTriangleColor[l1] = face1.g2();
+            if (triangleInfo != null) {
+                triangleInfo[l1] = face2.g1();
+            }
+            if (trianglePriorities != null) {
+                trianglePriorities[l1] = face3.g1();
+            }
+            if (triangleAlpha != null) {
+                triangleAlpha[l1] = face4.g1();
+            }
+            if (triangleSkin != null) {
+                triangleSkin[l1] = face5.g1();
+            }
         }
 
-        aClass35_Sub2_Sub3_1100.pos = class20.anInt297;
-        aClass35_Sub2_Sub3_1101.pos = class20.anInt298;
+        vertex1.pos = metadata.vertexIndexDataOffset;
+        vertex2.pos = metadata.triangleTypeDataOffset;
         int j2 = 0;
         int l2 = 0;
         int j3 = 0;
         int k3 = 0;
         for (int l3 = 0; l3 < triangleCount; l3++) {
-            int i4 = aClass35_Sub2_Sub3_1101.g1();
+            int i4 = vertex2.g1();
             if (i4 == 1) {
-                j2 = aClass35_Sub2_Sub3_1100.gsmart() + k3;
+                j2 = vertex1.gsmart() + k3;
                 k3 = j2;
-                l2 = aClass35_Sub2_Sub3_1100.gsmart() + k3;
+                l2 = vertex1.gsmart() + k3;
                 k3 = l2;
-                j3 = aClass35_Sub2_Sub3_1100.gsmart() + k3;
+                j3 = vertex1.gsmart() + k3;
                 k3 = j3;
                 triangleVertexA[l3] = j2;
-                anIntArray1057[l3] = l2;
+                triangleVertexB[l3] = l2;
                 triangleVertexC[l3] = j3;
             }
             if (i4 == 2) {
                 j2 = j2;
                 l2 = j3;
-                j3 = aClass35_Sub2_Sub3_1100.gsmart() + k3;
+                j3 = vertex1.gsmart() + k3;
                 k3 = j3;
                 triangleVertexA[l3] = j2;
-                anIntArray1057[l3] = l2;
+                triangleVertexB[l3] = l2;
                 triangleVertexC[l3] = j3;
             }
             if (i4 == 3) {
                 j2 = j3;
                 l2 = l2;
-                j3 = aClass35_Sub2_Sub3_1100.gsmart() + k3;
+                j3 = vertex1.gsmart() + k3;
                 k3 = j3;
                 triangleVertexA[l3] = j2;
-                anIntArray1057[l3] = l2;
+                triangleVertexB[l3] = l2;
                 triangleVertexC[l3] = j3;
             }
             if (i4 == 4) {
                 int k4 = j2;
                 j2 = l2;
                 l2 = k4;
-                j3 = aClass35_Sub2_Sub3_1100.gsmart() + k3;
+                j3 = vertex1.gsmart() + k3;
                 k3 = j3;
                 triangleVertexA[l3] = j2;
-                anIntArray1057[l3] = l2;
+                triangleVertexB[l3] = l2;
                 triangleVertexC[l3] = j3;
             }
         }
 
-        aClass35_Sub2_Sub3_1102.pos = class20.anInt304 * 6;
-        for (int j4 = 0; j4 < anInt1067; j4++) {
-            anIntArray1068[j4] = aClass35_Sub2_Sub3_1102.g2();
-            anIntArray1069[j4] = aClass35_Sub2_Sub3_1102.g2();
-            anIntArray1070[j4] = aClass35_Sub2_Sub3_1102.g2();
+        axis.pos = metadata.triangleTextureDataOffset * 6;
+        for (int j4 = 0; j4 < texturedCount; j4++) {
+            anIntArray1068[j4] = axis.g2();
+            anIntArray1069[j4] = axis.g2();
+            anIntArray1070[j4] = axis.g2();
         }
 
     }
@@ -322,21 +340,21 @@ public class Model extends CacheableNode {
         boolean flag4 = false;
         vertexCount = 0;
         triangleCount = 0;
-        anInt1067 = 0;
-        anInt1066 = -1;
+        texturedCount = 0;
+        priority = -1;
         for (int j = 0; j < i; j++) {
             Model class35_sub2_sub1 = aclass35_sub2_sub1[j];
             if (class35_sub2_sub1 != null) {
                 vertexCount += class35_sub2_sub1.vertexCount;
                 triangleCount += class35_sub2_sub1.triangleCount;
-                anInt1067 += class35_sub2_sub1.anInt1067;
-                flag1 |= class35_sub2_sub1.anIntArray1062 != null;
-                if (class35_sub2_sub1.anIntArray1063 != null) {
+                texturedCount += class35_sub2_sub1.texturedCount;
+                flag1 |= class35_sub2_sub1.triangleInfo != null;
+                if (class35_sub2_sub1.trianglePriorities != null) {
                     flag2 = true;
                 } else {
-                    if (anInt1066 == -1)
-                        anInt1066 = class35_sub2_sub1.anInt1066;
-                    if (anInt1066 != class35_sub2_sub1.anInt1066)
+                    if (priority == -1)
+                        priority = class35_sub2_sub1.priority;
+                    if (priority != class35_sub2_sub1.priority)
                         flag2 = true;
                 }
                 flag3 |= class35_sub2_sub1.triangleAlpha != null;
@@ -347,96 +365,110 @@ public class Model extends CacheableNode {
         vertexX = new int[vertexCount];
         vertexY = new int[vertexCount];
         vertexZ = new int[vertexCount];
-        if (flag)
+        if (flag) {
             throw new NullPointerException();
+        }
         vertexLabel = new int[vertexCount];
         triangleVertexA = new int[triangleCount];
-        anIntArray1057 = new int[triangleCount];
+        triangleVertexB = new int[triangleCount];
         triangleVertexC = new int[triangleCount];
-        anIntArray1068 = new int[anInt1067];
-        anIntArray1069 = new int[anInt1067];
-        anIntArray1070 = new int[anInt1067];
-        if (flag1)
-            anIntArray1062 = new int[triangleCount];
-        if (flag2)
-            anIntArray1063 = new int[triangleCount];
-        if (flag3)
+        anIntArray1068 = new int[texturedCount];
+        anIntArray1069 = new int[texturedCount];
+        anIntArray1070 = new int[texturedCount];
+        if (flag1) {
+            triangleInfo = new int[triangleCount];
+        }
+        if (flag2) {
+            trianglePriorities = new int[triangleCount];
+        }
+        if (flag3) {
             triangleAlpha = new int[triangleCount];
-        if (flag4)
+        }
+        if (flag4) {
             triangleSkin = new int[triangleCount];
+        }
         unmodifiedTriangleColor = new int[triangleCount];
         vertexCount = 0;
         triangleCount = 0;
-        anInt1067 = 0;
+        texturedCount = 0;
         for (int k = 0; k < i; k++) {
             Model class35_sub2_sub1_1 = aclass35_sub2_sub1[k];
             if (class35_sub2_sub1_1 != null) {
                 for (int l = 0; l < class35_sub2_sub1_1.triangleCount; l++) {
-                    if (flag1)
-                        if (class35_sub2_sub1_1.anIntArray1062 == null)
-                            anIntArray1062[triangleCount] = 0;
-                        else
-                            anIntArray1062[triangleCount] = class35_sub2_sub1_1.anIntArray1062[l];
-                    if (flag2)
-                        if (class35_sub2_sub1_1.anIntArray1063 == null)
-                            anIntArray1063[triangleCount] = class35_sub2_sub1_1.anInt1066;
-                        else
-                            anIntArray1063[triangleCount] = class35_sub2_sub1_1.anIntArray1063[l];
-                    if (flag3)
-                        if (class35_sub2_sub1_1.triangleAlpha == null)
+                    if (flag1) {
+                        if (class35_sub2_sub1_1.triangleInfo == null) {
+                            triangleInfo[triangleCount] = 0;
+                        } else {
+                            triangleInfo[triangleCount] = class35_sub2_sub1_1.triangleInfo[l];
+                        }
+                    }
+                    if (flag2) {
+                        if (class35_sub2_sub1_1.trianglePriorities == null) {
+                            trianglePriorities[triangleCount] = class35_sub2_sub1_1.priority;
+                        } else {
+                            trianglePriorities[triangleCount] = class35_sub2_sub1_1.trianglePriorities[l];
+                        }
+                    }
+                    if (flag3) {
+                        if (class35_sub2_sub1_1.triangleAlpha == null) {
                             triangleAlpha[triangleCount] = 0;
-                        else
+                        } else {
                             triangleAlpha[triangleCount] = class35_sub2_sub1_1.triangleAlpha[l];
-                    if (flag4 && class35_sub2_sub1_1.triangleSkin != null)
+                        }
+                    }
+                    if (flag4 && class35_sub2_sub1_1.triangleSkin != null) {
                         triangleSkin[triangleCount] = class35_sub2_sub1_1.triangleSkin[l];
+                    }
                     unmodifiedTriangleColor[triangleCount] = class35_sub2_sub1_1.unmodifiedTriangleColor[l];
                     triangleVertexA[triangleCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.triangleVertexA[l]);
-                    anIntArray1057[triangleCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.anIntArray1057[l]);
+                    triangleVertexB[triangleCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.triangleVertexB[l]);
                     triangleVertexC[triangleCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.triangleVertexC[l]);
                     triangleCount++;
                 }
 
-                for (int i1 = 0; i1 < class35_sub2_sub1_1.anInt1067; i1++) {
-                    anIntArray1068[anInt1067] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.anIntArray1068[i1]);
-                    anIntArray1069[anInt1067] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.anIntArray1069[i1]);
-                    anIntArray1070[anInt1067] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.anIntArray1070[i1]);
-                    anInt1067++;
+                for (int i1 = 0; i1 < class35_sub2_sub1_1.texturedCount; i1++) {
+                    anIntArray1068[texturedCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.anIntArray1068[i1]);
+                    anIntArray1069[texturedCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.anIntArray1069[i1]);
+                    anIntArray1070[texturedCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.anIntArray1070[i1]);
+                    texturedCount++;
                 }
-
             }
         }
 
     }
 
-    public Model(boolean flag, boolean flag1, Model[] aclass35_sub2_sub1, int i) {
+    public Model(boolean flag, Model[] aclass35_sub2_sub1, int i) {
         anInt1048 = -222;
         anInt1049 = -25737;
         aBoolean1050 = false;
         pickable = false;
-        if (!flag)
+        if (!flag) {
             anInt1048 = -114;
+        }
         boolean flag2 = false;
         boolean flag3 = false;
         boolean flag4 = false;
         boolean flag5 = false;
         vertexCount = 0;
         triangleCount = 0;
-        anInt1067 = 0;
-        anInt1066 = -1;
+        texturedCount = 0;
+        priority = -1;
         for (int j = 0; j < i; j++) {
             Model class35_sub2_sub1 = aclass35_sub2_sub1[j];
             if (class35_sub2_sub1 != null) {
                 vertexCount += class35_sub2_sub1.vertexCount;
                 triangleCount += class35_sub2_sub1.triangleCount;
-                anInt1067 += class35_sub2_sub1.anInt1067;
-                flag2 |= class35_sub2_sub1.anIntArray1062 != null;
-                if (class35_sub2_sub1.anIntArray1063 != null) {
+                texturedCount += class35_sub2_sub1.texturedCount;
+                flag2 |= class35_sub2_sub1.triangleInfo != null;
+                if (class35_sub2_sub1.trianglePriorities != null) {
                     flag3 = true;
                 } else {
-                    if (anInt1066 == -1)
-                        anInt1066 = class35_sub2_sub1.anInt1066;
-                    if (anInt1066 != class35_sub2_sub1.anInt1066)
+                    if (priority == -1) {
+                        priority = class35_sub2_sub1.priority;
+                    }
+                    if (priority != class35_sub2_sub1.priority) {
                         flag3 = true;
+                    }
                 }
                 flag4 |= class35_sub2_sub1.triangleAlpha != null;
                 flag5 |= class35_sub2_sub1.unmodifiedTriangleColor != null;
@@ -447,25 +479,29 @@ public class Model extends CacheableNode {
         vertexY = new int[vertexCount];
         vertexZ = new int[vertexCount];
         triangleVertexA = new int[triangleCount];
-        anIntArray1057 = new int[triangleCount];
+        triangleVertexB = new int[triangleCount];
         triangleVertexC = new int[triangleCount];
-        anIntArray1059 = new int[triangleCount];
+        colorA = new int[triangleCount];
         anIntArray1060 = new int[triangleCount];
         anIntArray1061 = new int[triangleCount];
-        anIntArray1068 = new int[anInt1067];
-        anIntArray1069 = new int[anInt1067];
-        anIntArray1070 = new int[anInt1067];
-        if (flag2)
-            anIntArray1062 = new int[triangleCount];
-        if (flag3)
-            anIntArray1063 = new int[triangleCount];
-        if (flag4)
+        anIntArray1068 = new int[texturedCount];
+        anIntArray1069 = new int[texturedCount];
+        anIntArray1070 = new int[texturedCount];
+        if (flag2) {
+            triangleInfo = new int[triangleCount];
+        }
+        if (flag3) {
+            trianglePriorities = new int[triangleCount];
+        }
+        if (flag4) {
             triangleAlpha = new int[triangleCount];
-        if (flag5)
+        }
+        if (flag5) {
             unmodifiedTriangleColor = new int[triangleCount];
+        }
         vertexCount = 0;
         triangleCount = 0;
-        anInt1067 = 0;
+        texturedCount = 0;
         for (int k = 0; k < i; k++) {
             Model class35_sub2_sub1_1 = aclass35_sub2_sub1[k];
             if (class35_sub2_sub1_1 != null) {
@@ -479,42 +515,49 @@ public class Model extends CacheableNode {
 
                 for (int j1 = 0; j1 < class35_sub2_sub1_1.triangleCount; j1++) {
                     triangleVertexA[triangleCount] = class35_sub2_sub1_1.triangleVertexA[j1] + l;
-                    anIntArray1057[triangleCount] = class35_sub2_sub1_1.anIntArray1057[j1] + l;
+                    triangleVertexB[triangleCount] = class35_sub2_sub1_1.triangleVertexB[j1] + l;
                     triangleVertexC[triangleCount] = class35_sub2_sub1_1.triangleVertexC[j1] + l;
-                    anIntArray1059[triangleCount] = class35_sub2_sub1_1.anIntArray1059[j1];
+                    colorA[triangleCount] = class35_sub2_sub1_1.colorA[j1];
                     anIntArray1060[triangleCount] = class35_sub2_sub1_1.anIntArray1060[j1];
                     anIntArray1061[triangleCount] = class35_sub2_sub1_1.anIntArray1061[j1];
-                    if (flag2)
-                        if (class35_sub2_sub1_1.anIntArray1062 == null)
-                            anIntArray1062[triangleCount] = 0;
-                        else
-                            anIntArray1062[triangleCount] = class35_sub2_sub1_1.anIntArray1062[j1];
-                    if (flag3)
-                        if (class35_sub2_sub1_1.anIntArray1063 == null)
-                            anIntArray1063[triangleCount] = class35_sub2_sub1_1.anInt1066;
-                        else
-                            anIntArray1063[triangleCount] = class35_sub2_sub1_1.anIntArray1063[j1];
-                    if (flag4)
-                        if (class35_sub2_sub1_1.triangleAlpha == null)
+                    if (flag2) {
+                        if (class35_sub2_sub1_1.triangleInfo == null) {
+                            triangleInfo[triangleCount] = 0;
+                        } else {
+                            triangleInfo[triangleCount] = class35_sub2_sub1_1.triangleInfo[j1];
+                        }
+                    }
+                    if (flag3) {
+                        if (class35_sub2_sub1_1.trianglePriorities == null) {
+                            trianglePriorities[triangleCount] = class35_sub2_sub1_1.priority;
+                        } else {
+                            trianglePriorities[triangleCount] = class35_sub2_sub1_1.trianglePriorities[j1];
+                        }
+                    }
+                    if (flag4) {
+                        if (class35_sub2_sub1_1.triangleAlpha == null) {
                             triangleAlpha[triangleCount] = 0;
-                        else
+                        } else {
                             triangleAlpha[triangleCount] = class35_sub2_sub1_1.triangleAlpha[j1];
-                    if (flag5 && class35_sub2_sub1_1.unmodifiedTriangleColor != null)
+                        }
+                    }
+                    if (flag5 && class35_sub2_sub1_1.unmodifiedTriangleColor != null) {
                         unmodifiedTriangleColor[triangleCount] = class35_sub2_sub1_1.unmodifiedTriangleColor[j1];
+                    }
                     triangleCount++;
                 }
 
-                for (int k1 = 0; k1 < class35_sub2_sub1_1.anInt1067; k1++) {
-                    anIntArray1068[anInt1067] = class35_sub2_sub1_1.anIntArray1068[k1] + l;
-                    anIntArray1069[anInt1067] = class35_sub2_sub1_1.anIntArray1069[k1] + l;
-                    anIntArray1070[anInt1067] = class35_sub2_sub1_1.anIntArray1070[k1] + l;
-                    anInt1067++;
+                for (int k1 = 0; k1 < class35_sub2_sub1_1.texturedCount; k1++) {
+                    anIntArray1068[texturedCount] = class35_sub2_sub1_1.anIntArray1068[k1] + l;
+                    anIntArray1069[texturedCount] = class35_sub2_sub1_1.anIntArray1069[k1] + l;
+                    anIntArray1070[texturedCount] = class35_sub2_sub1_1.anIntArray1070[k1] + l;
+                    texturedCount++;
                 }
 
             }
         }
 
-        method308(569);
+        calculateYBoundaries();
     }
 
     public Model(int i, boolean flag, Model class35_sub2_sub1, boolean flag1, boolean flag2, boolean flag3) {
@@ -522,11 +565,12 @@ public class Model extends CacheableNode {
         anInt1049 = -25737;
         aBoolean1050 = false;
         pickable = false;
-        for (vertexCount = class35_sub2_sub1.vertexCount; i >= 0; )
+        for (vertexCount = class35_sub2_sub1.vertexCount; i >= 0; ) {
             throw new NullPointerException();
+        }
 
         triangleCount = class35_sub2_sub1.triangleCount;
-        anInt1067 = class35_sub2_sub1.anInt1067;
+        texturedCount = class35_sub2_sub1.texturedCount;
         if (flag2) {
             vertexX = class35_sub2_sub1.vertexX;
             vertexY = class35_sub2_sub1.vertexY;
@@ -555,36 +599,37 @@ public class Model extends CacheableNode {
         } else {
             triangleAlpha = new int[triangleCount];
             if (class35_sub2_sub1.triangleAlpha == null) {
-                for (int l = 0; l < triangleCount; l++)
+                for (int l = 0; l < triangleCount; l++) {
                     triangleAlpha[l] = 0;
+                }
 
             } else {
-                for (int i1 = 0; i1 < triangleCount; i1++)
+                for (int i1 = 0; i1 < triangleCount; i1++) {
                     triangleAlpha[i1] = class35_sub2_sub1.triangleAlpha[i1];
-
+                }
             }
         }
         if (flag) {
-            anIntArray1062 = class35_sub2_sub1.anIntArray1062;
+            triangleInfo = class35_sub2_sub1.triangleInfo;
         } else {
-            anIntArray1062 = new int[triangleCount];
-            if (class35_sub2_sub1.anIntArray1062 == null) {
+            triangleInfo = new int[triangleCount];
+            if (class35_sub2_sub1.triangleInfo == null) {
                 for (int j1 = 0; j1 < triangleCount; j1++)
-                    anIntArray1062[j1] = 0;
+                    triangleInfo[j1] = 0;
 
             } else {
                 for (int k1 = 0; k1 < triangleCount; k1++)
-                    anIntArray1062[k1] = class35_sub2_sub1.anIntArray1062[k1];
+                    triangleInfo[k1] = class35_sub2_sub1.triangleInfo[k1];
 
             }
         }
         vertexLabel = class35_sub2_sub1.vertexLabel;
         triangleSkin = class35_sub2_sub1.triangleSkin;
         triangleVertexA = class35_sub2_sub1.triangleVertexA;
-        anIntArray1057 = class35_sub2_sub1.anIntArray1057;
+        triangleVertexB = class35_sub2_sub1.triangleVertexB;
         triangleVertexC = class35_sub2_sub1.triangleVertexC;
-        anIntArray1063 = class35_sub2_sub1.anIntArray1063;
-        anInt1066 = class35_sub2_sub1.anInt1066;
+        trianglePriorities = class35_sub2_sub1.trianglePriorities;
+        priority = class35_sub2_sub1.priority;
         anIntArray1068 = class35_sub2_sub1.anIntArray1068;
         anIntArray1069 = class35_sub2_sub1.anIntArray1069;
         anIntArray1070 = class35_sub2_sub1.anIntArray1070;
@@ -597,7 +642,7 @@ public class Model extends CacheableNode {
         pickable = false;
         vertexCount = class35_sub2_sub1.vertexCount;
         triangleCount = class35_sub2_sub1.triangleCount;
-        anInt1067 = class35_sub2_sub1.anInt1067;
+        texturedCount = class35_sub2_sub1.texturedCount;
         vertexX = new int[vertexCount];
         vertexY = new int[vertexCount];
         vertexZ = new int[vertexCount];
@@ -621,16 +666,16 @@ public class Model extends CacheableNode {
 
             }
         }
-        anIntArray1062 = class35_sub2_sub1.anIntArray1062;
+        triangleInfo = class35_sub2_sub1.triangleInfo;
         unmodifiedTriangleColor = class35_sub2_sub1.unmodifiedTriangleColor;
-        anIntArray1063 = class35_sub2_sub1.anIntArray1063;
-        anInt1066 = class35_sub2_sub1.anInt1066;
+        trianglePriorities = class35_sub2_sub1.trianglePriorities;
+        priority = class35_sub2_sub1.priority;
         skinTriangle = class35_sub2_sub1.skinTriangle;
         labelVertices = class35_sub2_sub1.labelVertices;
         triangleVertexA = class35_sub2_sub1.triangleVertexA;
-        anIntArray1057 = class35_sub2_sub1.anIntArray1057;
+        triangleVertexB = class35_sub2_sub1.triangleVertexB;
         triangleVertexC = class35_sub2_sub1.triangleVertexC;
-        anIntArray1059 = class35_sub2_sub1.anIntArray1059;
+        colorA = class35_sub2_sub1.colorA;
         anIntArray1060 = class35_sub2_sub1.anIntArray1060;
         anIntArray1061 = class35_sub2_sub1.anIntArray1061;
         if (flag) {
@@ -666,65 +711,74 @@ public class Model extends CacheableNode {
         return j;
     }
 
-    public void method308(int i) {
+    public void calculateYBoundaries() {
         maxBoundY = 0;
-        anInt1075 = 0;
-        if (i <= 0) {
-            for (int j = 1; j > 0; j++) ;
-        }
-        anInt1077 = 0;
-        for (int k = 0; k < vertexCount; k++) {
-            int l = vertexX[k];
-            int i1 = vertexY[k];
-            int j1 = vertexZ[k];
-            if (-i1 > maxBoundY)
+        lengthXZ = 0;
+        minBoundY = 0;
+
+        for (int v = 0; v < vertexCount; v++) {
+            int l = vertexX[v];
+            int i1 = vertexY[v];
+            int j1 = vertexZ[v];
+            if (-i1 > maxBoundY) {
                 maxBoundY = -i1;
-            if (i1 > anInt1077)
-                anInt1077 = i1;
+            }
+            if (i1 > minBoundY) {
+                minBoundY = i1;
+            }
             int k1 = l * l + j1 * j1;
-            if (k1 > anInt1075)
-                anInt1075 = k1;
+            if (k1 > lengthXZ) {
+                lengthXZ = k1;
+            }
         }
 
-        anInt1075 = (int) Math.sqrt(anInt1075);
-        anInt1079 = (int) Math.sqrt(anInt1075 * anInt1075 + maxBoundY * maxBoundY);
-        anInt1078 = anInt1079 + (int) Math.sqrt(anInt1075 * anInt1075 + anInt1077 * anInt1077);
+        lengthXZ = (int) Math.sqrt(lengthXZ);
+        minDepth = (int) Math.sqrt(lengthXZ * lengthXZ + maxBoundY * maxBoundY);
+        maxdepth = minDepth + (int) Math.sqrt(lengthXZ * lengthXZ + minBoundY * minBoundY);
     }
 
-    public void method309(boolean flag) {
+    private void calculateBoundaries() {
+        lengthXZ = 0;
+        minBoundY = 0;
         maxBoundY = 0;
-        anInt1075 = 0;
-        if (!flag)
-            anInt1048 = 315;
-        anInt1077 = 0;
-        anInt1071 = 0xf423f;
-        anInt1072 = 0xfff0bdc1;
-        anInt1073 = 0xfffe7961;
-        anInt1074 = 0x1869f;
+        minBoundX = 999999;
+        maxBoundX = -999999;
+        minBoundZ = 99999;
+        maxBoundZ = -99999;
+
         for (int i = 0; i < vertexCount; i++) {
             int j = vertexX[i];
             int k = vertexY[i];
             int l = vertexZ[i];
-            if (j < anInt1071)
-                anInt1071 = j;
-            if (j > anInt1072)
-                anInt1072 = j;
-            if (l < anInt1074)
-                anInt1074 = l;
-            if (l > anInt1073)
-                anInt1073 = l;
-            if (-k > maxBoundY)
+
+            if (j < minBoundX) {
+                minBoundX = j;
+            }
+            if (j > maxBoundX) {
+                maxBoundX = j;
+            }
+            if (l < minBoundZ) {
+                minBoundZ = l;
+            }
+            if (l > maxBoundZ) {
+                maxBoundZ = l;
+            }
+            if (-k > maxBoundY) {
                 maxBoundY = -k;
-            if (k > anInt1077)
-                anInt1077 = k;
+            }
+            if (k > minBoundY) {
+                minBoundY = k;
+            }
             int i1 = j * j + l * l;
-            if (i1 > anInt1075)
-                anInt1075 = i1;
+
+            if (i1 > lengthXZ) {
+                lengthXZ = i1;
+            }
         }
 
-        anInt1075 = (int) Math.sqrt(anInt1075);
-        anInt1079 = (int) Math.sqrt(anInt1075 * anInt1075 + maxBoundY * maxBoundY);
-        anInt1078 = anInt1079 + (int) Math.sqrt(anInt1075 * anInt1075 + anInt1077 * anInt1077);
+        lengthXZ = (int) Math.sqrt(lengthXZ);
+        minDepth = (int) Math.sqrt(lengthXZ * lengthXZ + maxBoundY * maxBoundY);
+        maxdepth = minDepth + (int) Math.sqrt(lengthXZ * lengthXZ + minBoundY * minBoundY);
     }
 
     public void applyGroups() {
@@ -735,8 +789,9 @@ public class Model extends CacheableNode {
             for (int v = 0; v < vertexCount; v++) {
                 int j1 = vertexLabel[v];
                 labelCount[j1]++;
-                if (j1 > topLabel)
+                if (j1 > topLabel) {
                     topLabel = j1;
+                }
             }
 
             labelVertices = new int[topLabel + 1][];
@@ -1040,23 +1095,25 @@ public class Model extends CacheableNode {
         }
     }
 
-    public void applyLighting(int i, int j, int k, int l, int i1, boolean flag) {
-        int j1 = (int) Math.sqrt(k * k + l * l + i1 * i1);
-        int k1 = j * j1 >> 8;
-        if (anIntArray1059 == null) {
-            anIntArray1059 = new int[triangleCount];
+    public void applyLighting(int lightAmbient, int j, int k, int l, int i1, boolean computeVertexColors) {
+        int lightMagnitude = (int) Math.sqrt(k * k + l * l + i1 * i1);
+        int attenuation = j * lightMagnitude >> 8;
+        if (colorA == null) {
+            colorA = new int[triangleCount];
             anIntArray1060 = new int[triangleCount];
             anIntArray1061 = new int[triangleCount];
         }
-        if (aVertexNormalArray1086 == null) {
-            aVertexNormalArray1086 = new VertexNormal[vertexCount];
-            for (int l1 = 0; l1 < vertexCount; l1++)
-                aVertexNormalArray1086[l1] = new VertexNormal();
 
+        if (vertexNormals == null) {
+            vertexNormals = new VertexNormal[vertexCount];
+            for (int t = 0; t < vertexCount; t++) {
+                vertexNormals[t] = new VertexNormal();
+            }
         }
+
         for (int i2 = 0; i2 < triangleCount; i2++) {
             int j2 = triangleVertexA[i2];
-            int l2 = anIntArray1057[i2];
+            int l2 = triangleVertexB[i2];
             int i3 = triangleVertexC[i2];
             int j3 = vertexX[l2] - vertexX[j2];
             int k3 = vertexY[l2] - vertexY[j2];
@@ -1073,101 +1130,100 @@ public class Model extends CacheableNode {
             }
 
             int k5 = (int) Math.sqrt(l4 * l4 + i5 * i5 + j5 * j5);
-            if (k5 <= 0)
+            if (k5 <= 0) {
                 k5 = 1;
+            }
             l4 = (l4 * 256) / k5;
             i5 = (i5 * 256) / k5;
             j5 = (j5 * 256) / k5;
-            if (anIntArray1062 == null || (anIntArray1062[i2] & 1) == 0) {
-                VertexNormal class22_2 = aVertexNormalArray1086[j2];
-                class22_2.anInt323 += l4;
-                class22_2.anInt324 += i5;
-                class22_2.anInt325 += j5;
-                class22_2.anInt326++;
-                class22_2 = aVertexNormalArray1086[l2];
-                class22_2.anInt323 += l4;
-                class22_2.anInt324 += i5;
-                class22_2.anInt325 += j5;
-                class22_2.anInt326++;
-                class22_2 = aVertexNormalArray1086[i3];
-                class22_2.anInt323 += l4;
-                class22_2.anInt324 += i5;
-                class22_2.anInt325 += j5;
-                class22_2.anInt326++;
+            if (triangleInfo == null || (triangleInfo[i2] & 0x1) == 0) {
+                VertexNormal vertexNormal = vertexNormals[j2];
+                vertexNormal.anInt323 += l4;
+                vertexNormal.anInt324 += i5;
+                vertexNormal.anInt325 += j5;
+                vertexNormal.magnitude++;
+                vertexNormal = vertexNormals[l2];
+                vertexNormal.anInt323 += l4;
+                vertexNormal.anInt324 += i5;
+                vertexNormal.anInt325 += j5;
+                vertexNormal.magnitude++;
+                vertexNormal = vertexNormals[i3];
+                vertexNormal.anInt323 += l4;
+                vertexNormal.anInt324 += i5;
+                vertexNormal.anInt325 += j5;
+                vertexNormal.magnitude++;
             } else {
-                int l5 = i + (k * l4 + l * i5 + i1 * j5) / (k1 + k1 / 2);
-                anIntArray1059[i2] = method322(unmodifiedTriangleColor[i2], l5, anIntArray1062[i2]);
+                int l5 = lightAmbient + (k * l4 + l * i5 + i1 * j5) / (attenuation + attenuation / 2);
+                colorA[i2] = adjustHslLightness(unmodifiedTriangleColor[i2], l5, triangleInfo[i2]);
             }
         }
 
-        if (flag) {
-            method321(i, k1, k, l, i1);
+        if (computeVertexColors) {
+            method321(lightAmbient, attenuation, k, l, i1);
         } else {
-            aVertexNormalArray1087 = new VertexNormal[vertexCount];
+            vertexNormalOriginal = new VertexNormal[vertexCount];
             for (int k2 = 0; k2 < vertexCount; k2++) {
-                VertexNormal class22 = aVertexNormalArray1086[k2];
-                VertexNormal class22_1 = aVertexNormalArray1087[k2] = new VertexNormal();
+                VertexNormal class22 = vertexNormals[k2];
+                VertexNormal class22_1 = vertexNormalOriginal[k2] = new VertexNormal();
                 class22_1.anInt323 = class22.anInt323;
                 class22_1.anInt324 = class22.anInt324;
                 class22_1.anInt325 = class22.anInt325;
-                class22_1.anInt326 = class22.anInt326;
+                class22_1.magnitude = class22.magnitude;
             }
 
         }
-        if (flag) {
-            method308(569);
-            return;
+        if (computeVertexColors) {
+            calculateYBoundaries();
         } else {
-            method309(true);
-            return;
+            calculateBoundaries();
         }
     }
 
     public void method321(int i, int j, int k, int l, int i1) {
         for (int j1 = 0; j1 < triangleCount; j1++) {
             int k1 = triangleVertexA[j1];
-            int i2 = anIntArray1057[j1];
+            int i2 = triangleVertexB[j1];
             int j2 = triangleVertexC[j1];
-            if (anIntArray1062 == null) {
+            if (triangleInfo == null) {
                 int i3 = unmodifiedTriangleColor[j1];
-                VertexNormal class22 = aVertexNormalArray1086[k1];
-                int k2 = i + (k * class22.anInt323 + l * class22.anInt324 + i1 * class22.anInt325) / (j * class22.anInt326);
-                anIntArray1059[j1] = method322(i3, k2, 0);
-                class22 = aVertexNormalArray1086[i2];
-                k2 = i + (k * class22.anInt323 + l * class22.anInt324 + i1 * class22.anInt325) / (j * class22.anInt326);
-                anIntArray1060[j1] = method322(i3, k2, 0);
-                class22 = aVertexNormalArray1086[j2];
-                k2 = i + (k * class22.anInt323 + l * class22.anInt324 + i1 * class22.anInt325) / (j * class22.anInt326);
-                anIntArray1061[j1] = method322(i3, k2, 0);
-            } else if ((anIntArray1062[j1] & 1) == 0) {
+                VertexNormal class22 = vertexNormals[k1];
+                int k2 = i + (k * class22.anInt323 + l * class22.anInt324 + i1 * class22.anInt325) / (j * class22.magnitude);
+                colorA[j1] = adjustHslLightness(i3, k2, 0);
+                class22 = vertexNormals[i2];
+                k2 = i + (k * class22.anInt323 + l * class22.anInt324 + i1 * class22.anInt325) / (j * class22.magnitude);
+                anIntArray1060[j1] = adjustHslLightness(i3, k2, 0);
+                class22 = vertexNormals[j2];
+                k2 = i + (k * class22.anInt323 + l * class22.anInt324 + i1 * class22.anInt325) / (j * class22.magnitude);
+                anIntArray1061[j1] = adjustHslLightness(i3, k2, 0);
+            } else if ((triangleInfo[j1] & 1) == 0) {
                 int j3 = unmodifiedTriangleColor[j1];
-                int k3 = anIntArray1062[j1];
-                VertexNormal class22_1 = aVertexNormalArray1086[k1];
-                int l2 = i + (k * class22_1.anInt323 + l * class22_1.anInt324 + i1 * class22_1.anInt325) / (j * class22_1.anInt326);
-                anIntArray1059[j1] = method322(j3, l2, k3);
-                class22_1 = aVertexNormalArray1086[i2];
-                l2 = i + (k * class22_1.anInt323 + l * class22_1.anInt324 + i1 * class22_1.anInt325) / (j * class22_1.anInt326);
-                anIntArray1060[j1] = method322(j3, l2, k3);
-                class22_1 = aVertexNormalArray1086[j2];
-                l2 = i + (k * class22_1.anInt323 + l * class22_1.anInt324 + i1 * class22_1.anInt325) / (j * class22_1.anInt326);
-                anIntArray1061[j1] = method322(j3, l2, k3);
+                int k3 = triangleInfo[j1];
+                VertexNormal class22_1 = vertexNormals[k1];
+                int l2 = i + (k * class22_1.anInt323 + l * class22_1.anInt324 + i1 * class22_1.anInt325) / (j * class22_1.magnitude);
+                colorA[j1] = adjustHslLightness(j3, l2, k3);
+                class22_1 = vertexNormals[i2];
+                l2 = i + (k * class22_1.anInt323 + l * class22_1.anInt324 + i1 * class22_1.anInt325) / (j * class22_1.magnitude);
+                anIntArray1060[j1] = adjustHslLightness(j3, l2, k3);
+                class22_1 = vertexNormals[j2];
+                l2 = i + (k * class22_1.anInt323 + l * class22_1.anInt324 + i1 * class22_1.anInt325) / (j * class22_1.magnitude);
+                anIntArray1061[j1] = adjustHslLightness(j3, l2, k3);
             }
         }
 
-        aVertexNormalArray1086 = null;
-        aVertexNormalArray1087 = null;
+        vertexNormals = null;
+        vertexNormalOriginal = null;
         vertexLabel = null;
         triangleSkin = null;
-        if (anIntArray1062 != null) {
+        if (triangleInfo != null) {
             for (int l1 = 0; l1 < triangleCount; l1++)
-                if ((anIntArray1062[l1] & 2) == 2)
+                if ((triangleInfo[l1] & 2) == 2)
                     return;
 
         }
         unmodifiedTriangleColor = null;
     }
 
-    public static int method322(int i, int j, int k) {
+    public static int adjustHslLightness(int i, int j, int k) {
         if ((k & 2) == 2) {
             if (j < 0)
                 j = 0;
@@ -1224,7 +1280,7 @@ public class Model extends CacheableNode {
             anIntArray1107[k4] = j5 - j4;
             anIntArray1105[k4] = l1 + (l4 << 9) / j5;
             anIntArray1106[k4] = i2 + (i5 << 9) / j5;
-            if (anInt1067 > 0) {
+            if (texturedCount > 0) {
                 anIntArray1108[k4] = l4;
                 anIntArray1109[k4] = i5;
                 anIntArray1110[k4] = j5;
@@ -1243,19 +1299,19 @@ public class Model extends CacheableNode {
                           int l1, int i2) {
         int j2 = l1 * i1 - j1 * l >> 16;
         int k2 = k1 * j + j2 * k >> 16;
-        int l2 = anInt1075 * k >> 16;
+        int l2 = lengthXZ * k >> 16;
         int i3 = k2 + l2;
         if (i3 <= 50 || k2 >= 3500)
             return;
         int j3 = l1 * l + j1 * i1 >> 16;
-        int k3 = j3 - anInt1075 << 9;
+        int k3 = j3 - lengthXZ << 9;
         if (k3 / i3 >= Draw2D.anInt1145)
             return;
-        int l3 = j3 + anInt1075 << 9;
+        int l3 = j3 + lengthXZ << 9;
         if (l3 / i3 <= -Draw2D.anInt1145)
             return;
         int i4 = k1 * k - j2 * j >> 16;
-        int j4 = anInt1075 * j >> 16;
+        int j4 = lengthXZ * j >> 16;
         int k4 = i4 + j4 << 9;
         if (k4 / i3 <= -Draw2D.anInt1146)
             return;
@@ -1326,7 +1382,7 @@ public class Model extends CacheableNode {
                 anIntArray1105[j7] = -5000;
                 flag = true;
             }
-            if (flag || anInt1067 > 0) {
+            if (flag || texturedCount > 0) {
                 anIntArray1108[j7] = k7;
                 anIntArray1109[j7] = l7;
                 anIntArray1110[j7] = i8;
@@ -1342,20 +1398,20 @@ public class Model extends CacheableNode {
     }
 
     public void method325(boolean flag, boolean flag1, int i) {
-        for (int j = 0; j < anInt1078; j++)
+        for (int j = 0; j < maxdepth; j++)
             anIntArray1111[j] = 0;
 
         for (int k = 0; k < triangleCount; k++)
-            if (anIntArray1062 == null || anIntArray1062[k] != -1) {
+            if (triangleInfo == null || triangleInfo[k] != -1) {
                 int l = triangleVertexA[k];
-                int k1 = anIntArray1057[k];
+                int k1 = triangleVertexB[k];
                 int j2 = triangleVertexC[k];
                 int i3 = anIntArray1105[l];
                 int l3 = anIntArray1105[k1];
                 int k4 = anIntArray1105[j2];
                 if (flag && (i3 == -5000 || l3 == -5000 || k4 == -5000)) {
                     aBooleanArray1104[k] = true;
-                    int j5 = (anIntArray1107[l] + anIntArray1107[k1] + anIntArray1107[j2]) / 3 + anInt1079;
+                    int j5 = (anIntArray1107[l] + anIntArray1107[k1] + anIntArray1107[j2]) / 3 + minDepth;
                     anIntArrayArray1112[j5][anIntArray1111[j5]++] = k;
                 } else {
                     if (flag1 && method328(anInt1125, anInt1126, anIntArray1106[l], anIntArray1106[k1], anIntArray1106[j2], i3, l3, k4)) {
@@ -1365,14 +1421,14 @@ public class Model extends CacheableNode {
                     if ((i3 - l3) * (anIntArray1106[j2] - anIntArray1106[k1]) - (anIntArray1106[l] - anIntArray1106[k1]) * (k4 - l3) > 0) {
                         aBooleanArray1104[k] = false;
                         aBooleanArray1103[k] = i3 < 0 || l3 < 0 || k4 < 0 || i3 > Draw2D.anInt1144 || l3 > Draw2D.anInt1144 || k4 > Draw2D.anInt1144;
-                        int k5 = (anIntArray1107[l] + anIntArray1107[k1] + anIntArray1107[j2]) / 3 + anInt1079;
+                        int k5 = (anIntArray1107[l] + anIntArray1107[k1] + anIntArray1107[j2]) / 3 + minDepth;
                         anIntArrayArray1112[k5][anIntArray1111[k5]++] = k;
                     }
                 }
             }
 
-        if (anIntArray1063 == null) {
-            for (int i1 = anInt1078 - 1; i1 >= 0; i1--) {
+        if (trianglePriorities == null) {
+            for (int i1 = maxdepth - 1; i1 >= 0; i1--) {
                 int l1 = anIntArray1111[i1];
                 if (l1 > 0) {
                     int[] ai = anIntArrayArray1112[i1];
@@ -1389,13 +1445,13 @@ public class Model extends CacheableNode {
             anIntArray1117[j1] = 0;
         }
 
-        for (int i2 = anInt1078 - 1; i2 >= 0; i2--) {
+        for (int i2 = maxdepth - 1; i2 >= 0; i2--) {
             int k2 = anIntArray1111[i2];
             if (k2 > 0) {
                 int[] ai1 = anIntArrayArray1112[i2];
                 for (int i4 = 0; i4 < k2; i4++) {
                     int l4 = ai1[i4];
-                    int l5 = anIntArray1063[l4];
+                    int l5 = trianglePriorities[l4];
                     int j6 = anIntArray1113[l5]++;
                     anIntArrayArray1114[l5][j6] = l4;
                     if (l5 < 10)
@@ -1501,7 +1557,7 @@ public class Model extends CacheableNode {
             return;
         }
         int j = triangleVertexA[i];
-        int k = anIntArray1057[i];
+        int k = triangleVertexB[i];
         int l = triangleVertexC[i];
         Draw3D.aBoolean1263 = aBooleanArray1103[i];
         if (triangleAlpha == null)
@@ -1509,32 +1565,32 @@ public class Model extends CacheableNode {
         else
             Draw3D.anInt1266 = triangleAlpha[i];
         int i1;
-        if (anIntArray1062 == null)
+        if (triangleInfo == null)
             i1 = 0;
         else
-            i1 = anIntArray1062[i] & 3;
+            i1 = triangleInfo[i] & 3;
         if (i1 == 0) {
-            Draw3D.method348(anIntArray1106[j], anIntArray1106[k], anIntArray1106[l], anIntArray1105[j], anIntArray1105[k], anIntArray1105[l], anIntArray1059[i], anIntArray1060[i], anIntArray1061[i]);
+            Draw3D.method348(anIntArray1106[j], anIntArray1106[k], anIntArray1106[l], anIntArray1105[j], anIntArray1105[k], anIntArray1105[l], colorA[i], anIntArray1060[i], anIntArray1061[i]);
             return;
         }
         if (i1 == 1) {
-            Draw3D.method350(anIntArray1106[j], anIntArray1106[k], anIntArray1106[l], anIntArray1105[j], anIntArray1105[k], anIntArray1105[l], anIntArray1131[anIntArray1059[i]]);
+            Draw3D.method350(anIntArray1106[j], anIntArray1106[k], anIntArray1106[l], anIntArray1105[j], anIntArray1105[k], anIntArray1105[l], anIntArray1131[colorA[i]]);
             return;
         }
         if (i1 == 2) {
-            int j1 = anIntArray1062[i] >> 2;
+            int j1 = triangleInfo[i] >> 2;
             int l1 = anIntArray1068[j1];
             int j2 = anIntArray1069[j1];
             int l2 = anIntArray1070[j1];
-            Draw3D.method352(anIntArray1106[j], anIntArray1106[k], anIntArray1106[l], anIntArray1105[j], anIntArray1105[k], anIntArray1105[l], anIntArray1059[i], anIntArray1060[i], anIntArray1061[i], anIntArray1108[l1], anIntArray1108[j2], anIntArray1108[l2], anIntArray1109[l1], anIntArray1109[j2], anIntArray1109[l2], anIntArray1110[l1], anIntArray1110[j2], anIntArray1110[l2], unmodifiedTriangleColor[i]);
+            Draw3D.method352(anIntArray1106[j], anIntArray1106[k], anIntArray1106[l], anIntArray1105[j], anIntArray1105[k], anIntArray1105[l], colorA[i], anIntArray1060[i], anIntArray1061[i], anIntArray1108[l1], anIntArray1108[j2], anIntArray1108[l2], anIntArray1109[l1], anIntArray1109[j2], anIntArray1109[l2], anIntArray1110[l1], anIntArray1110[j2], anIntArray1110[l2], unmodifiedTriangleColor[i]);
             return;
         }
         if (i1 == 3) {
-            int k1 = anIntArray1062[i] >> 2;
+            int k1 = triangleInfo[i] >> 2;
             int i2 = anIntArray1068[k1];
             int k2 = anIntArray1069[k1];
             int i3 = anIntArray1070[k1];
-            Draw3D.method352(anIntArray1106[j], anIntArray1106[k], anIntArray1106[l], anIntArray1105[j], anIntArray1105[k], anIntArray1105[l], anIntArray1059[i], anIntArray1059[i], anIntArray1059[i], anIntArray1108[i2], anIntArray1108[k2], anIntArray1108[i3], anIntArray1109[i2], anIntArray1109[k2], anIntArray1109[i3], anIntArray1110[i2], anIntArray1110[k2], anIntArray1110[i3], unmodifiedTriangleColor[i]);
+            Draw3D.method352(anIntArray1106[j], anIntArray1106[k], anIntArray1106[l], anIntArray1105[j], anIntArray1105[k], anIntArray1105[l], colorA[i], colorA[i], colorA[i], anIntArray1108[i2], anIntArray1108[k2], anIntArray1108[i3], anIntArray1109[i2], anIntArray1109[k2], anIntArray1109[i3], anIntArray1110[i2], anIntArray1110[k2], anIntArray1110[i3], unmodifiedTriangleColor[i]);
         }
     }
 
@@ -1543,7 +1599,7 @@ public class Model extends CacheableNode {
         int k = Draw3D.anInt1268;
         int l = 0;
         int i1 = triangleVertexA[i];
-        int j1 = anIntArray1057[i];
+        int j1 = triangleVertexB[i];
         int k1 = triangleVertexC[i];
         int l1 = anIntArray1110[i1];
         int i2 = anIntArray1110[j1];
@@ -1551,11 +1607,11 @@ public class Model extends CacheableNode {
         if (l1 >= 50) {
             anIntArray1118[l] = anIntArray1105[i1];
             anIntArray1119[l] = anIntArray1106[i1];
-            anIntArray1120[l++] = anIntArray1059[i];
+            anIntArray1120[l++] = colorA[i];
         } else {
             int k2 = anIntArray1108[i1];
             int k3 = anIntArray1109[i1];
-            int k4 = anIntArray1059[i];
+            int k4 = colorA[i];
             if (j2 >= 50) {
                 int k5 = (50 - l1) * anIntArray1132[j2 - l1];
                 anIntArray1118[l] = j + (k2 + ((anIntArray1108[k1] - k2) * k5 >> 16) << 9) / 50;
@@ -1581,7 +1637,7 @@ public class Model extends CacheableNode {
                 int i6 = (50 - i2) * anIntArray1132[l1 - i2];
                 anIntArray1118[l] = j + (l2 + ((anIntArray1108[i1] - l2) * i6 >> 16) << 9) / 50;
                 anIntArray1119[l] = k + (l3 + ((anIntArray1109[i1] - l3) * i6 >> 16) << 9) / 50;
-                anIntArray1120[l++] = l4 + ((anIntArray1059[i] - l4) * i6 >> 16);
+                anIntArray1120[l++] = l4 + ((colorA[i] - l4) * i6 >> 16);
             }
             if (j2 >= 50) {
                 int j6 = (50 - i2) * anIntArray1132[j2 - i2];
@@ -1608,7 +1664,7 @@ public class Model extends CacheableNode {
                 int l6 = (50 - j2) * anIntArray1132[l1 - j2];
                 anIntArray1118[l] = j + (i3 + ((anIntArray1108[i1] - i3) * l6 >> 16) << 9) / 50;
                 anIntArray1119[l] = k + (i4 + ((anIntArray1109[i1] - i4) * l6 >> 16) << 9) / 50;
-                anIntArray1120[l++] = i5 + ((anIntArray1059[i] - i5) * l6 >> 16);
+                anIntArray1120[l++] = i5 + ((colorA[i] - i5) * l6 >> 16);
             }
         }
         int j3 = anIntArray1118[0];
@@ -1623,49 +1679,49 @@ public class Model extends CacheableNode {
                 if (j3 < 0 || j4 < 0 || j5 < 0 || j3 > Draw2D.anInt1144 || j4 > Draw2D.anInt1144 || j5 > Draw2D.anInt1144)
                     Draw3D.aBoolean1263 = true;
                 int l7;
-                if (anIntArray1062 == null)
+                if (triangleInfo == null)
                     l7 = 0;
                 else
-                    l7 = anIntArray1062[i] & 3;
+                    l7 = triangleInfo[i] & 3;
                 if (l7 == 0)
                     Draw3D.method348(i7, j7, k7, j3, j4, j5, anIntArray1120[0], anIntArray1120[1], anIntArray1120[2]);
                 else if (l7 == 1)
-                    Draw3D.method350(i7, j7, k7, j3, j4, j5, anIntArray1131[anIntArray1059[i]]);
+                    Draw3D.method350(i7, j7, k7, j3, j4, j5, anIntArray1131[colorA[i]]);
                 else if (l7 == 2) {
-                    int j8 = anIntArray1062[i] >> 2;
+                    int j8 = triangleInfo[i] >> 2;
                     int k9 = anIntArray1068[j8];
                     int k10 = anIntArray1069[j8];
                     int k11 = anIntArray1070[j8];
                     Draw3D.method352(i7, j7, k7, j3, j4, j5, anIntArray1120[0], anIntArray1120[1], anIntArray1120[2], anIntArray1108[k9], anIntArray1108[k10], anIntArray1108[k11], anIntArray1109[k9], anIntArray1109[k10], anIntArray1109[k11], anIntArray1110[k9], anIntArray1110[k10], anIntArray1110[k11], unmodifiedTriangleColor[i]);
                 } else if (l7 == 3) {
-                    int k8 = anIntArray1062[i] >> 2;
+                    int k8 = triangleInfo[i] >> 2;
                     int l9 = anIntArray1068[k8];
                     int l10 = anIntArray1069[k8];
                     int l11 = anIntArray1070[k8];
-                    Draw3D.method352(i7, j7, k7, j3, j4, j5, anIntArray1059[i], anIntArray1059[i], anIntArray1059[i], anIntArray1108[l9], anIntArray1108[l10], anIntArray1108[l11], anIntArray1109[l9], anIntArray1109[l10], anIntArray1109[l11], anIntArray1110[l9], anIntArray1110[l10], anIntArray1110[l11], unmodifiedTriangleColor[i]);
+                    Draw3D.method352(i7, j7, k7, j3, j4, j5, colorA[i], colorA[i], colorA[i], anIntArray1108[l9], anIntArray1108[l10], anIntArray1108[l11], anIntArray1109[l9], anIntArray1109[l10], anIntArray1109[l11], anIntArray1110[l9], anIntArray1110[l10], anIntArray1110[l11], unmodifiedTriangleColor[i]);
                 }
             }
             if (l == 4) {
                 if (j3 < 0 || j4 < 0 || j5 < 0 || j3 > Draw2D.anInt1144 || j4 > Draw2D.anInt1144 || j5 > Draw2D.anInt1144 || anIntArray1118[3] < 0 || anIntArray1118[3] > Draw2D.anInt1144)
                     Draw3D.aBoolean1263 = true;
                 int i8;
-                if (anIntArray1062 == null)
+                if (triangleInfo == null)
                     i8 = 0;
                 else
-                    i8 = anIntArray1062[i] & 3;
+                    i8 = triangleInfo[i] & 3;
                 if (i8 == 0) {
                     Draw3D.method348(i7, j7, k7, j3, j4, j5, anIntArray1120[0], anIntArray1120[1], anIntArray1120[2]);
                     Draw3D.method348(i7, k7, anIntArray1119[3], j3, j5, anIntArray1118[3], anIntArray1120[0], anIntArray1120[2], anIntArray1120[3]);
                     return;
                 }
                 if (i8 == 1) {
-                    int l8 = anIntArray1131[anIntArray1059[i]];
+                    int l8 = anIntArray1131[colorA[i]];
                     Draw3D.method350(i7, j7, k7, j3, j4, j5, l8);
                     Draw3D.method350(i7, k7, anIntArray1119[3], j3, j5, anIntArray1118[3], l8);
                     return;
                 }
                 if (i8 == 2) {
-                    int i9 = anIntArray1062[i] >> 2;
+                    int i9 = triangleInfo[i] >> 2;
                     int i10 = anIntArray1068[i9];
                     int i11 = anIntArray1069[i9];
                     int i12 = anIntArray1070[i9];
@@ -1674,12 +1730,12 @@ public class Model extends CacheableNode {
                     return;
                 }
                 if (i8 == 3) {
-                    int j9 = anIntArray1062[i] >> 2;
+                    int j9 = triangleInfo[i] >> 2;
                     int j10 = anIntArray1068[j9];
                     int j11 = anIntArray1069[j9];
                     int j12 = anIntArray1070[j9];
-                    Draw3D.method352(i7, j7, k7, j3, j4, j5, anIntArray1059[i], anIntArray1059[i], anIntArray1059[i], anIntArray1108[j10], anIntArray1108[j11], anIntArray1108[j12], anIntArray1109[j10], anIntArray1109[j11], anIntArray1109[j12], anIntArray1110[j10], anIntArray1110[j11], anIntArray1110[j12], unmodifiedTriangleColor[i]);
-                    Draw3D.method352(i7, k7, anIntArray1119[3], j3, j5, anIntArray1118[3], anIntArray1059[i], anIntArray1059[i], anIntArray1059[i], anIntArray1108[j10], anIntArray1108[j11], anIntArray1108[j12], anIntArray1109[j10], anIntArray1109[j11], anIntArray1109[j12], anIntArray1110[j10], anIntArray1110[j11], anIntArray1110[j12], unmodifiedTriangleColor[i]);
+                    Draw3D.method352(i7, j7, k7, j3, j4, j5, colorA[i], colorA[i], colorA[i], anIntArray1108[j10], anIntArray1108[j11], anIntArray1108[j12], anIntArray1109[j10], anIntArray1109[j11], anIntArray1109[j12], anIntArray1110[j10], anIntArray1110[j11], anIntArray1110[j12], unmodifiedTriangleColor[i]);
+                    Draw3D.method352(i7, k7, anIntArray1119[3], j3, j5, anIntArray1118[3], colorA[i], colorA[i], colorA[i], anIntArray1108[j10], anIntArray1108[j11], anIntArray1108[j12], anIntArray1109[j10], anIntArray1109[j11], anIntArray1109[j12], anIntArray1110[j10], anIntArray1110[j11], anIntArray1110[j12], unmodifiedTriangleColor[i]);
                 }
             }
         }
@@ -1705,52 +1761,52 @@ public class Model extends CacheableNode {
     public int[] vertexZ;
     public int triangleCount;
     public int[] triangleVertexA;
-    public int[] anIntArray1057;
+    public int[] triangleVertexB;
     public int[] triangleVertexC;
-    public int[] anIntArray1059;
+    public int[] colorA;
     public int[] anIntArray1060;
     public int[] anIntArray1061;
-    public int[] anIntArray1062;
-    public int[] anIntArray1063;
+    public int[] triangleInfo;
+    public int[] trianglePriorities;
     public int[] triangleAlpha;
     public int[] unmodifiedTriangleColor;
-    public int anInt1066;
-    public int anInt1067;
+    public int priority;
+    public int texturedCount;
     public int[] anIntArray1068;
     public int[] anIntArray1069;
     public int[] anIntArray1070;
-    public int anInt1071;
-    public int anInt1072;
-    public int anInt1073;
-    public int anInt1074;
-    public int anInt1075;
+    public int minBoundX;
+    public int maxBoundX;
+    public int maxBoundZ;
+    public int minBoundZ;
+    public int lengthXZ;
     public int maxBoundY;
-    public int anInt1077;
-    public int anInt1078;
-    public int anInt1079;
+    public int minBoundY;
+    public int maxdepth;
+    public int minDepth;
     public int anInt1080;
     public int[] vertexLabel;
     public int[] triangleSkin;
     public int[][] labelVertices;
     public int[][] skinTriangle;
     public boolean pickable;
-    public VertexNormal[] aVertexNormalArray1086;
-    public VertexNormal[] aVertexNormalArray1087;
-    public static ModelMetadata[] aModelMetadataArray1088;
+    public VertexNormal[] vertexNormals;
+    public VertexNormal[] vertexNormalOriginal;
+    public static ModelMetadata[] modelMetadata;
     public static Buffer aClass35_Sub2_Sub3_1089;
-    public static Buffer aClass35_Sub2_Sub3_1090;
-    public static Buffer aClass35_Sub2_Sub3_1091;
-    public static Buffer aClass35_Sub2_Sub3_1092;
-    public static Buffer aClass35_Sub2_Sub3_1093;
-    public static Buffer aClass35_Sub2_Sub3_1094;
-    public static Buffer aClass35_Sub2_Sub3_1095;
-    public static Buffer aClass35_Sub2_Sub3_1096;
-    public static Buffer aClass35_Sub2_Sub3_1097;
-    public static Buffer aClass35_Sub2_Sub3_1098;
-    public static Buffer aClass35_Sub2_Sub3_1099;
-    public static Buffer aClass35_Sub2_Sub3_1100;
-    public static Buffer aClass35_Sub2_Sub3_1101;
-    public static Buffer aClass35_Sub2_Sub3_1102;
+    public static Buffer face1;
+    public static Buffer face2;
+    public static Buffer face3;
+    public static Buffer face4;
+    public static Buffer face5;
+    public static Buffer point1;
+    public static Buffer point2;
+    public static Buffer point3;
+    public static Buffer point4;
+    public static Buffer point5;
+    public static Buffer vertex1;
+    public static Buffer vertex2;
+    public static Buffer axis;
     public static boolean[] aBooleanArray1103 = new boolean[4096];
     public static boolean[] aBooleanArray1104 = new boolean[4096];
     public static int[] anIntArray1105 = new int[4096];

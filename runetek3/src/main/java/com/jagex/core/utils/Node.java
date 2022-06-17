@@ -6,7 +6,7 @@ package com.jagex.core.utils;
 
 public class Node {
 
-    public void method303() {
+    public void unlink() {
         if (aNode_510 == null) {
             return;
         } else {

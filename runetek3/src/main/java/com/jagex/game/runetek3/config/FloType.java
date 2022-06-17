@@ -40,7 +40,7 @@ public class FloType {
     }
 
     public void decode(Buffer buffer) {
-        do {
+        while (true) {
             int opcode = buffer.g1();
             if (opcode == 0) {
                 return;
@@ -58,7 +58,7 @@ public class FloType {
                 name = buffer.gstr();
             else
                 System.out.println("Error unrecognised config code: " + opcode);
-        } while (true);
+        }
     }
 
     public void setColor(int i) {

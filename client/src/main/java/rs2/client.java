@@ -150,9 +150,9 @@ public class client extends GameShell {
         int k = 0xfa0a1f01;
         Object obj = null;
         for (ObjStackEntity class35_sub6 = (ObjStackEntity) class24.method227(); class35_sub6 != null; class35_sub6 = (ObjStackEntity) class24.method229(35239)) {
-            ObjType class41 = ObjType.method440(class35_sub6.anInt1047);
-            int i1 = class41.anInt619;
-            if (class41.aBoolean618)
+            ObjType class41 = ObjType.get(class35_sub6.anInt1047);
+            int i1 = class41.cost;
+            if (class41.stackable)
                 i1 *= 10;
             if (i1 > k) {
                 k = i1;
@@ -172,12 +172,12 @@ public class client extends GameShell {
 
         Model class35_sub2_sub1 = null;
         if (l != -1)
-            class35_sub2_sub1 = ObjType.method440(l).method443();
+            class35_sub2_sub1 = ObjType.get(l).method443();
         Model class35_sub2_sub1_1 = null;
         if (j1 != -1)
-            class35_sub2_sub1_1 = ObjType.method440(j1).method443();
+            class35_sub2_sub1_1 = ObjType.get(j1).method443();
         int k1 = i + (j << 7) + 0x60000000;
-        ObjType class41_1 = ObjType.method440(((ObjStackEntity) (obj)).anInt1047);
+        ObjType class41_1 = ObjType.get(((ObjStackEntity) (obj)).anInt1047);
         aMapSquare_741.method245(i, method15(i * 128 + 64, j * 128 + 64, anInt722, (byte) 9), class41_1.method443(), class35_sub2_sub1, k1, class35_sub2_sub1_1, j, false, anInt722);
     }
 
@@ -362,9 +362,9 @@ public class client extends GameShell {
                     LinkedList class24 = aLinkedListArrayArrayArray665[anInt722][i1][j1];
                     if (class24 != null) {
                         for (ObjStackEntity class35_sub6 = (ObjStackEntity) class24.method228(8); class35_sub6 != null; class35_sub6 = (ObjStackEntity) class24.method230(true)) {
-                            ObjType class41 = ObjType.method440(class35_sub6.anInt1047);
+                            ObjType class41 = ObjType.get(class35_sub6.anInt1047);
                             if (anInt712 == 1) {
-                                aStringArray720[anInt710] = "Use " + aString716 + " with @lre@" + class41.aString606;
+                                aStringArray720[anInt710] = "Use " + aString716 + " with @lre@" + class41.name;
                                 anIntArray848[anInt710] = 652;
                                 anIntArray849[anInt710] = class35_sub6.anInt1047;
                                 anIntArray846[anInt710] = i1;
@@ -372,7 +372,7 @@ public class client extends GameShell {
                                 anInt710++;
                             } else if (anInt706 == 1) {
                                 if ((anInt708 & 1) == 1) {
-                                    aStringArray720[anInt710] = aString709 + " @lre@" + class41.aString606;
+                                    aStringArray720[anInt710] = aString709 + " @lre@" + class41.name;
                                     anIntArray848[anInt710] = 926;
                                     anIntArray849[anInt710] = class35_sub6.anInt1047;
                                     anIntArray846[anInt710] = i1;
@@ -381,8 +381,8 @@ public class client extends GameShell {
                                 }
                             } else {
                                 for (int i3 = 4; i3 >= 0; i3--)
-                                    if (class41.aStringArray621 != null && class41.aStringArray621[i3] != null) {
-                                        aStringArray720[anInt710] = class41.aStringArray621[i3] + " @lre@" + class41.aString606;
+                                    if (class41.ops != null && class41.ops[i3] != null) {
+                                        aStringArray720[anInt710] = class41.ops[i3] + " @lre@" + class41.name;
                                         if (i3 == 0)
                                             anIntArray848[anInt710] = 533;
                                         if (i3 == 1)
@@ -398,7 +398,7 @@ public class client extends GameShell {
                                         anIntArray847[anInt710] = j1;
                                         anInt710++;
                                     } else if (i3 == 2) {
-                                        aStringArray720[anInt710] = "Take @lre@" + class41.aString606;
+                                        aStringArray720[anInt710] = "Take @lre@" + class41.name;
                                         anIntArray848[anInt710] = 705;
                                         anIntArray849[anInt710] = class35_sub6.anInt1047;
                                         anIntArray846[anInt710] = i1;
@@ -406,7 +406,7 @@ public class client extends GameShell {
                                         anInt710++;
                                     }
 
-                                aStringArray720[anInt710] = "Examine @lre@" + class41.aString606;
+                                aStringArray720[anInt710] = "Examine @lre@" + class41.name;
                                 anIntArray848[anInt710] = 1585;
                                 anIntArray849[anInt710] = class35_sub6.anInt1047;
                                 anIntArray846[anInt710] = i1;
@@ -477,11 +477,11 @@ public class client extends GameShell {
             aBoolean828 = !aBoolean828;
         for (; class35_sub7_sub2 != null; class35_sub7_sub2 = (SpotAnimEntity) aLinkedList_657.method229(35239))
             if (class35_sub7_sub2.anInt1200 != anInt722 || class35_sub7_sub2.finished)
-                class35_sub7_sub2.method303();
+                class35_sub7_sub2.unlink();
             else if (anInt759 >= class35_sub7_sub2.anInt1199) {
                 class35_sub7_sub2.method408(anInt742);
                 if (class35_sub7_sub2.finished)
-                    class35_sub7_sub2.method303();
+                    class35_sub7_sub2.unlink();
                 else
                     aMapSquare_741.method249(null, class35_sub7_sub2.anInt1203, 5, class35_sub7_sub2.anInt1202, 0, class35_sub7_sub2.anInt1201, class35_sub7_sub2.anInt1200, 0, class35_sub7_sub2, 60, -1);
             }
@@ -805,7 +805,7 @@ public class client extends GameShell {
             if (packetOpcode == 187) {
                 int l1 = inBuffer.g2();
                 int k10 = inBuffer.g2();
-                Component.aComponentArray110[l1].aModel_156 = new Model(k10, 298);
+                Component.aComponentArray110[l1].aModel_156 = new Model(k10);
                 packetOpcode = -1;
                 return true;
             }
@@ -995,7 +995,7 @@ public class client extends GameShell {
                     class35_sub3_1.anInt1022 -= l24;
                     class35_sub3_1.anInt1023 -= j26;
                     if (class35_sub3_1.anInt1022 < 0 || class35_sub3_1.anInt1023 < 0 || class35_sub3_1.anInt1022 >= 104 || class35_sub3_1.anInt1023 >= 104)
-                        class35_sub3_1.method303();
+                        class35_sub3_1.unlink();
                 }
 
                 aBoolean682 = false;
@@ -1057,7 +1057,7 @@ public class client extends GameShell {
                 for (SpawnedLoc class35_sub3 = (SpawnedLoc) aLinkedList_746.method227(); class35_sub3 != null; class35_sub3 = (SpawnedLoc) aLinkedList_746.method229(35239))
                     if (class35_sub3.anInt1022 >= anInt851 && class35_sub3.anInt1022 < anInt851 + 8 && class35_sub3.anInt1023 >= anInt852 && class35_sub3.anInt1023 < anInt852 + 8 && class35_sub3.anInt1020 == anInt722) {
                         method112(true, class35_sub3.anInt1020, class35_sub3.anInt1029, class35_sub3.anInt1023, class35_sub3.anInt1022, class35_sub3.anInt1021, class35_sub3.anInt1027, class35_sub3.anInt1028);
-                        class35_sub3.method303();
+                        class35_sub3.unlink();
                     }
 
                 packetOpcode = -1;
@@ -1474,11 +1474,11 @@ public class client extends GameShell {
                 int k8 = inBuffer.g2();
                 int l13 = inBuffer.g2();
                 int j18 = inBuffer.g2();
-                ObjType class41 = ObjType.method440(l13);
+                ObjType class41 = ObjType.get(l13);
                 Component.aComponentArray110[k8].aModel_156 = class41.method443();
-                Component.aComponentArray110[k8].anInt161 = class41.anInt611;
-                Component.aComponentArray110[k8].anInt162 = class41.anInt612;
-                Component.aComponentArray110[k8].anInt160 = (class41.anInt610 * 100) / j18;
+                Component.aComponentArray110[k8].anInt161 = class41.xand2;
+                Component.aComponentArray110[k8].anInt162 = class41.yand2d;
+                Component.aComponentArray110[k8].anInt160 = (class41.zoom2d * 100) / j18;
                 packetOpcode = -1;
                 return true;
             }
@@ -1670,7 +1670,7 @@ public class client extends GameShell {
                     for (ObjStackEntity class35_sub6_1 = (ObjStackEntity) class24.method227(); class35_sub6_1 != null; class35_sub6_1 = (ObjStackEntity) class24.method229(35239)) {
                         if (class35_sub6_1.anInt1047 != (i7 & 0x7fff))
                             continue;
-                        class35_sub6_1.method303();
+                        class35_sub6_1.unlink();
                         break;
                     }
 
@@ -1916,7 +1916,7 @@ public class client extends GameShell {
             for (TemporaryLoc class35_sub4 = (TemporaryLoc) aLinkedList_652.method227(); class35_sub4 != null; class35_sub4 = (TemporaryLoc) aLinkedList_652.method229(35239))
                 if (anInt759 >= class35_sub4.anInt1037) {
                     method112(true, class35_sub4.anInt1030, class35_sub4.anInt1036, class35_sub4.anInt1033, class35_sub4.anInt1032, class35_sub4.anInt1031, class35_sub4.anInt1034, class35_sub4.anInt1035);
-                    class35_sub4.method303();
+                    class35_sub4.unlink();
                 }
 
         }
@@ -2419,7 +2419,7 @@ public class client extends GameShell {
     public void method38(int i, byte byte0) {
         if (byte0 != 7)
             return;
-        int j = VarpType.aVarpTypeArray247[i].anInt255;
+        int j = VarpType.instances[i].clientcode;
         if (j == 0)
             return;
         int k = anIntArray822[i];
@@ -2432,7 +2432,7 @@ public class client extends GameShell {
                 Draw3D.method346(0.69999999999999996D, -433);
             if (k == 4)
                 Draw3D.method346(0.59999999999999998D, -433);
-            ObjType.aCache_634.method297();
+            ObjType.icons.method297();
             aBoolean681 = true;
         }
         if (j == 3) {
@@ -2700,7 +2700,7 @@ public class client extends GameShell {
                     class8_1.anInt114 -= class12.frameDelay[class8_1.anInt113] + 1;
                     class8_1.anInt113++;
                     if (class8_1.anInt113 >= class12.frameCount) {
-                        class8_1.anInt113 -= class12.anInt195;
+                        class8_1.anInt113 -= class12.replayoff;
                         if (class8_1.anInt113 < 0 || class8_1.anInt113 >= class12.frameCount)
                             class8_1.anInt113 = 0;
                     }
@@ -3133,7 +3133,7 @@ public class client extends GameShell {
                         class35_sub2_sub1 = class8_1.method174(-1, -1, method109((byte) 3, class8_1));
                     } else {
                         SeqType class12 = SeqType.instances[class8_1.anInt158];
-                        class35_sub2_sub1 = class8_1.method174(class12.primaryFrames[class8_1.anInt113], class12.anIntArray193[class8_1.anInt113], method109((byte) 3, class8_1));
+                        class35_sub2_sub1 = class8_1.method174(class12.primaryFrames[class8_1.anInt113], class12.secondaryFrames[class8_1.anInt113], method109((byte) 3, class8_1));
                     }
                     if (class35_sub2_sub1 != null)
                         class35_sub2_sub1.method323(0, class8_1.anInt162, 0, class8_1.anInt161, 0, k4, j5);
@@ -3145,9 +3145,9 @@ public class client extends GameShell {
                     for (int l4 = 0; l4 < class8_1.anInt121; l4++) {
                         for (int k5 = 0; k5 < class8_1.anInt120; k5++) {
                             if (class8_1.anIntArray111[i4] > 0) {
-                                ObjType class41 = ObjType.method440(class8_1.anIntArray111[i4] - 1);
-                                String s2 = class41.aString606;
-                                if (class41.aBoolean618 || class8_1.anIntArray112[i4] != 1)
+                                ObjType class41 = ObjType.get(class8_1.anIntArray111[i4] - 1);
+                                String s2 = class41.name;
+                                if (class41.stackable || class8_1.anIntArray112[i4] != 1)
                                     s2 = class8_1.anIntArray112[i4] + "x " + s2;
                                 int j8 = j2 + k5 * (115 + class8_1.anInt139);
                                 int l8 = k2 + l4 * (12 + class8_1.anInt140);
@@ -3241,7 +3241,7 @@ public class client extends GameShell {
             if (l == class35_sub7_sub3_sub2.primarySeq)
                 class35_sub7_sub3_sub2.anInt1239 = 0;
             int k1 = class35_sub2_sub3.g1();
-            if (l == -1 || class35_sub7_sub3_sub2.primarySeq == -1 || SeqType.instances[l].anInt198 > SeqType.instances[class35_sub7_sub3_sub2.primarySeq].anInt198 || SeqType.instances[class35_sub7_sub3_sub2.primarySeq].anInt198 == 0) {
+            if (l == -1 || class35_sub7_sub3_sub2.primarySeq == -1 || SeqType.instances[l].priority > SeqType.instances[class35_sub7_sub3_sub2.primarySeq].priority || SeqType.instances[class35_sub7_sub3_sub2.primarySeq].priority == 0) {
                 class35_sub7_sub3_sub2.primarySeq = l;
                 class35_sub7_sub3_sub2.primarySeqFrame = 0;
                 class35_sub7_sub3_sub2.anInt1237 = 0;
@@ -3481,10 +3481,10 @@ public class client extends GameShell {
             for (int j = 1; j > 0; j++) ;
         }
         NpcType.aCache_597.method297();
-        ObjType.aCache_633.method297();
-        ObjType.aCache_634.method297();
+        ObjType.models.method297();
+        ObjType.icons.method297();
         PlayerEntity.aCache_1348.method297();
-        SpotAnimType.aCache_219.method297();
+        SpotAnimType.models.method297();
     }
 
     public void method58(int i, int j, int k, int l, Component class8, int i1, int j1) {
@@ -3564,21 +3564,21 @@ public class client extends GameShell {
                                 anInt658 = k2;
                                 anInt659 = class8_1.anInt115;
                                 if (class8_1.anIntArray111[k2] > 0) {
-                                    ObjType class41 = ObjType.method440(class8_1.anIntArray111[k2] - 1);
+                                    ObjType class41 = ObjType.get(class8_1.anIntArray111[k2] - 1);
                                     if (anInt712 == 1 && class8_1.aBoolean137) {
                                         if (class8_1.anInt115 != anInt714 || k2 != anInt713) {
-                                            aStringArray720[anInt710] = "Use " + aString716 + " with @lre@" + class41.aString606;
+                                            aStringArray720[anInt710] = "Use " + aString716 + " with @lre@" + class41.name;
                                             anIntArray848[anInt710] = 786;
-                                            anIntArray849[anInt710] = class41.anInt604;
+                                            anIntArray849[anInt710] = class41.id;
                                             anIntArray846[anInt710] = k2;
                                             anIntArray847[anInt710] = class8_1.anInt115;
                                             anInt710++;
                                         }
                                     } else if (anInt706 == 1 && class8_1.aBoolean137) {
                                         if ((anInt708 & 0x10) == 16) {
-                                            aStringArray720[anInt710] = aString709 + " @lre@" + class41.aString606;
+                                            aStringArray720[anInt710] = aString709 + " @lre@" + class41.name;
                                             anIntArray848[anInt710] = 602;
-                                            anIntArray849[anInt710] = class41.anInt604;
+                                            anIntArray849[anInt710] = class41.id;
                                             anIntArray846[anInt710] = k2;
                                             anIntArray847[anInt710] = class8_1.anInt115;
                                             anInt710++;
@@ -3586,20 +3586,20 @@ public class client extends GameShell {
                                     } else {
                                         if (class8_1.aBoolean137) {
                                             for (int l3 = 4; l3 >= 3; l3--)
-                                                if (class41.aStringArray622 != null && class41.aStringArray622[l3] != null) {
-                                                    aStringArray720[anInt710] = class41.aStringArray622[l3] + " @lre@" + class41.aString606;
+                                                if (class41.iops != null && class41.iops[l3] != null) {
+                                                    aStringArray720[anInt710] = class41.iops[l3] + " @lre@" + class41.name;
                                                     if (l3 == 3)
                                                         anIntArray848[anInt710] = 294;
                                                     if (l3 == 4)
                                                         anIntArray848[anInt710] = 622;
-                                                    anIntArray849[anInt710] = class41.anInt604;
+                                                    anIntArray849[anInt710] = class41.id;
                                                     anIntArray846[anInt710] = k2;
                                                     anIntArray847[anInt710] = class8_1.anInt115;
                                                     anInt710++;
                                                 } else if (l3 == 4) {
-                                                    aStringArray720[anInt710] = "Drop @lre@" + class41.aString606;
+                                                    aStringArray720[anInt710] = "Drop @lre@" + class41.name;
                                                     anIntArray848[anInt710] = 622;
-                                                    anIntArray849[anInt710] = class41.anInt604;
+                                                    anIntArray849[anInt710] = class41.id;
                                                     anIntArray846[anInt710] = k2;
                                                     anIntArray847[anInt710] = class8_1.anInt115;
                                                     anInt710++;
@@ -3607,24 +3607,24 @@ public class client extends GameShell {
 
                                         }
                                         if (class8_1.aBoolean138) {
-                                            aStringArray720[anInt710] = "Use @lre@" + class41.aString606;
+                                            aStringArray720[anInt710] = "Use @lre@" + class41.name;
                                             anIntArray848[anInt710] = 517;
-                                            anIntArray849[anInt710] = class41.anInt604;
+                                            anIntArray849[anInt710] = class41.id;
                                             anIntArray846[anInt710] = k2;
                                             anIntArray847[anInt710] = class8_1.anInt115;
                                             anInt710++;
                                         }
-                                        if (class8_1.aBoolean137 && class41.aStringArray622 != null) {
+                                        if (class8_1.aBoolean137 && class41.iops != null) {
                                             for (int i4 = 2; i4 >= 0; i4--)
-                                                if (class41.aStringArray622[i4] != null) {
-                                                    aStringArray720[anInt710] = class41.aStringArray622[i4] + " @lre@" + class41.aString606;
+                                                if (class41.iops[i4] != null) {
+                                                    aStringArray720[anInt710] = class41.iops[i4] + " @lre@" + class41.name;
                                                     if (i4 == 0)
                                                         anIntArray848[anInt710] = 649;
                                                     if (i4 == 1)
                                                         anIntArray848[anInt710] = 408;
                                                     if (i4 == 2)
                                                         anIntArray848[anInt710] = 176;
-                                                    anIntArray849[anInt710] = class41.anInt604;
+                                                    anIntArray849[anInt710] = class41.id;
                                                     anIntArray846[anInt710] = k2;
                                                     anIntArray847[anInt710] = class8_1.anInt115;
                                                     anInt710++;
@@ -3634,7 +3634,7 @@ public class client extends GameShell {
                                         if (class8_1.aStringArray144 != null) {
                                             for (int j4 = 4; j4 >= 0; j4--)
                                                 if (class8_1.aStringArray144[j4] != null) {
-                                                    aStringArray720[anInt710] = class8_1.aStringArray144[j4] + " @lre@" + class41.aString606;
+                                                    aStringArray720[anInt710] = class8_1.aStringArray144[j4] + " @lre@" + class41.name;
                                                     if (j4 == 0)
                                                         anIntArray848[anInt710] = 288;
                                                     if (j4 == 1)
@@ -3645,16 +3645,16 @@ public class client extends GameShell {
                                                         anIntArray848[anInt710] = 881;
                                                     if (j4 == 4)
                                                         anIntArray848[anInt710] = 688;
-                                                    anIntArray849[anInt710] = class41.anInt604;
+                                                    anIntArray849[anInt710] = class41.id;
                                                     anIntArray846[anInt710] = k2;
                                                     anIntArray847[anInt710] = class8_1.anInt115;
                                                     anInt710++;
                                                 }
 
                                         }
-                                        aStringArray720[anInt710] = "Examine @lre@" + class41.aString606;
+                                        aStringArray720[anInt710] = "Examine @lre@" + class41.name;
                                         anIntArray848[anInt710] = 1685;
-                                        anIntArray849[anInt710] = class41.anInt604;
+                                        anIntArray849[anInt710] = class41.id;
                                         anInt710++;
                                     }
                                 }
@@ -3699,7 +3699,7 @@ public class client extends GameShell {
             anInt713 = k;
             anInt714 = l;
             anInt715 = j1;
-            aString716 = ObjType.method440(j1).aString606;
+            aString716 = ObjType.get(j1).name;
             anInt706 = 0;
             return;
         }
@@ -3946,12 +3946,12 @@ public class client extends GameShell {
             outBuffer.p2(j1);
         }
         if (i1 == 1585 || i1 == 1685) {
-            ObjType class41 = ObjType.method440(j1);
+            ObjType class41 = ObjType.get(j1);
             String s1;
-            if (class41.aByteArray607 != null)
-                s1 = new String(class41.aByteArray607);
+            if (class41.desc != null)
+                s1 = new String(class41.desc);
             else
-                s1 = "It's a " + class41.aString606 + ".";
+                s1 = "It's a " + class41.name + ".";
             method75(s1, 0, anInt853, "");
         }
         if (i1 == 638) {
@@ -4212,10 +4212,10 @@ public class client extends GameShell {
                 flag = true;
                 if (class35_sub5.seqFrame < class35_sub5.seq.frameCount)
                     continue;
-                class35_sub5.seqFrame -= class35_sub5.seq.anInt195;
+                class35_sub5.seqFrame -= class35_sub5.seq.replayoff;
                 if (class35_sub5.seqFrame >= 0 && class35_sub5.seqFrame < class35_sub5.seq.frameCount)
                     continue;
-                class35_sub5.method303();
+                class35_sub5.unlink();
                 flag = false;
                 break;
             }
@@ -4231,7 +4231,7 @@ public class client extends GameShell {
                 if (class35_sub5.anInt1040 == 2)
                     i1 = aMapSquare_741.method264(j, k, l);
                 if (i1 == 0 || (i1 >> 14 & 0x7fff) != class35_sub5.anInt1043) {
-                    class35_sub5.method303();
+                    class35_sub5.unlink();
                 } else {
                     int j1 = anIntArrayArrayArray725[j][k][l];
                     int k1 = anIntArrayArrayArray725[j][k + 1][l];
@@ -5144,7 +5144,7 @@ public class client extends GameShell {
                 if ((levelRenderFlags[1][class35_sub5.anInt1041][class35_sub5.anInt1042] & 2) == 2) {
                     class35_sub5.anInt1039--;
                     if (class35_sub5.anInt1039 < 0)
-                        class35_sub5.method303();
+                        class35_sub5.unlink();
                 }
 
             for (int l2 = 0; l2 < 104; l2++) {
@@ -5526,21 +5526,21 @@ public class client extends GameShell {
                 class35_sub7_sub3.anInt1237 -= class12_1.frameDelay[class35_sub7_sub3.primarySeqFrame];
 
             if (class35_sub7_sub3.primarySeqFrame >= class12_1.frameCount) {
-                class35_sub7_sub3.primarySeqFrame -= class12_1.anInt195;
+                class35_sub7_sub3.primarySeqFrame -= class12_1.replayoff;
                 class35_sub7_sub3.anInt1239++;
-                if (class35_sub7_sub3.anInt1239 >= class12_1.anInt201)
+                if (class35_sub7_sub3.anInt1239 >= class12_1.replaycount)
                     class35_sub7_sub3.primarySeq = -1;
                 if (class35_sub7_sub3.primarySeqFrame < 0 || class35_sub7_sub3.primarySeqFrame >= class12_1.frameCount)
                     class35_sub7_sub3.primarySeq = -1;
             }
-            class35_sub7_sub3.anInt1211 = class12_1.anInt197;
+            class35_sub7_sub3.anInt1211 = class12_1.stretches;
         }
         if (class35_sub7_sub3.primarySeqDelay > 0)
             class35_sub7_sub3.primarySeqDelay--;
         if (class35_sub7_sub3.spotAnimIndex != -1 && anInt759 >= class35_sub7_sub3.anInt1243) {
             if (class35_sub7_sub3.spotAnimFrame < 0)
                 class35_sub7_sub3.spotAnimFrame = 0;
-            SeqType class12_2 = SpotAnimType.instances[class35_sub7_sub3.spotAnimIndex].seq;
+            SeqType class12_2 = SpotAnimType.instances[class35_sub7_sub3.spotAnimIndex].anim;
             for (class35_sub7_sub3.anInt1242++; class35_sub7_sub3.spotAnimFrame < class12_2.frameCount && class35_sub7_sub3.anInt1242 > class12_2.frameDelay[class35_sub7_sub3.spotAnimFrame]; class35_sub7_sub3.spotAnimFrame++)
                 class35_sub7_sub3.anInt1242 -= class12_2.frameDelay[class35_sub7_sub3.spotAnimFrame];
 
@@ -5846,7 +5846,7 @@ public class client extends GameShell {
             anInt839 = isaac.nextInt();
         for (ProjectileEntity class35_sub7_sub1 = (ProjectileEntity) aLinkedList_863.method227(); class35_sub7_sub1 != null; class35_sub7_sub1 = (ProjectileEntity) aLinkedList_863.method229(35239))
             if (class35_sub7_sub1.anInt1174 != anInt722 || anInt759 > class35_sub7_sub1.anInt1180)
-                class35_sub7_sub1.method303();
+                class35_sub7_sub1.unlink();
             else if (anInt759 >= class35_sub7_sub1.anInt1179) {
                 if (class35_sub7_sub1.anInt1183 > 0) {
                     NpcEntity class35_sub7_sub3_sub1 = aClass35_Sub7_Sub3_Sub1Array964[class35_sub7_sub1.anInt1183 - 1];
@@ -5881,7 +5881,7 @@ public class client extends GameShell {
                 if (j1 == class35_sub7_sub3_sub1.primarySeq)
                     class35_sub7_sub3_sub1.anInt1239 = 0;
                 int l1 = class35_sub2_sub3.g1();
-                if (j1 == -1 || class35_sub7_sub3_sub1.primarySeq == -1 || SeqType.instances[j1].anInt198 > SeqType.instances[class35_sub7_sub3_sub1.primarySeq].anInt198 || SeqType.instances[class35_sub7_sub3_sub1.primarySeq].anInt198 == 0) {
+                if (j1 == -1 || class35_sub7_sub3_sub1.primarySeq == -1 || SeqType.instances[j1].priority > SeqType.instances[class35_sub7_sub3_sub1.primarySeq].priority || SeqType.instances[class35_sub7_sub3_sub1.primarySeq].priority == 0) {
                     class35_sub7_sub3_sub1.primarySeq = j1;
                     class35_sub7_sub3_sub1.primarySeqFrame = 0;
                     class35_sub7_sub3_sub1.anInt1237 = 0;
@@ -6094,15 +6094,15 @@ public class client extends GameShell {
         method118(-43634);
         LocType.unload();
         NpcType.method433(300);
-        ObjType.method439(300);
+        ObjType.unload();
         FloType.instances = null;
         IdkType.instances = null;
         Component.aComponentArray110 = null;
         DeadClass.aDeadClassArray174 = null;
         SeqType.instances = null;
         SpotAnimType.instances = null;
-        SpotAnimType.aCache_219 = null;
-        VarpType.aVarpTypeArray247 = null;
+        SpotAnimType.models = null;
+        VarpType.instances = null;
         super.aFrameBuffer_14 = null;
         PlayerEntity.aCache_1348 = null;
         Draw3D.method337(300);

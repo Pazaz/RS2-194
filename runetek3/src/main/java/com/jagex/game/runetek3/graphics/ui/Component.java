@@ -14,8 +14,8 @@ import com.jagex.game.runetek3.graphics.model.Model;
 public class Component {
 
     public static void decode(FileArchive class36, FileArchive class36_1, Font[] aclass35_sub2_sub2_sub4) {
-        aCache_167 = new Cache(-24094, 50000);
-        aCache_168 = new Cache(-24094, 50000);
+        aCache_167 = new Cache(50000);
+        aCache_168 = new Cache(50000);
         Buffer class35_sub2_sub3 = new Buffer(class36_1.read(null, "data"));
         int j = -1;
         int k = class35_sub2_sub3.g2();
@@ -227,14 +227,14 @@ public class Component {
 
     public static Sprite method175(int i, byte byte0, String s, FileArchive class36) {
         long l = (StringUtils.method420(s, (byte) 6) << 4) + (long) i;
-        Sprite class35_sub2_sub2_sub2 = (Sprite) aCache_167.method295(l);
+        Sprite class35_sub2_sub2_sub2 = (Sprite) aCache_167.get(l);
         if (byte0 != -128)
             throw new NullPointerException();
         if (class35_sub2_sub2_sub2 != null)
             return class35_sub2_sub2_sub2;
         try {
             class35_sub2_sub2_sub2 = new Sprite(class36, s, i);
-            aCache_167.method296(l, 7, class35_sub2_sub2_sub2);
+            aCache_167.put(l, class35_sub2_sub2_sub2);
         } catch (Exception _ex) {
             return null;
         }
@@ -242,14 +242,14 @@ public class Component {
     }
 
     public static Model method176(int i, byte byte0) {
-        Model class35_sub2_sub1 = (Model) aCache_168.method295(i);
+        Model class35_sub2_sub1 = (Model) aCache_168.get(i);
         if (byte0 != aByte109)
             throw new NullPointerException();
         if (class35_sub2_sub1 != null) {
             return class35_sub2_sub1;
         } else {
-            Model class35_sub2_sub1_1 = new Model(i, 298);
-            aCache_168.method296(i, 7, class35_sub2_sub1_1);
+            Model class35_sub2_sub1_1 = new Model(i);
+            aCache_168.put(i, class35_sub2_sub1_1);
             return class35_sub2_sub1_1;
         }
     }

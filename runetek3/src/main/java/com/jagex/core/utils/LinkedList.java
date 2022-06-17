@@ -21,7 +21,7 @@ public class LinkedList {
 
     public void pushNext(Node class35) {
         if (class35.aNode_510 != null)
-            class35.method303();
+            class35.unlink();
         class35.aNode_510 = aNode_337.aNode_510;
         class35.aNode_509 = aNode_337;
         class35.aNode_510.aNode_509 = class35;
@@ -30,7 +30,7 @@ public class LinkedList {
 
     public void method225(Node class35, int i) {
         if (class35.aNode_510 != null)
-            class35.method303();
+            class35.unlink();
         class35.aNode_510 = aNode_337;
         class35.aNode_509 = aNode_337.aNode_509;
         if (i != 0) {
@@ -47,7 +47,7 @@ public class LinkedList {
         if (class35 == aNode_337) {
             return null;
         } else {
-            class35.method303();
+            class35.unlink();
             return class35;
         }
     }
@@ -106,7 +106,7 @@ public class LinkedList {
             Node class35 = aNode_337.aNode_509;
             if (class35 == aNode_337)
                 return;
-            class35.method303();
+            class35.unlink();
         } while (true);
     }
 

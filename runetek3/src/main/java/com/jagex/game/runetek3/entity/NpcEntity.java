@@ -32,7 +32,7 @@ public class NpcEntity extends PathingEntity {
         spotAnimModel.translate(0, 0, -super.spotAnimOffsetY);
 
         spotAnimModel.applyGroups();
-        spotAnimModel.applyFrame(spotAnim.seq.primaryFrames[super.spotAnimFrame]);
+        spotAnimModel.applyFrame(spotAnim.anim.primaryFrames[super.spotAnimFrame]);
 
         spotAnimModel.skinTriangle = null;
         spotAnimModel.labelVertices = null;
@@ -40,7 +40,7 @@ public class NpcEntity extends PathingEntity {
         spotAnimModel.applyLighting(64, 850, -30, -50, -30, true);
 
         Model[] models = {model, spotAnimModel};
-        Model animated = new Model(true, true, models, 2);
+        Model animated = new Model(true, models, 2);
 
         if (info.size == 1) {
             animated.pickable = true;

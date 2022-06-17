@@ -212,7 +212,7 @@ public class LocType {
         if (aBoolean529)
             l2 = 0L;
         if (!hillskew && !computeVertexColors) {
-            Model class35_sub2_sub1 = (Model) aCache_569.method295(l2);
+            Model class35_sub2_sub1 = (Model) aCache_569.get(l2);
             if (class35_sub2_sub1 != null) {
                 return class35_sub2_sub1;
             }
@@ -228,13 +228,13 @@ public class LocType {
         if (flag) {
             j2 += 0x10000;
         }
-        Model class35_sub2_sub1_1 = (Model) aCache_568.method295(j2);
+        Model class35_sub2_sub1_1 = (Model) aCache_568.get(j2);
         if (class35_sub2_sub1_1 == null) {
-            class35_sub2_sub1_1 = new Model(j2 & 0xffff, 298);
+            class35_sub2_sub1_1 = new Model(j2 & 0xffff);
             if (flag) {
                 class35_sub2_sub1_1.flipBackwards();
             }
-            aCache_568.method296(j2, 7, class35_sub2_sub1_1);
+            aCache_568.put(j2, class35_sub2_sub1_1);
         }
         boolean flag1;
         flag1 = resizeX != 128 || resizeY != 128 || resizeZ != 128;
@@ -279,7 +279,7 @@ public class LocType {
             model.anInt1080 = model.maxBoundY;
         }
         if (!hillskew && !computeVertexColors) {
-            aCache_569.method296(l2, 7, model);
+            aCache_569.put(l2, model);
         }
         return model;
     }
@@ -329,7 +329,7 @@ public class LocType {
     public int zoff;
     public int blocksides;
     public boolean forcedecor;
-    public static Cache aCache_568 = new Cache(-24094, 500);
-    public static Cache aCache_569 = new Cache(-24094, 30);
+    public static Cache aCache_568 = new Cache(500);
+    public static Cache aCache_569 = new Cache(30);
 
 }
