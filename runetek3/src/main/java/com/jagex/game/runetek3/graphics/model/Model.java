@@ -186,9 +186,9 @@ public class Model extends CacheableNode {
         vertexX = new int[vertexCount];
         vertexY = new int[vertexCount];
         vertexZ = new int[vertexCount];
-        anIntArray1056 = new int[triangleCount];
+        triangleVertexA = new int[triangleCount];
         anIntArray1057 = new int[triangleCount];
-        anIntArray1058 = new int[triangleCount];
+        triangleVertexC = new int[triangleCount];
         anIntArray1068 = new int[anInt1067];
         anIntArray1069 = new int[anInt1067];
         anIntArray1070 = new int[anInt1067];
@@ -268,27 +268,27 @@ public class Model extends CacheableNode {
                 k3 = l2;
                 j3 = aClass35_Sub2_Sub3_1100.gsmart() + k3;
                 k3 = j3;
-                anIntArray1056[l3] = j2;
+                triangleVertexA[l3] = j2;
                 anIntArray1057[l3] = l2;
-                anIntArray1058[l3] = j3;
+                triangleVertexC[l3] = j3;
             }
             if (i4 == 2) {
                 j2 = j2;
                 l2 = j3;
                 j3 = aClass35_Sub2_Sub3_1100.gsmart() + k3;
                 k3 = j3;
-                anIntArray1056[l3] = j2;
+                triangleVertexA[l3] = j2;
                 anIntArray1057[l3] = l2;
-                anIntArray1058[l3] = j3;
+                triangleVertexC[l3] = j3;
             }
             if (i4 == 3) {
                 j2 = j3;
                 l2 = l2;
                 j3 = aClass35_Sub2_Sub3_1100.gsmart() + k3;
                 k3 = j3;
-                anIntArray1056[l3] = j2;
+                triangleVertexA[l3] = j2;
                 anIntArray1057[l3] = l2;
-                anIntArray1058[l3] = j3;
+                triangleVertexC[l3] = j3;
             }
             if (i4 == 4) {
                 int k4 = j2;
@@ -296,9 +296,9 @@ public class Model extends CacheableNode {
                 l2 = k4;
                 j3 = aClass35_Sub2_Sub3_1100.gsmart() + k3;
                 k3 = j3;
-                anIntArray1056[l3] = j2;
+                triangleVertexA[l3] = j2;
                 anIntArray1057[l3] = l2;
-                anIntArray1058[l3] = j3;
+                triangleVertexC[l3] = j3;
             }
         }
 
@@ -350,9 +350,9 @@ public class Model extends CacheableNode {
         if (flag)
             throw new NullPointerException();
         vertexLabel = new int[vertexCount];
-        anIntArray1056 = new int[triangleCount];
+        triangleVertexA = new int[triangleCount];
         anIntArray1057 = new int[triangleCount];
-        anIntArray1058 = new int[triangleCount];
+        triangleVertexC = new int[triangleCount];
         anIntArray1068 = new int[anInt1067];
         anIntArray1069 = new int[anInt1067];
         anIntArray1070 = new int[anInt1067];
@@ -390,9 +390,9 @@ public class Model extends CacheableNode {
                     if (flag4 && class35_sub2_sub1_1.triangleSkin != null)
                         triangleSkin[triangleCount] = class35_sub2_sub1_1.triangleSkin[l];
                     unmodifiedTriangleColor[triangleCount] = class35_sub2_sub1_1.unmodifiedTriangleColor[l];
-                    anIntArray1056[triangleCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.anIntArray1056[l]);
+                    triangleVertexA[triangleCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.triangleVertexA[l]);
                     anIntArray1057[triangleCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.anIntArray1057[l]);
-                    anIntArray1058[triangleCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.anIntArray1058[l]);
+                    triangleVertexC[triangleCount] = method307(class35_sub2_sub1_1, class35_sub2_sub1_1.triangleVertexC[l]);
                     triangleCount++;
                 }
 
@@ -446,9 +446,9 @@ public class Model extends CacheableNode {
         vertexX = new int[vertexCount];
         vertexY = new int[vertexCount];
         vertexZ = new int[vertexCount];
-        anIntArray1056 = new int[triangleCount];
+        triangleVertexA = new int[triangleCount];
         anIntArray1057 = new int[triangleCount];
-        anIntArray1058 = new int[triangleCount];
+        triangleVertexC = new int[triangleCount];
         anIntArray1059 = new int[triangleCount];
         anIntArray1060 = new int[triangleCount];
         anIntArray1061 = new int[triangleCount];
@@ -478,9 +478,9 @@ public class Model extends CacheableNode {
                 }
 
                 for (int j1 = 0; j1 < class35_sub2_sub1_1.triangleCount; j1++) {
-                    anIntArray1056[triangleCount] = class35_sub2_sub1_1.anIntArray1056[j1] + l;
+                    triangleVertexA[triangleCount] = class35_sub2_sub1_1.triangleVertexA[j1] + l;
                     anIntArray1057[triangleCount] = class35_sub2_sub1_1.anIntArray1057[j1] + l;
-                    anIntArray1058[triangleCount] = class35_sub2_sub1_1.anIntArray1058[j1] + l;
+                    triangleVertexC[triangleCount] = class35_sub2_sub1_1.triangleVertexC[j1] + l;
                     anIntArray1059[triangleCount] = class35_sub2_sub1_1.anIntArray1059[j1];
                     anIntArray1060[triangleCount] = class35_sub2_sub1_1.anIntArray1060[j1];
                     anIntArray1061[triangleCount] = class35_sub2_sub1_1.anIntArray1061[j1];
@@ -580,9 +580,9 @@ public class Model extends CacheableNode {
         }
         vertexLabel = class35_sub2_sub1.vertexLabel;
         triangleSkin = class35_sub2_sub1.triangleSkin;
-        anIntArray1056 = class35_sub2_sub1.anIntArray1056;
+        triangleVertexA = class35_sub2_sub1.triangleVertexA;
         anIntArray1057 = class35_sub2_sub1.anIntArray1057;
-        anIntArray1058 = class35_sub2_sub1.anIntArray1058;
+        triangleVertexC = class35_sub2_sub1.triangleVertexC;
         anIntArray1063 = class35_sub2_sub1.anIntArray1063;
         anInt1066 = class35_sub2_sub1.anInt1066;
         anIntArray1068 = class35_sub2_sub1.anIntArray1068;
@@ -627,9 +627,9 @@ public class Model extends CacheableNode {
         anInt1066 = class35_sub2_sub1.anInt1066;
         skinTriangle = class35_sub2_sub1.skinTriangle;
         labelVertices = class35_sub2_sub1.labelVertices;
-        anIntArray1056 = class35_sub2_sub1.anIntArray1056;
+        triangleVertexA = class35_sub2_sub1.triangleVertexA;
         anIntArray1057 = class35_sub2_sub1.anIntArray1057;
-        anIntArray1058 = class35_sub2_sub1.anIntArray1058;
+        triangleVertexC = class35_sub2_sub1.triangleVertexC;
         anIntArray1059 = class35_sub2_sub1.anIntArray1059;
         anIntArray1060 = class35_sub2_sub1.anIntArray1060;
         anIntArray1061 = class35_sub2_sub1.anIntArray1061;
@@ -1010,35 +1010,34 @@ public class Model extends CacheableNode {
     }
 
     public void recolor(int from, int to) {
-        for (int t = 0; t < triangleCount; t++)
+        for (int t = 0; t < triangleCount; t++) {
             if (unmodifiedTriangleColor[t] == from) {
                 unmodifiedTriangleColor[t] = to;
             }
-
+        }
     }
 
-    public void method318(int i) {
-        for (int j = 0; j < vertexCount; j++)
-            vertexZ[j] = -vertexZ[j];
-
-        for (int k = 0; k < triangleCount; k++) {
-            int l = anIntArray1056[k];
-            anIntArray1056[k] = anIntArray1058[k];
-            anIntArray1058[k] = l;
+    public void flipBackwards() {
+        for (int v = 0; v < vertexCount; v++) {
+            vertexZ[v] = -vertexZ[v];
         }
 
-        if (i == anInt1049) ;
+        for (int v = 0; v < triangleCount; v++) {
+            int l = triangleVertexA[v];
+            triangleVertexA[v] = triangleVertexC[v];
+            triangleVertexC[v] = l;
+        }
     }
 
     public void method319(int i, int j, int k, int l) {
-        if (i <= 0)
+        if (i <= 0) {
             aBoolean1050 = !aBoolean1050;
+        }
         for (int i1 = 0; i1 < vertexCount; i1++) {
             vertexX[i1] = (vertexX[i1] * j) / 128;
             vertexY[i1] = (vertexY[i1] * k) / 128;
             vertexZ[i1] = (vertexZ[i1] * l) / 128;
         }
-
     }
 
     public void applyLighting(int i, int j, int k, int l, int i1, boolean flag) {
@@ -1056,9 +1055,9 @@ public class Model extends CacheableNode {
 
         }
         for (int i2 = 0; i2 < triangleCount; i2++) {
-            int j2 = anIntArray1056[i2];
+            int j2 = triangleVertexA[i2];
             int l2 = anIntArray1057[i2];
-            int i3 = anIntArray1058[i2];
+            int i3 = triangleVertexC[i2];
             int j3 = vertexX[l2] - vertexX[j2];
             int k3 = vertexY[l2] - vertexY[j2];
             int l3 = vertexZ[l2] - vertexZ[j2];
@@ -1126,9 +1125,9 @@ public class Model extends CacheableNode {
 
     public void method321(int i, int j, int k, int l, int i1) {
         for (int j1 = 0; j1 < triangleCount; j1++) {
-            int k1 = anIntArray1056[j1];
+            int k1 = triangleVertexA[j1];
             int i2 = anIntArray1057[j1];
-            int j2 = anIntArray1058[j1];
+            int j2 = triangleVertexC[j1];
             if (anIntArray1062 == null) {
                 int i3 = unmodifiedTriangleColor[j1];
                 VertexNormal class22 = aVertexNormalArray1086[k1];
@@ -1348,9 +1347,9 @@ public class Model extends CacheableNode {
 
         for (int k = 0; k < triangleCount; k++)
             if (anIntArray1062 == null || anIntArray1062[k] != -1) {
-                int l = anIntArray1056[k];
+                int l = triangleVertexA[k];
                 int k1 = anIntArray1057[k];
-                int j2 = anIntArray1058[k];
+                int j2 = triangleVertexC[k];
                 int i3 = anIntArray1105[l];
                 int l3 = anIntArray1105[k1];
                 int k4 = anIntArray1105[j2];
@@ -1501,9 +1500,9 @@ public class Model extends CacheableNode {
             method327(i);
             return;
         }
-        int j = anIntArray1056[i];
+        int j = triangleVertexA[i];
         int k = anIntArray1057[i];
-        int l = anIntArray1058[i];
+        int l = triangleVertexC[i];
         Draw3D.aBoolean1263 = aBooleanArray1103[i];
         if (triangleAlpha == null)
             Draw3D.anInt1266 = 0;
@@ -1543,9 +1542,9 @@ public class Model extends CacheableNode {
         int j = Draw3D.anInt1267;
         int k = Draw3D.anInt1268;
         int l = 0;
-        int i1 = anIntArray1056[i];
+        int i1 = triangleVertexA[i];
         int j1 = anIntArray1057[i];
-        int k1 = anIntArray1058[i];
+        int k1 = triangleVertexC[i];
         int l1 = anIntArray1110[i1];
         int i2 = anIntArray1110[j1];
         int j2 = anIntArray1110[k1];
@@ -1705,9 +1704,9 @@ public class Model extends CacheableNode {
     public int[] vertexY;
     public int[] vertexZ;
     public int triangleCount;
-    public int[] anIntArray1056;
+    public int[] triangleVertexA;
     public int[] anIntArray1057;
-    public int[] anIntArray1058;
+    public int[] triangleVertexC;
     public int[] anIntArray1059;
     public int[] anIntArray1060;
     public int[] anIntArray1061;

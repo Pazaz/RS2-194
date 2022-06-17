@@ -715,11 +715,11 @@ public class MapSquare {
         if (l < 3 || !flag)
             return;
         for (int k1 = 0; k1 < class35_sub2_sub1.triangleCount; k1++)
-            if (anIntArray432[class35_sub2_sub1.anIntArray1056[k1]] == anInt434 && anIntArray432[class35_sub2_sub1.anIntArray1057[k1]] == anInt434 && anIntArray432[class35_sub2_sub1.anIntArray1058[k1]] == anInt434)
+            if (anIntArray432[class35_sub2_sub1.triangleVertexA[k1]] == anInt434 && anIntArray432[class35_sub2_sub1.anIntArray1057[k1]] == anInt434 && anIntArray432[class35_sub2_sub1.triangleVertexC[k1]] == anInt434)
                 class35_sub2_sub1.anIntArray1062[k1] = -1;
 
         for (int l1 = 0; l1 < class35_sub2_sub1_1.triangleCount; l1++)
-            if (anIntArray433[class35_sub2_sub1_1.anIntArray1056[l1]] == anInt434 && anIntArray433[class35_sub2_sub1_1.anIntArray1057[l1]] == anInt434 && anIntArray433[class35_sub2_sub1_1.anIntArray1058[l1]] == anInt434)
+            if (anIntArray433[class35_sub2_sub1_1.triangleVertexA[l1]] == anInt434 && anIntArray433[class35_sub2_sub1_1.anIntArray1057[l1]] == anInt434 && anIntArray433[class35_sub2_sub1_1.triangleVertexC[l1]] == anInt434)
                 class35_sub2_sub1_1.anIntArray1062[l1] = -1;
 
     }

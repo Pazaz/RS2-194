@@ -213,64 +213,75 @@ public class LocType {
             l2 = 0L;
         if (!hillskew && !computeVertexColors) {
             Model class35_sub2_sub1 = (Model) aCache_569.method295(l2);
-            if (class35_sub2_sub1 != null)
+            if (class35_sub2_sub1 != null) {
                 return class35_sub2_sub1;
+            }
         }
-        if (l1 >= models.length)
+        if (l1 >= models.length) {
             return null;
+        }
         int j2 = models[l1];
-        if (j2 == -1)
+        if (j2 == -1) {
             return null;
+        }
         boolean flag = mirror ^ (j > 3);
-        if (flag)
+        if (flag) {
             j2 += 0x10000;
+        }
         Model class35_sub2_sub1_1 = (Model) aCache_568.method295(j2);
         if (class35_sub2_sub1_1 == null) {
             class35_sub2_sub1_1 = new Model(j2 & 0xffff, 298);
-            if (flag)
-                class35_sub2_sub1_1.method318(-25737);
+            if (flag) {
+                class35_sub2_sub1_1.flipBackwards();
+            }
             aCache_568.method296(j2, 7, class35_sub2_sub1_1);
         }
         boolean flag1;
         flag1 = resizeX != 128 || resizeY != 128 || resizeZ != 128;
         boolean flag2;
         flag2 = xoff != 0 || yoff != 0 || zoff != 0;
-        Model class35_sub2_sub1_2 = new Model(-428, !computeVertexColors, class35_sub2_sub1_1, recol_s == null, j == 0 && !hillskew && k1 == -1 && !flag1 && !flag2, !disposeAlpha);
+        Model model = new Model(-428, !computeVertexColors, class35_sub2_sub1_1, recol_s == null, j == 0 && !hillskew && k1 == -1 && !flag1 && !flag2, !disposeAlpha);
         if (k1 != -1) {
-            class35_sub2_sub1_2.applyGroups();
-            class35_sub2_sub1_2.applyFrame(k1);
-            class35_sub2_sub1_2.skinTriangle = null;
-            class35_sub2_sub1_2.labelVertices = null;
+            model.applyGroups();
+            model.applyFrame(k1);
+            model.skinTriangle = null;
+            model.labelVertices = null;
         }
-        while (j-- > 0)
-            class35_sub2_sub1_2.rotateCounterClockwise();
+        while (j-- > 0) {
+            model.rotateCounterClockwise();
+        }
         if (recol_s != null) {
-            for (int k2 = 0; k2 < recol_s.length; k2++)
-                class35_sub2_sub1_2.recolor(recol_s[k2], recol_d[k2]);
-
-        }
-        if (flag1)
-            class35_sub2_sub1_2.method319(728, resizeX, resizeY, resizeZ);
-        if (hillskew) {
-            int i3 = (k + l + i1 + j1) / 4;
-            for (int j3 = 0; j3 < class35_sub2_sub1_2.vertexCount; j3++) {
-                int k3 = class35_sub2_sub1_2.vertexX[j3];
-                int l3 = class35_sub2_sub1_2.vertexZ[j3];
-                int i4 = k + ((l - k) * (k3 + 64)) / 128;
-                int j4 = j1 + ((i1 - j1) * (k3 + 64)) / 128;
-                int k4 = i4 + ((j4 - i4) * (l3 + 64)) / 128;
-                class35_sub2_sub1_2.vertexY[j3] += k4 - i3;
+            for (int k2 = 0; k2 < recol_s.length; k2++) {
+                model.recolor(recol_s[k2], recol_d[k2]);
             }
 
         }
-        if (flag2)
-            class35_sub2_sub1_2.translate(zoff, xoff, yoff);
-        class35_sub2_sub1_2.applyLighting(64 + ambient, 768 + contrast * 5, -50, -10, -50, !computeVertexColors);
-        if (blockwalk)
-            class35_sub2_sub1_2.anInt1080 = class35_sub2_sub1_2.maxBoundY;
-        if (!hillskew && !computeVertexColors)
-            aCache_569.method296(l2, 7, class35_sub2_sub1_2);
-        return class35_sub2_sub1_2;
+        if (flag1) {
+            model.method319(728, resizeX, resizeY, resizeZ);
+        }
+        if (hillskew) {
+            int i3 = (k + l + i1 + j1) / 4;
+            for (int j3 = 0; j3 < model.vertexCount; j3++) {
+                int k3 = model.vertexX[j3];
+                int l3 = model.vertexZ[j3];
+                int i4 = k + ((l - k) * (k3 + 64)) / 128;
+                int j4 = j1 + ((i1 - j1) * (k3 + 64)) / 128;
+                int k4 = i4 + ((j4 - i4) * (l3 + 64)) / 128;
+                model.vertexY[j3] += k4 - i3;
+            }
+
+        }
+        if (flag2) {
+            model.translate(zoff, xoff, yoff);
+        }
+        model.applyLighting(64 + ambient, 768 + contrast * 5, -50, -10, -50, !computeVertexColors);
+        if (blockwalk) {
+            model.anInt1080 = model.maxBoundY;
+        }
+        if (!hillskew && !computeVertexColors) {
+            aCache_569.method296(l2, 7, model);
+        }
+        return model;
     }
 
     public LocType() {
